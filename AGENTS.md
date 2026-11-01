@@ -10,6 +10,7 @@
 <!-- LOVABLE:END -->
 
 ## Project rules
-- Book content lives as typed data in `src/content/modules/*.ts` (blocks defined in `src/content/types.ts`) and is rendered by `src/components/book/Blocks.tsx`; add pages by editing data, not JSX, so navigation/TOC/progress stay automatic.
-- Reader URLs are `/ler/<section>/<page>` (e.g. `/ler/5.1/1`), mirroring the reference book's chapter.section/page addressing.
-- Reader progress (visited pages, checklists, quiz answers) is stored in localStorage via `src/lib/progress.ts` with `useSyncExternalStore`, so SSR renders an empty state and hydrates safely.
+- Book content is typed data: Módulo → Aula → Passos in `src/content/imersao/*.ts` (types in `tipos.ts`), rendered per step type by `src/components/imersao/Passos.tsx`; add lessons by editing data so sidebar, tabs and progress stay automatic.
+- Reader URLs are `/ler/<aula>/<passo>` (e.g. `/ler/1.1/2`), mirroring the reference book's section/page addressing; passo 1 is always the auto-generated Objetivo.
+- Reader progress lives in localStorage via `src/lib/progresso.ts` with `useSyncExternalStore`, so SSR renders empty state and hydrates safely.
+- Class-code access: valid codes live only in `src/lib/acesso.server.ts`; the root `beforeLoad` checks an HttpOnly cookie via server function, and server routes (e.g. `/api/exercicio`) must re-check it themselves.

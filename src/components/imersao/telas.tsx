@@ -804,8 +804,10 @@ export function TelaIlustrada({
   const tela = telas[id];
   const { Desenho } = tela;
   return (
-    <div className={cn("relative w-full overflow-hidden rounded-[14px] border border-linha-2 sombra", className)} style={{ aspectRatio: tela.proporcao }}>
-      <Desenho />
+    <div className={cn("mock relative w-full overflow-hidden rounded-[14px] border border-linha-2 sombra", className)} style={{ aspectRatio: tela.proporcao }}>
+      <div className="absolute inset-0 text-[1.45cqw] leading-tight">
+        <Desenho />
+      </div>
       {mostrarPontos &&
         tela.pontos.map((p, i) => (
           <button

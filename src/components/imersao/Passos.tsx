@@ -247,7 +247,12 @@ function Mapa({ p }: { p: PassoMapa }) {
           const aberto = quadro.abertos.includes(n.id);
           return (
             <div key={n.id} className="contents">
-              {i > 0 && <span className="self-center text-xl text-cobre-texto">{p.rotuloSeta ?? "→"}</span>}
+              {i > 0 && (
+                <span className="flex flex-col items-center self-center text-cobre-texto">
+                  <span className="text-xl leading-none"><span className="md:hidden">↓</span><span className="hidden md:inline">→</span></span>
+                  {p.rotuloSeta && <span className="text-[10px] font-bold uppercase tracking-wider">{p.rotuloSeta}</span>}
+                </span>
+              )}
               <div className={cn("flex-1 rounded-2xl border p-4 transition-all", quadro.foco === n.id ? "border-tinta bg-tinta text-branco" : aberto ? "border-cobre bg-branco" : "border-dashed border-linha-2 bg-areia-2 opacity-50")}>
                 <p className={cn("text-2xl font-bold", quadro.foco === n.id ? "text-cobre" : "text-cobre-texto")}>{n.sigla}</p>
                 <p className="font-semibold">{n.nome}</p>

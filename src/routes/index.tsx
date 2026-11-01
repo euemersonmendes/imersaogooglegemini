@@ -32,7 +32,7 @@ function Cover() {
   const progress = useProgress();
   const first = flatPages[0];
   const last = progress.last ? flatPages.find((p) => p.key === progress.last) : undefined;
-  const start = last ?? first;
+  const start = (last ?? first)!;
   const visited = new Set(progress.visited);
   const pct = Math.round((progress.visited.length / flatPages.length) * 100);
 
@@ -132,7 +132,7 @@ function Cover() {
             {modules.map((m) => {
               const keys = pageKeysOfModule(m);
               const done = keys.filter((k) => visited.has(k)).length;
-              const firstSection = m.sections[0];
+              const firstSection = m.sections[0]!;
               return (
                 <li key={m.n}>
                   <Link

@@ -15,8 +15,8 @@ describe("book structure", () => {
   });
 
   it("first page has no previous and last page has no next", () => {
-    expect(neighbors(flatPages[0]).prev).toBeUndefined();
-    expect(neighbors(flatPages[flatPages.length - 1]).next).toBeUndefined();
+    expect(neighbors(flatPages[0]!).prev).toBeUndefined();
+    expect(neighbors(flatPages[flatPages.length - 1]!).next).toBeUndefined();
   });
 
   it("quiz answers point to an existing option", () => {

@@ -55,7 +55,7 @@ function BlockView({ block }: { block: Block }) {
   }
 }
 
-function ListBlock({ items, ordered }: { items: string[]; ordered?: boolean }) {
+function ListBlock({ items, ordered }: { items: string[]; ordered?: boolean | undefined }) {
   return (
     <ul className="space-y-3">
       {items.map((it, i) => (

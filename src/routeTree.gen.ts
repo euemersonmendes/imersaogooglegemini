@@ -10,11 +10,23 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ExercicioRouteImport } from './routes/exercicio'
+import { Route as ApiExercicioRouteImport } from './routes/api/exercicio'
 import { Route as LerSecaoPaginaRouteImport } from './routes/ler.$secao.$pagina'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExercicioRoute = ExercicioRouteImport.update({
+  id: '/exercicio',
+  path: '/exercicio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiExercicioRoute = ApiExercicioRouteImport.update({
+  id: '/api/exercicio',
+  path: '/api/exercicio',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LerSecaoPaginaRoute = LerSecaoPaginaRouteImport.update({
@@ -25,27 +37,35 @@ const LerSecaoPaginaRoute = LerSecaoPaginaRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/exercicio': typeof ExercicioRoute
+  '/api/exercicio': typeof ApiExercicioRoute
   '/ler/$secao/$pagina': typeof LerSecaoPaginaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/exercicio': typeof ExercicioRoute
+  '/api/exercicio': typeof ApiExercicioRoute
   '/ler/$secao/$pagina': typeof LerSecaoPaginaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/exercicio': typeof ExercicioRoute
+  '/api/exercicio': typeof ApiExercicioRoute
   '/ler/$secao/$pagina': typeof LerSecaoPaginaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/ler/$secao/$pagina'
+  fullPaths: '/' | '/exercicio' | '/api/exercicio' | '/ler/$secao/$pagina'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/ler/$secao/$pagina'
-  id: '__root__' | '/' | '/ler/$secao/$pagina'
+  to: '/' | '/exercicio' | '/api/exercicio' | '/ler/$secao/$pagina'
+  id: '__root__' | '/' | '/exercicio' | '/api/exercicio' | '/ler/$secao/$pagina'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ExercicioRoute: typeof ExercicioRoute
+  ApiExercicioRoute: typeof ApiExercicioRoute
   LerSecaoPaginaRoute: typeof LerSecaoPaginaRoute
 }
 
@@ -56,6 +76,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/exercicio': {
+      id: '/exercicio'
+      path: '/exercicio'
+      fullPath: '/exercicio'
+      preLoaderRoute: typeof ExercicioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/exercicio': {
+      id: '/api/exercicio'
+      path: '/api/exercicio'
+      fullPath: '/api/exercicio'
+      preLoaderRoute: typeof ApiExercicioRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ler/$secao/$pagina': {
@@ -70,6 +104,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ExercicioRoute: ExercicioRoute,
+  ApiExercicioRoute: ApiExercicioRoute,
   LerSecaoPaginaRoute: LerSecaoPaginaRoute,
 }
 export const routeTree = rootRouteImport

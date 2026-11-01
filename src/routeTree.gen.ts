@@ -10,33 +10,43 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LerSecaoPaginaRouteImport } from './routes/ler.$secao.$pagina'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LerSecaoPaginaRoute = LerSecaoPaginaRouteImport.update({
+  id: '/ler/$secao/$pagina',
+  path: '/ler/$secao/$pagina',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ler/$secao/$pagina': typeof LerSecaoPaginaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/ler/$secao/$pagina': typeof LerSecaoPaginaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/ler/$secao/$pagina': typeof LerSecaoPaginaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/ler/$secao/$pagina'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/ler/$secao/$pagina'
+  id: '__root__' | '/' | '/ler/$secao/$pagina'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LerSecaoPaginaRoute: typeof LerSecaoPaginaRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +58,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ler/$secao/$pagina': {
+      id: '/ler/$secao/$pagina'
+      path: '/ler/$secao/$pagina'
+      fullPath: '/ler/$secao/$pagina'
+      preLoaderRoute: typeof LerSecaoPaginaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LerSecaoPaginaRoute: LerSecaoPaginaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

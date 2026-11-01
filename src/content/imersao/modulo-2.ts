@@ -1,4 +1,4 @@
-import type { Modulo } from "/dev-server/src/content/imersao/tipos";
+import type { Modulo } from "./tipos";
 
 export const modulo2: Modulo = {
   id: "modulo-2", glifo: "spark", nome: "Prompts",

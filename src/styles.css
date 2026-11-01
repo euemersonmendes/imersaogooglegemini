@@ -5,15 +5,14 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system — "Caderno de areia"
- * Papel areia, tinta quente, azul-cobalto e cobre (as duas estrelas do Gemini).
- * All colors use oklch.
+ * Design system — mesmo da referência (book digital Couto Performance):
+ * areia, tinta, cobre e verde; família Inter em títulos e texto.
+ * Todos os valores em oklch (hex de origem no comentário).
  */
 
 @theme inline {
-  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-display: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -22,6 +21,7 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -43,21 +43,43 @@
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
 
-  --color-cobalt: var(--cobalt);
-  --color-cobalt-soft: var(--cobalt-soft);
-  --color-copper: var(--copper);
-  --color-copper-soft: var(--copper-soft);
-  --color-sage: var(--sage);
-  --color-sage-soft: var(--sage-soft);
-  --color-ink-soft: var(--ink-soft);
-  --color-success: var(--success);
-  --color-success-soft: var(--success-soft);
+  /* Paleta da referência */
+  --color-areia: var(--areia);
+  --color-areia-2: var(--areia-2);
+  --color-linha: var(--linha);
+  --color-linha-2: var(--linha-2);
+  --color-tinta: var(--tinta);
+  --color-tinta-2: var(--tinta-2);
+  --color-apagado: var(--apagado);
+  --color-cobre: var(--cobre);
+  --color-cobre-escuro: var(--cobre-escuro);
+  --color-cobre-texto: var(--cobre-texto);
+  --color-cobre-suave: var(--cobre-suave);
+  --color-cobre-borda: var(--cobre-borda);
+  --color-cobre-hover: var(--cobre-hover);
+  --color-lacuna: var(--lacuna);
+  --color-dica: var(--dica);
+  --color-verde: var(--verde);
+  --color-verde-texto: var(--verde-texto);
+  --color-verde-suave: var(--verde-suave);
+  --color-verde-borda: var(--verde-borda);
+  --color-escuro-hover: var(--escuro-hover);
+  --color-escuro-borda: var(--escuro-borda);
+  --color-escuro-texto: var(--escuro-texto);
+  --color-escuro-texto-2: var(--escuro-texto-2);
+  --color-voo: var(--voo);
+  --color-nav: var(--nav);
+  --color-branco: var(--branco);
 
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
+  /* Telas ilustradas do Gemini */
+  --color-mock-bg: var(--mock-bg);
+  --color-mock-painel: var(--mock-painel);
+  --color-mock-linha: var(--mock-linha);
+  --color-mock-texto: var(--mock-texto);
+  --color-mock-suave: var(--mock-suave);
+  --color-mock-azul: var(--mock-azul);
+  --color-mock-azul-suave: var(--mock-azul-suave);
+
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -67,134 +89,194 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  --animate-rise: rise 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-entra: entra 0.35s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
 :root {
-  --radius: 0.875rem;
-  --background: oklch(0.955 0.016 78);
-  --foreground: oklch(0.21 0.02 40);
-  --card: oklch(0.988 0.006 80);
-  --card-foreground: oklch(0.21 0.02 40);
-  --popover: oklch(0.988 0.006 80);
-  --popover-foreground: oklch(0.21 0.02 40);
-  --primary: oklch(0.21 0.02 40);
-  --primary-foreground: oklch(0.975 0.01 80);
-  --secondary: oklch(0.925 0.02 75);
-  --secondary-foreground: oklch(0.21 0.02 40);
-  --muted: oklch(0.925 0.02 75);
-  --muted-foreground: oklch(0.47 0.025 45);
-  --accent: oklch(0.46 0.15 262);
-  --accent-foreground: oklch(0.985 0.005 260);
+  --radius: 0.75rem;
+
+  --areia: oklch(0.967 0.009 67.7); /* #F8F3EE */
+  --areia-2: oklch(0.957 0.01 72.7); /* #F5F0EA */
+  --linha: oklch(0.932 0.014 67.7); /* #EFE7DF */
+  --linha-2: oklch(0.89 0.017 70.5); /* #E2D9CF */
+  --tinta: oklch(0.192 0.014 34.4); /* #1A1210 */
+  --tinta-2: oklch(0.282 0.023 49.7); /* #33261F */
+  --apagado: oklch(0.474 0.024 45); /* #685851 */
+  --cobre: oklch(0.749 0.104 58.5); /* #DF9D69 */
+  --cobre-escuro: oklch(0.647 0.083 59.3); /* #B4825A */
+  --cobre-texto: oklch(0.512 0.083 58.5); /* #8A5A33 */
+  --cobre-suave: oklch(0.964 0.016 64.7); /* #FBF1E8 */
+  --cobre-borda: oklch(0.892 0.042 63.8); /* #F0D6BF */
+  --cobre-hover: oklch(0.913 0.034 64.5); /* #F3DECB */
+  --lacuna: oklch(0.918 0.038 62.2); /* #F7DFCB */
+  --dica: oklch(0.928 0.054 88.4); /* #F6E6BF */
+  --verde: oklch(0.632 0.116 153.3); /* #4A9E68 */
+  --verde-texto: oklch(0.52 0.105 153.1); /* #2F7A4B */
+  --verde-suave: oklch(0.962 0.012 153.7); /* #EDF5EF */
+  --verde-borda: oklch(0.899 0.029 156.6); /* #CFE4D6 */
+  --escuro-hover: oklch(0.251 0.019 40.9); /* #2A1F1B */
+  --escuro-borda: oklch(0.307 0.023 44.4); /* #3A2C26 */
+  --escuro-texto: oklch(0.691 0.022 48.4); /* #A89890 */
+  --escuro-texto-2: oklch(0.796 0.024 56.9); /* #C9B9AE */
+  --voo: oklch(0.229 0.018 42.9); /* #241A16 */
+  --nav: oklch(0.85 0.019 57.2); /* #D8CBC2 */
+  --branco: oklch(1 0 0);
+
+  --mock-bg: oklch(0.995 0.002 250);
+  --mock-painel: oklch(0.965 0.006 250);
+  --mock-linha: oklch(0.9 0.008 250);
+  --mock-texto: oklch(0.3 0.015 250);
+  --mock-suave: oklch(0.6 0.012 250);
+  --mock-azul: oklch(0.56 0.17 258);
+  --mock-azul-suave: oklch(0.93 0.035 258);
+
+  --background: var(--areia);
+  --foreground: var(--tinta);
+  --card: var(--branco);
+  --card-foreground: var(--tinta);
+  --popover: var(--branco);
+  --popover-foreground: var(--tinta);
+  --primary: var(--tinta);
+  --primary-foreground: var(--areia);
+  --secondary: var(--areia-2);
+  --secondary-foreground: var(--tinta);
+  --muted: var(--areia-2);
+  --muted-foreground: var(--apagado);
+  --accent: var(--cobre);
+  --accent-foreground: var(--tinta);
   --destructive: oklch(0.56 0.19 28);
-  --destructive-foreground: oklch(0.985 0.005 80);
-  --border: oklch(0.87 0.022 72);
-  --input: oklch(0.87 0.022 72);
-  --ring: oklch(0.46 0.15 262);
+  --destructive-foreground: var(--branco);
+  --border: var(--linha);
+  --input: var(--linha-2);
+  --ring: var(--cobre);
 
-  --cobalt: oklch(0.46 0.15 262);
-  --cobalt-soft: oklch(0.93 0.035 262);
-  --copper: oklch(0.66 0.14 50);
-  --copper-soft: oklch(0.93 0.04 60);
-  --sage: oklch(0.52 0.08 165);
-  --sage-soft: oklch(0.93 0.035 165);
-  --ink-soft: oklch(0.9 0.012 60);
-  --success: oklch(0.55 0.12 150);
-  --success-soft: oklch(0.93 0.05 150);
+  --sombra: 0 2px 14px oklch(0.192 0.014 34.4 / 0.05);
+  --sombra-forte: 0 10px 30px oklch(0.192 0.014 34.4 / 0.1);
+  --sombra-escura: 12px 0 40px oklch(0.192 0.014 34.4 / 0.35);
 
-  --gradient-spark: linear-gradient(115deg, var(--cobalt) 12%, var(--copper) 88%);
-  --shadow-paper: 0 1px 0 oklch(1 0 0 / 0.6) inset, 0 18px 40px -24px oklch(0.3 0.04 50 / 0.35);
-  --shadow-lift: 0 24px 60px -30px oklch(0.3 0.05 50 / 0.45);
+  --sidebar: var(--tinta);
+  --sidebar-foreground: var(--areia);
+  --sidebar-primary: var(--cobre);
+  --sidebar-primary-foreground: var(--tinta);
+  --sidebar-accent: var(--escuro-hover);
+  --sidebar-accent-foreground: var(--areia);
+  --sidebar-border: var(--escuro-borda);
+  --sidebar-ring: var(--cobre);
 
-  --chart-1: var(--cobalt);
-  --chart-2: var(--copper);
-  --chart-3: var(--sage);
-  --chart-4: oklch(0.75 0.12 80);
-  --chart-5: oklch(0.4 0.03 40);
-  --sidebar: oklch(0.94 0.018 76);
-  --sidebar-foreground: oklch(0.21 0.02 40);
-  --sidebar-primary: oklch(0.21 0.02 40);
-  --sidebar-primary-foreground: oklch(0.975 0.01 80);
-  --sidebar-accent: oklch(0.91 0.024 74);
-  --sidebar-accent-foreground: oklch(0.21 0.02 40);
-  --sidebar-border: oklch(0.87 0.022 72);
-  --sidebar-ring: oklch(0.46 0.15 262);
+  --chart-1: var(--cobre);
+  --chart-2: var(--tinta);
+  --chart-3: var(--verde);
+  --chart-4: var(--cobre-escuro);
+  --chart-5: var(--apagado);
 }
 
 @layer base {
   * {
     border-color: var(--color-border);
+    scrollbar-width: thin;
+    scrollbar-color: oklch(0.85 0.02 65) transparent;
   }
 
-  html {
-    scroll-behavior: smooth;
-  }
-
+  html,
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
   }
 
   ::selection {
-    background: var(--cobalt-soft);
-    color: var(--foreground);
+    background: oklch(0.901 0.042 63.8); /* #F3D9C2 */
   }
 }
 
-@keyframes rise {
+@keyframes entra {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
   }
 }
 
-/* ---------- Utilities do design system ---------- */
+/* ---------- Utilitários do design system ---------- */
 
-@utility font-display {
-  font-family: var(--font-display);
-  font-weight: 400;
-  letter-spacing: -0.01em;
-}
-
-@utility text-spark {
-  background: var(--gradient-spark);
+/* Palavra em degradê tinta → cobre (título da capa) */
+@utility acento {
+  background: linear-gradient(135deg, var(--tinta) 20%, var(--cobre) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-@utility bg-spark {
-  background: var(--gradient-spark);
+/* Fundo do palco: areia com luz quente no alto à direita */
+@utility palco-fundo {
+  background:
+    radial-gradient(60% 70% at 92% 8%, oklch(0.86 0.04 65 / 0.75), transparent 70%),
+    radial-gradient(50% 60% at 10% 100%, oklch(0.93 0.008 240 / 0.8), transparent 70%),
+    var(--areia);
 }
 
-@utility shadow-paper {
-  box-shadow: var(--shadow-paper);
+@utility sombra {
+  box-shadow: var(--sombra);
 }
 
-@utility shadow-lift {
-  box-shadow: var(--shadow-lift);
+@utility sombra-forte {
+  box-shadow: var(--sombra-forte);
 }
 
-@utility eyebrow {
-  font-family: var(--font-sans);
-  font-size: 0.6875rem;
+@utility sombra-escura {
+  box-shadow: var(--sombra-escura);
+}
+
+/* Sobretítulo "02 · PROMPT" */
+@utility sobretitulo {
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--copper);
+  color: var(--cobre-texto);
 }
 
-@utility paper-grain {
-  background-image:
-    radial-gradient(oklch(0.4 0.03 50 / 0.05) 1px, transparent 1px),
-    radial-gradient(oklch(0.4 0.03 50 / 0.035) 1px, transparent 1px);
-  background-size: 18px 18px, 11px 11px;
-  background-position: 0 0, 5px 7px;
+/* Selo pequeno em caixa alta */
+@utility selo {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Botão escuro com leve brilho (Começar, Revelar, Concluir) */
+@utility btn-tinta {
+  background: linear-gradient(180deg, var(--tinta-2), var(--tinta));
+  color: var(--areia);
+  box-shadow:
+    0 1px 0 oklch(1 0 0 / 0.12) inset,
+    0 6px 16px -6px oklch(0.192 0.014 34.4 / 0.5);
+  &:hover {
+    background: var(--tinta-2);
+  }
+}
+
+/* Botão claro do cabeçalho */
+@utility btn-claro {
+  background: var(--branco);
+  border: 1px solid var(--linha-2);
+  &:hover {
+    border-color: var(--cobre);
+  }
+}
+
+/* Texto de tela ilustrada escala com o tamanho da moldura */
+@utility mock {
+  container-type: inline-size;
+}
+
+@utility esconde-barra {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }

@@ -61,6 +61,9 @@ function Cover() {
             <Button asChild variant="paper" size="xl">
               <a href="#sumario">Ver sumário</a>
             </Button>
+            <Button asChild variant="paper" size="xl">
+              <Link to="/exercicio">Gerar exercício com IA</Link>
+            </Button>
           </div>
           {last && (
             <p className="mt-3 text-sm text-muted-foreground">

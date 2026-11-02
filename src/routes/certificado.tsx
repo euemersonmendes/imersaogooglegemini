@@ -34,6 +34,7 @@ function Certificado() {
   const [cert, setCert] = useState<Cert | undefined>(undefined);
   const feitas = prog.concluidas.length;
   const cartao = useRef<HTMLDivElement>(null);
+  const verso = useRef<HTMLDivElement>(null);
   const [gerando, setGerando] = useState<"" | "pdf" | "png">("");
   async function exportar(tipo: "pdf" | "png") {
     if (!cartao.current) return;
@@ -41,7 +42,7 @@ function Certificado() {
     janela?.document.write("<p style='font-family:sans-serif;padding:2rem'>Gerando o PDF do certificado…</p>");
     setGerando(tipo);
     try {
-      if (tipo === "pdf") await baixarPdf(cartao.current, sessao.nome, janela);
+      if (tipo === "pdf") await baixarPdf(cartao.current, sessao.nome, janela, verso.current);
       else await baixarImagem(cartao.current, sessao.nome);
     } catch {
       janela?.close();
@@ -78,7 +79,7 @@ function Certificado() {
           <Link to="/book" className="selo flex items-center gap-2 text-apagado hover:text-cobre-texto"><ArrowLeft className="size-3.5" /> Voltar à capa</Link>
           {cert && liberado && (
             <div className="ml-auto flex flex-wrap gap-2">
-              <CompartilharCertificado cartaoRef={cartao} nome={sessao.nome} codigo={cert.codigo} disabled={!!gerando} />
+              <CompartilharCertificado cartaoRef={cartao} versoRef={verso} nome={sessao.nome} codigo={cert.codigo} disabled={!!gerando} />
               <button type="button" disabled={!!gerando} onClick={() => void exportar("pdf")} className="btn-tinta flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold">
                 {gerando === "pdf" ? <Loader className="size-4 animate-spin" /> : <FileDown className="size-4" />} Baixar PDF
               </button>
@@ -99,7 +100,7 @@ function Certificado() {
         ) : !cert ? (
           <Aviso titulo="Conclua todas as aulas" texto={`Você concluiu ${feitas} de ${TOTAL_AULAS_CURSO} aulas. O certificado é liberado automaticamente quando todas estiverem concluídas.`} />
         ) : (
-          <div className="mt-8"><CartaoCertificado userId={sessao.user?.id ?? ""} nome={sessao.nome} codigo={cert.codigo} emitidoEm={cert.emitido_em} cartaoRef={cartao} /></div>
+          <div className="mt-8"><CartaoCertificado userId={sessao.user?.id ?? ""} nome={sessao.nome} codigo={cert.codigo} emitidoEm={cert.emitido_em} cartaoRef={cartao} versoRef={verso} /></div>
         )}
       </div>
     </div>

@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { baixar, gerarPdf, nomeArquivo } from "@/lib/exportarCertificado";
 
-export function CompartilharCertificado({ cartaoRef, nome, codigo, disabled = false }: {
-  cartaoRef: RefObject<HTMLDivElement | null>; nome: string; codigo: string; disabled?: boolean;
+export function CompartilharCertificado({ cartaoRef, versoRef, nome, codigo, disabled = false }: {
+  cartaoRef: RefObject<HTMLDivElement | null>; versoRef?: RefObject<HTMLDivElement | null>; nome: string; codigo: string; disabled?: boolean;
 }) {
   const [aberto, setAberto] = useState(false);
   const [arquivo, setArquivo] = useState<File | null>(null);
@@ -22,7 +22,7 @@ export function CompartilharCertificado({ cartaoRef, nome, codigo, disabled = fa
     setErro(false);
     setOcupado(true);
     try {
-      const blob = await gerarPdf(cartao);
+      const blob = await gerarPdf(cartao, versoRef?.current);
       const pdf = new File([blob], nomeArquivo(nome, "pdf"), { type: "application/pdf" });
       setArquivo(pdf);
       setSuportaArquivo(typeof navigator.share === "function" && typeof navigator.canShare === "function" && navigator.canShare({ files: [pdf] }));

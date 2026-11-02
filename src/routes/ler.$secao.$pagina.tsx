@@ -112,7 +112,7 @@ function Lateral({ atual, aoFechar, aoRecolher }: { atual: string; aoFechar?: ()
             title="Zera aulas concluídas, passos vistos e checklists"
             className="flex w-full items-center justify-center gap-2 rounded-lg border border-escuro-borda px-3 py-2 text-xs font-semibold text-escuro-texto transition-colors hover:border-cobre hover:bg-escuro-hover hover:text-branco"
           >
-            <RotateCcw className="size-3.5" /> Reiniciar curso
+            <RotateCcw className="size-3.5" /> Reiniciar imersão
           </button>
         )}
         <button type="button" onClick={() => void sair()} className="mt-2 flex w-full items-center justify-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold text-escuro-texto-2 hover:bg-escuro-hover hover:text-branco">

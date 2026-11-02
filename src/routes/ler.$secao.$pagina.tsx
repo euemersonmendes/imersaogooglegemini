@@ -6,7 +6,7 @@ import { sair } from "@/lib/sessao";
 import { BOOK, ROTULO_TIPO, acharAula, aulaVizinha, modulos, passosDa, type AulaInfo } from "@/content/imersao";
 import { CorpoPasso } from "@/components/imersao/Passos";
 import { Glifo } from "@/components/imersao/Glifo";
-import { alternarConcluida, marcarVisto, useProgresso, zerarProgresso } from "@/lib/progresso";
+import { marcarVisto, useProgresso, zerarProgresso } from "@/lib/progresso";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/ler/$secao/$pagina")({
@@ -148,7 +148,7 @@ function Leitor() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    marcarVisto(n, i, passos.length);
+    marcarVisto(n, i);
     window.scrollTo({ top: 0 });
   }, [n, i, passos.length]);
 
@@ -159,7 +159,6 @@ function Leitor() {
   const titulo = passo.titulo;
   const enfase = "tituloEnfase" in passo ? passo.tituloEnfase : undefined;
   const ultimo = i === passos.length;
-  const feita = prog.concluidas.includes(n);
 
   function alternarTelao(ligar = !telao) {
     setTelao(ligar);
@@ -182,7 +181,6 @@ function Leitor() {
       const alvo = e.target as HTMLElement;
       if (alvo.closest("input, textarea, select, [contenteditable]")) return;
       if (e.key === "ArrowRight" && destinoProx) {
-        if (ultimo) alternarConcluida(n, true);
         navigate({ to: "/ler/$secao/$pagina", params: destinoProx });
       } else if (e.key === "ArrowLeft" && destinoAnt) navigate({ to: "/ler/$secao/$pagina", params: destinoAnt });
       else if (e.key.toLowerCase() === "t") alternarTelao();
@@ -282,24 +280,14 @@ function Leitor() {
           )}
           <span className="flex items-center gap-3 text-xs text-apagado">
             {i} / {passos.length}
-            {ultimo && (
-              <button
-                type="button"
-                onClick={() => alternarConcluida(n)}
-                className={cn("hidden items-center gap-1.5 rounded-lg border px-3 py-1.5 font-semibold sm:flex", feita ? "border-verde-borda bg-verde-suave text-verde-texto" : "border-linha-2 text-tinta hover:border-cobre")}
-              >
-                <Check className="size-3.5" /> {feita ? "Aula concluída" : "Marcar como concluída"}
-              </button>
-            )}
           </span>
           {destinoProx ? (
             <Link
               to="/ler/$secao/$pagina"
               params={destinoProx}
-              onClick={() => ultimo && alternarConcluida(n, true)}
               className="btn-tinta flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold"
             >
-              {!ultimo ? "Próximo" : `Concluir e ir para ${destinoProx.secao}`} <ArrowRight className="size-4" />
+              {!ultimo ? "Próximo" : `Ir para ${destinoProx.secao}`} <ArrowRight className="size-4" />
             </Link>
           ) : (
             <Link to="/book" className="btn-tinta rounded-xl px-4 py-2.5 text-sm font-semibold">

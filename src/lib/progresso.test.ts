@@ -1,11 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { aulaCompleta } from "./progresso";
+import { podeConcluir } from "./progresso";
 
-describe("conclusão automática da aula", () => {
-  it("conclui quando todos os passos foram vistos", () => {
-    expect(aulaCompleta([1, 2, 3, 4, 5, 6], 6)).toBe(true);
+describe("regra de conclusão da aula", () => {
+  it("só permite concluir com todos os itens do checklist marcados", () => {
+    expect(podeConcluir([0, 1, 2, 3], 4)).toBe(true);
   });
-  it("não conclui se faltar um passo", () => {
-    expect(aulaCompleta([1, 2, 3, 5, 6], 6)).toBe(false);
+  it("bloqueia a conclusão enquanto faltar um item do checklist", () => {
+    expect(podeConcluir([0, 2, 3], 4)).toBe(false);
+    expect(podeConcluir([], 4)).toBe(false);
   });
 });

@@ -194,7 +194,10 @@ function NovoAcesso({ turmas, aoCriar }: { turmas: Turma[]; aoCriar: () => void 
   const m = useMutation({
     mutationFn: () => criar({ data: f }),
     onSuccess: (r) => {
-      if (!r.ok) return toast.error(r.erro);
+      if (!r.ok) {
+        toast.error(r.erro);
+        return;
+      }
       toast.success(`Acesso criado para ${f.email}. Envie o e-mail e a senha ao aluno.`);
       setF({ nome: "", email: "", senha: "", codigo: f.codigo });
       aoCriar();
@@ -226,7 +229,7 @@ function Turmas({ turmas, aoMudar }: { turmas: Turma[]; aoMudar: () => void }) {
   const [nome, setNome] = useState("");
   const m = useMutation({
     mutationFn: (t: Turma) => salvar({ data: t }),
-    onSuccess: (r) => { if (!r.ok) return toast.error(r.erro); setCodigo(""); setNome(""); aoMudar(); },
+    onSuccess: (r) => { if (!r.ok) { toast.error(r.erro); return; } setCodigo(""); setNome(""); aoMudar(); },
   });
   return (
     <section className="rounded-2xl border border-linha bg-branco p-5">

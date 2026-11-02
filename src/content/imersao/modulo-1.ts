@@ -25,7 +25,7 @@ export const modulo1: Modulo = {
           prompt: `# Perfil
 Atue como assistente de gestão para uma micro ou pequena empresa.
 # Contexto
-Estes são dados didáticos fictícios. Tenho uma [[padaria]] em [[Caxias]] e quero melhorar as vendas nas próximas duas semanas. Ainda não defini orçamento nem divulgação. Não inclua dados pessoais de clientes.
+Tenho um negócio no segmento de [[seu segmento/tipo de empresa]] em [[sua cidade]] e quero melhorar as vendas nas próximas duas semanas. Ainda não defini orçamento nem divulgação. Não inclua CPF, dados bancários ou dados pessoais de clientes.
 # Objetivo
 Sugira como posso começar sem inventar informações, metas ou regras.
 # Modelo de Entrega
@@ -91,8 +91,8 @@ Use roteiro com etapas, duração sugerida e checklist. Marque suposições e in
           prompt: `# Perfil
 Atue como editor de instruções de trabalho para o Gemini.
 # Contexto
-Quero adaptar as respostas à rotina do meu pequeno negócio. Estes são dados didáticos fictícios; vou substituir apenas o contexto profissional genérico. Meu perfil é:
-[[Cole aqui o perfil escolhido e adaptado.]]
+Quero adaptar as respostas à rotina real da minha empresa (não inclua CPF, dados bancários nem dados pessoais de clientes). Meu perfil é:
+[[descreva aqui seu negócio, sua função, seus principais produtos ou serviços e seu público-alvo]]
 # Objetivo
 Transforme o perfil em instruções claras e curtas, sem acrescentar informações ou regras que não forneci. Não inclua dados pessoais. Se faltar contexto, marque a lacuna em vez de inventar.
 # Modelo de Entrega
@@ -106,7 +106,7 @@ Entregue um bloco pronto para salvar com “Quem sou”, “O que muda a respost
           prompt: `# Perfil
 Atue como assistente de gestão para uma micro ou pequena empresa.
 # Contexto
-Estes são dados didáticos fictícios. Tenho uma [[padaria]] em [[Caxias]] e quero melhorar as vendas nas próximas duas semanas. Ainda não defini orçamento nem divulgação. Não inclua dados pessoais de clientes.
+Tenho [[seu segmento de negócio]] em [[sua cidade]] e quero melhorar as vendas nas próximas duas semanas. Ainda não defini orçamento nem divulgação. Não inclua dados pessoais de clientes, CPF ou informações bancárias.
 # Objetivo
 Sugira como posso começar sem inventar informações, metas ou regras.
 # Modelo de Entrega
@@ -143,10 +143,10 @@ Apresente três ações simples para vender mais, como divulgar no WhatsApp ou I
       passos: [
         {
           tipo: "comparacao", rotulo: "Antes de colar", titulo: "Escolha o que pode compartilhar", tituloEnfase: "pode compartilhar",
-          texto: "Use exemplos fictícios e respeite a LGPD e os cuidados da sua empresa. Remover o nome não basta se outros detalhes identificam a pessoa.",
+          texto: "Use os dados reais do seu negócio e respeite a LGPD e a privacidade da sua empresa: nunca insira dados pessoais de clientes. Remover o nome não basta se outros detalhes identificam a pessoa.",
           colunas: ["Não cole", "Prefira"],
           linhas: [
-            ["CPF, telefone ou cadastro de cliente", "Um caso inteiramente fictício, sem identificadores"],
+            ["CPF, telefone ou cadastro de cliente", "Um exemplo baseado nos dados reais do seu negócio, sem dados pessoais de clientes."],
             ["Relatório interno restrito sem autorização", "Contexto genérico ou dados agregados autorizados"],
             ["Senhas ou informações financeiras identificáveis", "Uma descrição da tarefa sem segredos ou dados sensíveis"],
           ],
@@ -159,7 +159,7 @@ Apresente três ações simples para vender mais, como divulgar no WhatsApp ou I
           prompt: `Lembre que prefiro respostas em português do Brasil, com um resumo curto, uma lista de próximos passos e uma seção “O que conferir”.
 
 # Contexto
-Tenho um pequeno negócio. Estes são dados didáticos fictícios. Nesta prática, quero registrar somente uma preferência de formato, sem nomes, contatos, dados de clientes ou informações financeiras identificáveis.
+Tenho um pequeno negócio de [[seu ramo de atuação e cidade]]. Quero registrar esta preferência de formato para as consultas sobre a minha empresa, sem incluir CPF, dados bancários ou dados pessoais de clientes.
 # Objetivo
 Use essa preferência quando for adequada ao pedido. Não invente dados nem transforme exemplos em fatos sobre mim. Sinalize informações ausentes.
 # Modelo de Entrega
@@ -182,7 +182,7 @@ Confirme qual preferência você entendeu. Se não puder salvá-la nesta conta, 
         },
         {
           tipo: "tela", tela: "memorias", rotulo: "Chat temporário", titulo: "Experimente um chat temporário", tituloEnfase: "chat temporário",
-          texto: "Abra Chat temporário e confirme o indicador antes de enviar: “Sugira três títulos para uma oficina fictícia de artesanato”. Confira se ficou fora do histórico.",
+          texto: "Abra o Chat temporário e confirme o indicador antes de enviar: “Sugira três títulos para um novo serviço ou ação da minha empresa de [[seu ramo de atuação]]”. Confira se a conversa ficou fora do histórico.",
         },
         {
           tipo: "comparacao", rotulo: "Revisar atividade", titulo: "Revise sua atividade com cuidado", tituloEnfase: "com cuidado",

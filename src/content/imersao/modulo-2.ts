@@ -49,13 +49,13 @@ export const modulo2: Modulo = {
           prompt: `# Perfil
 Atue como facilitador de planejamento de tarefas.
 # Contexto
-Estes são dados didáticos fictícios. Sou dono de uma pequena loja de roupas e quero decidir qual canal de vendas (balcão, WhatsApp ou Instagram) melhorar primeiro. Tenho número de pedidos e prazos médios de entrega de dois meses, mas não defini metas. Não há dados pessoais.
+Sou dono de [[seu tipo de negócio]] e quero decidir [[qual canal, produto ou processo você precisa melhorar/priorizar primeiro]]. Tenho [[resumo dos dados que você já possui sobre o negócio]], mas não defini metas claras. Não cole CPF, dados bancários ou dados pessoais de clientes.
 # Objetivo
 Ajude a estruturar o trabalho pelo Modelo IPO. Não execute a análise. Entreviste-me na ordem O: resultado e decisão; P: operações necessárias; I: conteúdo disponível. Faça uma pergunta por vez e aguarde. Limite a entrevista a cinco perguntas; não repita informações já dadas.
 # Modelo de Entrega
 Ao terminar, entregue um cartão com O, P, I e principal lacuna. Diferencie o informado do sugerido. Não invente dados nem causas. Marque ausências como “a confirmar” e peça minha revisão. Comece perguntando qual decisão a entrega deve apoiar.`,
           recebe: {
-            titulo: "Cartão IPO · exemplo fictício",
+            titulo: "Cartão IPO · aplique com os dados do seu negócio",
             texto: "Possível cartão após responder à entrevista.",
             secoes: [
               { rotulo: "O · Resultado", itens: ["Quadro para escolher uma etapa a investigar", "Justificar a prioridade com evidências"] },
@@ -71,7 +71,7 @@ Ao terminar, entregue um cartão com O, P, I e principal lacuna. Diferencie o in
           prompt: `# Perfil
 Atue como entrevistador para organizar uma tarefa com o Modelo IPO.
 # Contexto
-Minha necessidade é [[descreva uma tarefa do seu negócio — vendas, clientes, estoque, caixa, preços ou divulgação — sem identificar pessoas]]. Se eu usar números de exercício, considere: Estes são dados didáticos fictícios. Não solicite nomes, contatos nem documentos pessoais.
+Minha necessidade é [[descreva uma tarefa do seu negócio — vendas, estoque, fluxo de caixa, precificação ou divulgação]]. Utilizarei dados reais da minha empresa. Não solicite nomes, contatos, CPF, dados bancários nem documentos pessoais de clientes ou parceiros.
 # Objetivo
 Antes de executar qualquer trabalho, descubra O: entrega, público e decisão; P: operações e critérios; I: dados e fontes necessários. Faça uma pergunta por vez, espere minha resposta e adapte a seguinte. Faça no máximo cinco perguntas.
 # Modelo de Entrega
@@ -108,7 +108,7 @@ Entregue um cartão curto com O, P, I e lacunas. Separe informações fornecidas
           intro: { titulo: "Do cartão à mensagem", texto: "Contexto carrega o I; Objetivo conecta P e O; os outros blocos orientam o papel e a entrega." },
           blocos: [
             { titulo: "Perfil", pergunta: "Que papel o Gemini assume?", texto: "Atue como apoio ao dono de uma pequena loja na análise das vendas. Diferencie observações de hipóteses.", nota: "Defina como trabalhar, não um currículo imaginário." },
-            { titulo: "Contexto", pergunta: "Quais dados e limites existem?", ipo: "I", texto: "Estes são dados didáticos fictícios de uma pequena loja de roupas. Prazos em dias até a entrega; volumes são pedidos concluídos. Mesmas definições nos dois meses; metas não informadas.\nCanal | Março: volume | Março: prazo | Abril: volume | Abril: prazo\nBalcão | 100 | 1 | 105 | 1\nWhatsApp | 50 | 2 | 55 | 3\nInstagram | 40 | 3 | 42 | 6" },
+            { titulo: "Contexto", pergunta: "Quais dados e limites existem?", ipo: "I", texto: "Utilize os números reais do seu negócio para esta análise, sem incluir dados pessoais de clientes. Prazos em dias até a entrega; volumes são pedidos concluídos. Mesmas definições nos dois meses; metas não informadas.\nCanal | Março: volume | Março: prazo | Abril: volume | Abril: prazo\nBalcão | 100 | 1 | 105 | 1\nWhatsApp | 50 | 2 | 55 | 3\nInstagram | 40 | 3 | 42 | 6" },
             { titulo: "Objetivo", pergunta: "O que fazer e para quê?", ipo: "PO", texto: "Compare os meses por etapa, calcule variações de volume e prazo e sugira onde investigar primeiro. Apoie minha decisão do próximo mês, sem recomendar solução antes de verificar causas." },
             { titulo: "Modelo de Entrega", pergunta: "Como conferir o resultado?", texto: "Apresente prioridade, tabela de variações e lacunas. Mostre cálculos, unidades e períodos. Não invente metas ou causas; termine com uma pergunta de investigação." },
           ],
@@ -119,15 +119,12 @@ Entregue um cartão curto com O, P, I e lacunas. Separe informações fornecidas
           texto: "Cole em um novo chat. Confira os cálculos: o prazo de entrega dos pedidos do Instagram passa de 3 para 6 dias, um aumento de 100%.",
           nomePrompt: "Comparar canais de venda da loja",
           prompt: `# Perfil
-Atue como apoio ao dono de uma pequena loja; separe evidência de hipótese.
+Atue como apoio à gestão da minha micro ou pequena empresa; separe evidência de hipótese.
 # Contexto
-Estes são dados didáticos fictícios de uma pequena loja de roupas. Volumes são pedidos concluídos; prazos médios até a entrega estão em dias. As definições são iguais nos dois meses. Não há metas nem causas informadas.
-Canal | Março: volume | Março: prazo | Abril: volume | Abril: prazo
-Balcão | 100 | 1 | 105 | 1
-WhatsApp | 50 | 2 | 55 | 3
-Instagram | 40 | 3 | 42 | 6
+Meu negócio atua no segmento de [[seu segmento/ramo de atuação]]. Abaixo estão os dados de atendimento e entrega dos meus canais de venda nos dois últimos períodos (não inclua nomes de clientes, CPFs, dados bancários ou informações pessoais sensíveis). Volumes são pedidos concluídos; prazos médios até a entrega estão em dias. As definições são iguais nos dois períodos. Não há metas nem causas informadas previamente.
+[[cole aqui seus dados no formato: Canal | Mês 1: volume | Mês 1: prazo | Mês 2: volume | Mês 2: prazo]]
 # Objetivo
-Compare março e abril, separando volume de prazo. Calcule as variações percentuais e sugira o canal a melhorar primeiro no próximo mês. Não confunda aumento de prazo com causa demonstrada.
+Compare os dois períodos, separando volume de prazo. Calcule as variações percentuais e sugira o canal a melhorar primeiro no próximo mês. Não confunda aumento de prazo com causa demonstrada.
 # Modelo de Entrega
 Abra com uma prioridade justificada. Entregue tabela com canal, variação de volume, variação de prazo e evidência. Mostre a fórmula utilizada. Termine com lacunas e uma pergunta para eu investigar. Não invente dados, metas ou causas.`,
           observe: ["Pedidos pelo Instagram: aumento de 5%", "Prazo de entrega no WhatsApp: aumento de 50%", "Ausência de meta não vira descumprimento comprovado"],
@@ -139,7 +136,7 @@ Abra com uma prioridade justificada. Entregue tabela com canal, variação de vo
           prompt: `# Perfil
 Atue como [[papel necessário à tarefa]], usando evidências e distinguindo fatos de hipóteses.
 # Contexto
-A situação é [[situação e público da entrega]]. O conteúdo disponível é [[dados do seu negócio, períodos, unidades de medida e fontes do I]]. As limitações são [[informações ausentes e limites de uso]]. Não incluo dados pessoais. Se o caso for um exercício, declare: Estes são dados didáticos fictícios.
+A situação é [[situação e público da entrega]]. O conteúdo disponível é [[dados do seu negócio, períodos, unidades de medida e fontes do I]]. As limitações são [[informações ausentes e limites de uso]]. Não incluo CPF, dados bancários nem dados pessoais de clientes.
 # Objetivo
 Realize [[operações concretas do P]] para produzir [[resultado do O]] e apoiar [[decisão ou ação]]. Use [[critérios de comparação ou priorização]]. Não extrapole o conteúdo fornecido.
 # Modelo de Entrega
@@ -152,7 +149,7 @@ Entregue [[formato, campos e tamanho]]. Mostre as evidências e os cálculos rel
           colunas: ["Pedido vago", "Pedido em blocos"],
           linhas: [
             ["Analise as vendas.", "Perfil: apoio ao dono que separa evidência de hipótese."],
-            ["Sem dados nem períodos definidos.", "Contexto: tabela fictícia de março e abril, com unidades."],
+            ["Sem dados nem períodos definidos.", "Contexto: tabela com os dados de março e abril da sua empresa, informando as unidades vendidas (sem incluir dados pessoais de clientes)."],
             ["Sem decisão definida.", "Objetivo: comparar variações e priorizar investigação."],
             ["Qualquer texto parece suficiente.", "Modelo de Entrega: prioridade, cálculos e lacunas verificáveis."],
           ], frase: "Mais texto não garante qualidade; instruções verificáveis ajudam a avaliar a entrega.",
@@ -196,7 +193,7 @@ Entregue [[formato, campos e tamanho]]. Mostre as evidências e os cálculos rel
           prompt: `# Perfil
 Atue como consultor de vendas para pequenos negócios.
 # Contexto
-Estes são dados didáticos fictícios. Tenho uma pequena lanchonete e quero fazer uma promoção para aumentar as vendas no fim da tarde. Ainda não defini público, duração, desconto nem orçamento. Não há dados pessoais.
+Meu negócio é [[seu tipo de negócio e ramo]] e quero fazer uma promoção para [[objetivo da promoção, ex.: aumentar o movimento em determinado horário, desovar estoque ou atrair novos clientes]]. Ainda não defini público, duração, desconto nem orçamento. Não inclua nem solicite dados pessoais de clientes, CPF ou dados bancários.
 # Objetivo
 Antes de sugerir a programação, faça até três perguntas essenciais, uma por vez, esperando minha resposta. Comece pelo resultado que quero alcançar com a promoção. Use as respostas para escolher as perguntas seguintes.
 # Modelo de Entrega
@@ -210,12 +207,14 @@ Após a entrevista, entregue uma proposta de até cinco tópicos com objetivo, o
           prompt: `# Perfil
 Atue como redator de anotações curtas sobre o meu negócio, com linguagem clara.
 # Contexto
-Estes são dados didáticos fictícios e não contêm dados pessoais.
-Exemplo de entrada: minha loja de moda mistura receitas da loja e despesas pessoais.
-Exemplo de saída: Situação: mistura de finanças. Próximo passo sugerido: separar registros pessoais e do negócio. A confirmar: forma atual de controle.
-Nova entrada: minha loja de artesanato registra vendas em caderno, mas não soma as despesas com embalagem.
+Utilize as informações da minha empresa. Não inclua CPF, dados bancários ou dados pessoais de clientes.
+Exemplo de estrutura de referência:
+Entrada: relato de um problema ou rotina operacional.
+Saída esperada: Situação: resumo objetivo do ponto central. Próximo passo sugerido: ação prática inicial. A confirmar: ponto que ainda precisa ser checado.
+
+Situação real do meu negócio: [[descreva aqui em uma ou duas frases uma rotina, processo ou dificuldade atual da sua empresa]].
 # Objetivo
-Reescreva apenas a nova entrada seguindo o padrão do exemplo. Use o exemplo como referência de estrutura, não como fonte de fatos do novo caso.
+Sintetize a situação real do meu negócio seguindo o padrão de estrutura do exemplo. Não utilize o exemplo como fonte de fatos, apenas como guia de formato.
 # Modelo de Entrega
 Entregue três campos: Situação, Próximo passo sugerido e A confirmar. Não invente valores, causas ou ações já executadas. Identifique recomendações como sugestões e mantenha o registro em até 80 palavras para revisão humana.`,
           observe: ["Mantém os três campos", "Não atribui mistura de finanças ao novo caso", "Não inventa custo de embalagem"],
@@ -227,9 +226,12 @@ Entregue três campos: Situação, Próximo passo sugerido e A confirmar. Não i
           prompt: `# Perfil
 Atue como facilitador de decisões para pequenos negócios.
 # Contexto
-Estes são dados didáticos fictícios. Um grupo de artesanato em São Luís quer divulgar uma feira em duas semanas. Dispõe de um catálogo digital e pode preparar três publicações. Não informou orçamento, tamanho do público nem histórico de resultados.
+Meu negócio é do segmento de [[seu segmento e cidade]]. Preciso divulgar [[o que você quer divulgar: evento, produto, serviço ou promoção]] com prazo de [[em quanto tempo a ação precisa acontecer]].
+Recursos e materiais que tenho disponíveis para essa ação: [[cite seus canais e materiais, ex.: catálogo digital, lista de transmissão, redes sociais, quantas postagens consegue fazer]].
+Sobre orçamento, público atual e histórico: [[informe se tem orçamento ou não, tamanho estimado do público atual e se já fez ações parecidas antes]].
+Atenção: não compartilhe CPF, dados bancários ou dados pessoais de clientes.
 # Objetivo
-Proponha três formas distintas de divulgação. Compare esforço de execução, dependência de orçamento e possibilidade de medir interesse. Recomende uma opção provisória, explicando quais informações podem mudar a escolha.
+Proponha três formas distintas de divulgação adequadas à minha realidade. Compare esforço de execução, dependência de orçamento e possibilidade de medir interesse. Recomende uma opção provisória, explicando quais informações podem mudar a escolha.
 # Modelo de Entrega
 Entregue uma tabela de alternativas, vantagens, limites e critérios. Depois revise sua recomendação: aponte uma fragilidade, uma suposição e como verificá-las. Não invente alcance, custo ou conversões. Não peça contatos pessoais. Termine com duas perguntas para validar a decisão antes de agir.`,
           observe: ["As opções diferem de fato", "Critérios estão explícitos e não viram números inventados", "A revisão identifica suposição e forma de verificá-la"],
@@ -286,21 +288,24 @@ Entregue uma tabela de alternativas, vantagens, limites e critérios. Depois rev
           nomePrompt: "Resposta a clientes no WhatsApp",
           prompt: `# Perfil
 Atue como organizador de instruções reutilizáveis para uma skill do Gemini.
+
 # Contexto
-Quero aproveitar o padrão desta conversa já revisada: [[resuma o pedido e a resposta validada, sem dados pessoais]]. Para o teste, use este cenário: Estes são dados didáticos fictícios. Uma cliente pergunta ao meu salão de beleza se há horário para escova no sábado e quanto custa; não informou o horário que prefere.
+Quero aproveitar o padrão desta conversa já revisada: [[resuma o pedido e a resposta validada, sem dados pessoais]]. Para o teste, use esta mensagem real recebida de um cliente no meu negócio: [[cole aqui uma mensagem real de dúvida ou pedido recente de cliente sobre produto ou serviço, sem nomes, telefones ou dados pessoais]].
+
 # Objetivo
 Crie a skill “Resposta a clientes no WhatsApp”. Extraia regras de redação e verificação, sem guardar fatos particulares da conversa. Defina que ela se aplica ao redigir respostas iniciais a clientes no WhatsApp, não a confirmar agendamentos ou executar envios.
+
 # Modelo de Entrega
 Entregue nome, descrição de acionamento e instruções prontas para revisar e salvar. Oriente acolher o pedido, resumir a necessidade e perguntar o essencial. Proíba inventar preços, prazos, horários disponíveis ou promoções. Marque lacunas, não solicite dados pessoais e exija revisão humana antes do envio. Inclua um pedido de teste e o comportamento esperado.`,
           recebe: {
-            titulo: "Rascunho fictício de skill", texto: "Exemplo do que revisar antes de salvar.",
+            titulo: "Rascunho de skill para o seu negócio", texto: "Exemplo do que revisar antes de salvar.",
             secoes: [
               { rotulo: "Nome e acionamento", itens: ["Resposta a clientes no WhatsApp", "Usar ao redigir uma resposta inicial a um cliente"] },
               { rotulo: "Regras estáveis", itens: ["Acolha e resuma sem acrescentar fatos", "Pergunte objetivo e restrições essenciais", "Não prometa preço, prazo ou disponibilidade", "Não envie; entregue rascunho para revisão"] },
-              { rotulo: "Teste", itens: ["Pedido fictício: responder a negócio de beleza sobre caixa", "Esperado: acolhimento e perguntas, sem promessa de serviço"] },
+              { rotulo: "Teste", itens: ["Pedido prático: analise o fluxo de caixa do seu negócio utilizando seus dados reais (sem incluir dados bancários sigilosos ou informações pessoais de clientes).", "Esperado: acolhimento e perguntas, sem promessa de serviço"] },
             ], aceite: "Salve apenas instruções revisadas e sem dados do caso; teste depois em uma nova conversa.",
           },
-          dica: "Depois de salvar, peça em um novo chat uma resposta inicial a outro pedido fictício e confira a indicação de ativação da skill.",
+          dica: "Depois de salvar, peça em um novo chat uma resposta inicial a uma solicitação real do seu negócio e confira a indicação de ativação da skill.",
         },
         {
           tipo: "comparacao", rotulo: "Compare", titulo: "Separe regras de dados", tituloEnfase: "regras de dados",
@@ -315,7 +320,7 @@ Entregue nome, descrição de acionamento e instruções prontas para revisar e 
         },
         {
           tipo: "resultado", rotulo: "Faça na sua conta", titulo: "Agora faça na sua conta", tituloEnfase: "na sua conta",
-          texto: "Salve a skill revisada e teste outro pedido fictício em um novo chat. Compare com as regras antes de usar em trabalho real.",
+          texto: "Salve a skill revisada e teste com outro pedido real do seu negócio em um novo chat, sem dados pessoais de clientes. Compare com as regras antes de usar no dia a dia da sua empresa.",
           exercicio: {
             situacao: "Transforme em atalho uma tarefa que se repete toda semana: responder clientes, registrar vendas ou resumir o caixa.",
             tarefa: [

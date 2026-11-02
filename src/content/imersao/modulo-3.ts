@@ -106,8 +106,8 @@ export const modulo3: Modulo = {
           "rotulo": "Pesquisar",
           "titulo": "Investigue antes de investir",
           "tituloEnfase": "antes de investir",
-          "nomePrompt": "Concorrentes e ideias para uma padaria",
-          "prompt": "# Perfil\nAtue como apoio ao dono de uma pequena padaria na pesquisa de mercado.\n# Contexto\nEste é um exercício didático fictício para uma padaria em [[seu bairro e município]]. Quero conhecer concorrentes, preços e ideias de produtos antes de investir. Use apenas fontes públicas, sem dados pessoais de clientes ou funcionários.\n# Objetivo\nPesquise ofertas e preços públicos de padarias da região e proponha até três ideias de produto para testar. Compare tamanho, unidade, data do preço e condições de venda; não compare preço por quilo com preço por unidade. Considere custos, validade, estoque e capacidade de produção. Cruze fontes independentes. Não trate uma postagem como prova de demanda nem dados estaduais como procura no bairro.\n# Modelo de Entrega\nProponha primeiro um plano de pesquisa. No relatório, entregue resumo e matriz com ideia de produto, público, concorrente ou oferta de referência, preço e unidade, fonte e data, obstáculo e teste de baixo custo. Não invente empresas, preços, estatísticas ou entrevistas. Marque dados ausentes como “não localizado” e inferências como hipóteses. Separe os dados públicos encontrados do cenário fictício. Indique o que devo conferir diretamente antes de comprar insumos ou mudar meus preços.",
+          "nomePrompt": "Concorrentes e ideias para o meu negócio",
+          "prompt": "# Perfil\nAtue como apoio ao dono de um(a) [[seu ramo e tipo de negócio]] na pesquisa de mercado.\n\n# Contexto\nEstou realizando uma pesquisa de mercado para o meu negócio localizado em [[seu bairro e município]]. Quero conhecer concorrentes, preços e ideias de produtos ou serviços antes de investir. Use apenas fontes públicas, sem dados pessoais de clientes ou funcionários (não utilize CPF, dados bancários ou informações sob sigilo).\n\n# Objetivo\nPesquise ofertas e preços públicos de concorrentes do meu segmento na região e proponha até três ideias de produtos ou serviços para testar. Compare tamanho, unidade, data do preço e condições de venda; não compare unidades de medida incomparáveis. Considere custos, validade, estoque e capacidade de produção ou atendimento. Cruze fontes independentes. Não trate uma postagem em rede social como prova de demanda nem dados estaduais como procura real no bairro.\n\n# Modelo de Entrega\nProponha primeiro um plano de pesquisa. No relatório, entregue resumo e matriz com ideia de produto ou serviço, público, concorrente ou oferta de referência, preço e unidade, fonte e data, obstáculo e teste de baixo custo. Não invente empresas, preços, estatísticas ou entrevistas. Marque dados ausentes como “não localizado” e inferências como hipóteses. Separe os dados públicos encontrados das estimativas e hipóteses. Indique o que devo conferir diretamente no mercado local antes de comprar insumos ou mudar meus preços.",
           "observe": [
             "O plano contempla objeções, não só oportunidades?",
             "Os preços têm fonte, data, unidade e condições de venda?",
@@ -144,7 +144,7 @@ export const modulo3: Modulo = {
           "rotulo": "Faça na sua conta",
           "titulo": "Agora faça na sua conta",
           "tituloEnfase": "na sua conta",
-          "texto": "Repita o exercício com os dados fictícios. Confira a entrega antes de usar no seu negócio.",
+          "texto": "Repita o exercício com os dados reais do seu negócio, sem incluir dados pessoais de clientes. Confira a entrega antes de aplicar no seu dia a dia.",
           "exercicio": {
             "situacao": "Escolha uma pergunta real de mercado: [[quem compra o seu produto na sua região, quanto cobram os concorrentes ou se há demanda]].",
             "tarefa": [
@@ -189,17 +189,17 @@ export const modulo3: Modulo = {
           "rotulo": "Na ferramenta",
           "titulo": "Reúna plano e resultados",
           "tituloEnfase": "plano e resultados",
-          "texto": "Abra Notebooks e adicione as duas fontes fictícias do próximo passo em documentos separados. Confira a lista de fontes; não envie dados pessoais ou arquivos sem autorização."
+          "texto": "Abra Notebooks e adicione as duas fontes com dados reais da sua empresa do próximo passo em documentos separados. Confira a lista de fontes; não envie dados pessoais de clientes ou arquivos sem autorização."
         },
         {
           "tipo": "prompt",
           "rotulo": "Consultar fontes",
           "titulo": "Confronte plano e execução",
           "tituloEnfase": "plano e execução",
-          "nomePrompt": "Plano e vendas fictícias de uma loja",
-          "prompt": "# Perfil\nAtue como apoio ao dono de uma pequena loja na revisão das vendas.\n# Contexto\nEstes são dados didáticos fictícios. Crie duas fontes separadas com os blocos abaixo e consulte apenas essas fontes no notebook, sem dados pessoais de clientes ou funcionários.\nFonte 1 — Plano de junho da loja: vender 40 camisetas; publicar 4 posts no Instagram; obter avaliação média de pelo menos 4 em escala de 1 a 5; conferir o lucro do mês após fechar custos e despesas.\nFonte 2 — Resultados de junho: 48 camisetas vendidas; 4 posts publicados; 12 avaliações respondidas, média 4,5; custos e despesas do mês ainda não fechados.\n# Objetivo\nCompare metas e resultados. Não trate peças vendidas como clientes únicos nem satisfação como lucro. Não atribua as vendas aos posts sem evidência. Não invente dados ausentes.\n# Modelo de Entrega\nEntregue tabela com meta, resultado, situação e citação da fonte correspondente. Separe fato, interpretação e lacuna. Sugira uma verificação para o próximo fechamento do mês. Se a fonte não permitir responder, declare isso. Vou abrir cada citação para conferir os trechos.",
+          "nomePrompt": "Plano e histórico de vendas do seu negócio",
+          "prompt": "# Perfil\nAtue como apoio ao dono de uma micro ou pequena empresa na revisão de metas e resultados do negócio.\n\n# Contexto\nConsulte apenas as fontes abaixo no notebook, utilizando os dados reais da sua empresa. Não inclua CPF, dados bancários ou dados pessoais de clientes e funcionários.\nFonte 1 — Metas planejadas para o período: [[cole aqui as metas do mês ou período, ex.: volume de vendas por produto/serviço, ações de marketing previstas, meta de avaliação/satisfação e metas financeiras]].\nFonte 2 — Resultados realizados no período: [[cole aqui os resultados obtidos no mesmo período, ex.: quantidade vendida, ações de divulgação executadas, média de avaliações recebidas e status do fechamento de custos, despesas e lucro]].\n\n# Objetivo\nCompare metas e resultados. Não trate produtos ou serviços vendidos como clientes únicos nem satisfação como lucro. Não atribua as vendas a ações de divulgação sem evidência concreta. Não invente dados ausentes.\n\n# Modelo de Entrega\nEntregue uma tabela com meta, resultado, situação e citação da fonte correspondente.\nSepare fato, interpretação e lacuna.\nSugira uma verificação prática para o próximo fechamento do mês.\nSe a fonte não permitir responder a algum ponto, declare isso explicitamente. Vou abrir cada citação para conferir os trechos.",
           "recebe": {
-            "titulo": "Exemplo de leitura fictícia",
+            "titulo": "Exemplo de leitura com dados reais do seu negócio (sem dados pessoais de clientes)",
             "texto": "A numeração das citações depende das fontes do seu notebook.",
             "secoes": [
               {
@@ -250,7 +250,7 @@ export const modulo3: Modulo = {
           "rotulo": "Faça na sua conta",
           "titulo": "Agora faça na sua conta",
           "tituloEnfase": "na sua conta",
-          "texto": "Repita o exercício com os dados fictícios. Confira a entrega antes de usar no seu negócio.",
+          "texto": "Repita o exercício com os dados reais da sua empresa, sem incluir dados pessoais de clientes. Confira a entrega antes de aplicar no seu negócio.",
           "exercicio": {
             "situacao": "Coloque no notebook [[o plano ou a meta do seu negócio]] e os resultados reais: a planilha ou o registro de vendas exportado como documento.",
             "tarefa": [
@@ -264,7 +264,7 @@ export const modulo3: Modulo = {
             "Uma comparação rastreável entre o plano e os resultados."
           ],
           "confira": [
-            "Adicionei as duas fontes fictícias e fiz a pergunta",
+            "Adicionei as duas fontes com dados reais do meu negócio e fiz a pergunta",
             "Abri as citações e comparei com os trechos originais",
             "Registrei o lucro como lacuna, sem inventar resultado"
           ]
@@ -302,8 +302,8 @@ export const modulo3: Modulo = {
           "rotulo": "Criar material",
           "titulo": "Transforme achados em material",
           "tituloEnfase": "achados em material",
-          "nomePrompt": "Cardápio e post de uma pequena lanchonete",
-          "prompt": "# Perfil\nAtue como redator de cardápios e posts para pequenos negócios.\n# Contexto\nEstes são dados didáticos fictícios de uma pequena lanchonete em [[seu município]]: sanduíche de queijo por R$ 12; suco de laranja de 300 ml por R$ 8; combo com esses dois itens por R$ 18. A oferta vale apenas para retirada no balcão, de terça a sexta, das 14h às 18h. Não há informação confirmada sobre estoque diário, entrega ou ingredientes além dos citados. Não inclua dados pessoais.\n# Objetivo\nCrie no Canvas uma página editável com cardápio curto e um texto de post para Instagram. Use somente os dados acima. Não invente ingredientes, fotos, depoimentos, disponibilidade, benefícios de saúde ou promessas de venda.\n# Modelo de Entrega\nOrganize título, cardápio com produtos, tamanhos informados e preços, condições da oferta, legenda para Instagram e checklist de revisão. Destaque “exemplo didático fictício”. Marque as informações não confirmadas como pendentes de conferência. Use linguagem simples e até 350 palavras. Termine perguntando se preços, estoque e horário foram conferidos antes da publicação.",
+          "nomePrompt": "Catálogo e post do meu negócio",
+          "prompt": "# Perfil\nAtue como redator de cardápios e posts promocionais para pequenos negócios.\n# Contexto\nEstes são os dados reais da oferta do meu negócio em [[seu município]]:\n- Itens e preços: [[liste aqui os produtos, tamanhos/porções e valores individuais e/ou do combo]]\n- Regras e validade: [[informe dias, horários e condições, ex.: apenas retirada no balcão ou delivery]]\nAtenção: Não inclua CPF, dados bancários ou dados pessoais de clientes. Baseie-se apenas nas informações fornecidas.\n# Objetivo\nCrie no Canvas uma página editável com um cardápio curto da oferta e uma legenda de post para o Instagram. Use somente os dados fornecidos acima. Não invente ingredientes, adicionais, disponibilidade, benefícios de saúde ou promessas de venda não mencionadas.\n# Modelo de Entrega\nOrganize a resposta com:\n1. Título atrativo\n2. Cardápio enxuto com produtos, tamanhos/porções e preços informados\n3. Condições e regras da oferta\n4. Legenda para Instagram (com chamada para ação)\n5. Checklist rápido de conferência\nMarque qualquer informação que precise de confirmação operacional como pendente de conferência. Use linguagem simples, direta e até 350 palavras. Termine perguntando se preços, estoque e horários foram conferidos antes da publicação.",
           "observe": [
             "O combo mantém os dois itens e o preço de R$ 18?",
             "O texto informa retirada no balcão, dias e horário sem inventar entrega?",
@@ -316,7 +316,7 @@ export const modulo3: Modulo = {
           "titulo": "Revise só o trecho selecionado",
           "tituloEnfase": "só o trecho selecionado",
           "nomePrompt": "Ajuste da legenda sem mudar a oferta",
-          "prompt": "# Perfil\nAtue como editor de linguagem simples.\n# Contexto\nNo Canvas, selecionei [[o texto do post para Instagram]]. O documento usa dados didáticos fictícios de uma lanchonete: sanduíche de queijo por R$ 12; suco de laranja de 300 ml por R$ 8; combo com esses dois itens por R$ 18. A oferta vale apenas para retirada no balcão, de terça a sexta, das 14h às 18h. O estoque diário não foi confirmado.\n# Objetivo\nReescreva apenas a seleção para os clientes da lanchonete. Preserve produtos, preços, tamanho informado e condições da oferta. Não altere o restante do documento nem inclua dados novos ou pessoais.\n# Modelo de Entrega\nSubstitua o trecho por até três frases curtas, sem jargão. Não anuncie entrega, disponibilidade garantida ou ingredientes não informados. Preserve a identificação de exemplo fictício e a pendência de conferir estoque. Se houver ambiguidade, sinalize-a em vez de completar com suposição. Explique na conversa o que mudou e o que foi preservado para que eu compare com a versão anterior.",
+          "prompt": "# Perfil\nAtue como editor de linguagem simples.\n\n# Contexto\nNo Canvas, selecionei [[o texto do post ou aviso da sua empresa]]. Minha oferta e regras reais são: [[descreva seus produtos/serviços, preços, tamanhos e condições de retirada, entrega ou horário]]. [[Informe pendências, se houver, ex.: estoque diário não confirmado]]. Não inclua CPF, dados bancários ou dados pessoais de clientes.\n\n# Objetivo\nReescreva apenas a seleção para os clientes do meu negócio. Preserve produtos, preços, tamanhos informados e condições reais da oferta. Não altere o restante do documento nem inclua dados novos ou informações não fornecidas.\n\n# Modelo de Entrega\nSubstitua o trecho por até três frases curtas, sem jargão. Não anuncie entrega, disponibilidade garantida ou itens não informados. Preserve eventuais avisos ou pendências indicadas (como confirmação de estoque). Se houver ambiguidade, sinalize-a em vez de completar com suposição. Explique na conversa o que mudou e o que foi preservado para que eu compare com a versão anterior.",
           "dica": "Selecione o trecho antes de enviar. Compare o documento inteiro após a edição; não presuma que só a seleção mudou."
         },
         {
@@ -324,7 +324,7 @@ export const modulo3: Modulo = {
           "rotulo": "Faça na sua conta",
           "titulo": "Agora faça na sua conta",
           "tituloEnfase": "na sua conta",
-          "texto": "Repita o exercício com os dados fictícios. Confira a entrega antes de usar no seu negócio.",
+          "texto": "Repita o exercício com os dados reais da sua empresa, sem incluir dados pessoais de clientes. Confira a entrega antes de aplicar no seu negócio.",
           "exercicio": {
             "situacao": "Leve ao Canvas uma oferta real, com preços e condições: [[o produto, o valor e as regras da sua promoção]].",
             "tarefa": [
@@ -369,15 +369,15 @@ export const modulo3: Modulo = {
           "rotulo": "Na ferramenta",
           "titulo": "Prepare a base de análise",
           "tituloEnfase": "a base de análise",
-          "texto": "Abra uma planilha e o painel do Gemini. Cole a tabela fictícia do próximo passo em colunas separadas; confirme os tipos numéricos e deixe o estoque final não informado em branco."
+          "texto": "Abra uma planilha e o painel do Gemini. Cole a tabela com os dados reais do seu negócio em colunas separadas (sem incluir dados pessoais de clientes); confirme os tipos numéricos e deixe o estoque final não informado em branco."
         },
         {
           "tipo": "prompt",
           "rotulo": "Analisar base",
           "titulo": "Compare vendas e estoque",
           "tituloEnfase": "vendas e estoque",
-          "nomePrompt": "Base fictícia de vendas de uma padaria",
-          "prompt": "# Perfil\nAtue como apoio ao dono de uma pequena padaria no controle de vendas e estoque.\n# Contexto\nEstes são dados didáticos fictícios, agregados por produto e mês. Não há dados pessoais. Copie a tabela para A1:F7; o estoque final de Bolo em junho deve ficar vazio. Cada linha trata de unidades do mesmo produto. Não houve perdas nem devoluções neste exercício.\nProduto | Mês | Unidades disponíveis no mês | Unidades vendidas | Receita de vendas (R$) | Estoque final (unidades)\nPão de queijo | Maio | 120 | 96 | 288 | 24\nBolo | Maio | 80 | 56 | 840 | 24\nSalgado | Maio | 60 | 54 | 324 | 6\nPão de queijo | Junho | 140 | 126 | 378 | 14\nBolo | Junho | 90 | 63 | 945 | \nSalgado | Junho | 100 | 80 | 480 | 20\n# Objetivo\nCompare vendas por produto e mês, percentual vendido e estoque final. Trate unidades disponíveis como estoque inicial mais entradas do mês. Não confunda receita com lucro nem com saldo de caixa: faltam custos, despesas, prazos de recebimento e pagamentos. Não invente motivos para as diferenças.\n# Modelo de Entrega\nEntregue tabela de taxas, três achados e duas hipóteses a verificar. Não transforme estoque ausente em zero. Se calcular um saldo esperado, identifique-o como cálculo a conferir na contagem física, não como estoque registrado. Separe fatos e sugestões; cite as células usadas para eu conferir.",
+          "nomePrompt": "Base de vendas reais do seu negócio (sem dados pessoais de clientes)",
+          "prompt": "# Perfil\nAtue como especialista em controle de vendas e estoque para o dono de uma micro ou pequena empresa do ramo de [[seu ramo de atuação]].\n\n# Contexto\nAbaixo estão os dados reais do meu negócio, agregados por produto e período, sem conter nomes de clientes, CPF, dados bancários ou outras informações pessoais. \n\n[[Cole aqui a sua tabela ou os dados das suas vendas e estoque no formato: Produto | Mês | Unidades disponíveis no mês | Unidades vendidas | Receita de vendas (R$) | Estoque final (unidades)]]\n\n# Objetivo\nCompare as vendas por produto e mês, o percentual vendido e o estoque final. Trate as unidades disponíveis como estoque inicial somado às entradas do mês. Não confunda receita com lucro nem com saldo de caixa (já que faltam custos, despesas, prazos de recebimento e pagamentos). Apenas analise os números fornecidos, sem inventar justificativas ou motivos não informados para as variações.\n\n# Modelo de Entrega\nEntregue:\n1. Tabela com as taxas de venda e giro por produto e período.\n2. Três achados principais baseados estritamente nos números.\n3. Duas hipóteses práticas a verificar na operação.\n\nRegras:\n- Não transforme dados de estoque ausentes ou em branco em zero.\n- Se calcular um saldo esperado de estoque, identifique-o explicitamente como \"cálculo teórico a conferir na contagem física\", e não como estoque registrado.\n- Separe com clareza fatos (números) de sugestões de ação.\n- Aponte os valores ou linhas de referência para que eu possa auditar os cálculos.",
           "observe": [
             "Pão de queijo passa de 96 unidades vendidas em maio para 126 em junho.",
             "Bolo tem 70% das unidades disponíveis vendidas nos dois meses: 56 de 80 e 63 de 90.",
@@ -419,15 +419,15 @@ export const modulo3: Modulo = {
           "titulo": "Crie taxas e um gráfico",
           "tituloEnfase": "taxas e um gráfico",
           "nomePrompt": "Fórmula e gráfico conferíveis",
-          "prompt": "# Perfil\nAtue como apoio no Google Planilhas.\n# Contexto\nUso a base didática fictícia desta aula em A1:F7. A contém produto, B mês, C unidades disponíveis, D unidades vendidas, E receita de vendas em reais e F estoque final registrado. Não há dados pessoais.\n# Objetivo\nCrie em G o percentual vendido (D dividido por C) e em H o saldo esperado em unidades (C menos D). Use percentual em G e número de unidades em H. Trate denominador zero como informação ausente, não como taxa zero. Não preencha F com o cálculo de H: o estoque registrado depende de conferência física.\n# Modelo de Entrega\nMostre as fórmulas da linha 2 adequadas à localidade da planilha e explique como preencher até a linha 7. Crie um gráfico de colunas com produtos no eixo de categorias, unidades vendidas no eixo numérico e uma série para cada mês. Não misture reais, unidades e percentuais no mesmo eixo. Se não puder inserir o gráfico, forneça as etapas manuais. Indique os intervalos usados e peça conferência: Bolo em maio deve ter percentual vendido de 70% e saldo esperado de 24 unidades. Não invente causas para as diferenças.",
-          "dica": "Confira uma divisão manualmente. Dê ao gráfico o título “Unidades vendidas por produto e mês — base fictícia”."
+          "prompt": "# Perfil\nAtue como apoio no Google Planilhas.\n# Contexto\nUso a planilha de controle de vendas e estoque do meu negócio no intervalo [[intervalo da sua planilha, ex.: A1:F20]]. A coluna A contém produto, B mês, C unidades disponíveis, D unidades vendidas, E receita de vendas em reais e F estoque final registrado. Não inclua CPF, dados bancários ou dados pessoais de clientes.\n# Objetivo\nCrie na coluna G o percentual vendido (D dividido por C) e na coluna H o saldo esperado em unidades (C menos D). Formate como percentual em G e número de unidades em H. Trate denominador zero como informação ausente, não como taxa zero. Não preencha F com o cálculo de H: o estoque registrado depende de conferência física.\n# Modelo de Entrega\nMostre as fórmulas da linha 2 adequadas à localidade da planilha (padrão Brasil) e explique como preencher até a linha [[última linha da sua tabela]]. Crie um gráfico de colunas com produtos no eixo de categorias, unidades vendidas no eixo numérico e uma série para cada mês. Não misture reais, unidades e percentuais no mesmo eixo. Se não puder inserir o gráfico diretamente, forneça o passo a passo manual para criá-lo no Google Planilhas. Indique os intervalos usados e mostre como conferir o resultado esperado para a primeira linha de produto. Não invente causas para as diferenças de estoque.",
+          "dica": "Confira uma divisão manualmente. Dê ao gráfico o título “Unidades vendidas por produto e mês” utilizando os dados reais do seu negócio (sem incluir dados pessoais de clientes)."
         },
         {
           "tipo": "resultado",
           "rotulo": "Faça na sua conta",
           "titulo": "Agora faça na sua conta",
           "tituloEnfase": "na sua conta",
-          "texto": "Repita o exercício com os dados fictícios. Confira a entrega antes de usar no seu negócio.",
+          "texto": "Repita o exercício utilizando os dados reais da sua empresa, sem incluir dados pessoais de clientes. Confira a entrega antes de aplicar no seu negócio.",
           "exercicio": {
             "situacao": "Use uma planilha real sua: vendas por produto ou mês, contas a pagar ou controle de estoque.",
             "tarefa": [
@@ -544,10 +544,10 @@ export const modulo3: Modulo = {
         {
           "tipo": "prompt",
           "rotulo": "Criar imagem",
-          "titulo": "Fotografe um produto fictício",
-          "tituloEnfase": "um produto fictício",
+          "titulo": "Fotografe um produto do seu próprio negócio",
+          "tituloEnfase": "um produto do seu negócio",
           "nomePrompt": "Imagem para o Instagram da minha loja",
-          "prompt": "# Perfil\nAtue como fotógrafo de produtos para pequenos negócios.\n# Contexto\nEste é um exercício didático fictício para o Instagram e o catálogo de uma pequena loja de artesanato de [[seu município]]. O produto imaginado é um cesto de fibra trançada, sem marca. Não represente uma peça como produção de artesão real nem atribua certificações ou origem comprovada. Não inclua dados pessoais.\n# Objetivo\nCrie uma imagem com aparência de fotografia de catálogo: um cesto centralizado sobre mesa clara, fundo neutro, luz natural suave pela esquerda e enquadramento a três quartos. Mostre a trama sem brilho artificial e sem objetos que confundam o que está à venda.\n# Modelo de Entrega\nUse proporção quadrada 1:1, com margem para recorte no Instagram. Não inclua pessoas, logotipos, selos ou texto na imagem. Não invente assinatura de artesão. O resultado será identificado como imagem gerada por IA. Antes de publicar, vou conferir forma, alças, textura e fidelidade ao produto real; não trate esta simulação como foto documental.",
+          "prompt": "# Perfil\nAtue como fotógrafo de produtos para pequenos negócios.\n\n# Contexto\nPreciso de uma imagem para o Instagram e catálogo do meu negócio em [[seu município]]. O produto a ser apresentado é [[descreva seu produto, ex.: cesto de fibra trançada]]. Não inclua dados pessoais, dados bancários ou marcas de terceiros.\n\n# Objetivo\nCrie uma imagem com aparência de fotografia de catálogo profissional: [[descreva a posição do produto e cenário, ex.: produto centralizado sobre mesa clara, fundo neutro, luz natural suave pela esquerda e enquadramento a três quartos]]. Mostre a textura e o acabamento da peça sem brilho artificial e sem objetos que confundam o que está à venda.\n\n# Modelo de Entrega\nUse proporção quadrada 1:1, com margem para recorte no Instagram. Não inclua pessoas, logotipos, selos ou texto na imagem. A composição deve priorizar fidelidade de formato, acabamento e textura para representar visualmente o produto real à venda.",
           "observe": [
             "As alças e a trama têm continuidade?",
             "O fundo não sugere acessórios incluídos na venda?",
@@ -561,7 +561,7 @@ export const modulo3: Modulo = {
           "titulo": "Ajuste sem alterar o produto",
           "tituloEnfase": "sem alterar o produto",
           "nomePrompt": "Edição de foto autorizada",
-          "prompt": "# Perfil\nAtue como editor de fotografia de produto.\n# Contexto\nVou anexar [[uma foto própria e autorizada de um cesto]], sem pessoas, dados pessoais ou marcas de terceiros. Este pedido integra um exercício didático fictício. A peça real da foto é a referência; não acrescente características de outro produto.\n# Objetivo\nTroque apenas o fundo por uma superfície bege neutra e suavize sombras fortes. Preserve cor, trama, dimensões aparentes, alças e pequenas características da peça. Não esconda defeitos relevantes para a compra.\n# Modelo de Entrega\nEntregue uma versão quadrada com margem de segurança, sem texto, logotipo ou selo. Não crie acessórios nem remova partes do produto. Se não conseguir preservar um detalhe, avise em vez de reconstruí-lo silenciosamente. Vou comparar a edição com a foto original antes de usar. Mantenha a identificação de conteúdo gerado ou editado por IA e não solicite remover mecanismos de procedência.",
+          "prompt": "# Perfil\nAtue como editor de fotografia de produto.\n# Contexto\nVou anexar [[foto própria do seu produto]], sem pessoas, dados pessoais ou marcas de terceiros. A peça real da foto é a referência; não acrescente características de outro produto.\n# Objetivo\nTroque apenas o fundo por [[tipo de fundo desejado, ex.: superfície bege neutra]] e suavize sombras fortes. Preserve cor, textura, dimensões aparentes e características reais da peça. Não esconda defeitos relevantes para a compra.\n# Modelo de Entrega\nEntregue uma versão quadrada com margem de segurança, sem texto, logotipo ou selo. Não crie acessórios nem remova partes do produto. Se não conseguir preservar um detalhe, avise em vez de reconstruí-lo silenciosamente. Vou comparar a edição com a foto original antes de usar. Mantenha a identificação de conteúdo gerado ou editado por IA e não solicite remover mecanismos de procedência.",
           "dica": "Envie apenas uma foto que você possa usar. Guarde o original para comparar contorno, cor e detalhes."
         },
         {
@@ -597,7 +597,7 @@ export const modulo3: Modulo = {
           "rotulo": "Faça na sua conta",
           "titulo": "Agora faça na sua conta",
           "tituloEnfase": "na sua conta",
-          "texto": "Repita o exercício com os dados fictícios. Confira a entrega antes de usar no seu negócio.",
+          "texto": "Repita o exercício com os dados reais do seu negócio, sem incluir dados pessoais de clientes. Confira a entrega antes de aplicar na sua rotina.",
           "exercicio": {
             "situacao": "Escolha um produto real para fotografar melhor: [[um item que você mais vende]].",
             "tarefa": [

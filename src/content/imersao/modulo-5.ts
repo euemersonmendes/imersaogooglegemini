@@ -152,7 +152,7 @@ export const modulo5: Modulo = {
               "pergunta": "Quais evidências podem ser consultadas?",
               "cuidado": "Citar um arquivo não concede acesso a ele.",
               "itens": [
-                "Anexar dados agregados fictícios",
+                "Anexar dados agregados do seu negócio (sem dados pessoais de clientes)",
                 "Identificar versão e período de cada fonte"
               ]
             },
@@ -189,7 +189,7 @@ export const modulo5: Modulo = {
           "tituloEnfase": "uma delegação pequena",
           "nomePrompt": "Planejar antes de agir",
           "texto": "Cole o pedido e confira se o Gemini respeita a fronteira entre planejar e executar.",
-          "prompt": "# Objetivo\nPrepare o plano de um resumo mensal de serviços da minha [[pequena oficina]]. Quero conferir o movimento antes de decidir as ações do próximo mês. Estes são dados didáticos fictícios.\n# Insumos\nConsidere apenas estes totais: manutenção preventiva, 24 serviços; reparos, 16. Não há valores de vendas nem dados de meses anteriores disponíveis.\n# Limites\nNão consulte sistemas, não envie mensagens e não altere arquivos. Não peça dados pessoais nem dados de clientes. Não invente receitas ou tendências; marque as lacunas. Antes de qualquer ação externa, peça minha aprovação explícita.\n# Entrega\nApresente o plano em três etapas, os recursos necessários e uma tabela preliminar com tipo de serviço e quantidade. Confira a soma e indique o que falta para comparar o movimento com o mês anterior. Aguarde minha revisão antes de prosseguir.",
+          "prompt": "# Objetivo\nPrepare o plano de um resumo mensal de serviços da minha empresa ([[seu tipo de negócio]]). Quero conferir o movimento antes de decidir as ações do próximo mês.\n# Insumos\nConsidere apenas estes totais de serviços do mês: [[liste aqui os tipos de serviços e as quantidades realizadas no período]]. Não inclua nomes de clientes, CPF, dados bancários ou outras informações pessoais.\n# Limites\nNão consulte sistemas, não envie mensagens e não altere arquivos. Não peça dados pessoais nem dados de clientes. Não invente receitas ou tendências; marque as lacunas. Antes de qualquer ação externa, peça minha aprovação explícita.\n# Entrega\nApresente o plano em três etapas, os recursos necessários e uma tabela preliminar com tipo de serviço e quantidade. Confira a soma e indique o que falta para comparar o movimento com o mês anterior. Aguarde minha revisão antes de prosseguir.",
           "observe": [
             "O total é 40 serviços, sem receita ou comparação inventada.",
             "O plano diferencia recursos necessários de recursos já disponíveis.",
@@ -261,11 +261,11 @@ export const modulo5: Modulo = {
           "tituloEnfase": "o resumo semanal",
           "nomePrompt": "Segunda às 8h",
           "texto": "Cole o pedido. Confira o fuso e a próxima segunda antes de considerar a rotina criada.",
-          "prompt": "# Perfil\nAtue como assistente de organização da minha pequena loja.\n# Contexto\nEstes são dados didáticos fictícios. A base desta semana registra 12 vendas de camisetas e 8 de calças, sem nomes, contatos ou dados de clientes. Não há valores de faturamento informados.\n# Objetivo\nPrograme um resumo toda segunda-feira às 8h, no fuso America/Fortaleza. Use apenas informações autorizadas e disponíveis na execução. Se só houver esta base fictícia, identifique-a como estática e não a apresente como resultado de uma nova semana.\n# Modelo de Entrega\nEntregue até cinco tópicos: período, totais de vendas, destaques, lacunas e próximos passos sugeridos. Não invente faturamento nem envie o resumo a terceiros. Peça minha revisão. Confirme recorrência, fuso e próxima execução; se não puder agendar, informe a limitação sem simular sucesso.",
+          "prompt": "# Perfil\nAtue como assistente de organização do meu negócio: [[seu tipo de negócio]].\n# Contexto\nA base de vendas desta semana é: [[cole aqui os dados de vendas da semana no formato produto ou serviço | quantidade vendida, sem nomes, CPF, contatos ou dados pessoais de clientes]]. [[Indique se há valores de faturamento informados ou apenas quantidades]].\n# Objetivo\nPrograme um resumo toda segunda-feira às 8h, no fuso [[seu fuso horário, ex.: America/Sao_Paulo ou America/Fortaleza]]. Use apenas informações autorizadas e disponíveis na execução. Se só houver esta base informada, identifique-a como estática e não a apresente como resultado de uma nova semana.\n# Modelo de Entrega\nEntregue até cinco tópicos: período, totais de vendas, destaques, lacunas e próximos passos sugeridos. Não invente faturamento nem envie o resumo a terceiros. Peça minha revisão. Confirme recorrência, fuso e próxima execução; se não puder agendar, informe a limitação sem simular sucesso.",
           "observe": [
             "A próxima execução corresponde a segunda, 8h, no fuso solicitado.",
             "A rotina não promete acessar dados que não foram autorizados.",
-            "A base estática não vira uma atualização fictícia."
+            "A base estática não se atualiza sozinha: alimente-a com os dados reais do seu negócio, sem incluir dados pessoais de clientes."
           ]
         },
         {
@@ -275,7 +275,7 @@ export const modulo5: Modulo = {
           "tituloEnfase": "as cobranças",
           "nomePrompt": "Revisão das contas a receber",
           "texto": "Cole o lembrete e ajuste o dia. Agendar uma revisão não autoriza enviar cobranças aos clientes.",
-          "prompt": "# Perfil\nAjude a organizar as contas a receber do meu pequeno negócio de prestação de serviços.\n# Contexto\nEstes são dados didáticos fictícios. Preciso lembrar de conferir pagamentos antes de preparar cobranças. Nenhum saldo ou atraso foi informado. Não use nomes, contatos, dados bancários ou outros dados de clientes.\n# Objetivo\nCrie um lembrete recorrente toda [[terça-feira]] às [[9h]], no fuso America/Fortaleza, para eu revisar as contas a receber no meu controle financeiro.\n# Modelo de Entrega\nNo lembrete, peça para conferir vencimentos e pagamentos recebidos antes de preparar qualquer mensagem. Não invente dívidas, não altere registros e não envie cobranças. Qualquer rascunho deve passar pela minha revisão, sem dados de clientes neste exercício. Confirme a próxima execução e a recorrência. Se a conta não permitir programar, explique a limitação e entregue somente o texto do lembrete.",
+          "prompt": "# Perfil\nAjude a organizar a rotina de contas a receber da minha empresa de [[seu ramo de atuação ou tipo de serviço]].\n\n# Contexto\nEstou estruturando os processos financeiros do meu negócio e preciso de um lembrete regular para conferir pagamentos e baixas antes de qualquer cobrança. Não inclua nem solicite nomes, contatos, CPF, dados bancários ou quaisquer outros dados pessoais de clientes.\n\n# Objetivo\nCrie um lembrete recorrente toda [[dia da semana, ex.: terça-feira]] às [[horário, ex.: 9h]], no fuso [[seu fuso horário, ex.: America/Sao_Paulo]], para eu revisar as contas a receber no meu controle financeiro.\n\n# Modelo de Entrega\nNo lembrete, inclua o passo a passo para conferir vencimentos e pagamentos recebidos antes de preparar qualquer mensagem. Não invente dívidas, não altere registros e não envie cobranças. Qualquer rascunho deve passar pela minha conferência, sem expor dados pessoais de clientes. Confirme a próxima execução e a recorrência. Se a ferramenta não permitir programar o disparo direto, explique a limitação e entregue o texto pronto para eu copiar e agendar no meu calendário ou aplicativo de tarefas.",
           "dica": "Confira a primeira execução e revise ou desative a rotina quando ela deixar de fazer sentido."
         },
         {
@@ -338,8 +338,8 @@ export const modulo5: Modulo = {
           "titulo": "Peça uma tabela com evidências",
           "tituloEnfase": "com evidências",
           "nomePrompt": "Editais e crédito lado a lado",
-          "texto": "Use abas oficiais autorizadas. A situação do exercício é fictícia; as condições de cada página precisam ser conferidas.",
-          "prompt": "# Perfil\nAtue como assistente de pesquisa para mim, que sou dono de um pequeno restaurante.\n# Contexto\nEstes são dados didáticos fictícios: quero avaliar recursos para comprar equipamentos para meu pequeno restaurante. Não há cadastro ou documentos pessoais neste exercício. Compare os editais ou linhas de crédito nas abas oficiais que autorizei.\n# Objetivo\nIdentifique opções potencialmente pertinentes, sem recomendar contratação nem garantir elegibilidade. Diferencie página aberta no navegador de inscrição efetivamente aberta. Confira o prazo informado e sinalize quando a vigência não puder ser determinada.\n# Modelo de Entrega\nMonte uma tabela com opção, público, finalidade, valor ou faixa, juros e custos quando aplicáveis, prazo, requisitos, URL e trecho de apoio. Marque informação ausente como “não localizado”; não invente condições. Separe dúvidas para confirmar na instituição. Não faça login, não preencha formulários, não envie inscrições nem contrate nada. Termine com três verificações para revisão humana.",
+          "texto": "Use abas oficiais autorizadas. Aplique as instruções com os dados reais da sua empresa, sem dados pessoais de clientes; as condições de cada página precisam ser conferidas.",
+          "prompt": "# Perfil\nAtue como assistente de pesquisa para mim, que sou dono de um(a) [[ramo do seu negócio]].\n# Contexto\nQuero avaliar recursos para [[descreva a finalidade pretendida, ex.: compra de equipamentos, capital de giro, expansão]]. Não inclua CPF, dados bancários ou dados pessoais. Compare os editais ou linhas de crédito nas abas ou fontes oficiais autorizadas: [[insira links ou nomes das instituições/linhas de crédito que deseja analisar]].\n# Objetivo\nIdentifique opções potencialmente pertinentes, sem recomendar contratação nem garantir elegibilidade. Diferencie página aberta no navegador de inscrição efetivamente aberta. Confira o prazo informado e sinalize quando a vigência não puder ser determinada.\n# Modelo de Entrega\nMonte uma tabela com opção, público, finalidade, valor ou faixa, juros e custos quando aplicáveis, prazo, requisitos, URL e trecho de apoio. Marque informação ausente como “não localizado”; não invente condições. Separe dúvidas para confirmar na instituição. Não faça login, não preencha formulários, não envie inscrições nem contrate nada. Termine com três verificações para revisão humana.",
           "observe": [
             "Cada condição relevante tem uma referência que você consegue abrir.",
             "Prazo não localizado não vira inscrição aberta.",
@@ -439,7 +439,7 @@ export const modulo5: Modulo = {
           "texto": "Leia os quatro blocos e observe onde o agente deve parar. O modelo serve para qualquer agente, não só para o Spark.",
           "intro": {
             "titulo": "Teste sem dados reais",
-            "texto": "Estes são dados didáticos fictícios: em abril, meu salão realizou 30 cortes e 20 escovas; a previsão usada neste exercício era de 60 serviços no total."
+            "texto": "Estes são os dados reais do meu negócio: em [[mês]], realizei [[quantidade e tipos de serviços ou produtos vendidos]]; a previsão era de [[meta ou previsão total de serviços/vendas]]. (Não inclua dados pessoais de clientes ou informações bancárias)."
           },
           "blocos": [
             {
@@ -450,7 +450,7 @@ export const modulo5: Modulo = {
             {
               "titulo": "Insumos",
               "pergunta": "Que fonte sustenta cada número?",
-              "texto": "Use somente os totais agregados e a previsão fictícia fornecidos nesta conversa. Identifique período e origem; sem histórico, não conclua tendência.",
+              "texto": "Use somente os totais agregados e as projeções informadas nesta conversa sobre a sua empresa (sem incluir dados pessoais de clientes). Identifique período e origem; sem histórico, não conclua tendência.",
               "nota": "Em uso real, confira versão, acesso autorizado e atualização. Mencionar uma fonte não a conecta."
             },
             {
@@ -466,7 +466,7 @@ export const modulo5: Modulo = {
           ],
           "fecho": {
             "titulo": "Transforme em rotina só depois",
-            "texto": "Teste com dados fictícios, confira cálculos e ajuste critérios. Se criar uma skill, descreva quando usá-la e mantenha explícitas as paradas para aprovação."
+            "texto": "Teste com dados reais do seu negócio (sem incluir dados pessoais de clientes), confira cálculos e ajuste critérios. Se criar uma skill, descreva quando usá-la e mantenha explícitas as paradas para aprovação."
           }
         },
         {
@@ -476,7 +476,7 @@ export const modulo5: Modulo = {
           "tituloEnfase": "seu briefing de agente",
           "nomePrompt": "Sua vez: resumo do mês",
           "texto": "Troque as lacunas, cole e confira o rascunho. No Spark, adapte o briefing ao inglês; não presuma acesso a fontes ou ferramentas.",
-          "prompt": "# Objetivo\nPrepare um rascunho do resumo de serviços de [[abril]] do meu [[salão de beleza]], para eu revisar o resultado do mês.\n# Insumos\nEstes são dados didáticos fictícios. Use somente esta base agregada: [[cortes: 30; escovas: 20; previsão total: 60]]. Identifique a origem como base de treino desta conversa. Não há dados pessoais nem histórico de outros meses. Confira se o período e as definições permitem comparar os números.\n# Limites\nNão invente resultados ou fontes. Marque lacunas e pergunte quando faltar informação indispensável. Siga a LGPD: não solicite nomes, contatos ou documentos pessoais. Não altere registros e não envie mensagens ou arquivos. Solicite aprovação humana explícita antes de compartilhar qualquer conteúdo; este pedido não autoriza envio.\n# Entrega\nApresente resumo executivo, tabela por serviço, total conferido, diferença para a previsão e pendências. Separe fatos de sugestões. Mostre os cálculos e as referências disponíveis. Aguarde minha revisão antes de qualquer próxima ação.",
+          "prompt": "# Objetivo\nPrepare um rascunho do resumo de serviços de [[mês/ano]] do meu negócio de [[seu tipo de empresa ou ramo]], para eu revisar o resultado do mês.\n# Insumos\nUse somente esta base agregada com os dados reais do meu negócio: [[liste aqui os serviços e quantidades do mês, no formato serviço A: quantidade; serviço B: quantidade; previsão total: quantidade esperada]]. Não inclua CPF, dados bancários ou dados pessoais de clientes. Não há histórico de outros meses além do informado. Confira se o período e as definições permitem comparar os números.\n# Limites\nNão invente resultados ou fontes. Marque lacunas e pergunte quando faltar informação indispensável. Siga a LGPD: não solicite nomes, contatos ou documentos pessoais. Não altere registros e não envie mensagens ou arquivos. Solicite aprovação humana explícita antes de compartilhar qualquer conteúdo; este pedido não autoriza envio.\n# Entrega\nApresente resumo executivo, tabela por serviço, total conferido, diferença para a previsão e pendências. Separe fatos de sugestões. Mostre os cálculos e as referências disponíveis. Aguarde minha revisão antes de qualquer próxima ação.",
           "observe": [
             "O total e a diferença para a previsão podem ser recalculados.",
             "O texto não cria tendência sem histórico nem fonte inexistente.",

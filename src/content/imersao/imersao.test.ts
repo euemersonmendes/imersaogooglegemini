@@ -27,7 +27,7 @@ describe("certificado", () => {
   it("não libera quando revogado pelo administrador", () => {
     expect(certificadoLiberado(20, true)).toBe(false);
   });
-  it("o curso tem 20 aulas", () => {
+  it("a imersão tem 20 aulas", () => {
     expect(aulas.length).toBe(TOTAL_AULAS_CURSO);
   });
   it("o certificado declara 16 horas de carga horária", () => {

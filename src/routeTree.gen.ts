@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as CertificadoRouteImport } from './routes/certificado'
 import { Route as ExercicioRouteImport } from './routes/exercicio'
+import { Route as AdminTurmasRouteImport } from './routes/admin_.turmas'
 import { Route as ApiExercicioRouteImport } from './routes/api/exercicio'
 import { Route as LerSecaoPaginaRouteImport } from './routes/ler.$secao.$pagina'
 
@@ -36,6 +37,11 @@ const ExercicioRoute = ExercicioRouteImport.update({
   path: '/exercicio',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminTurmasRoute = AdminTurmasRouteImport.update({
+  id: '/admin_/turmas',
+  path: '/admin/turmas',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiExercicioRoute = ApiExercicioRouteImport.update({
   id: '/api/exercicio',
   path: '/api/exercicio',
@@ -52,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRoute
   '/certificado': typeof CertificadoRoute
   '/exercicio': typeof ExercicioRoute
+  '/admin/turmas': typeof AdminTurmasRoute
   '/api/exercicio': typeof ApiExercicioRoute
   '/ler/$secao/$pagina': typeof LerSecaoPaginaRoute
 }
@@ -60,6 +67,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminRoute
   '/certificado': typeof CertificadoRoute
   '/exercicio': typeof ExercicioRoute
+  '/admin/turmas': typeof AdminTurmasRoute
   '/api/exercicio': typeof ApiExercicioRoute
   '/ler/$secao/$pagina': typeof LerSecaoPaginaRoute
 }
@@ -69,6 +77,7 @@ export interface FileRoutesById {
   '/admin': typeof AdminRoute
   '/certificado': typeof CertificadoRoute
   '/exercicio': typeof ExercicioRoute
+  '/admin_/turmas': typeof AdminTurmasRoute
   '/api/exercicio': typeof ApiExercicioRoute
   '/ler/$secao/$pagina': typeof LerSecaoPaginaRoute
 }
@@ -79,6 +88,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/certificado'
     | '/exercicio'
+    | '/admin/turmas'
     | '/api/exercicio'
     | '/ler/$secao/$pagina'
   fileRoutesByTo: FileRoutesByTo
@@ -87,6 +97,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/certificado'
     | '/exercicio'
+    | '/admin/turmas'
     | '/api/exercicio'
     | '/ler/$secao/$pagina'
   id:
@@ -95,6 +106,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/certificado'
     | '/exercicio'
+    | '/admin_/turmas'
     | '/api/exercicio'
     | '/ler/$secao/$pagina'
   fileRoutesById: FileRoutesById
@@ -104,6 +116,7 @@ export interface RootRouteChildren {
   AdminRoute: typeof AdminRoute
   CertificadoRoute: typeof CertificadoRoute
   ExercicioRoute: typeof ExercicioRoute
+  AdminTurmasRoute: typeof AdminTurmasRoute
   ApiExercicioRoute: typeof ApiExercicioRoute
   LerSecaoPaginaRoute: typeof LerSecaoPaginaRoute
 }
@@ -138,6 +151,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ExercicioRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin_/turmas': {
+      id: '/admin_/turmas'
+      path: '/admin/turmas'
+      fullPath: '/admin/turmas'
+      preLoaderRoute: typeof AdminTurmasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/exercicio': {
       id: '/api/exercicio'
       path: '/api/exercicio'
@@ -160,6 +180,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminRoute: AdminRoute,
   CertificadoRoute: CertificadoRoute,
   ExercicioRoute: ExercicioRoute,
+  AdminTurmasRoute: AdminTurmasRoute,
   ApiExercicioRoute: ApiExercicioRoute,
   LerSecaoPaginaRoute: LerSecaoPaginaRoute,
 }

@@ -1,5 +1,5 @@
 # Roadmap
-- [ ] Validação pública do certificado por QR code, preservando a privacidade e os códigos já impressos
+- [x] Validação pública do certificado por QR code, preservando a privacidade e os códigos já impressos
 - [x] Tela de código da turma
 - [x] Finalizar versão referência: capa com módulos em lombada, barra lateral escura, abas de passos, telas ilustradas (sem refazer conteúdo)
 - [x] Painel admin conectado (aulas, progresso, certificado) e conferido com conta real

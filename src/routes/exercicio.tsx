@@ -1,3 +1,4 @@
+import { supabase } from "@/integrations/supabase/client";
 import { useRef, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Check, Copy, Loader } from "lucide-react";
@@ -42,9 +43,10 @@ function Exercicio() {
     setGerando(true);
     abort.current = new AbortController();
     try {
+      const { data: sess } = await supabase.auth.getSession();
       const res = await fetch("/api/exercicio", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${sess.session?.access_token ?? ""}` },
         body: JSON.stringify({ tema, objetivo }),
         signal: abort.current.signal,
       });

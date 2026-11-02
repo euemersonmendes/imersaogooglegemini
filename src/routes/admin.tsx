@@ -233,7 +233,10 @@ function Turmas({ turmas, aoMudar }: { turmas: Turma[]; aoMudar: () => void }) {
   });
   return (
     <section className="rounded-2xl border border-linha bg-branco p-5">
-      <h2 className="text-xl font-bold">Códigos de turma</h2>
+      <div className="flex items-center gap-2">
+        <h2 className="text-xl font-bold">Códigos de turma</h2>
+        <Link to="/admin/turmas" className="ml-auto text-sm font-semibold text-cobre-texto hover:underline">Gerenciar turmas →</Link>
+      </div>
       <p className="mt-1 text-sm text-apagado">Alunos usam o código para criar o próprio acesso. Desative para bloquear novos cadastros.</p>
       <ul className="mt-4 flex max-h-64 flex-col gap-2 overflow-y-auto barra-clara">
         {turmas.map((t) => (

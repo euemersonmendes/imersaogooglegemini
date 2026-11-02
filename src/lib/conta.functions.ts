@@ -155,3 +155,41 @@ export const removerAluno = createServerFn({ method: "POST" })
     if (error) return { ok: false, erro: "Não foi possível remover o acesso." };
     return { ok: true };
   });
+
+export const editarTurma = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d: { antigo: string; codigo: string; nome: string; ativa: boolean }) => ({
+    antigo: limpar(d.antigo, 40).toUpperCase(),
+    codigo: limpar(d.codigo, 40).toUpperCase().replace(/\s+/g, "-"),
+    nome: limpar(d.nome, 80),
+    ativa: !!d.ativa,
+  }))
+  .handler(async ({ data, context }) => {
+    await exigirAdmin(context);
+    if (data.codigo.length < 4) return { ok: false, erro: "Use um código com pelo menos 4 caracteres." };
+    const sb = context.supabase;
+    if (data.codigo === data.antigo) {
+      const { error } = await sb.from("turmas").update({ nome: data.nome, ativa: data.ativa }).eq("codigo", data.antigo);
+      return error ? { ok: false, erro: "Não foi possível salvar a turma." } : { ok: true };
+    }
+    const { data: existe } = await sb.from("turmas").select("codigo").eq("codigo", data.codigo).maybeSingle();
+    if (existe) return { ok: false, erro: "Já existe uma turma com esse código." };
+    const { error } = await sb.from("turmas").insert({ codigo: data.codigo, nome: data.nome, ativa: data.ativa });
+    if (error) return { ok: false, erro: "Não foi possível salvar a turma." };
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    await supabaseAdmin.from("profiles").update({ turma: data.codigo }).eq("turma", data.antigo);
+    await sb.from("turmas").delete().eq("codigo", data.antigo);
+    return { ok: true };
+  });
+
+export const apagarTurma = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d: { codigo: string }) => ({ codigo: limpar(d.codigo, 40).toUpperCase() }))
+  .handler(async ({ data, context }) => {
+    await exigirAdmin(context);
+    const { error } = await context.supabase.from("turmas").delete().eq("codigo", data.codigo);
+    if (error) return { ok: false, erro: "Não foi possível apagar a turma." };
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    await supabaseAdmin.from("profiles").update({ turma: null }).eq("turma", data.codigo);
+    return { ok: true };
+  });

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { acharAula, aulas, aulaVizinha, passosDa } from "./index";
+import { acharAula, aulas, aulaVizinha, BOOK, passosDa } from "./index";
 import { TOTAL_AULAS_CURSO, certificadoLiberado } from "@/lib/certificado";
 
 describe("imersão", () => {
@@ -29,5 +29,8 @@ describe("certificado", () => {
   });
   it("o curso tem 20 aulas", () => {
     expect(aulas.length).toBe(TOTAL_AULAS_CURSO);
+  });
+  it("o certificado declara 16 horas de carga horária", () => {
+    expect(BOOK.cargaHoraria).toBe("16 horas");
   });
 });

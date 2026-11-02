@@ -7,8 +7,8 @@ import { Rico } from "@/components/imersao/Rico";
 const TEMAS = [
   "Conhecer e personalizar o Gemini",
   "Engenharia de prompts com Gemini",
-  "Ferramentas do Gemini aplicadas ao trabalho",
-  "O Gemini no dia a dia do trabalho (Gmail, Docs, Meet)",
+  "Ferramentas do Gemini aplicadas ao negócio",
+  "O Gemini no dia a dia da empresa (Gmail, Docs, Meet)",
   "Agentes e automação com Gemini",
 ];
 
@@ -16,9 +16,9 @@ export const Route = createFileRoute("/exercicio")({
   head: () => ({
     meta: [
       { title: "Exercício personalizado · Imersão Gemini" },
-      { name: "description", content: "Gere com IA um exercício prático do Gemini sob medida para o seu objetivo profissional." },
+      { name: "description", content: "Gere com IA um exercício prático do Gemini sob medida para o seu negócio." },
       { property: "og:title", content: "Exercício personalizado · Imersão Gemini" },
-      { property: "og:description", content: "Escolha um tema, diga seu objetivo e receba um exercício prático." },
+      { property: "og:description", content: "Escolha um tema, conte sobre seu negócio e receba um exercício prático." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -36,7 +36,7 @@ function Exercicio() {
   const abort = useRef<AbortController | null>(null);
 
   async function gerar() {
-    if (!objetivo.trim()) return setErro("Conte seu objetivo profissional.");
+    if (!objetivo.trim()) return setErro("Conte qual é o seu negócio e o que quer melhorar.");
     setErro("");
     setTexto("");
     setGerando(true);
@@ -78,7 +78,7 @@ function Exercicio() {
         <h1 className="mt-2 text-4xl font-bold leading-[1.05] tracking-tight md:text-5xl">
           Pratique no <span className="text-cobre-texto">seu contexto</span>
         </h1>
-        <p className="mt-3 text-lg text-apagado">Escolha o tema do módulo, conte seu objetivo e a IA monta um exercício para você fazer no Gemini.</p>
+        <p className="mt-3 text-lg text-apagado">Escolha o tema do módulo, conte sobre o seu negócio e a IA monta um exercício para você aplicar na sua empresa.</p>
 
         <div className="mt-8 flex flex-col gap-5 rounded-3xl border border-linha bg-branco p-6 sombra">
           <label className="flex flex-col gap-2">
@@ -90,13 +90,13 @@ function Exercicio() {
             </select>
           </label>
           <label className="flex flex-col gap-2">
-            <span className="text-sm font-semibold">Seu objetivo profissional</span>
+            <span className="text-sm font-semibold">Seu negócio e seu objetivo</span>
             <textarea
               value={objetivo}
               onChange={(e) => setObjetivo(e.target.value)}
               maxLength={600}
               rows={3}
-              placeholder="Ex.: reduzir o tempo que gasto preparando relatórios mensais de atendimento da minha unidade"
+              placeholder="Ex.: tenho uma padaria no bairro e quero vender mais encomendas de bolo pelo WhatsApp"
               className="rounded-xl border border-linha-2 bg-areia px-4 py-3 outline-none focus:border-cobre"
             />
           </label>

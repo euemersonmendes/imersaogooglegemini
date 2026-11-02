@@ -11,9 +11,9 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Imersão Gemini — book digital da turma" },
-      { name: "description", content: "Book digital da Imersão Google Gemini: cinco módulos, aulas em passos, prompts para copiar e telas ilustradas." },
+      { name: "description", content: "Book digital da Imersão Google Gemini para micro e pequenos empresários: cinco módulos, aulas em passos, prompts para copiar e telas ilustradas." },
       { property: "og:title", content: "Imersão Gemini — book digital da turma" },
-      { property: "og:description", content: "Cinco módulos e aulas em passos para usar o Gemini no trabalho." },
+      { property: "og:description", content: "Cinco módulos e aulas em passos para micro e pequenos empresários usarem o Gemini no negócio." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

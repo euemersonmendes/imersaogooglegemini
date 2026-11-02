@@ -12,8 +12,9 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { verificarAcesso } from "../lib/acesso.functions";
-import { CodigoTurma } from "../components/CodigoTurma";
+import { useSessao } from "../lib/sessao";
+import { AcessoUsuario } from "../components/AcessoUsuario";
+import { Toaster } from "../components/ui/sonner";
 
 function NotFoundComponent() {
   return (
@@ -81,9 +82,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Imersão Google Gemini" },
-      { name: "description", content: "Book digital e curso completo de Google Gemini, em português." },
+      { name: "description", content: "Imersão Google Gemini com Emerson Mendes: inteligência artificial para resolver o dia a dia da pequena empresa." },
       { property: "og:title", content: "Imersão Google Gemini" },
-      { property: "og:description", content: "Book digital e curso completo de Google Gemini, em português." },
+      { property: "og:description", content: "Imersão Google Gemini com Emerson Mendes: inteligência artificial para resolver o dia a dia da pequena empresa." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -101,7 +102,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
   }),
-  beforeLoad: async () => ({ acesso: await verificarAcesso() }),
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
@@ -123,12 +123,20 @@ function RootShell({ children }: { children: ReactNode }) {
 }
 
 function RootComponent() {
-  const { queryClient, acesso } = Route.useRouteContext();
+  const { queryClient } = Route.useRouteContext();
+  const sessao = useSessao();
 
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      {acesso.liberado ? <Outlet /> : <CodigoTurma />}
+      {sessao.carregando ? (
+        <div className="flex min-h-screen items-center justify-center bg-areia text-apagado">Carregando…</div>
+      ) : sessao.user ? (
+        <Outlet />
+      ) : (
+        <AcessoUsuario />
+      )}
+      <Toaster />
     </QueryClientProvider>
   );
 }

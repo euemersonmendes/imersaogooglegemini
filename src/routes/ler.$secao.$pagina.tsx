@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { createFileRoute, Link, redirect, useNavigate } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight, Check, Menu, Minimize2, MonitorPlay, RotateCcw, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, LogOut, Menu, Minimize2, MonitorPlay, PanelLeftClose, PanelLeftOpen, RotateCcw, X } from "lucide-react";
+import { sair } from "@/lib/sessao";
 
 import { BOOK, ROTULO_TIPO, acharAula, aulaVizinha, modulos, passosDa, type AulaInfo } from "@/content/imersao";
 import { CorpoPasso } from "@/components/imersao/Passos";
@@ -33,7 +34,7 @@ export const Route = createFileRoute("/ler/$secao/$pagina")({
   component: Leitor,
 });
 
-function Lateral({ atual, aoFechar }: { atual: string; aoFechar?: () => void }) {
+function Lateral({ atual, aoFechar, aoRecolher }: { atual: string; aoFechar?: () => void; aoRecolher?: () => void }) {
   const prog = useProgresso();
   const [confirmando, setConfirmando] = useState(false);
 
@@ -52,6 +53,11 @@ function Lateral({ atual, aoFechar }: { atual: string; aoFechar?: () => void }) 
         <Link to="/" className="text-lg font-bold text-branco">
           {BOOK.tituloAntes} <span className="text-cobre">{BOOK.tituloAcento}</span>
         </Link>
+        {aoRecolher && (
+          <button type="button" onClick={aoRecolher} aria-label="Recolher menu" title="Recolher menu" className="rounded-lg p-1 hover:bg-escuro-hover hover:text-branco">
+            <PanelLeftClose className="size-5" />
+          </button>
+        )}
         {aoFechar && (
           <button type="button" onClick={aoFechar} aria-label="Fechar menu" className="lg:hidden">
             <X className="size-5" />
@@ -109,6 +115,9 @@ function Lateral({ atual, aoFechar }: { atual: string; aoFechar?: () => void }) 
             <RotateCcw className="size-3.5" /> Reiniciar curso
           </button>
         )}
+        <button type="button" onClick={() => void sair()} className="mt-2 flex w-full items-center justify-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold text-escuro-texto-2 hover:bg-escuro-hover hover:text-branco">
+          <LogOut className="size-3.5" /> Sair
+        </button>
       </div>
     </nav>
   );
@@ -123,6 +132,19 @@ function Leitor() {
   const vistos = prog.vistos[n] ?? [];
   const [menu, setMenu] = useState(false);
   const [telao, setTelao] = useState(false);
+  const [recolhido, setRecolhido] = useState(false);
+  useEffect(() => {
+    setRecolhido(window.localStorage.getItem("imersao-menu-recolhido") === "1");
+  }, []);
+  function recolher(v: boolean) {
+    setRecolhido(v);
+    try {
+      window.localStorage.setItem("imersao-menu-recolhido", v ? "1" : "0");
+    } catch {
+      /* sem armazenamento */
+    }
+  }
+  const comLateral = !telao && !recolhido;
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -173,9 +195,9 @@ function Leitor() {
   const corpoTitulo = enfase && titulo.endsWith(enfase) ? titulo.slice(0, -enfase.length).trimEnd() : titulo;
 
   return (
-    <div className={cn("min-h-screen bg-areia text-tinta", !telao && "lg:grid lg:grid-cols-[280px_1fr]")}>
-      <aside className={cn("sticky top-0 hidden h-screen", !telao && "lg:block")}>
-        <Lateral atual={n} />
+    <div className={cn("min-h-screen bg-areia text-tinta", comLateral && "lg:grid lg:grid-cols-[280px_1fr]")}>
+      <aside className={cn("sticky top-0 hidden h-screen", comLateral && "lg:block")}>
+        <Lateral atual={n} aoRecolher={() => recolher(true)} />
       </aside>
       {menu && (
         <div className="fixed inset-0 z-40 lg:hidden">
@@ -192,6 +214,11 @@ function Leitor() {
             <button type="button" onClick={() => setMenu(true)} aria-label="Abrir menu" className="lg:hidden">
               <Menu className="size-5" />
             </button>
+            {recolhido && !telao && (
+              <button type="button" onClick={() => recolher(false)} aria-label="Mostrar menu" title="Mostrar menu" className="hidden rounded-lg p-1 hover:bg-areia-2 lg:block">
+                <PanelLeftOpen className="size-5" />
+              </button>
+            )}
             <p className="text-sm text-apagado">
               <span className="font-semibold text-tinta">Aula {n}</span> · {info.aula.titulo} · <span className="text-cobre-texto">{info.aula.ferramenta}</span>
             </p>
@@ -204,7 +231,7 @@ function Leitor() {
               {telao ? <Minimize2 className="size-3.5" /> : <MonitorPlay className="size-3.5" />} {telao ? "Sair do telão" : "Modo telão"}
             </button>
           </div>
-          <div className="flex gap-1 overflow-x-auto px-5 pt-3 esconde-barra md:px-10">
+          <div className="flex gap-1 overflow-x-auto px-5 pt-3 barra-clara md:px-10">
             {passos.map((p, k) => {
               const ativo = k + 1 === i;
               const visto = vistos.includes(k + 1);

@@ -1,16 +1,17 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Check, Sparkles } from "lucide-react";
+import { ArrowRight, Award, Check, LogOut, Settings, Sparkles } from "lucide-react";
 
 import { BOOK, aulas, modulos } from "@/content/imersao";
 import { Glifo } from "@/components/imersao/Glifo";
 import { useProgresso } from "@/lib/progresso";
+import { sair, useSessao } from "@/lib/sessao";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Imersão Gemini — book digital da turma" },
+      { title: "Imersão Gemini com Emerson Mendes — IA para pequenas empresas" },
       { name: "description", content: "Book digital da Imersão Google Gemini para micro e pequenos empresários: cinco módulos, aulas em passos, prompts para copiar e telas ilustradas." },
       { property: "og:title", content: "Imersão Gemini — book digital da turma" },
       { property: "og:description", content: "Cinco módulos e aulas em passos para micro e pequenos empresários usarem o Gemini no negócio." },
@@ -23,6 +24,7 @@ export const Route = createFileRoute("/")({
 
 function Capa() {
   const prog = useProgresso();
+  const sessao = useSessao();
   const [aberto, setAberto] = useState(0);
   const ultimo = prog.ultimo;
   const continuar = ultimo ? { secao: ultimo.aula, pagina: String(ultimo.passo) } : { secao: aulas[0]!.aula.n, pagina: "1" };
@@ -32,7 +34,15 @@ function Capa() {
   return (
     <div className="min-h-screen bg-areia text-tinta">
       <div className="mx-auto max-w-6xl px-5 py-10 md:px-10 md:py-14">
-        <p className="selo text-apagado">{BOOK.selo}</p>
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+          <p className="selo text-apagado">{BOOK.selo}</p>
+          <div className="ml-auto flex flex-wrap items-center gap-2 text-sm">
+            <span className="text-apagado">Olá, <span className="font-semibold text-tinta">{sessao.nome.split(" ")[0]}</span></span>
+            <Link to="/certificado" className="btn-claro flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-semibold"><Award className="size-4" /> Certificado</Link>
+            {sessao.admin && <Link to="/admin" className="btn-claro flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-semibold"><Settings className="size-4" /> Administração</Link>}
+            <button type="button" onClick={() => void sair()} className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-semibold text-apagado hover:text-tinta"><LogOut className="size-4" /> Sair</button>
+          </div>
+        </div>
         <div className="mt-6 grid gap-8 md:grid-cols-[1.2fr_1fr] md:items-end">
           <div>
             <h1 className="text-6xl font-bold leading-[0.95] tracking-tight md:text-8xl">
@@ -42,6 +52,10 @@ function Capa() {
             </h1>
             <p className="mt-6 hidden max-w-xl text-lg text-apagado md:block">{BOOK.chamada}</p>
             <p className="mt-6 max-w-xl text-lg text-apagado md:hidden">{BOOK.chamadaCelular}</p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {BOOK.areas.map((a) => <span key={a} className="rounded-full border border-linha-2 bg-branco px-3 py-1 text-xs font-semibold">{a}</span>)}
+            </div>
+            <p className="mt-5 text-sm text-apagado">Instrutor e responsável: <span className="font-semibold text-tinta">{BOOK.instrutor}</span></p>
           </div>
           <div className="flex flex-col gap-3 md:items-end">
             <Link to="/ler/$secao/$pagina" params={continuar} className="btn-tinta flex items-center gap-2 rounded-xl px-6 py-3.5 font-semibold">
@@ -57,7 +71,7 @@ function Capa() {
         </div>
 
         {/* Módulos em lombada */}
-        <div className="mt-12 flex flex-col gap-3 md:h-[440px] md:flex-row">
+        <div className="mt-12 flex flex-col gap-3 md:h-[540px] md:flex-row">
           {modulos.map((m, mi) => {
             const ativo = aberto === mi;
             const concl = m.aulas.filter((a) => prog.concluidas.includes(a.n)).length;
@@ -81,7 +95,7 @@ function Capa() {
                       </p>
                     </div>
                     <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight">{m.nomeCompleto}</h2>
-                    <div className="mt-5 flex flex-col gap-1 overflow-y-auto esconde-barra">
+                    <div className="mt-5 flex min-h-0 flex-1 flex-col gap-1 overflow-y-auto barra-clara pr-1">
                       {m.aulas.map((a) => (
                         <Link
                           key={a.n}
@@ -102,7 +116,7 @@ function Capa() {
                 ) : (
                   <div className="flex h-full items-center gap-4 px-5 py-4 md:flex-col md:justify-between md:px-0 md:py-6">
                     <span className="font-mono text-sm text-cobre">0{mi + 1}</span>
-                    <span className="font-semibold tracking-wide md:rotate-180 md:[writing-mode:vertical-rl]">{m.nomeCompleto}</span>
+                    <span className="text-sm font-semibold tracking-wide md:rotate-180 md:[writing-mode:vertical-rl]">{m.nomeCompleto}</span>
                     <Glifo id={m.glifo} className="ml-auto size-5 md:ml-0" />
                   </div>
                 )}

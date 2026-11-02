@@ -33,7 +33,7 @@ export function CompartilharCertificado({ cartaoRef, versoRef, nome, codigo, dis
     }
   }
 
-  const mensagem = `Certificado de ${nome} — Imersão Google Gemini, 16 horas. Valide pelo QR code no PDF ou pelo link: https://imersaogemini.lovable.app/validar/${codigo}`;
+  const mensagem = `Certificado de ${nome} — Imersão Google Gemini, 16 horas. Valide pelo QR code no PDF ou pelo link: https://imersaogooglegemini.lovable.app/validar/${codigo}`;
 
   function abrirWhatsApp() {
     if (!arquivo) return;

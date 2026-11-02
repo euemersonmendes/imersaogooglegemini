@@ -7,7 +7,7 @@ import { LogoGemini } from "@/components/imersao/LogoGemini";
 import { BOOK, modulos } from "@/content/imersao";
 import { TOTAL_AULAS_CURSO } from "@/lib/certificado";
 
-const SITE = "https://imersaogemini.lovable.app";
+const SITE = "https://imersaogooglegemini.lovable.app";
 
 type Props = {
   userId: string;

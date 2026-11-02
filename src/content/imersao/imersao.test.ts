@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { acharAula, aulas, aulaVizinha, passosDa } from "./index";
-import { tokenPara, tokenValido } from "@/lib/acesso.server";
+import { TOTAL_AULAS_CURSO, certificadoLiberado } from "@/lib/certificado";
 
 describe("imersão", () => {
   it("aulas têm números únicos", () => {
@@ -17,15 +17,17 @@ describe("imersão", () => {
   });
 });
 
-describe("código da turma", () => {
-  it("aceita SEBRAE-GNIA (sem diferenciar maiúsculas)", async () => {
-    const t = await tokenPara(" sebrae-gnia ");
-    expect(t).toBeTruthy();
-    expect(await tokenValido(t!)).toBe(true);
+describe("certificado", () => {
+  it("libera ao concluir as 20 aulas", () => {
+    expect(certificadoLiberado(20, false)).toBe(true);
   });
-  it("recusa código errado e cookie falso", async () => {
-    expect(await tokenPara("ERRADO")).toBeNull();
-    expect(await tokenValido("abc")).toBe(false);
-    expect(await tokenValido(undefined)).toBe(false);
+  it("não libera com 19 aulas", () => {
+    expect(certificadoLiberado(19, false)).toBe(false);
+  });
+  it("não libera quando revogado pelo administrador", () => {
+    expect(certificadoLiberado(20, true)).toBe(false);
+  });
+  it("o curso tem 20 aulas", () => {
+    expect(aulas.length).toBe(TOTAL_AULAS_CURSO);
   });
 });

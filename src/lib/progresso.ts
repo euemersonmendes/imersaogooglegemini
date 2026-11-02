@@ -14,6 +14,8 @@ export type Progresso = {
   /** Autoavaliações: chave "4.4/2" → índice → nota. */
   notas: Record<string, Record<number, number>>;
   ultimo?: { aula: string; passo: number };
+  /** Momento da última alteração (ms), para decidir entre cópia local e da conta. */
+  em?: number;
 };
 
 const VAZIO: Progresso = { concluidas: [], vistos: {}, checks: {}, notas: {} };
@@ -33,8 +35,10 @@ export async function vincularUsuario(id: string) {
   estado = null;
   const local = ler();
   const { data } = await supabase.from("progresso").select("dados").eq("user_id", id).maybeSingle();
-  if (data?.dados && Object.keys(data.dados as object).length) {
-    estado = { ...VAZIO, ...(data.dados as Partial<Progresso>) };
+  const remoto = data?.dados as Partial<Progresso> | undefined;
+  const localMaisNovo = local !== VAZIO && (local.em ?? 0) > (remoto?.em ?? 0);
+  if (remoto && Object.keys(remoto).length && !localMaisNovo) {
+    estado = { ...VAZIO, ...remoto };
     try {
       window.localStorage.setItem(chave(), JSON.stringify(estado));
     } catch {
@@ -47,20 +51,39 @@ export async function vincularUsuario(id: string) {
 }
 
 export function desvincularUsuario() {
+  descarregar();
   usuario = null;
   estado = VAZIO;
   ouvintes.forEach((o) => o());
 }
 
+let pendente: { id: string; p: Progresso } | null = null;
+
+function descarregar() {
+  clearTimeout(timer);
+  if (!pendente) return;
+  const { id, p } = pendente;
+  pendente = null;
+  void supabase
+    .from("progresso")
+    .upsert({ user_id: id, dados: p as never, concluidas: p.concluidas.length, atualizado_em: new Date().toISOString() }, { onConflict: "user_id" })
+    .then(({ error }) => {
+      if (error) console.error("Falha ao salvar progresso", error.message);
+    });
+}
+
+if (typeof window !== "undefined") {
+  window.addEventListener("pagehide", descarregar);
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") descarregar();
+  });
+}
+
 function enviar(p: Progresso) {
   if (!usuario) return;
-  const id = usuario;
+  pendente = { id: usuario, p };
   clearTimeout(timer);
-  timer = setTimeout(() => {
-    void supabase
-      .from("progresso")
-      .upsert({ user_id: id, dados: p as never, concluidas: p.concluidas.length, atualizado_em: new Date().toISOString() }, { onConflict: "user_id" });
-  }, 800);
+  timer = setTimeout(descarregar, 400);
 }
 
 function ler(): Progresso {
@@ -74,7 +97,8 @@ function ler(): Progresso {
   return estado;
 }
 
-function gravar(novo: Progresso) {
+function gravar(dados: Progresso) {
+  const novo = { ...dados, em: Date.now() };
   estado = novo;
   try {
     window.localStorage.setItem(chave(), JSON.stringify(novo));

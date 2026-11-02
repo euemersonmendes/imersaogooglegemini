@@ -192,7 +192,7 @@ function CartaoTurma({ t, alunos, aoMudar }: { t: Turma | null; alunos: AlunoSta
           {alunos.map((a) => (
             <li key={a.id} className="flex items-center gap-2">
               <span className="min-w-0 flex-1 truncate">{a.nome || a.email}</span>
-              <span className="text-xs text-apagado">{a.concluidas}/{TOTAL_AULAS_CURSO}</span>
+              <span className="text-xs text-apagado"><b className="text-tinta">{Math.round((a.concluidas / TOTAL_AULAS_CURSO) * 100)}%</b> · {a.concluidas}/{TOTAL_AULAS_CURSO}</span>
             </li>
           ))}
         </ul>

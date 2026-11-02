@@ -7,6 +7,8 @@ import { listarAlunos } from "@/lib/conta.functions";
 import { TOTAL_AULAS_CURSO } from "@/lib/certificado";
 import { useSessao } from "@/lib/sessao";
 import { LinhaAluno, dataCurta } from "@/components/admin/LinhaAluno";
+import { Suspense } from "react";
+import { ValidacaoCertificado } from "@/components/ValidacaoCertificado";
 
 export const Route = createFileRoute("/admin_/aluno/$id")({
   head: () => ({
@@ -25,13 +27,12 @@ export const Route = createFileRoute("/admin_/aluno/$id")({
 
 function PaginaAluno() {
   const sessao = useSessao();
+  const { id } = Route.useParams();
   if (!sessao.admin)
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-areia px-5 text-center text-tinta">
-        <h1 className="text-2xl font-bold">Área do administrador</h1>
-        <p className="text-apagado">Entre com a conta do instrutor para validar este certificado.</p>
-        <Link to="/book" className="btn-tinta rounded-xl px-5 py-2.5 font-semibold">Voltar à capa</Link>
-      </div>
+      <Suspense fallback={<p className="p-8 text-apagado">Consultando certificado…</p>}>
+        <ValidacaoCertificado codigo={id} legado />
+      </Suspense>
     );
   return <Perfil />;
 }

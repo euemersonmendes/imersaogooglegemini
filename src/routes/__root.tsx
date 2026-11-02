@@ -127,13 +127,13 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const sessao = useSessao();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  // Páginas públicas: a apresentação e a tela de acesso.
-  const publica = pathname === "/" || pathname === "/acesso";
+  // Legacy printed QR links expose only the public certificate view to visitors.
+  const publica = pathname === "/" || pathname === "/acesso" || pathname.startsWith("/validar/") || pathname.startsWith("/admin/aluno/");
 
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      {sessao.carregando ? (
+      {sessao.carregando && !publica ? (
         <div className="flex min-h-screen items-center justify-center bg-areia text-apagado">Carregando…</div>
       ) : sessao.user || publica ? (
         <Outlet />

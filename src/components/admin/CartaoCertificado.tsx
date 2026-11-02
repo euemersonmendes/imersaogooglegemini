@@ -19,8 +19,8 @@ type Props = {
 export function CartaoCertificado({ userId, nome, codigo, emitidoEm, cartaoRef }: Props) {
   const [qr, setQr] = useState("");
   useEffect(() => {
-    void QRCode.toDataURL(`${SITE}/admin/aluno/${userId}`, { margin: 1, width: 240, color: { dark: "#1B1C1F", light: "#FFFFFF" } }).then(setQr);
-  }, [userId]);
+    void QRCode.toDataURL(`${SITE}/validar/${codigo}`, { margin: 1, width: 240, color: { dark: "#1B1C1F", light: "#FFFFFF" } }).then(setQr);
+  }, [codigo]);
 
   return (
     <div ref={cartaoRef} className="fonte-certificado rounded-3xl border-4 border-double border-cobre bg-branco p-8 text-center sombra md:p-14 print:mt-0 print:shadow-none">

@@ -71,7 +71,7 @@ function Capa() {
         </div>
 
         {/* Módulos em lombada */}
-        <div className="mt-12 flex flex-col gap-3 md:h-[440px] md:flex-row">
+        <div className="mt-12 flex flex-col gap-3 md:h-[540px] md:flex-row">
           {modulos.map((m, mi) => {
             const ativo = aberto === mi;
             const concl = m.aulas.filter((a) => prog.concluidas.includes(a.n)).length;
@@ -116,7 +116,7 @@ function Capa() {
                 ) : (
                   <div className="flex h-full items-center gap-4 px-5 py-4 md:flex-col md:justify-between md:px-0 md:py-6">
                     <span className="font-mono text-sm text-cobre">0{mi + 1}</span>
-                    <span className="font-semibold tracking-wide md:rotate-180 md:[writing-mode:vertical-rl]">{m.nomeCompleto}</span>
+                    <span className="text-sm font-semibold tracking-wide md:rotate-180 md:[writing-mode:vertical-rl]">{m.nomeCompleto}</span>
                     <Glifo id={m.glifo} className="ml-auto size-5 md:ml-0" />
                   </div>
                 )}

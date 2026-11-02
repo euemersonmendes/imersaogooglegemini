@@ -118,22 +118,19 @@ export function useProgresso(): Progresso {
   return useSyncExternalStore(assinar, ler, () => VAZIO);
 }
 
-/** Aula conta como concluída quando todos os passos foram vistos. */
-export function aulaCompleta(vistos: number[], totalPassos: number) {
-  return totalPassos > 0 && Array.from({ length: totalPassos }, (_, k) => k + 1).every((p) => vistos.includes(p));
+/** Aula só pode ser concluída quando o aluno marcou todos os itens do "Confira antes de concluir". */
+export function podeConcluir(checks: number[], totalItens: number) {
+  return totalItens > 0 && Array.from({ length: totalItens }, (_, k) => k).every((i) => checks.includes(i));
 }
 
-export function marcarVisto(aula: string, passo: number, totalPassos = 0) {
+export function marcarVisto(aula: string, passo: number) {
   const s = ler();
   const atuais = s.vistos[aula] ?? [];
-  const novos = atuais.includes(passo) ? atuais : [...atuais, passo];
-  const concluir = !s.concluidas.includes(aula) && aulaCompleta(novos, totalPassos);
-  if (!concluir && s.ultimo?.aula === aula && s.ultimo.passo === passo && atuais.includes(passo)) return;
+  if (s.ultimo?.aula === aula && s.ultimo.passo === passo && atuais.includes(passo)) return;
   gravar({
     ...s,
     ultimo: { aula, passo },
-    vistos: { ...s.vistos, [aula]: novos },
-    concluidas: concluir ? [...s.concluidas, aula] : s.concluidas,
+    vistos: { ...s.vistos, [aula]: atuais.includes(passo) ? atuais : [...atuais, passo] },
   });
 }
 

@@ -473,7 +473,15 @@ function Resultado({ p, n }: { p: PassoResultado; n: string }) {
             );
           })}
         </div>
-        <button type="button" onClick={() => alternarConcluida(n)} className={cn("mt-5 w-full rounded-xl px-5 py-3 font-semibold", feita ? "btn-claro" : "btn-tinta")}>
+        {!feita && !podeConcluir(marcados, p.confira.length) && (
+          <p className="mt-4 text-sm text-apagado">Marque todos os itens acima para liberar o botão.</p>
+        )}
+        <button
+          type="button"
+          onClick={() => podeConcluir(marcados, p.confira.length) && alternarConcluida(n, true)}
+          disabled={!feita && !podeConcluir(marcados, p.confira.length)}
+          className={cn("mt-5 w-full rounded-xl px-5 py-3 font-semibold disabled:cursor-not-allowed disabled:opacity-50", feita ? "btn-claro" : "btn-tinta")}
+        >
           {feita ? "✓ Aula concluída" : "Concluir aula"}
         </button>
       </Cartao>

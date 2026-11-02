@@ -13,10 +13,10 @@ import { ValidacaoCertificado } from "@/components/ValidacaoCertificado";
 export const Route = createFileRoute("/admin_/aluno/$id")({
   head: () => ({
     meta: [
-      { title: "Perfil do aluno — Imersão Gemini" },
-      { name: "description", content: "Validação do certificado e andamento do aluno na Imersão Gemini." },
-      { property: "og:title", content: "Perfil do aluno — Imersão Gemini" },
-      { property: "og:description", content: "Validação de certificado da Imersão Gemini." },
+      { title: "Perfil do aluno — Imersão Google Gemini" },
+      { name: "description", content: "Validação do certificado e andamento do aluno na Imersão Google Gemini." },
+      { property: "og:title", content: "Perfil do aluno — Imersão Google Gemini" },
+      { property: "og:description", content: "Validação de certificado da Imersão Google Gemini." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "robots", content: "noindex" },

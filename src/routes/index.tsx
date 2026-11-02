@@ -13,9 +13,9 @@ import { TOTAL_AULAS_CURSO } from "@/lib/certificado";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Imersão Gemini com Emerson Mendes — IA para pequenas empresas" },
+      { title: "Imersão Google Gemini com Emerson Mendes — IA para pequenas empresas" },
       { name: "description", content: "Conheça a Imersão Google Gemini para micro e pequenos empresários: 5 módulos e 20 aulas para resolver financeiro, vendas, compras, equipe e atendimento com IA." },
-      { property: "og:title", content: "Imersão Gemini com Emerson Mendes" },
+      { property: "og:title", content: "Imersão Google Gemini com Emerson Mendes" },
       { property: "og:description", content: "5 módulos e 20 aulas para usar o Gemini no dia a dia do seu negócio: financeiro, vendas, compras, equipe e atendimento." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

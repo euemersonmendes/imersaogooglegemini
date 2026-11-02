@@ -15,9 +15,9 @@ import { CompartilharCertificado } from "@/components/admin/CompartilharCertific
 export const Route = createFileRoute("/certificado")({
   head: () => ({
     meta: [
-      { title: "Certificado — Imersão Gemini" },
+      { title: "Certificado — Imersão Google Gemini" },
       { name: "description", content: "Certificado de conclusão da Imersão Google Gemini para micro e pequenos empresários." },
-      { property: "og:title", content: "Certificado — Imersão Gemini" },
+      { property: "og:title", content: "Certificado — Imersão Google Gemini" },
       { property: "og:description", content: "Certificado de conclusão da Imersão Google Gemini." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

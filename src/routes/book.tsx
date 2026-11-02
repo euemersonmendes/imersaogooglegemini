@@ -12,9 +12,9 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/book")({
   head: () => ({
     meta: [
-      { title: "Book da Imersão Gemini — aulas e módulos" },
+      { title: "Book da Imersão Google Gemini — aulas e módulos" },
       { name: "description", content: "Book digital da Imersão Google Gemini para micro e pequenos empresários: cinco módulos, aulas em passos, prompts para copiar e telas ilustradas." },
-      { property: "og:title", content: "Book da Imersão Gemini — aulas e módulos" },
+      { property: "og:title", content: "Book da Imersão Google Gemini — aulas e módulos" },
       { property: "og:description", content: "Cinco módulos e aulas em passos para micro e pequenos empresários usarem o Gemini no negócio." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

@@ -16,10 +16,10 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/admin")({
   head: () => ({
     meta: [
-      { title: "Administração — Imersão Gemini" },
+      { title: "Administração — Imersão Google Gemini" },
       { name: "description", content: "Painel do instrutor: acessos dos alunos, certificados e andamento da turma." },
-      { property: "og:title", content: "Administração — Imersão Gemini" },
-      { property: "og:description", content: "Painel do instrutor da Imersão Gemini." },
+      { property: "og:title", content: "Administração — Imersão Google Gemini" },
+      { property: "og:description", content: "Painel do instrutor da Imersão Google Gemini." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "robots", content: "noindex" },

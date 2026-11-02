@@ -9,7 +9,7 @@ export const BOOK = {
   selo: "Book digital · Para micro e pequenos empresários",
   instrutor: "Emerson Mendes",
   cargaHoraria: "16 horas",
-  nome: "Imersão Gemini",
+  nome: "Imersão Google Gemini",
   tituloAntes: "Imersão",
   tituloAcento: "Gemini",
   chamada:

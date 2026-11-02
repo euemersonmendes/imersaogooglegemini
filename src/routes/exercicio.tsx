@@ -16,9 +16,9 @@ const TEMAS = [
 export const Route = createFileRoute("/exercicio")({
   head: () => ({
     meta: [
-      { title: "Exercício personalizado · Imersão Gemini" },
+      { title: "Exercício personalizado · Imersão Google Gemini" },
       { name: "description", content: "Gere com IA um exercício prático do Gemini sob medida para o seu negócio." },
-      { property: "og:title", content: "Exercício personalizado · Imersão Gemini" },
+      { property: "og:title", content: "Exercício personalizado · Imersão Google Gemini" },
       { property: "og:description", content: "Escolha um tema, conte sobre seu negócio e receba um exercício prático." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -74,7 +74,7 @@ function Exercicio() {
     <div className="min-h-screen bg-areia px-5 py-10 text-tinta md:px-10">
       <div className="mx-auto max-w-3xl">
         <Link to="/book" className="selo text-apagado hover:text-cobre-texto">
-          ← Imersão Gemini
+          ← Imersão Google Gemini
         </Link>
         <p className="sobretitulo mt-8">Exercício personalizado</p>
         <h1 className="mt-2 text-4xl font-bold leading-[1.05] tracking-tight md:text-5xl">

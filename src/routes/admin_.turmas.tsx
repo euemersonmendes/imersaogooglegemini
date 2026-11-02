@@ -16,9 +16,9 @@ const linkInscricao = (codigo: string) => `https://imersaogemini.lovable.app/ins
 export const Route = createFileRoute("/admin_/turmas")({
   head: () => ({
     meta: [
-      { title: "Turmas — Imersão Gemini" },
+      { title: "Turmas — Imersão Google Gemini" },
       { name: "description", content: "Crie, edite e apague códigos de turma e acompanhe o progresso de cada turma." },
-      { property: "og:title", content: "Turmas — Imersão Gemini" },
+      { property: "og:title", content: "Turmas — Imersão Google Gemini" },
       { property: "og:description", content: "Códigos de turma e progresso por turma." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

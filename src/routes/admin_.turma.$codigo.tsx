@@ -14,9 +14,9 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/admin_/turma/$codigo")({
   head: ({ params }) => ({
     meta: [
-      { title: `Turma ${params.codigo} — Imersão Gemini` },
+      { title: `Turma ${params.codigo} — Imersão Google Gemini` },
       { name: "description", content: "Alunos da turma, aulas concluídas, progresso e certificados em uma só tela." },
-      { property: "og:title", content: `Turma ${params.codigo} — Imersão Gemini` },
+      { property: "og:title", content: `Turma ${params.codigo} — Imersão Google Gemini` },
       { property: "og:description", content: "Acompanhe e gerencie os alunos da turma." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

@@ -10,10 +10,10 @@ import { useSessao } from "@/lib/sessao";
 export const Route = createFileRoute("/admin_/metricas")({
   head: () => ({
     meta: [
-      { title: "Métricas de impacto — Imersão Gemini" },
-      { name: "description", content: "Alunos inscritos, aulas concluídas, certificados emitidos e taxa de conclusão da Imersão Gemini." },
-      { property: "og:title", content: "Métricas de impacto — Imersão Gemini" },
-      { property: "og:description", content: "Acompanhe o impacto da Imersão Gemini." },
+      { title: "Métricas de impacto — Imersão Google Gemini" },
+      { name: "description", content: "Alunos inscritos, aulas concluídas, certificados emitidos e taxa de conclusão da Imersão Google Gemini." },
+      { property: "og:title", content: "Métricas de impacto — Imersão Google Gemini" },
+      { property: "og:description", content: "Acompanhe o impacto da Imersão Google Gemini." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "robots", content: "noindex" },

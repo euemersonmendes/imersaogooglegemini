@@ -39,6 +39,8 @@ export function CartaoCertificado({ userId, nome, codigo, emitidoEm, cartaoRef, 
               </div>
             </div>
           </div>
+          <div className="cert-google absolute inset-x-0 top-0" />
+          <div className="cert-google absolute inset-x-0 bottom-0" />
           {/* Marca d'água */}
           <LogoGemini className="pointer-events-none absolute -right-16 -bottom-16 size-80 opacity-[0.06]" />
 
@@ -47,7 +49,7 @@ export function CartaoCertificado({ userId, nome, codigo, emitidoEm, cartaoRef, 
               <div className="flex items-center gap-3">
                 <LogoGemini className="size-12 md:size-14" />
                 <div>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.35em] text-apagado">Google Gemini</p>
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.35em]"><span className="text-g-azul">G</span><span className="text-g-vermelho">o</span><span className="text-g-amarelo">o</span><span className="text-g-azul">g</span><span className="text-g-verde">l</span><span className="text-g-vermelho">e</span> <span className="acento">Gemini</span></p>
                   <p className="text-sm font-bold uppercase tracking-[0.25em] text-cobre-texto">Certificado de conclusão</p>
                 </div>
               </div>
@@ -89,7 +91,8 @@ export function CartaoCertificado({ userId, nome, codigo, emitidoEm, cartaoRef, 
 
       {/* Verso: grade de aulas (página 2 do PDF e da impressão) */}
       <p className="text-center text-xs font-semibold uppercase tracking-[0.25em] text-apagado print:hidden">Verso do certificado</p>
-      <div ref={versoRef} className="fonte-certificado rounded-3xl border-4 border-double border-cobre bg-branco p-8 sombra md:p-14 print:mt-0 print:break-before-page print:shadow-none">
+      <div ref={versoRef} className="fonte-certificado relative overflow-hidden rounded-3xl border-4 border-double border-cobre bg-branco p-8 sombra md:p-14 print:mt-0 print:break-before-page print:shadow-none">
+        <div className="cert-google absolute inset-x-0 top-0" />
         <div className="flex flex-col items-center gap-2 text-center">
           <LogoGemini className="size-12" />
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-apagado">Imersão Google Gemini</p>

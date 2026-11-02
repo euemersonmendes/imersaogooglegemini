@@ -58,7 +58,7 @@ function Apresentacao() {
         <div className="flex flex-wrap items-center gap-4">
           <div className="flex items-center gap-3">
             <LogoGemini className="size-9" />
-            <p className="sobretitulo">Google Gemini</p>
+            <p className="sobretitulo"><span className="text-g-azul">G</span><span className="text-g-vermelho">o</span><span className="text-g-amarelo">o</span><span className="text-g-azul">g</span><span className="text-g-verde">l</span><span className="text-g-vermelho">e</span> <span className="acento">Gemini</span></p>
           </div>
           <div className="ml-auto flex flex-wrap items-center gap-2 text-sm">
             {logado ? (

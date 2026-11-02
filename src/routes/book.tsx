@@ -63,7 +63,7 @@ function Capa() {
           <div>
             <div className="flex items-center gap-3">
               <LogoGemini className="size-14 md:size-16" />
-              <p className="sobretitulo text-cobre-texto">Google Gemini</p>
+              <p className="sobretitulo text-cobre-texto"><span className="text-g-azul">G</span><span className="text-g-vermelho">o</span><span className="text-g-amarelo">o</span><span className="text-g-azul">g</span><span className="text-g-verde">l</span><span className="text-g-vermelho">e</span> <span className="acento">Gemini</span></p>
             </div>
             <h1 className="mt-4 text-6xl font-bold leading-[0.95] tracking-tight md:text-8xl">
               {BOOK.tituloAntes}

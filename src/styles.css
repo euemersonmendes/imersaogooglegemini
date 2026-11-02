@@ -71,6 +71,10 @@
   --color-voo: var(--voo);
   --color-nav: var(--nav);
   --color-branco: var(--branco);
+  --color-g-azul: var(--g-azul);
+  --color-g-vermelho: var(--g-vermelho);
+  --color-g-amarelo: var(--g-amarelo);
+  --color-g-verde: var(--g-verde);
 
   /* Telas ilustradas do Gemini */
   --color-mock-bg: var(--mock-bg);
@@ -130,6 +134,13 @@
   --nav: oklch(0.85 0.015 264); /* #C9CDD8 */
   --branco: oklch(1 0 0);
 
+  /* Cores clássicas do Google */
+  --g-azul: #4285f4;
+  --g-vermelho: #ea4335;
+  --g-amarelo: #fbbc05;
+  --g-verde: #34a853;
+  --faixa-google: linear-gradient(90deg, #4285f4 0 25%, #ea4335 25% 50%, #fbbc05 50% 75%, #34a853 75% 100%);
+
   --mock-bg: oklch(0.995 0.002 264);
   --mock-painel: oklch(0.965 0.006 264);
   --mock-linha: oklch(0.9 0.008 264);
@@ -175,10 +186,23 @@
   --chart-2: oklch(0.62 0.14 300); /* violeta Gemini */
   --chart-3: var(--verde);
   --chart-4: oklch(0.68 0.14 15); /* coral Gemini */
-  --chart-5: var(--apagado);
+  --chart-5: #fbbc05; /* amarelo Google */
 }
 
 @layer base {
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 4px;
+    z-index: 60;
+    background: var(--faixa-google);
+    pointer-events: none;
+  }
+  @media print {
+    body::before { display: none; }
+  }
+
   * {
     border-color: var(--color-border);
     scrollbar-width: thin;
@@ -219,11 +243,18 @@
   color: transparent;
 }
 
+/* Faixa das quatro cores do Google */
+@utility faixa-google {
+  background: var(--faixa-google);
+}
+
 /* Fundo do palco: luz azul-violeta suave no alto à direita */
 @utility palco-fundo {
   background:
     radial-gradient(60% 70% at 92% 8%, oklch(0.88 0.05 270 / 0.6), transparent 70%),
     radial-gradient(50% 60% at 10% 100%, oklch(0.93 0.03 252 / 0.8), transparent 70%),
+    radial-gradient(30% 35% at 0% 0%, rgba(251, 188, 5, 0.12), transparent 70%),
+    radial-gradient(30% 35% at 60% 100%, rgba(52, 168, 83, 0.1), transparent 70%),
     var(--areia);
 }
 
@@ -335,6 +366,8 @@
   background:
     radial-gradient(55% 80% at 100% 0%, rgba(145, 119, 199, 0.14), transparent 70%),
     radial-gradient(50% 70% at 0% 100%, rgba(71, 150, 227, 0.14), transparent 70%),
+    radial-gradient(30% 40% at 0% 0%, rgba(251, 188, 5, 0.1), transparent 70%),
+    radial-gradient(30% 40% at 70% 100%, rgba(52, 168, 83, 0.09), transparent 70%),
     repeating-linear-gradient(45deg, rgba(27, 114, 232, 0.025) 0 2px, transparent 2px 14px),
     #ffffff;
 }
@@ -346,6 +379,11 @@
   background: linear-gradient(90deg, transparent, #4796e3, #9177c7, #d96570, transparent);
 }
 .cert-selo {
-  background: conic-gradient(from 200deg, #4796e3, #9177c7, #d96570, #f2a60c, #4796e3);
+  background: conic-gradient(from 0deg, #4285f4 0 25%, #ea4335 25% 50%, #fbbc05 50% 75%, #34a853 75% 100%);
   box-shadow: 0 10px 30px -8px rgba(145, 119, 199, 0.55);
+}
+
+.cert-google {
+  height: 6px;
+  background: var(--faixa-google);
 }

@@ -15,6 +15,7 @@ import { Route as CertificadoRouteImport } from './routes/certificado'
 import { Route as ExercicioRouteImport } from './routes/exercicio'
 import { Route as AdminTurmasRouteImport } from './routes/admin_.turmas'
 import { Route as ApiExercicioRouteImport } from './routes/api/exercicio'
+import { Route as AdminAlunoIdRouteImport } from './routes/admin_.aluno.$id'
 import { Route as AdminTurmaCodigoRouteImport } from './routes/admin_.turma.$codigo'
 import { Route as LerSecaoPaginaRouteImport } from './routes/ler.$secao.$pagina'
 
@@ -48,6 +49,11 @@ const ApiExercicioRoute = ApiExercicioRouteImport.update({
   path: '/api/exercicio',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminAlunoIdRoute = AdminAlunoIdRouteImport.update({
+  id: '/admin_/aluno/$id',
+  path: '/admin/aluno/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminTurmaCodigoRoute = AdminTurmaCodigoRouteImport.update({
   id: '/admin_/turma/$codigo',
   path: '/admin/turma/$codigo',
@@ -66,6 +72,7 @@ export interface FileRoutesByFullPath {
   '/exercicio': typeof ExercicioRoute
   '/admin/turmas': typeof AdminTurmasRoute
   '/api/exercicio': typeof ApiExercicioRoute
+  '/admin/aluno/$id': typeof AdminAlunoIdRoute
   '/admin/turma/$codigo': typeof AdminTurmaCodigoRoute
   '/ler/$secao/$pagina': typeof LerSecaoPaginaRoute
 }
@@ -76,6 +83,7 @@ export interface FileRoutesByTo {
   '/exercicio': typeof ExercicioRoute
   '/admin/turmas': typeof AdminTurmasRoute
   '/api/exercicio': typeof ApiExercicioRoute
+  '/admin/aluno/$id': typeof AdminAlunoIdRoute
   '/admin/turma/$codigo': typeof AdminTurmaCodigoRoute
   '/ler/$secao/$pagina': typeof LerSecaoPaginaRoute
 }
@@ -87,6 +95,7 @@ export interface FileRoutesById {
   '/exercicio': typeof ExercicioRoute
   '/admin_/turmas': typeof AdminTurmasRoute
   '/api/exercicio': typeof ApiExercicioRoute
+  '/admin_/aluno/$id': typeof AdminAlunoIdRoute
   '/admin_/turma/$codigo': typeof AdminTurmaCodigoRoute
   '/ler/$secao/$pagina': typeof LerSecaoPaginaRoute
 }
@@ -99,6 +108,7 @@ export interface FileRouteTypes {
     | '/exercicio'
     | '/admin/turmas'
     | '/api/exercicio'
+    | '/admin/aluno/$id'
     | '/admin/turma/$codigo'
     | '/ler/$secao/$pagina'
   fileRoutesByTo: FileRoutesByTo
@@ -109,6 +119,7 @@ export interface FileRouteTypes {
     | '/exercicio'
     | '/admin/turmas'
     | '/api/exercicio'
+    | '/admin/aluno/$id'
     | '/admin/turma/$codigo'
     | '/ler/$secao/$pagina'
   id:
@@ -119,6 +130,7 @@ export interface FileRouteTypes {
     | '/exercicio'
     | '/admin_/turmas'
     | '/api/exercicio'
+    | '/admin_/aluno/$id'
     | '/admin_/turma/$codigo'
     | '/ler/$secao/$pagina'
   fileRoutesById: FileRoutesById
@@ -130,6 +142,7 @@ export interface RootRouteChildren {
   ExercicioRoute: typeof ExercicioRoute
   AdminTurmasRoute: typeof AdminTurmasRoute
   ApiExercicioRoute: typeof ApiExercicioRoute
+  AdminAlunoIdRoute: typeof AdminAlunoIdRoute
   AdminTurmaCodigoRoute: typeof AdminTurmaCodigoRoute
   LerSecaoPaginaRoute: typeof LerSecaoPaginaRoute
 }
@@ -178,6 +191,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiExercicioRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin_/aluno/$id': {
+      id: '/admin_/aluno/$id'
+      path: '/admin/aluno/$id'
+      fullPath: '/admin/aluno/$id'
+      preLoaderRoute: typeof AdminAlunoIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin_/turma/$codigo': {
       id: '/admin_/turma/$codigo'
       path: '/admin/turma/$codigo'
@@ -202,6 +222,7 @@ const rootRouteChildren: RootRouteChildren = {
   ExercicioRoute: ExercicioRoute,
   AdminTurmasRoute: AdminTurmasRoute,
   ApiExercicioRoute: ApiExercicioRoute,
+  AdminAlunoIdRoute: AdminAlunoIdRoute,
   AdminTurmaCodigoRoute: AdminTurmaCodigoRoute,
   LerSecaoPaginaRoute: LerSecaoPaginaRoute,
 }

@@ -14,6 +14,8 @@ export type Progresso = {
   /** Autoavaliações: chave "4.4/2" → índice → nota. */
   notas: Record<string, Record<number, number>>;
   ultimo?: { aula: string; passo: number };
+  /** Momento da última alteração (ms), para decidir entre cópia local e da conta. */
+  em?: number;
 };
 
 const VAZIO: Progresso = { concluidas: [], vistos: {}, checks: {}, notas: {} };
@@ -33,8 +35,10 @@ export async function vincularUsuario(id: string) {
   estado = null;
   const local = ler();
   const { data } = await supabase.from("progresso").select("dados").eq("user_id", id).maybeSingle();
-  if (data?.dados && Object.keys(data.dados as object).length) {
-    estado = { ...VAZIO, ...(data.dados as Partial<Progresso>) };
+  const remoto = data?.dados as Partial<Progresso> | undefined;
+  const localMaisNovo = local !== VAZIO && (local.em ?? 0) > (remoto?.em ?? 0);
+  if (remoto && Object.keys(remoto).length && !localMaisNovo) {
+    estado = { ...VAZIO, ...remoto };
     try {
       window.localStorage.setItem(chave(), JSON.stringify(estado));
     } catch {
@@ -93,7 +97,8 @@ function ler(): Progresso {
   return estado;
 }
 
-function gravar(novo: Progresso) {
+function gravar(dados: Progresso) {
+  const novo = { ...dados, em: Date.now() };
   estado = novo;
   try {
     window.localStorage.setItem(chave(), JSON.stringify(novo));

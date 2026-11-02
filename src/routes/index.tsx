@@ -155,7 +155,7 @@ function Capa() {
           </div>
           <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {modulos.map((m, mi) => (
-              <div key={m.n} className="rounded-2xl border border-linha bg-branco p-5">
+              <div key={m.id} className="rounded-2xl border border-linha bg-branco p-5">
                 <p className="sobretitulo text-cobre-texto">Módulo {mi + 1}</p>
                 <h3 className="mt-1 font-bold leading-snug">{m.nomeCompleto}</h3>
                 <ul className="mt-3 flex flex-col">

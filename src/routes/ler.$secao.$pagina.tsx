@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { createFileRoute, Link, notFound, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, redirect, useNavigate } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Check, Menu, Minimize2, MonitorPlay, X } from "lucide-react";
 
 import { BOOK, ROTULO_TIPO, acharAula, aulaVizinha, modulos, passosDa, type AulaInfo } from "@/content/imersao";
@@ -12,7 +12,7 @@ export const Route = createFileRoute("/ler/$secao/$pagina")({
   loader: ({ params }) => {
     const info = acharAula(params.secao);
     const i = Number(params.pagina);
-    if (!info || !Number.isInteger(i) || i < 1 || i > passosDa(info.aula).length) throw notFound();
+    if (!info || !Number.isInteger(i) || i < 1 || i > passosDa(info.aula).length) throw redirect({ to: "/" });
     return { n: info.aula.n, i };
   },
   head: ({ params }) => {

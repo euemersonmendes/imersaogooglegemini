@@ -97,7 +97,7 @@ function Certificado() {
         ) : !cert ? (
           <Aviso titulo="Conclua todas as aulas" texto={`Você concluiu ${feitas} de ${TOTAL_AULAS_CURSO} aulas. O certificado é liberado automaticamente quando todas estiverem concluídas.`} />
         ) : (
-          <CartaoCertificado userId={sessao.user?.id ?? ""} nome={sessao.nome} codigo={cert.codigo} emitidoEm={cert.emitido_em} cartaoRef={cartao} />
+          <div className="mt-8"><CartaoCertificado userId={sessao.user?.id ?? ""} nome={sessao.nome} codigo={cert.codigo} emitidoEm={cert.emitido_em} cartaoRef={cartao} /></div>
         )}
       </div>
     </div>

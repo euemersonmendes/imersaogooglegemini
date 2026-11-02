@@ -46,10 +46,17 @@ function Capa() {
         </div>
         <div className="mt-6 grid gap-8 md:grid-cols-[1.2fr_1fr] md:items-end">
           <div>
-            <h1 className="text-6xl font-bold leading-[0.95] tracking-tight md:text-8xl">
+            <div className="flex items-center gap-3">
+              <LogoGemini className="size-14 md:size-16" />
+              <p className="sobretitulo text-cobre-texto">Google Gemini</p>
+            </div>
+            <h1 className="mt-4 text-6xl font-bold leading-[0.95] tracking-tight md:text-8xl">
               {BOOK.tituloAntes}
               <br />
-              <span className="text-cobre-texto">{BOOK.tituloAcento}</span>
+              <span className="text-cobre-texto">
+                {BOOK.tituloAcento}
+                <LogoGemini className="ml-2 inline-block size-[0.72em] -translate-y-[0.06em]" />
+              </span>
             </h1>
             <p className="mt-6 hidden max-w-xl text-lg text-apagado md:block">{BOOK.chamada}</p>
             <p className="mt-6 max-w-xl text-lg text-apagado md:hidden">{BOOK.chamadaCelular}</p>

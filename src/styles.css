@@ -280,3 +280,22 @@
     display: none;
   }
 }
+
+/* Barra de rolagem fina e visível sobre fundo escuro (menu lateral) */
+@utility barra-lateral {
+  scrollbar-width: thin;
+  scrollbar-color: var(--cobre) transparent;
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--escuro-borda);
+    border-radius: 999px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--cobre);
+  }
+}

@@ -34,9 +34,26 @@ export function CartaoCertificado({ userId, nome, codigo, emitidoEm, cartaoRef }
       </h1>
       <p className="mt-8 text-apagado">Certificamos que</p>
       <p className="mt-2 text-4xl font-semibold tracking-tight md:text-5xl">{nome}</p>
-      <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-apagado">
-        concluiu a Imersão Google Gemini para micro e pequenos empresários, com carga horária de {BOOK.cargaHoraria}, abrangendo {modulos.length} módulos e {TOTAL_AULAS_CURSO} aulas sobre o uso da inteligência artificial no financeiro, fluxo de caixa, marketing, vendas, compras, gestão de pessoas e atendimento.
-      </p>
+        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-apagado">
+          concluiu a Imersão Google Gemini para micro e pequenos empresários, com carga horária de {BOOK.cargaHoraria}, abrangendo {modulos.length} módulos e {TOTAL_AULAS_CURSO} aulas sobre o uso da inteligência artificial no financeiro, fluxo de caixa, marketing, vendas, compras, gestão de pessoas e atendimento.
+        </p>
+      <div className="mt-10 border-t border-linha pt-6">
+        <p className="text-center text-xs font-semibold uppercase tracking-[0.25em] text-cobre-texto">Grade de aulas da imersão</p>
+        <div className="mt-5 grid gap-x-6 gap-y-5 text-left text-[11px] leading-snug text-apagado sm:grid-cols-2 md:grid-cols-5">
+          {modulos.map((m, i) => (
+            <div key={m.id}>
+              <p className="text-tinta">Módulo {i + 1} · {m.nome}</p>
+              <ul className="mt-1.5 space-y-1">
+                {m.aulas.map((a) => (
+                  <li key={a.n} className="whitespace-nowrap">
+                    <span className="font-mono font-semibold text-cobre-texto">{a.n}</span> {a.curto}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
       <div className="mx-auto mt-12 grid max-w-2xl gap-8 text-sm sm:grid-cols-2">
         <div>
           <div className="mx-auto w-48 border-t border-tinta pt-2 font-semibold">{BOOK.instrutor}</div>

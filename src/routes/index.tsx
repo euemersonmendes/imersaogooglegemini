@@ -116,7 +116,7 @@ function Apresentacao() {
         {/* O que você vai ver */}
         <section aria-labelledby="o-que-ver" className="mt-16">
           <p className="sobretitulo text-cobre-texto">O programa</p>
-          <h2 id="o-que-ver" className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">O que você vai ver no curso</h2>
+          <h2 id="o-que-ver" className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">O que você vai ver na imersão</h2>
           <p className="mt-3 max-w-2xl text-apagado">Cinco módulos pensados para o dono do negócio: cada aula resolve uma tarefa real da empresa com o Gemini.</p>
           <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {modulos.map((m, mi) => (

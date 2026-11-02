@@ -7,6 +7,19 @@ describe("imersão", () => {
     const ns = aulas.map((a) => a.aula.n);
     expect(new Set(ns).size).toBe(ns.length);
   });
+  it("cada aula termina com o exercício prático do negócio", () => {
+    for (const a of aulas) {
+      const fim = a.aula.passos.at(-1);
+      expect(fim?.tipo, `aula ${a.aula.n} não termina com o passo resultado`).toBe("resultado");
+      if (fim?.tipo !== "resultado") continue;
+      const { exercicio } = fim;
+      expect(exercicio, `aula ${a.aula.n} sem exercício prático`).toBeDefined();
+      expect(exercicio!.situacao.length).toBeGreaterThan(10);
+      expect(exercicio!.tarefa.length).toBeGreaterThanOrEqual(2);
+      expect(exercicio!.entrega.length).toBeGreaterThan(5);
+      expect(exercicio!.tarefa.some((t) => t.includes("[[")), `aula ${a.aula.n} sem lacuna para os dados do aluno`).toBe(true);
+    }
+  });
   it("o passo 1 de toda aula é o Objetivo", () => {
     for (const a of aulas) expect(passosDa(a.aula)[0]!.tipo).toBe("objetivo");
   });

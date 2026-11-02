@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { useMutation } from "@tanstack/react-query";
-import { Award, Trash2 } from "lucide-react";
+import { Award, FileDown, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 
 import { definirCertificado, removerAluno, type AlunoStatus } from "@/lib/conta.functions";
 import { TOTAL_AULAS_CURSO } from "@/lib/certificado";
 import { cn } from "@/lib/utils";
+import { PdfCertificado } from "@/components/admin/PdfCertificado";
 
 export function dataCurta(d: string | null) {
   return d ? new Date(d).toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit", year: "2-digit", hour: "2-digit", minute: "2-digit" }) : "—";

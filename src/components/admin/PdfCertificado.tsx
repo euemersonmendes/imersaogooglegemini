@@ -50,7 +50,7 @@ export function PdfCertificado({ aluno, aoFechar }: { aluno: AlunoStatus; aoFech
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto barra-clara bg-preto/60 p-4 md:p-8" onClick={aoFechar}>
+    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto barra-clara bg-black/70 p-4 md:p-8" onClick={aoFechar}>
       <div className="w-full max-w-4xl" onClick={(e) => e.stopPropagation()}>
         <div className="mt-2 mb-4 flex items-center gap-3 rounded-2xl border border-linha bg-branco p-3 sombra">
           <p className="text-sm font-semibold">Certificado de {aluno.nome || aluno.email}</p>

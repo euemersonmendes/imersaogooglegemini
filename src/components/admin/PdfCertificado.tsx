@@ -17,6 +17,7 @@ export function PdfCertificado({ aluno, aoFechar }: { aluno: AlunoStatus; aoFech
   const [cert, setCert] = useState<Cert | undefined>(undefined);
   const [gerando, setGerando] = useState(false);
   const cartao = useRef<HTMLDivElement>(null);
+  const verso = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let vivo = true;
@@ -41,7 +42,7 @@ export function PdfCertificado({ aluno, aoFechar }: { aluno: AlunoStatus; aoFech
     if (!cartao.current) return;
     setGerando(true);
     try {
-      await baixarPdf(cartao.current, aluno.nome || aluno.email);
+      await baixarPdf(cartao.current, aluno.nome || aluno.email, undefined, verso.current);
       toast.success("PDF do certificado baixado.");
     } catch {
       toast.error("Não foi possível gerar o arquivo. Tente de novo.");
@@ -57,7 +58,7 @@ export function PdfCertificado({ aluno, aoFechar }: { aluno: AlunoStatus; aoFech
           <p className="text-sm font-semibold">Certificado de {aluno.nome || aluno.email}</p>
           {cert === undefined && <span className="flex items-center gap-2 text-xs text-apagado"><Loader className="size-3.5 animate-spin" /> Preparando…</span>}
           <div className="ml-auto flex flex-wrap items-center gap-2">
-            {cert && !cert.revogado && <CompartilharCertificado cartaoRef={cartao} nome={aluno.nome || aluno.email} codigo={cert.codigo} disabled={gerando} />}
+            {cert && !cert.revogado && <CompartilharCertificado cartaoRef={cartao} versoRef={verso} nome={aluno.nome || aluno.email} codigo={cert.codigo} disabled={gerando} />}
             {cert && !cert.revogado && (
               <button type="button" disabled={gerando} onClick={() => void baixar()} className="btn-tinta flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold">
                 {gerando ? <Loader className="size-4 animate-spin" /> : <FileDown className="size-4" />} Baixar PDF
@@ -71,7 +72,7 @@ export function PdfCertificado({ aluno, aoFechar }: { aluno: AlunoStatus; aoFech
         ) : cert === null ? (
           <p className="rounded-2xl border border-linha bg-branco p-6 text-apagado">Não foi possível carregar o certificado.</p>
         ) : !cert ? null : (
-          <CartaoCertificado userId={aluno.id} nome={aluno.nome || aluno.email} codigo={cert.codigo} emitidoEm={cert.emitido_em} cartaoRef={cartao} />
+          <CartaoCertificado userId={aluno.id} nome={aluno.nome || aluno.email} codigo={cert.codigo} emitidoEm={cert.emitido_em} cartaoRef={cartao} versoRef={verso} />
         )}
       </div>
     </div>

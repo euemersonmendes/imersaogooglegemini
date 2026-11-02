@@ -117,11 +117,13 @@ export type PassoAvaliacao = Base & {
   itens: { nome: string; sub: string; sugestao: string }[];
 };
 
-/** Fecho da aula: faça na sua conta + checklist + concluir. */
+/** Fecho da aula: faça na sua conta + exercício prático do negócio + checklist + concluir. */
 export type PassoResultado = Base & {
   tipo: "resultado";
   esperado: string[];
   confira: string[];
+  /** Exercício prático aplicado à gestão do negócio do aluno (obrigatório em toda aula). */
+  exercicio?: { situacao: string; tarefa: string[]; entrega: string };
   visual?: { tipo: "tela"; tela: TelaId; legenda: string } | { tipo: "lista"; legenda: string; itens: string[] };
 };
 

@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { KeyRound, Loader } from "lucide-react";
 
+import { LogoGemini } from "@/components/imersao/LogoGemini";
+
 import { supabase } from "@/integrations/supabase/client";
 import { cadastrarAluno } from "@/lib/conta.functions";
 import { BOOK } from "@/content/imersao";

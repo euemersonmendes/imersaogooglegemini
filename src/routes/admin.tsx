@@ -2,8 +2,8 @@ import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { ArrowLeft, Loader, Search, Trash2, UserPlus }
-import { LinhaAluno } from "@/components/admin/LinhaAluno"; from "lucide-react";
+import { ArrowLeft, Loader, Search, Trash2, UserPlus } from "lucide-react";
+import { LinhaAluno } from "@/components/admin/LinhaAluno";
 import { toast } from "sonner";
 
 import { criarAlunoAdmin, listarAlunos, salvarTurma } from "@/lib/conta.functions";

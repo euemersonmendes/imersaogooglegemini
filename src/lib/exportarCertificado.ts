@@ -34,6 +34,6 @@ export async function baixarPdf(el: HTMLElement, nome: string) {
   const pw = 297, ph = 210, m = 10;
   const ratio = Math.min((pw - 2 * m) / canvas.width, (ph - 2 * m) / canvas.height);
   const w = canvas.width * ratio, h = canvas.height * ratio;
-  pdf.addImage(canvas.toDataURL("image/png"), "PNG", (pw - w) / 2, (ph - h) / 2, w, h);
+  pdf.addImage(canvas.toDataURL("image/jpeg", 0.92), "JPEG", (pw - w) / 2, (ph - h) / 2, w, h, undefined, "FAST");
   baixar(pdf.output("blob"), nomeArquivo(nome, "pdf"));
 }

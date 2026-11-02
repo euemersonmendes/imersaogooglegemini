@@ -64,6 +64,7 @@ function Painel() {
         </Link>
         <h1 className="mt-4 text-4xl font-bold tracking-tight">Administração</h1>
         <p className="mt-1 text-apagado">Instrutor responsável: {BOOK.instrutor}</p>
+        <Link to="/admin/metricas" className="btn-tinta mt-4 inline-block rounded-xl px-5 py-2.5 text-sm font-semibold">Ver métricas de impacto →</Link>
         <AvisosConclusao alunos={todos} />
 
         <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4">

@@ -15,6 +15,7 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as BookRouteImport } from './routes/book'
 import { Route as CertificadoRouteImport } from './routes/certificado'
 import { Route as ExercicioRouteImport } from './routes/exercicio'
+import { Route as AdminMetricasRouteImport } from './routes/admin_.metricas'
 import { Route as AdminTurmasRouteImport } from './routes/admin_.turmas'
 import { Route as ApiExercicioRouteImport } from './routes/api/exercicio'
 import { Route as ValidarCodigoRouteImport } from './routes/validar.$codigo'
@@ -50,6 +51,11 @@ const CertificadoRoute = CertificadoRouteImport.update({
 const ExercicioRoute = ExercicioRouteImport.update({
   id: '/exercicio',
   path: '/exercicio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminMetricasRoute = AdminMetricasRouteImport.update({
+  id: '/admin_/metricas',
+  path: '/admin/metricas',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminTurmasRoute = AdminTurmasRouteImport.update({
@@ -90,6 +96,7 @@ export interface FileRoutesByFullPath {
   '/book': typeof BookRoute
   '/certificado': typeof CertificadoRoute
   '/exercicio': typeof ExercicioRoute
+  '/admin/metricas': typeof AdminMetricasRoute
   '/admin/turmas': typeof AdminTurmasRoute
   '/api/exercicio': typeof ApiExercicioRoute
   '/validar/$codigo': typeof ValidarCodigoRoute
@@ -104,6 +111,7 @@ export interface FileRoutesByTo {
   '/book': typeof BookRoute
   '/certificado': typeof CertificadoRoute
   '/exercicio': typeof ExercicioRoute
+  '/admin/metricas': typeof AdminMetricasRoute
   '/admin/turmas': typeof AdminTurmasRoute
   '/api/exercicio': typeof ApiExercicioRoute
   '/validar/$codigo': typeof ValidarCodigoRoute
@@ -119,6 +127,7 @@ export interface FileRoutesById {
   '/book': typeof BookRoute
   '/certificado': typeof CertificadoRoute
   '/exercicio': typeof ExercicioRoute
+  '/admin_/metricas': typeof AdminMetricasRoute
   '/admin_/turmas': typeof AdminTurmasRoute
   '/api/exercicio': typeof ApiExercicioRoute
   '/validar/$codigo': typeof ValidarCodigoRoute
@@ -135,6 +144,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/certificado'
     | '/exercicio'
+    | '/admin/metricas'
     | '/admin/turmas'
     | '/api/exercicio'
     | '/validar/$codigo'
@@ -149,6 +159,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/certificado'
     | '/exercicio'
+    | '/admin/metricas'
     | '/admin/turmas'
     | '/api/exercicio'
     | '/validar/$codigo'
@@ -163,6 +174,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/certificado'
     | '/exercicio'
+    | '/admin_/metricas'
     | '/admin_/turmas'
     | '/api/exercicio'
     | '/validar/$codigo'
@@ -178,6 +190,7 @@ export interface RootRouteChildren {
   BookRoute: typeof BookRoute
   CertificadoRoute: typeof CertificadoRoute
   ExercicioRoute: typeof ExercicioRoute
+  AdminMetricasRoute: typeof AdminMetricasRoute
   AdminTurmasRoute: typeof AdminTurmasRoute
   ApiExercicioRoute: typeof ApiExercicioRoute
   ValidarCodigoRoute: typeof ValidarCodigoRoute
@@ -228,6 +241,13 @@ declare module '@tanstack/react-router' {
       path: '/exercicio'
       fullPath: '/exercicio'
       preLoaderRoute: typeof ExercicioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin_/metricas': {
+      id: '/admin_/metricas'
+      path: '/admin/metricas'
+      fullPath: '/admin/metricas'
+      preLoaderRoute: typeof AdminMetricasRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin_/turmas': {
@@ -282,6 +302,7 @@ const rootRouteChildren: RootRouteChildren = {
   BookRoute: BookRoute,
   CertificadoRoute: CertificadoRoute,
   ExercicioRoute: ExercicioRoute,
+  AdminMetricasRoute: AdminMetricasRoute,
   AdminTurmasRoute: AdminTurmasRoute,
   ApiExercicioRoute: ApiExercicioRoute,
   ValidarCodigoRoute: ValidarCodigoRoute,

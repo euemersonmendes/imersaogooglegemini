@@ -52,15 +52,33 @@ export function desvincularUsuario() {
   ouvintes.forEach((o) => o());
 }
 
+let pendente: { id: string; p: Progresso } | null = null;
+
+function descarregar() {
+  clearTimeout(timer);
+  if (!pendente) return;
+  const { id, p } = pendente;
+  pendente = null;
+  void supabase
+    .from("progresso")
+    .upsert({ user_id: id, dados: p as never, concluidas: p.concluidas.length, atualizado_em: new Date().toISOString() }, { onConflict: "user_id" })
+    .then(({ error }) => {
+      if (error) console.error("Falha ao salvar progresso", error.message);
+    });
+}
+
+if (typeof window !== "undefined") {
+  window.addEventListener("pagehide", descarregar);
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") descarregar();
+  });
+}
+
 function enviar(p: Progresso) {
   if (!usuario) return;
-  const id = usuario;
+  pendente = { id: usuario, p };
   clearTimeout(timer);
-  timer = setTimeout(() => {
-    void supabase
-      .from("progresso")
-      .upsert({ user_id: id, dados: p as never, concluidas: p.concluidas.length, atualizado_em: new Date().toISOString() }, { onConflict: "user_id" });
-  }, 800);
+  timer = setTimeout(descarregar, 400);
 }
 
 function ler(): Progresso {

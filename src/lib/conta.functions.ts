@@ -98,7 +98,7 @@ export const listarAlunos = createServerFn({ method: "GET" })
         concluidas: pr?.concluidas ?? 0,
         ultima_aula: dados.ultimo?.aula ?? null,
         atualizado_em: pr?.atualizado_em ?? null,
-        certificado: c ? (c.revogado ? "revogado" : "emitido") : "nenhum",
+        certificado: c ? (c.revogado ? "revogado" : "emitido") : (pr?.concluidas ?? 0) >= 20 ? "emitido" : "nenhum",
         admin: !!papeis.data?.some((r) => r.user_id === p.id),
       };
     });

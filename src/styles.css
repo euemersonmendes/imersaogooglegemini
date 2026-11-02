@@ -292,7 +292,7 @@
     background: transparent;
   }
   &::-webkit-scrollbar-thumb {
-    background: var(--escuro-borda);
+    background: color-mix(in oklab, var(--cobre) 40%, transparent);
     border-radius: 999px;
   }
   &::-webkit-scrollbar-thumb:hover {

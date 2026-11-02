@@ -50,7 +50,7 @@ function Lateral({ atual, aoFechar, aoRecolher }: { atual: string; aoFechar?: ()
   return (
     <nav className="flex h-full flex-col bg-tinta px-4 py-6 text-escuro-texto">
       <div className="flex items-center justify-between px-2">
-        <Link to="/" className="text-lg font-bold text-branco">
+        <Link to="/book" className="text-lg font-bold text-branco">
           {BOOK.tituloAntes} <span className="text-cobre">{BOOK.tituloAcento}</span>
         </Link>
         {aoRecolher && (
@@ -302,7 +302,7 @@ function Leitor() {
               {!ultimo ? "Próximo" : `Concluir e ir para ${destinoProx.secao}`} <ArrowRight className="size-4" />
             </Link>
           ) : (
-            <Link to="/" className="btn-tinta rounded-xl px-4 py-2.5 text-sm font-semibold">
+            <Link to="/book" className="btn-tinta rounded-xl px-4 py-2.5 text-sm font-semibold">
               Voltar à capa
             </Link>
           )}

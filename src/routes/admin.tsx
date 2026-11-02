@@ -38,7 +38,7 @@ function Admin() {
       <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-areia px-5 text-center text-tinta">
         <h1 className="text-2xl font-bold">Área do administrador</h1>
         <p className="text-apagado">Seu acesso não tem permissão para esta página.</p>
-        <Link to="/" className="btn-tinta rounded-xl px-5 py-2.5 font-semibold">Voltar à capa</Link>
+        <Link to="/book" className="btn-tinta rounded-xl px-5 py-2.5 font-semibold">Voltar à capa</Link>
       </div>
     );
   return <Painel />;
@@ -59,7 +59,7 @@ function Painel() {
   return (
     <div className="min-h-screen bg-areia text-tinta">
       <div className="mx-auto max-w-7xl px-5 py-8 md:px-10">
-        <Link to="/" className="selo flex items-center gap-2 text-apagado hover:text-cobre-texto">
+        <Link to="/book" className="selo flex items-center gap-2 text-apagado hover:text-cobre-texto">
           <ArrowLeft className="size-3.5" /> Voltar à capa
         </Link>
         <h1 className="mt-4 text-4xl font-bold tracking-tight">Administração</h1>

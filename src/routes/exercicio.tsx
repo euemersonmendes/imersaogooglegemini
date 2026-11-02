@@ -73,7 +73,7 @@ function Exercicio() {
   return (
     <div className="min-h-screen bg-areia px-5 py-10 text-tinta md:px-10">
       <div className="mx-auto max-w-3xl">
-        <Link to="/" className="selo text-apagado hover:text-cobre-texto">
+        <Link to="/book" className="selo text-apagado hover:text-cobre-texto">
           ← Imersão Gemini
         </Link>
         <p className="sobretitulo mt-8">Exercício personalizado</p>

@@ -74,7 +74,7 @@ function Certificado() {
     <div className="min-h-screen bg-areia text-tinta">
       <div className="mx-auto max-w-5xl px-5 py-8 md:px-10 print:p-0">
         <div className="flex flex-wrap items-center gap-3 print:hidden">
-          <Link to="/" className="selo flex items-center gap-2 text-apagado hover:text-cobre-texto"><ArrowLeft className="size-3.5" /> Voltar à capa</Link>
+          <Link to="/book" className="selo flex items-center gap-2 text-apagado hover:text-cobre-texto"><ArrowLeft className="size-3.5" /> Voltar à capa</Link>
           {cert && liberado && (
             <div className="ml-auto flex flex-wrap gap-2">
               <button type="button" disabled={!!gerando} onClick={() => void exportar("pdf")} className="btn-tinta flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold">

@@ -21,6 +21,7 @@ export function AcessoUsuario() {
   const [codigo, setCodigo] = useState("");
   const [erro, setErro] = useState("");
   const [enviando, setEnviando] = useState(false);
+  const router = useRouter();
 
   async function enviar(e: React.FormEvent) {
     e.preventDefault();
@@ -33,6 +34,7 @@ export function AcessoUsuario() {
       }
       const { error } = await supabase.auth.signInWithPassword({ email: email.trim().toLowerCase(), password: senha });
       if (error) setErro("E-mail ou senha incorretos.");
+      else void router.navigate({ to: "/book" });
     } catch {
       setErro("Não foi possível entrar agora. Tente de novo.");
     } finally {

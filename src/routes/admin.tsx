@@ -4,6 +4,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { ArrowLeft, Loader, Search, Trash2, UserPlus } from "lucide-react";
 import { LinhaAluno } from "@/components/admin/LinhaAluno";
+import { AvisosConclusao } from "@/components/admin/AvisosConclusao";
 import { toast } from "sonner";
 
 import { criarAlunoAdmin, listarAlunos, salvarTurma } from "@/lib/conta.functions";
@@ -46,7 +47,7 @@ function Admin() {
 function Painel() {
   const qc = useQueryClient();
   const listar = useServerFn(listarAlunos);
-  const { data, isLoading, error } = useQuery({ queryKey: ["admin-alunos"], queryFn: () => listar() });
+  const { data, isLoading, error } = useQuery({ queryKey: ["admin-alunos"], queryFn: () => listar(), refetchInterval: 60_000 });
   const [busca, setBusca] = useState("");
   const atualizar = () => qc.invalidateQueries({ queryKey: ["admin-alunos"] });
 
@@ -63,6 +64,7 @@ function Painel() {
         </Link>
         <h1 className="mt-4 text-4xl font-bold tracking-tight">Administração</h1>
         <p className="mt-1 text-apagado">Instrutor responsável: {BOOK.instrutor}</p>
+        <AvisosConclusao alunos={todos} />
 
         <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4">
           {[

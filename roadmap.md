@@ -5,3 +5,4 @@
 - [x] Acesso real com código IMERSAO-GEMINI aparece no painel com progresso
 - [x] Tela de turmas no painel (criar, editar, apagar, progresso por código)
 - [x] Logo do Gemini na tela de login
+- [ ] Criar admin euemersonmendes@gmail.com

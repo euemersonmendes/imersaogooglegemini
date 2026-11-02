@@ -6,7 +6,7 @@ import { sair } from "@/lib/sessao";
 import { BOOK, ROTULO_TIPO, acharAula, aulaVizinha, modulos, passosDa, type AulaInfo } from "@/content/imersao";
 import { CorpoPasso } from "@/components/imersao/Passos";
 import { Glifo } from "@/components/imersao/Glifo";
-import { alternarConcluida, marcarVisto, useProgresso, zerarProgresso } from "@/lib/progresso";
+import { marcarVisto, useProgresso, zerarProgresso } from "@/lib/progresso";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/ler/$secao/$pagina")({
@@ -159,7 +159,6 @@ function Leitor() {
   const titulo = passo.titulo;
   const enfase = "tituloEnfase" in passo ? passo.tituloEnfase : undefined;
   const ultimo = i === passos.length;
-  const feita = prog.concluidas.includes(n);
 
   function alternarTelao(ligar = !telao) {
     setTelao(ligar);
@@ -182,7 +181,6 @@ function Leitor() {
       const alvo = e.target as HTMLElement;
       if (alvo.closest("input, textarea, select, [contenteditable]")) return;
       if (e.key === "ArrowRight" && destinoProx) {
-        if (ultimo) alternarConcluida(n, true);
         navigate({ to: "/ler/$secao/$pagina", params: destinoProx });
       } else if (e.key === "ArrowLeft" && destinoAnt) navigate({ to: "/ler/$secao/$pagina", params: destinoAnt });
       else if (e.key.toLowerCase() === "t") alternarTelao();

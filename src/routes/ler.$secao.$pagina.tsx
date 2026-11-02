@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { createFileRoute, Link, redirect, useNavigate } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight, Check, Menu, Minimize2, MonitorPlay, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Menu, Minimize2, MonitorPlay, RotateCcw, X } from "lucide-react";
 
 import { BOOK, ROTULO_TIPO, acharAula, aulaVizinha, modulos, passosDa, type AulaInfo } from "@/content/imersao";
 import { CorpoPasso } from "@/components/imersao/Passos";
 import { Glifo } from "@/components/imersao/Glifo";
-import { alternarConcluida, marcarVisto, useProgresso } from "@/lib/progresso";
+import { alternarConcluida, marcarVisto, useProgresso, zerarProgresso } from "@/lib/progresso";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/ler/$secao/$pagina")({

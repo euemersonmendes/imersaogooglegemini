@@ -35,6 +35,48 @@ export type Database = {
         }
         Relationships: []
       }
+      nps_respostas: {
+        Row: {
+          aplicacao: number | null
+          autoriza_depoimento: boolean
+          conteudo: number | null
+          criado_em: string
+          depoimento: string | null
+          instrutor: number | null
+          melhorar: string | null
+          motivo: string | null
+          nota: number
+          plataforma: number | null
+          user_id: string
+        }
+        Insert: {
+          aplicacao?: number | null
+          autoriza_depoimento?: boolean
+          conteudo?: number | null
+          criado_em?: string
+          depoimento?: string | null
+          instrutor?: number | null
+          melhorar?: string | null
+          motivo?: string | null
+          nota: number
+          plataforma?: number | null
+          user_id: string
+        }
+        Update: {
+          aplicacao?: number | null
+          autoriza_depoimento?: boolean
+          conteudo?: number | null
+          criado_em?: string
+          depoimento?: string | null
+          instrutor?: number | null
+          melhorar?: string | null
+          motivo?: string | null
+          nota?: number
+          plataforma?: number | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           criado_em: string

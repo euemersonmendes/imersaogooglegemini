@@ -6,6 +6,7 @@ import { listarAlunos } from "@/lib/conta.functions";
 import { calcularMetricas } from "@/lib/metricas";
 import { TOTAL_AULAS_CURSO } from "@/lib/certificado";
 import { useSessao } from "@/lib/sessao";
+import { ResultadoNps } from "@/components/admin/ResultadoNps";
 
 export const Route = createFileRoute("/admin_/metricas")({
   head: () => ({
@@ -84,6 +85,8 @@ function Painel() {
             </div>
           ))}
         </div>
+
+        <ResultadoNps />
 
         <section className="mt-8 rounded-2xl border border-linha bg-branco p-6">
           <h2 className="text-lg font-bold">Funil da imersão</h2>

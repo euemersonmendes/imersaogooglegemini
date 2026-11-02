@@ -59,6 +59,9 @@ function Capa() {
             <span className="flex items-center gap-1 font-semibold text-cobre-texto">Ver certificado <ArrowRight className="size-4" /></span>
           </Link>
         )}
+        {feitas >= total && (
+          <Link to="/pesquisa" className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-cobre-texto hover:underline">Responder a pesquisa de satisfação <ArrowRight className="size-4" /></Link>
+        )}
         <div className="mt-6 grid gap-8 md:grid-cols-[1.2fr_1fr] md:items-end">
           <div>
             <div className="flex items-center gap-3">

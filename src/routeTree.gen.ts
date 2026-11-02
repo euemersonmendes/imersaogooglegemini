@@ -15,6 +15,7 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as BookRouteImport } from './routes/book'
 import { Route as CertificadoRouteImport } from './routes/certificado'
 import { Route as ExercicioRouteImport } from './routes/exercicio'
+import { Route as PesquisaRouteImport } from './routes/pesquisa'
 import { Route as AdminMetricasRouteImport } from './routes/admin_.metricas'
 import { Route as AdminTurmasRouteImport } from './routes/admin_.turmas'
 import { Route as ApiExercicioRouteImport } from './routes/api/exercicio'
@@ -52,6 +53,11 @@ const CertificadoRoute = CertificadoRouteImport.update({
 const ExercicioRoute = ExercicioRouteImport.update({
   id: '/exercicio',
   path: '/exercicio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PesquisaRoute = PesquisaRouteImport.update({
+  id: '/pesquisa',
+  path: '/pesquisa',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminMetricasRoute = AdminMetricasRouteImport.update({
@@ -102,6 +108,7 @@ export interface FileRoutesByFullPath {
   '/book': typeof BookRoute
   '/certificado': typeof CertificadoRoute
   '/exercicio': typeof ExercicioRoute
+  '/pesquisa': typeof PesquisaRoute
   '/admin/metricas': typeof AdminMetricasRoute
   '/admin/turmas': typeof AdminTurmasRoute
   '/api/exercicio': typeof ApiExercicioRoute
@@ -118,6 +125,7 @@ export interface FileRoutesByTo {
   '/book': typeof BookRoute
   '/certificado': typeof CertificadoRoute
   '/exercicio': typeof ExercicioRoute
+  '/pesquisa': typeof PesquisaRoute
   '/admin/metricas': typeof AdminMetricasRoute
   '/admin/turmas': typeof AdminTurmasRoute
   '/api/exercicio': typeof ApiExercicioRoute
@@ -135,6 +143,7 @@ export interface FileRoutesById {
   '/book': typeof BookRoute
   '/certificado': typeof CertificadoRoute
   '/exercicio': typeof ExercicioRoute
+  '/pesquisa': typeof PesquisaRoute
   '/admin_/metricas': typeof AdminMetricasRoute
   '/admin_/turmas': typeof AdminTurmasRoute
   '/api/exercicio': typeof ApiExercicioRoute
@@ -153,6 +162,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/certificado'
     | '/exercicio'
+    | '/pesquisa'
     | '/admin/metricas'
     | '/admin/turmas'
     | '/api/exercicio'
@@ -169,6 +179,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/certificado'
     | '/exercicio'
+    | '/pesquisa'
     | '/admin/metricas'
     | '/admin/turmas'
     | '/api/exercicio'
@@ -185,6 +196,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/certificado'
     | '/exercicio'
+    | '/pesquisa'
     | '/admin_/metricas'
     | '/admin_/turmas'
     | '/api/exercicio'
@@ -202,6 +214,7 @@ export interface RootRouteChildren {
   BookRoute: typeof BookRoute
   CertificadoRoute: typeof CertificadoRoute
   ExercicioRoute: typeof ExercicioRoute
+  PesquisaRoute: typeof PesquisaRoute
   AdminMetricasRoute: typeof AdminMetricasRoute
   AdminTurmasRoute: typeof AdminTurmasRoute
   ApiExercicioRoute: typeof ApiExercicioRoute
@@ -254,6 +267,13 @@ declare module '@tanstack/react-router' {
       path: '/exercicio'
       fullPath: '/exercicio'
       preLoaderRoute: typeof ExercicioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pesquisa': {
+      id: '/pesquisa'
+      path: '/pesquisa'
+      fullPath: '/pesquisa'
+      preLoaderRoute: typeof PesquisaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin_/metricas': {
@@ -322,6 +342,7 @@ const rootRouteChildren: RootRouteChildren = {
   BookRoute: BookRoute,
   CertificadoRoute: CertificadoRoute,
   ExercicioRoute: ExercicioRoute,
+  PesquisaRoute: PesquisaRoute,
   AdminMetricasRoute: AdminMetricasRoute,
   AdminTurmasRoute: AdminTurmasRoute,
   ApiExercicioRoute: ApiExercicioRoute,

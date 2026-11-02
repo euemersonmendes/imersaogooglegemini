@@ -29,6 +29,13 @@
       "when": 1793627623289,
       "tag": "0003_zerar_certificado_ao_reiniciar_trigger",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1793627989976,
+      "tag": "0004_pesquisa_nps",
+      "breakpoints": true
     }
   ]
 }

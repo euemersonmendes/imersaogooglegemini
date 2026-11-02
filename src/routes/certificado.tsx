@@ -100,7 +100,13 @@ function Certificado() {
         ) : !cert ? (
           <Aviso titulo="Conclua todas as aulas" texto={`Você concluiu ${feitas} de ${TOTAL_AULAS_CURSO} aulas. O certificado é liberado automaticamente quando todas estiverem concluídas.`} />
         ) : (
+          <>
+          <div className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-cobre-borda bg-cobre-suave p-4 print:hidden">
+            <p className="text-sm"><b>Parabéns por concluir!</b> Responda a pesquisa de satisfação em 2 minutos.</p>
+            <Link to="/pesquisa" className="btn-tinta rounded-xl px-4 py-2 text-sm font-semibold">Responder pesquisa</Link>
+          </div>
           <div className="mt-8"><CartaoCertificado userId={sessao.user?.id ?? ""} nome={sessao.nome} codigo={cert.codigo} emitidoEm={cert.emitido_em} cartaoRef={cartao} versoRef={verso} /></div>
+          </>
         )}
       </div>
     </div>

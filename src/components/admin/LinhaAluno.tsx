@@ -17,6 +17,7 @@ export function LinhaAluno({ a, aoMudar, semTurma = false }: { a: AlunoStatus; a
   const cert = useServerFn(definirCertificado);
   const remover = useServerFn(removerAluno);
   const [confirmar, setConfirmar] = useState(false);
+  const [pdf, setPdf] = useState(false);
   const pct = Math.round((a.concluidas / TOTAL_AULAS_CURSO) * 100);
   const mCert = useMutation({
     mutationFn: (acao: "emitir" | "revogar") => cert({ data: { userId: a.id, acao } }),
@@ -49,7 +50,12 @@ export function LinhaAluno({ a, aoMudar, semTurma = false }: { a: AlunoStatus; a
         <span className={cn("rounded-full px-2 py-0.5 text-xs font-semibold", a.certificado === "emitido" ? "bg-verde-suave text-verde-texto" : a.certificado === "revogado" ? "bg-cobre-suave text-cobre-texto" : a.concluidas >= TOTAL_AULAS_CURSO ? "bg-verde-suave text-verde-texto" : "bg-linha text-apagado")}>
           {a.certificado === "emitido" ? "Emitido" : a.certificado === "revogado" ? "Revogado" : a.concluidas >= TOTAL_AULAS_CURSO ? "Liberado" : "Pendente"}
         </span>
-        <div className="mt-2">
+        <div className="mt-2 flex items-center gap-3">
+          {(a.certificado === "emitido" || a.certificado === "revogado") && (
+            <button type="button" onClick={() => setPdf(true)} className="flex items-center gap-1 text-xs font-semibold text-tinta hover:underline">
+              <FileDown className="size-3.5" /> PDF
+            </button>
+          )}
           {a.certificado === "emitido" || (a.certificado === "nenhum" && a.concluidas >= TOTAL_AULAS_CURSO) ? (
             <button type="button" disabled={mCert.isPending} onClick={() => mCert.mutate("revogar")} className="text-xs font-semibold text-cobre-texto hover:underline">Revogar</button>
           ) : (

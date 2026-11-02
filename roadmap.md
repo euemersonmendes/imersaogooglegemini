@@ -6,3 +6,4 @@
 - [x] Tela de turmas no painel (criar, editar, apagar, progresso por código)
 - [x] Logo do Gemini na tela de login
 - [x] Criar admin euemersonmendes@gmail.com
+- [ ] Testar botão Remover aluno

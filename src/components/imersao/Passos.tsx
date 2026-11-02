@@ -428,7 +428,7 @@ function Resultado({ p, n }: { p: PassoResultado; n: string }) {
         {p.exercicio && (
           <Cartao className="border-cobre-borda bg-cobre-suave">
             <p className="sobretitulo mb-2">Exercício prático · Seu negócio</p>
-            <p className="text-[15px] leading-relaxed">{p.exercicio.situacao}</p>
+            <p className="text-[15px] leading-relaxed"><Inline texto={p.exercicio.situacao} /></p>
             <ol className="mt-3 flex flex-col gap-2">
               {p.exercicio.tarefa.map((t, i) => (
                 <li key={i} className="flex gap-3 text-[15px] leading-relaxed">

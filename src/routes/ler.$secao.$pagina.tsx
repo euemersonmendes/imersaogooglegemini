@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight, Check, Menu, X } from "lucide-react";
+import { createFileRoute, Link, notFound, useNavigate } from "@tanstack/react-router";
+import { ArrowLeft, ArrowRight, Check, Menu, Minimize2, MonitorPlay, X } from "lucide-react";
 
 import { BOOK, ROTULO_TIPO, acharAula, aulaVizinha, modulos, passosDa, type AulaInfo } from "@/content/imersao";
 import { CorpoPasso } from "@/components/imersao/Passos";
 import { Glifo } from "@/components/imersao/Glifo";
-import { marcarVisto, useProgresso } from "@/lib/progresso";
+import { alternarConcluida, marcarVisto, useProgresso } from "@/lib/progresso";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/ler/$secao/$pagina")({
@@ -85,6 +85,8 @@ function Leitor() {
   const prog = useProgresso();
   const vistos = prog.vistos[n] ?? [];
   const [menu, setMenu] = useState(false);
+  const [telao, setTelao] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     marcarVisto(n, i);
@@ -97,11 +99,45 @@ function Leitor() {
   const destinoAnt = i > 1 ? { secao: n, pagina: String(i - 1) } : ant ? { secao: ant.aula.n, pagina: String(passosDa(ant.aula).length) } : null;
   const titulo = passo.titulo;
   const enfase = "tituloEnfase" in passo ? passo.tituloEnfase : undefined;
+  const ultimo = i === passos.length;
+  const feita = prog.concluidas.includes(n);
+
+  function alternarTelao(ligar = !telao) {
+    setTelao(ligar);
+    try {
+      if (ligar && !document.fullscreenElement) void document.documentElement.requestFullscreen?.();
+      if (!ligar && document.fullscreenElement) void document.exitFullscreen?.();
+    } catch {
+      /* tela cheia indisponível */
+    }
+  }
+
+  useEffect(() => {
+    const sair = () => !document.fullscreenElement && setTelao(false);
+    document.addEventListener("fullscreenchange", sair);
+    return () => document.removeEventListener("fullscreenchange", sair);
+  }, []);
+
+  useEffect(() => {
+    function tecla(e: KeyboardEvent) {
+      const alvo = e.target as HTMLElement;
+      if (alvo.closest("input, textarea, select, [contenteditable]")) return;
+      if (e.key === "ArrowRight" && destinoProx) {
+        if (ultimo) alternarConcluida(n, true);
+        navigate({ to: "/ler/$secao/$pagina", params: destinoProx });
+      } else if (e.key === "ArrowLeft" && destinoAnt) navigate({ to: "/ler/$secao/$pagina", params: destinoAnt });
+      else if (e.key.toLowerCase() === "t") alternarTelao();
+      else if (e.key === "Escape" && telao) alternarTelao(false);
+    }
+    window.addEventListener("keydown", tecla);
+    return () => window.removeEventListener("keydown", tecla);
+  });
+
   const corpoTitulo = enfase && titulo.endsWith(enfase) ? titulo.slice(0, -enfase.length).trimEnd() : titulo;
 
   return (
-    <div className="min-h-screen bg-areia text-tinta lg:grid lg:grid-cols-[280px_1fr]">
-      <aside className="sticky top-0 hidden h-screen lg:block">
+    <div className={cn("min-h-screen bg-areia text-tinta", !telao && "lg:grid lg:grid-cols-[280px_1fr]")}>
+      <aside className={cn("sticky top-0 hidden h-screen", !telao && "lg:block")}>
         <Lateral atual={n} />
       </aside>
       {menu && (
@@ -122,6 +158,14 @@ function Leitor() {
             <p className="text-sm text-apagado">
               <span className="font-semibold text-tinta">Aula {n}</span> · {info.aula.titulo} · <span className="text-cobre-texto">{info.aula.ferramenta}</span>
             </p>
+            <button
+              type="button"
+              onClick={() => alternarTelao()}
+              title="Modo telão (tecla T)"
+              className="btn-claro ml-auto hidden items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-semibold md:flex"
+            >
+              {telao ? <Minimize2 className="size-3.5" /> : <MonitorPlay className="size-3.5" />} {telao ? "Sair do telão" : "Modo telão"}
+            </button>
           </div>
           <div className="flex gap-1 overflow-x-auto px-5 pt-3 esconde-barra md:px-10">
             {passos.map((p, k) => {
@@ -145,7 +189,7 @@ function Leitor() {
           </div>
         </header>
 
-        <div key={`${n}-${i}`} className="mx-auto w-full max-w-6xl flex-1 animate-entra px-5 py-8 md:px-10 md:py-10">
+        <div key={`${n}-${i}`} className={cn("mx-auto w-full flex-1 animate-entra px-5 py-8 md:px-10 md:py-10", telao ? "max-w-[1500px]" : "max-w-6xl")} style={telao ? { zoom: 1.25 } : undefined}>
           <p className="sobretitulo">
             {String(i).padStart(2, "0")} · {"rotuloTipo" in passo && passo.rotuloTipo ? passo.rotuloTipo : ROTULO_TIPO[passo.tipo]}
           </p>

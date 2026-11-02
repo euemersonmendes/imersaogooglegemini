@@ -10,6 +10,8 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as CertificadoRouteImport } from './routes/certificado'
 import { Route as ExercicioRouteImport } from './routes/exercicio'
 import { Route as ApiExercicioRouteImport } from './routes/api/exercicio'
 import { Route as LerSecaoPaginaRouteImport } from './routes/ler.$secao.$pagina'
@@ -17,6 +19,16 @@ import { Route as LerSecaoPaginaRouteImport } from './routes/ler.$secao.$pagina'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CertificadoRoute = CertificadoRouteImport.update({
+  id: '/certificado',
+  path: '/certificado',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ExercicioRoute = ExercicioRouteImport.update({
@@ -37,12 +49,16 @@ const LerSecaoPaginaRoute = LerSecaoPaginaRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/certificado': typeof CertificadoRoute
   '/exercicio': typeof ExercicioRoute
   '/api/exercicio': typeof ApiExercicioRoute
   '/ler/$secao/$pagina': typeof LerSecaoPaginaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/certificado': typeof CertificadoRoute
   '/exercicio': typeof ExercicioRoute
   '/api/exercicio': typeof ApiExercicioRoute
   '/ler/$secao/$pagina': typeof LerSecaoPaginaRoute
@@ -50,20 +66,43 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/certificado': typeof CertificadoRoute
   '/exercicio': typeof ExercicioRoute
   '/api/exercicio': typeof ApiExercicioRoute
   '/ler/$secao/$pagina': typeof LerSecaoPaginaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/exercicio' | '/api/exercicio' | '/ler/$secao/$pagina'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/certificado'
+    | '/exercicio'
+    | '/api/exercicio'
+    | '/ler/$secao/$pagina'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/exercicio' | '/api/exercicio' | '/ler/$secao/$pagina'
-  id: '__root__' | '/' | '/exercicio' | '/api/exercicio' | '/ler/$secao/$pagina'
+  to:
+    | '/'
+    | '/admin'
+    | '/certificado'
+    | '/exercicio'
+    | '/api/exercicio'
+    | '/ler/$secao/$pagina'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/certificado'
+    | '/exercicio'
+    | '/api/exercicio'
+    | '/ler/$secao/$pagina'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
+  CertificadoRoute: typeof CertificadoRoute
   ExercicioRoute: typeof ExercicioRoute
   ApiExercicioRoute: typeof ApiExercicioRoute
   LerSecaoPaginaRoute: typeof LerSecaoPaginaRoute
@@ -76,6 +115,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/certificado': {
+      id: '/certificado'
+      path: '/certificado'
+      fullPath: '/certificado'
+      preLoaderRoute: typeof CertificadoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/exercicio': {
@@ -104,6 +157,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
+  CertificadoRoute: CertificadoRoute,
   ExercicioRoute: ExercicioRoute,
   ApiExercicioRoute: ApiExercicioRoute,
   LerSecaoPaginaRoute: LerSecaoPaginaRoute,

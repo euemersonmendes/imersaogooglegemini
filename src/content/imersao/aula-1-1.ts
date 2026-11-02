@@ -6,9 +6,9 @@ export const aula11: Aula = {
   titulo: "Interface do Gemini",
   curto: "Interface",
   ferramenta: "Gemini · Chat",
-  objetivo: "Reconhecer as partes da tela do Gemini e saber por onde começar.",
+  objetivo: "Reconhecer as partes da tela do Gemini e saber por onde começar a cuidar das tarefas do seu negócio.",
   voceSaiCom:
-    "Um mapa da tela: onde conversar, como escolher o modelo, onde ficam as ferramentas e como anexar arquivos.",
+    "Um mapa da tela para pedir ajuda com vendas, divulgação, atendimento e outras tarefas do seu negócio.",
   saibaMais:
     "O modelo muda a forma de raciocinar: Flash responde rápido, Pro pensa mais antes de responder. As ferramentas mudam o tipo de trabalho, como pesquisar a fundo ou criar uma imagem. Em todos os casos, você continua responsável por conferir o que recebeu.",
   fontes: [
@@ -22,7 +22,7 @@ export const aula11: Aula = {
       rotulo: "Tela inicial",
       titulo: "Conheça a tela inicial",
       tituloEnfase: "a tela inicial",
-      texto: "Clique nos números para ver o que é cada parte. Você vai usar estas quatro partes em todas as aulas.",
+      texto: "Clique nos números para ver o que é cada parte. Você vai usar estas quatro partes para pedir ajuda com tarefas do seu negócio, como divulgar produtos ou organizar o estoque.",
     },
     {
       tipo: "tela",
@@ -53,7 +53,7 @@ export const aula11: Aula = {
       rotulo: "Faça na sua conta",
       titulo: "Agora faça na sua conta",
       tituloEnfase: "na sua conta",
-      texto: "Repita na sua tela o que você acabou de ver.",
+      texto: "Repita na sua tela o que você acabou de ver. Depois, pense em uma tarefa simples do seu negócio para pedir ajuda ao Gemini, sem incluir dados pessoais de clientes.",
       esperado: ["Você sabe onde ficam a caixa de mensagem, o seletor de modelo, as Ferramentas e o botão +"],
       confira: [
         "Abri o Gemini e encontrei o seletor de modelo",

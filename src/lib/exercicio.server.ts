@@ -33,8 +33,8 @@ export async function gerarExercicio(request: Request) {
   const result = streamText({
     model: provider.responses("openai/gpt-6-astra"),
     system:
-      "Você é instrutor da Imersão Google Gemini (Sebrae Maranhão). Crie exercícios práticos em português do Brasil, para fazer no Gemini em 15 a 25 minutos. Use dados fictícios e lembre de não colar dados pessoais. Formato em Markdown simples: título; ## Contexto (2 frases); ## Passo a passo (3 a 5 passos numerados); ## Prompt para copiar (bloco com # Perfil, # Contexto, # Objetivo, # Modelo de Entrega e [lacunas] entre colchetes); ## Como conferir o resultado (3 itens). Seja direto.",
-    messages: [{ role: "user", content: `Tema do módulo: ${tema}\nObjetivo profissional do aluno: ${objetivo}` }],
+      "Você é instrutor da Imersão Google Gemini (Sebrae Maranhão) para donos de micro e pequenas empresas (MEI, comércio, serviços, alimentação, beleza, oficinas). Crie exercícios práticos em português do Brasil, em linguagem simples, sem jargão técnico, para o empresário fazer no Gemini em 15 a 25 minutos e aplicar no próprio negócio (vendas, clientes, WhatsApp, Instagram, preços, estoque, caixa, fornecedores, equipe). Use dados fictícios e lembre de não colar dados pessoais de clientes. Formato em Markdown simples: título; ## Contexto (2 frases); ## Passo a passo (3 a 5 passos numerados); ## Prompt para copiar (bloco com # Perfil, # Contexto, # Objetivo, # Modelo de Entrega e [lacunas] entre colchetes); ## Como conferir o resultado (3 itens). Seja direto.",
+    messages: [{ role: "user", content: `Tema do módulo: ${tema}\nNegócio e objetivo do empresário: ${objetivo}` }],
     abortSignal: request.signal,
     maxRetries: 0,
     onError: ({ error }) => {

@@ -23,13 +23,13 @@ export const modulo1: Modulo = {
           texto: "Cole e envie antes de mudar as instruções. Guarde a resposta para comparar depois, sem trocar o modelo.",
           nomePrompt: "Pergunta de teste", tela: "inicio", marca: "cole aqui e envie",
           prompt: `# Perfil
-Atue como apoio ao planejamento de ações para pequenos negócios.
+Atue como assistente de gestão para uma micro ou pequena empresa.
 # Contexto
-Estes são dados didáticos fictícios. Uma unidade do Sebrae em [[Caxias]] quer apoiar negócios de [[alimentação]] nas próximas duas semanas. Ainda não há orçamento, número de participantes nem diagnóstico confirmado. Não inclua dados pessoais.
+Estes são dados didáticos fictícios. Tenho uma [[padaria]] em [[Caxias]] e quero melhorar as vendas nas próximas duas semanas. Ainda não defini orçamento nem divulgação. Não inclua dados pessoais de clientes.
 # Objetivo
-Sugira como começar esse trabalho sem inventar informações, metas ou regras institucionais.
+Sugira como posso começar sem inventar informações, metas ou regras.
 # Modelo de Entrega
-Apresente três ações iniciais, a finalidade de cada uma e o que preciso confirmar antes de executar. Marque lacunas como “a confirmar”. Termine com duas perguntas para melhorar o planejamento.`,
+Apresente três ações simples para vender mais, como divulgar no WhatsApp ou Instagram, organizar produtos e conversar com clientes. Explique cada ação e o que preciso confirmar. Marque lacunas como “a confirmar” e termine com duas perguntas.`,
           dica: "Guarde este pedido exatamente como enviou: ele será o seu teste antes e depois.",
         },
         {
@@ -42,16 +42,16 @@ Apresente três ações iniciais, a finalidade de cada uma e o que preciso confi
           comoFazer: ["Escolha um perfil e copie o texto.", "Adapte a função sem nomes, contatos ou dados de clientes.", "Use o próximo prompt para revisar antes de salvar nas instruções."],
           rotuloSelecionado: "Perfil escolhido", rotuloCopiar: "Copiar perfil",
           opcoes: [
-            { nome: "Gestão de unidade/equipe territorial", resumo: "Prioridades, equipe e execução no território.", texto: `# Quem sou
-Atuo na gestão de [[unidade ou equipe territorial]] do Sebrae Maranhão.
+            { nome: "Gestão do meu negócio", resumo: "Rotina, vendas e prioridades da empresa.", texto: `# Quem sou
+Sou responsável por uma [[loja de roupas]] em [[município]].
 # O que muda a resposta no meu contexto
-- Preciso transformar objetivos em prioridades viáveis.
-- Considere diferenças entre municípios sem presumir dados locais.
-- Separe decisões, responsáveis a definir e pendências.
+- Tenho pouco tempo e recursos para testar mudanças.
+- Ajude a organizar vendas, estoque, caixa e atendimento.
+- Separe o que sei do que preciso confirmar.
 # Como prefiro as respostas
-Use resumo executivo e tabela de ações. Não invente números; marque lacunas e peça confirmação.` },
-            { nome: "Consultoria a pequenos negócios", resumo: "Diagnóstico e recomendações aplicáveis.", texto: `# Quem sou
-Atuo em consultoria a pequenos negócios de [[setor]].
+Use linguagem simples, passos curtos e exemplos práticos. Não invente números; marque lacunas e peça confirmação.` },
+            { nome: "Organizar minha oficina", resumo: "Melhorias práticas para a rotina e o atendimento.", texto: `# Quem sou
+Sou dono(a) de uma [[oficina]] e cuido da gestão do negócio.
 # O que muda a resposta no meu contexto
 - Considere recursos limitados e aplicação gradual.
 - Diferencie evidências de hipóteses do diagnóstico.
@@ -59,7 +59,7 @@ Atuo em consultoria a pequenos negócios de [[setor]].
 # Como prefiro as respostas
 Use linguagem simples, etapas e critérios de acompanhamento. Não invente dados; sinalize o que devo validar.` },
             { nome: "Atendimento e relacionamento", resumo: "Orientações claras e próximos passos.", texto: `# Quem sou
-Atuo no atendimento e relacionamento com pequenos negócios em [[município]].
+Atendo clientes na minha [[loja de roupas]] em [[município]].
 # O que muda a resposta no meu contexto
 - Preciso entender a demanda antes de encaminhar.
 - Não prometa serviços, prazos ou condições sem confirmação.
@@ -67,19 +67,19 @@ Atuo no atendimento e relacionamento com pequenos negócios em [[município]].
 # Como prefiro as respostas
 Use mensagens acolhedoras e curtas, com perguntas objetivas e próximo passo. Marque informações a confirmar.` },
             { nome: "Dados e resultados", resumo: "Indicadores com limites e evidências.", texto: `# Quem sou
-Atuo na análise de dados e resultados de [[área]].
+Cuido das vendas e do caixa do meu [[restaurante]].
 # O que muda a resposta no meu contexto
 - Distinga valor observado, meta e estimativa.
 - Confira período, unidade e base de comparação.
 - Trabalhe apenas com dados agregados autorizados.
 # Como prefiro as respostas
 Use tabelas curtas e explique cálculos. Não invente valores; destaque lacunas e limites da análise.` },
-            { nome: "Eventos e capacitação", resumo: "Planejamento de ações educativas.", texto: `# Quem sou
-Atuo na organização de eventos e capacitações para [[público]].
+            { nome: "Divulgação do meu negócio", resumo: "Ideias para apresentar produtos e serviços.", texto: `# Quem sou
+Tenho um [[salão de beleza]] e quero divulgar serviços para novos clientes.
 # O que muda a resposta no meu contexto
-- Relacione atividades a objetivos de aprendizagem.
+- Relacione publicações aos produtos e serviços que quero divulgar.
 - Considere acessibilidade e recursos disponíveis.
-- Não presuma orçamento, vagas ou parceiros confirmados.
+- Não presuma orçamento, descontos ou disponibilidade que não confirmei.
 # Como prefiro as respostas
 Use roteiro com etapas, duração sugerida e checklist. Marque suposições e informações a confirmar.` },
           ],
@@ -91,10 +91,10 @@ Use roteiro com etapas, duração sugerida e checklist. Marque suposições e in
           prompt: `# Perfil
 Atue como editor de instruções de trabalho para o Gemini.
 # Contexto
-Quero adaptar as respostas à minha rotina no Sebrae Maranhão. Estes são dados didáticos fictícios; vou substituir apenas o contexto profissional genérico. Meu perfil é:
+Quero adaptar as respostas à rotina do meu pequeno negócio. Estes são dados didáticos fictícios; vou substituir apenas o contexto profissional genérico. Meu perfil é:
 [[Cole aqui o perfil escolhido e adaptado.]]
 # Objetivo
-Transforme o perfil em instruções claras e curtas, sem acrescentar atribuições, regras institucionais ou informações não fornecidas. Não inclua dados pessoais. Se faltar contexto, marque a lacuna em vez de inventar.
+Transforme o perfil em instruções claras e curtas, sem acrescentar informações ou regras que não forneci. Não inclua dados pessoais. Se faltar contexto, marque a lacuna em vez de inventar.
 # Modelo de Entrega
 Entregue um bloco pronto para salvar com “Quem sou”, “O que muda a resposta no meu contexto” e “Como prefiro as respostas”. Depois, fora do bloco, liste até três pontos que preciso conferir antes de salvar.`,
           observe: ["O texto corresponde à sua função real?", "As preferências estão claras, sem dados pessoais?", "Há alguma suposição que precisa ser removida?"],
@@ -104,13 +104,13 @@ Entregue um bloco pronto para salvar com “Quem sou”, “O que muda a respost
           texto: "Abra um novo chat normal, mantenha o modelo e repita o pedido inicial sem mudanças. Compare com a resposta guardada; variação não prova melhoria.",
           nomePrompt: "Repetir a pergunta de teste",
           prompt: `# Perfil
-Atue como apoio ao planejamento de ações para pequenos negócios.
+Atue como assistente de gestão para uma micro ou pequena empresa.
 # Contexto
-Estes são dados didáticos fictícios. Uma unidade do Sebrae em [[Caxias]] quer apoiar negócios de [[alimentação]] nas próximas duas semanas. Ainda não há orçamento, número de participantes nem diagnóstico confirmado. Não inclua dados pessoais.
+Estes são dados didáticos fictícios. Tenho uma [[padaria]] em [[Caxias]] e quero melhorar as vendas nas próximas duas semanas. Ainda não defini orçamento nem divulgação. Não inclua dados pessoais de clientes.
 # Objetivo
-Sugira como começar esse trabalho sem inventar informações, metas ou regras institucionais.
+Sugira como posso começar sem inventar informações, metas ou regras.
 # Modelo de Entrega
-Apresente três ações iniciais, a finalidade de cada uma e o que preciso confirmar antes de executar. Marque lacunas como “a confirmar”. Termine com duas perguntas para melhorar o planejamento.`,
+Apresente três ações simples para vender mais, como divulgar no WhatsApp ou Instagram, organizar produtos e conversar com clientes. Explique cada ação e o que preciso confirmar. Marque lacunas como “a confirmar” e termine com duas perguntas.`,
           observe: ["A linguagem e as prioridades ficaram mais adequadas ao seu trabalho?", "As lacunas continuam explícitas, sem números inventados?", "O que ainda exige ajuste nas instruções?"],
           dica: "Se adaptou os campos no primeiro teste, repita os mesmos valores aqui. Confira o conteúdo, não apenas o estilo.",
         },
@@ -134,7 +134,7 @@ Apresente três ações iniciais, a finalidade de cada uma e o que preciso confi
       passos: [
         {
           tipo: "comparacao", rotulo: "Antes de colar", titulo: "Escolha o que pode compartilhar", tituloEnfase: "pode compartilhar",
-          texto: "Use exemplos fictícios e respeite as regras do Sebrae e a LGPD. Remover o nome não basta se outros detalhes identificam a pessoa.",
+          texto: "Use exemplos fictícios e respeite a LGPD e os cuidados da sua empresa. Remover o nome não basta se outros detalhes identificam a pessoa.",
           colunas: ["Não cole", "Prefira"],
           linhas: [
             ["CPF, telefone ou cadastro de cliente", "Um caso inteiramente fictício, sem identificadores"],
@@ -150,7 +150,7 @@ Apresente três ações iniciais, a finalidade de cada uma e o que preciso confi
           prompt: `Lembre que prefiro respostas em português do Brasil, com um resumo curto, uma lista de próximos passos e uma seção “O que conferir”.
 
 # Contexto
-Trabalho com orientação a pequenos negócios. Estes são dados didáticos fictícios. Nesta prática, quero registrar somente uma preferência de formato, sem nomes, contatos, dados de clientes ou informações internas restritas.
+Tenho um pequeno negócio. Estes são dados didáticos fictícios. Nesta prática, quero registrar somente uma preferência de formato, sem nomes, contatos, dados de clientes ou informações financeiras identificáveis.
 # Objetivo
 Use essa preferência quando for adequada ao pedido. Não invente dados nem transforme exemplos em fatos sobre mim. Sinalize informações ausentes.
 # Modelo de Entrega
@@ -177,14 +177,14 @@ Confirme qual preferência você entendeu. Se não puder salvá-la nesta conta, 
         },
         {
           tipo: "comparacao", rotulo: "Revisar atividade", titulo: "Revise sua atividade com cuidado", tituloEnfase: "com cuidado",
-          texto: "Abra Atividade nos apps Gemini pelo menu ou pelas configurações. Confira os controles disponíveis; em conta institucional, siga a política da organização.",
+          texto: "Abra Atividade nos apps Gemini pelo menu ou pelas configurações. Confira os controles disponíveis; na conta usada, confira os controles disponíveis e mantenha os cuidados com privacidade.",
           colunas: ["O que revisar", "O que fazer"],
           linhas: [
             ["Registros de atividade", "Localize a conversa de teste e use a opção de exclusão se disponível."],
             ["Exclusão automática", "Confira as opções de 3, 18 ou 36 meses e escolha conforme a política permitida."],
             ["Memórias salvas", "Volte à lista para excluir a preferência se desejar; não presuma que apagar uma conversa apagou a memória."],
           ],
-          frase: "Se o controle não aparecer, consulte o administrador da sua conta.",
+          frase: "Se o controle não aparecer, consulte a ajuda da sua conta.",
         },
         {
           tipo: "resultado", rotulo: "Faça na sua conta", titulo: "Agora faça na sua conta", tituloEnfase: "na sua conta",

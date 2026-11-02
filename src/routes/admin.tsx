@@ -29,9 +29,6 @@ export const Route = createFileRoute("/admin")({
 
 const campo = "w-full rounded-xl border border-linha-2 bg-areia px-3 py-2.5 text-sm outline-none focus:border-cobre";
 
-function data(d: string | null) {
-  return d ? new Date(d).toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit", year: "2-digit", hour: "2-digit", minute: "2-digit" }) : "—";
-}
 
 function Admin() {
   const sessao = useSessao();

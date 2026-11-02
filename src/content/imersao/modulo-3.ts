@@ -4,7 +4,7 @@ export const modulo3: Modulo = {
   "id": "modulo-3",
   "glifo": "chart",
   "nome": "Ferramentas",
-  "nomeCompleto": "Ferramentas do Gemini aplicadas ao trabalho",
+  "nomeCompleto": "Ferramentas do Gemini aplicadas ao negócio",
   "aulas": [
     {
       "n": "3.1",
@@ -36,11 +36,11 @@ export const modulo3: Modulo = {
               "nome": "Referências",
               "sub": "Aprender com outros lugares",
               "rotulo": "Referências",
-              "pergunta": "O que outro destino ensina?",
+              "pergunta": "O que outras lojas do bairro oferecem?",
               "cuidado": "Semelhança não garante viabilidade local.",
               "itens": [
-                "Compare públicos, acesso e custos.",
-                "Diga o que precisa mudar em Barreirinhas."
+                "Compare produtos, preços públicos e condições de venda.",
+                "Confira o que faz sentido para seus clientes e seus custos."
               ]
             },
             {
@@ -104,13 +104,13 @@ export const modulo3: Modulo = {
         {
           "tipo": "prompt",
           "rotulo": "Pesquisar",
-          "titulo": "Investigue antes de recomendar",
-          "tituloEnfase": "antes de recomendar",
-          "nomePrompt": "Turismo gastronômico em Barreirinhas",
-          "prompt": "# Perfil\nAtue como analista de mercado que apoia consultores de pequenos negócios.\n# Contexto\nEste é um exercício didático fictício para investigar turismo gastronômico em [[Barreirinhas]], no Maranhão. Não há diagnóstico local previamente validado. Use somente fontes públicas, sem dados pessoais.\n# Objetivo\nInvestigue até três oportunidades para pequenos negócios. Compare experiências de outros destinos, procure obstáculos operacionais, traduza estudos em ações e separe tendências de sinais iniciais. Cruze fontes independentes e destaque divergências de período, método e território. Não confunda dados estaduais com demanda municipal.\n# Modelo de Entrega\nProponha primeiro um plano de pesquisa. No relatório, entregue resumo e matriz com oportunidade, público, evidência, objeção, condição de viabilidade e teste de baixo custo. Inclua links, datas e abrangência junto das afirmações principais. Não invente estatísticas, entrevistas ou empresas. Marque lacunas como “não localizado” e inferências como hipóteses. Indique quais afirmações eu devo conferir na fonte original antes de recomendar investimento.",
+          "titulo": "Investigue antes de investir",
+          "tituloEnfase": "antes de investir",
+          "nomePrompt": "Concorrentes e ideias para uma padaria",
+          "prompt": "# Perfil\nAtue como apoio ao dono de uma pequena padaria na pesquisa de mercado.\n# Contexto\nEste é um exercício didático fictício para uma padaria em [[seu bairro e município]]. Quero conhecer concorrentes, preços e ideias de produtos antes de investir. Use apenas fontes públicas, sem dados pessoais de clientes ou funcionários.\n# Objetivo\nPesquise ofertas e preços públicos de padarias da região e proponha até três ideias de produto para testar. Compare tamanho, unidade, data do preço e condições de venda; não compare preço por quilo com preço por unidade. Considere custos, validade, estoque e capacidade de produção. Cruze fontes independentes. Não trate uma postagem como prova de demanda nem dados estaduais como procura no bairro.\n# Modelo de Entrega\nProponha primeiro um plano de pesquisa. No relatório, entregue resumo e matriz com ideia de produto, público, concorrente ou oferta de referência, preço e unidade, fonte e data, obstáculo e teste de baixo custo. Não invente empresas, preços, estatísticas ou entrevistas. Marque dados ausentes como “não localizado” e inferências como hipóteses. Separe os dados públicos encontrados do cenário fictício. Indique o que devo conferir diretamente antes de comprar insumos ou mudar meus preços.",
           "observe": [
             "O plano contempla objeções, não só oportunidades?",
-            "Os números têm fonte, data e recorte territorial?",
+            "Os preços têm fonte, data, unidade e condições de venda?",
             "Cada oportunidade tem um teste que pode contrariá-la?"
           ],
           "dica": "Aguarde o relatório completo. Abra os links das afirmações decisivas antes de exportar para Docs."
@@ -126,8 +126,8 @@ export const modulo3: Modulo = {
           ],
           "linhas": [
             [
-              "O turismo cresceu no estado; o restaurante vai vender mais.",
-              "Confira se há evidência municipal e do público-alvo; crescimento estadual não prova venda local."
+              "Outra padaria vende esse produto; a minha também vai vender bem.",
+              "Confira público, preço, custos e procura no bairro; a oferta do concorrente não prova venda na sua padaria."
             ],
             [
               "Três sites repetem o número; está confirmado.",
@@ -144,7 +144,7 @@ export const modulo3: Modulo = {
           "rotulo": "Faça na sua conta",
           "titulo": "Agora faça na sua conta",
           "tituloEnfase": "na sua conta",
-          "texto": "Repita o exercício. Confira a entrega antes de usar no atendimento.",
+          "texto": "Repita o exercício com os dados fictícios. Confira a entrega antes de usar no seu negócio.",
           "esperado": [
             "Um relatório conferido, com uma oportunidade tratada como hipótese."
           ],
@@ -161,8 +161,8 @@ export const modulo3: Modulo = {
       "titulo": "Notebooks: consultar documentos com fontes",
       "curto": "Notebooks",
       "ferramenta": "Gemini · Notebooks",
-      "objetivo": "Confrontar um plano com resultados e conferir cada conclusão nas fontes.",
-      "voceSaiCom": "Uma leitura do plano que separa execução, resultado e informação ausente.",
+      "objetivo": "Comparar o plano de vendas da loja com os resultados e conferir cada conclusão nas fontes.",
+      "voceSaiCom": "Uma comparação entre metas, vendas e informações que ainda faltam para decidir.",
       "fontes": [
         {
           "nome": "Central de Ajuda do Gemini",
@@ -187,8 +187,8 @@ export const modulo3: Modulo = {
           "rotulo": "Consultar fontes",
           "titulo": "Confronte plano e execução",
           "tituloEnfase": "plano e execução",
-          "nomePrompt": "Plano e resultados fictícios",
-          "prompt": "# Perfil\nAtue como apoio à revisão de um plano de ação.\n# Contexto\nEstes são dados didáticos fictícios. Crie duas fontes separadas com os blocos abaixo e consulte apenas essas fontes no notebook, sem informações pessoais.\nFonte 1 — Plano de junho, Caxias: realizar 4 oficinas de precificação; alcançar 40 participações; obter avaliação média de pelo menos 4 em escala de 1 a 5; verificar adoção da ficha de custos após 30 dias.\nFonte 2 — Resultados de junho: 4 oficinas; 48 participações; 12 avaliações respondidas, média 4,5; acompanhamento de adoção ainda não realizado.\n# Objetivo\nCompare metas e resultados. Não trate participações como pessoas únicas nem satisfação como adoção. Não invente dados ausentes.\n# Modelo de Entrega\nEntregue tabela com meta, resultado, situação e citação da fonte correspondente. Separe fato, interpretação e lacuna. Sugira uma verificação para a próxima reunião. Se a fonte não permitir responder, declare isso. Vou abrir cada citação para conferir os trechos.",
+          "nomePrompt": "Plano e vendas fictícias de uma loja",
+          "prompt": "# Perfil\nAtue como apoio ao dono de uma pequena loja na revisão das vendas.\n# Contexto\nEstes são dados didáticos fictícios. Crie duas fontes separadas com os blocos abaixo e consulte apenas essas fontes no notebook, sem dados pessoais de clientes ou funcionários.\nFonte 1 — Plano de junho da loja: vender 40 camisetas; publicar 4 posts no Instagram; obter avaliação média de pelo menos 4 em escala de 1 a 5; conferir o lucro do mês após fechar custos e despesas.\nFonte 2 — Resultados de junho: 48 camisetas vendidas; 4 posts publicados; 12 avaliações respondidas, média 4,5; custos e despesas do mês ainda não fechados.\n# Objetivo\nCompare metas e resultados. Não trate peças vendidas como clientes únicos nem satisfação como lucro. Não atribua as vendas aos posts sem evidência. Não invente dados ausentes.\n# Modelo de Entrega\nEntregue tabela com meta, resultado, situação e citação da fonte correspondente. Separe fato, interpretação e lacuna. Sugira uma verificação para o próximo fechamento do mês. Se a fonte não permitir responder, declare isso. Vou abrir cada citação para conferir os trechos.",
           "recebe": {
             "titulo": "Exemplo de leitura fictícia",
             "texto": "A numeração das citações depende das fontes do seu notebook.",
@@ -196,15 +196,15 @@ export const modulo3: Modulo = {
               {
                 "rotulo": "Execução",
                 "itens": [
-                  "4 oficinas: meta cumprida; confira plano e resultados nas citações.",
-                  "48 participações: acima da meta, sem comprovar 48 pessoas únicas."
+                  "4 posts publicados: meta cumprida; confira plano e resultados nas citações.",
+                  "48 camisetas vendidas: acima da meta de 40, sem comprovar 48 clientes únicos."
                 ]
               },
               {
                 "rotulo": "Lacunas",
                 "itens": [
-                  "Média 4,5 com 12 respostas; não representa necessariamente todo o público.",
-                  "Sem acompanhamento, a adoção da ficha continua desconhecida."
+                  "Média 4,5 com 12 respostas; não representa necessariamente todos os clientes.",
+                  "Sem fechar custos e despesas, o lucro do mês continua desconhecido."
                 ]
               }
             ],
@@ -223,16 +223,16 @@ export const modulo3: Modulo = {
           ],
           "linhas": [
             [
-              "“4 oficinas realizadas”, com citação do documento Resultados: abra e confira.",
+              "“4 posts publicados”, com citação do documento Resultados: abra e confira.",
               "“O plano foi um sucesso”: sem evidência e sem critério explícito."
             ],
             [
-              "“Adoção ainda não medida”, com trecho do acompanhamento pendente.",
-              "“A maioria já usa a ficha”: dado inexistente nas fontes."
+              "“Lucro ainda não apurado”, com trecho sobre custos e despesas pendentes.",
+              "“A loja já aumentou o lucro”: dado inexistente nas fontes."
             ],
             [
-              "“48 participações”, preservando a unidade do documento.",
-              "“48 empresários diferentes”: deduplicação que os documentos não permitem."
+              "“48 camisetas vendidas”, preservando a unidade do documento.",
+              "“48 clientes diferentes”: contagem que os documentos não permitem."
             ]
           ]
         },
@@ -241,14 +241,14 @@ export const modulo3: Modulo = {
           "rotulo": "Faça na sua conta",
           "titulo": "Agora faça na sua conta",
           "tituloEnfase": "na sua conta",
-          "texto": "Repita o exercício. Confira a entrega antes de usar no atendimento.",
+          "texto": "Repita o exercício com os dados fictícios. Confira a entrega antes de usar no seu negócio.",
           "esperado": [
             "Uma comparação rastreável entre o plano e os resultados."
           ],
           "confira": [
             "Adicionei as duas fontes fictícias e fiz a pergunta",
             "Abri as citações e comparei com os trechos originais",
-            "Registrei a adoção como lacuna, sem inventar resultado"
+            "Registrei o lucro como lacuna, sem inventar resultado"
           ]
         }
       ]
@@ -258,8 +258,8 @@ export const modulo3: Modulo = {
       "titulo": "Canvas: do relatório ao material",
       "curto": "Canvas",
       "ferramenta": "Gemini · Canvas",
-      "objetivo": "Transformar um diagnóstico em material curto e revisar um trecho sem perder evidências.",
-      "voceSaiCom": "Uma página para empresários, revisada e pronta para validação humana.",
+      "objetivo": "Transformar informações do negócio em um cardápio editável e revisar um trecho sem inventar ofertas.",
+      "voceSaiCom": "Um cardápio curto com texto para Instagram, pronto para sua conferência.",
       "fontes": [
         {
           "nome": "Central de Ajuda do Gemini",
@@ -284,11 +284,11 @@ export const modulo3: Modulo = {
           "rotulo": "Criar material",
           "titulo": "Transforme achados em material",
           "tituloEnfase": "achados em material",
-          "nomePrompt": "Uma página para o evento",
-          "prompt": "# Perfil\nAtue como redator instrucional para pequenos negócios.\n# Contexto\nEstes são dados didáticos fictícios de um evento de alimentação em [[São Luís]]: 20 participações em oficina; 8 fichas de custos preenchidas; nenhuma medição posterior de margem. Não há comprovação de aumento de lucro. O material será entregue a empresários e não deve conter dados pessoais.\n# Objetivo\nCrie no Canvas uma página que ajude o participante a iniciar sua ficha de custos. Use somente os dados acima. Não invente depoimentos, percentuais de sucesso ou promessas de retorno.\n# Modelo de Entrega\nOrganize título, diagnóstico em duas frases, três ações práticas e checklist para a próxima semana. Inclua campos para preencher custos e preço, sem assumir valores. Destaque “exemplo didático fictício” e a lacuna sobre margem. Use linguagem simples e até 350 palavras. Termine com uma pergunta para o empresário conferir seus registros antes de decidir. Mantenha o material editável para revisão antes de exportar.",
+          "nomePrompt": "Cardápio e post de uma pequena lanchonete",
+          "prompt": "# Perfil\nAtue como redator de cardápios e posts para pequenos negócios.\n# Contexto\nEstes são dados didáticos fictícios de uma pequena lanchonete em [[seu município]]: sanduíche de queijo por R$ 12; suco de laranja de 300 ml por R$ 8; combo com esses dois itens por R$ 18. A oferta vale apenas para retirada no balcão, de terça a sexta, das 14h às 18h. Não há informação confirmada sobre estoque diário, entrega ou ingredientes além dos citados. Não inclua dados pessoais.\n# Objetivo\nCrie no Canvas uma página editável com cardápio curto e um texto de post para Instagram. Use somente os dados acima. Não invente ingredientes, fotos, depoimentos, disponibilidade, benefícios de saúde ou promessas de venda.\n# Modelo de Entrega\nOrganize título, cardápio com produtos, tamanhos informados e preços, condições da oferta, legenda para Instagram e checklist de revisão. Destaque “exemplo didático fictício”. Marque as informações não confirmadas como pendentes de conferência. Use linguagem simples e até 350 palavras. Termine perguntando se preços, estoque e horário foram conferidos antes da publicação.",
           "observe": [
-            "O texto diferencia participação de ficha preenchida?",
-            "A página evita prometer lucro?",
+            "O combo mantém os dois itens e o preço de R$ 18?",
+            "O texto informa retirada no balcão, dias e horário sem inventar entrega?",
             "As lacunas continuam visíveis?"
           ]
         },
@@ -297,8 +297,8 @@ export const modulo3: Modulo = {
           "rotulo": "Ajustar trecho",
           "titulo": "Revise só o trecho selecionado",
           "tituloEnfase": "só o trecho selecionado",
-          "nomePrompt": "Ajuste local com evidência",
-          "prompt": "# Perfil\nAtue como editor de linguagem simples.\n# Contexto\nNo Canvas, selecionei [[o parágrafo do diagnóstico]]. O documento usa dados didáticos fictícios de uma oficina: 20 participações, 8 fichas preenchidas e nenhum acompanhamento de margem.\n# Objetivo\nReescreva apenas a seleção para um empresário com pouco tempo. Preserve números, unidades e a ressalva sobre ausência de medição. Não altere o restante do documento nem inclua dados novos ou pessoais.\n# Modelo de Entrega\nSubstitua o trecho por até três frases curtas, sem jargão. Não troque “participações” por “pessoas únicas” e não prometa ganho de lucro. Se houver ambiguidade, sinalize-a em vez de completar com suposição. Explique na conversa o que mudou e o que foi preservado para que eu compare com a versão anterior.",
+          "nomePrompt": "Ajuste da legenda sem mudar a oferta",
+          "prompt": "# Perfil\nAtue como editor de linguagem simples.\n# Contexto\nNo Canvas, selecionei [[o texto do post para Instagram]]. O documento usa dados didáticos fictícios de uma lanchonete: sanduíche de queijo por R$ 12; suco de laranja de 300 ml por R$ 8; combo com esses dois itens por R$ 18. A oferta vale apenas para retirada no balcão, de terça a sexta, das 14h às 18h. O estoque diário não foi confirmado.\n# Objetivo\nReescreva apenas a seleção para os clientes da lanchonete. Preserve produtos, preços, tamanho informado e condições da oferta. Não altere o restante do documento nem inclua dados novos ou pessoais.\n# Modelo de Entrega\nSubstitua o trecho por até três frases curtas, sem jargão. Não anuncie entrega, disponibilidade garantida ou ingredientes não informados. Preserve a identificação de exemplo fictício e a pendência de conferir estoque. Se houver ambiguidade, sinalize-a em vez de completar com suposição. Explique na conversa o que mudou e o que foi preservado para que eu compare com a versão anterior.",
           "dica": "Selecione o trecho antes de enviar. Compare o documento inteiro após a edição; não presuma que só a seleção mudou."
         },
         {
@@ -306,9 +306,9 @@ export const modulo3: Modulo = {
           "rotulo": "Faça na sua conta",
           "titulo": "Agora faça na sua conta",
           "tituloEnfase": "na sua conta",
-          "texto": "Repita o exercício. Confira a entrega antes de usar no atendimento.",
+          "texto": "Repita o exercício com os dados fictícios. Confira a entrega antes de usar no seu negócio.",
           "esperado": [
-            "Uma página editável com diagnóstico, ações e ressalvas preservadas."
+            "Um cardápio editável com legenda para Instagram e condições da oferta preservadas."
           ],
           "confira": [
             "Criei o material e conferi os números com o contexto",
@@ -323,8 +323,8 @@ export const modulo3: Modulo = {
       "titulo": "Gemini nas Planilhas: encontrar padrões",
       "curto": "Planilhas",
       "ferramenta": "Google Planilhas · Gemini",
-      "objetivo": "Comparar volume, espera, retorno e avaliação sem transformar correlação em causa.",
-      "voceSaiCom": "Uma análise exploratória e um gráfico com unidades e lacunas explícitas.",
+      "objetivo": "Comparar vendas por produto e mês, conferir estoque e separar receita de saldo de caixa e lucro.",
+      "voceSaiCom": "Uma análise de vendas e estoque com taxas conferidas e um gráfico simples.",
       "fontes": [
         {
           "nome": "Central de Ajuda do Gemini",
@@ -342,19 +342,19 @@ export const modulo3: Modulo = {
           "rotulo": "Na ferramenta",
           "titulo": "Prepare a base de análise",
           "tituloEnfase": "a base de análise",
-          "texto": "Abra uma planilha e o painel do Gemini. Cole a tabela fictícia do próximo passo em colunas separadas; confirme tipos numéricos e deixe a avaliação ausente em branco."
+          "texto": "Abra uma planilha e o painel do Gemini. Cole a tabela fictícia do próximo passo em colunas separadas; confirme os tipos numéricos e deixe o estoque final não informado em branco."
         },
         {
           "tipo": "prompt",
           "rotulo": "Analisar base",
-          "titulo": "Compare carga e experiência",
-          "tituloEnfase": "carga e experiência",
-          "nomePrompt": "Base fictícia de atendimentos",
-          "prompt": "# Perfil\nAtue como analista de atendimento.\n# Contexto\nEstes são dados didáticos fictícios, agregados por unidade em um mesmo mês. Não há dados pessoais. Copie a tabela para A1:F7; a avaliação de Balsas deve ficar vazia.\nUnidade | Atendimentos | Espera média (dias) | Retornos em 30 dias | Avaliação média (1 a 5) | Respostas\nSão Luís | 120 | 3 | 24 | 4,6 | 60\nImperatriz | 80 | 8 | 24 | 4,2 | 40\nCaxias | 60 | 5 | 6 | 4,8 | 15\nBacabal | 40 | 9 | 12 | 3,9 | 10\nBalsas | 30 | 2 | 3 |  | 0\nTimon | 50 | 6 | 10 | 4,4 | 25\n# Objetivo\nCompare volume, espera, proporção de retornos e cobertura da avaliação. Retorno não significa necessariamente insatisfação. Não invente motivos.\n# Modelo de Entrega\nEntregue tabela de taxas, três achados e duas hipóteses a verificar. Não transforme avaliação ausente em zero nem calcule média geral simples das médias. Separe fatos e sugestões; cite as células usadas para eu conferir.",
+          "titulo": "Compare vendas e estoque",
+          "tituloEnfase": "vendas e estoque",
+          "nomePrompt": "Base fictícia de vendas de uma padaria",
+          "prompt": "# Perfil\nAtue como apoio ao dono de uma pequena padaria no controle de vendas e estoque.\n# Contexto\nEstes são dados didáticos fictícios, agregados por produto e mês. Não há dados pessoais. Copie a tabela para A1:F7; o estoque final de Bolo em junho deve ficar vazio. Cada linha trata de unidades do mesmo produto. Não houve perdas nem devoluções neste exercício.\nProduto | Mês | Unidades disponíveis no mês | Unidades vendidas | Receita de vendas (R$) | Estoque final (unidades)\nPão de queijo | Maio | 120 | 96 | 288 | 24\nBolo | Maio | 80 | 56 | 840 | 24\nSalgado | Maio | 60 | 54 | 324 | 6\nPão de queijo | Junho | 140 | 126 | 378 | 14\nBolo | Junho | 90 | 63 | 945 | \nSalgado | Junho | 100 | 80 | 480 | 20\n# Objetivo\nCompare vendas por produto e mês, percentual vendido e estoque final. Trate unidades disponíveis como estoque inicial mais entradas do mês. Não confunda receita com lucro nem com saldo de caixa: faltam custos, despesas, prazos de recebimento e pagamentos. Não invente motivos para as diferenças.\n# Modelo de Entrega\nEntregue tabela de taxas, três achados e duas hipóteses a verificar. Não transforme estoque ausente em zero. Se calcular um saldo esperado, identifique-o como cálculo a conferir na contagem física, não como estoque registrado. Separe fatos e sugestões; cite as células usadas para eu conferir.",
           "observe": [
-            "São Luís lidera volume; Bacabal tem a maior espera média.",
-            "Imperatriz e Bacabal têm 30% de retorno, apesar dos volumes diferentes.",
-            "Balsas não tem avaliação; Caxias tem cobertura de 25%."
+            "Pão de queijo passa de 96 unidades vendidas em maio para 126 em junho.",
+            "Bolo tem 70% das unidades disponíveis vendidas nos dois meses: 56 de 80 e 63 de 90.",
+            "O estoque final de Bolo em junho não foi informado; 27 unidades é o saldo calculado, ainda não conferido."
           ],
           "dica": "Se a tabela entrar em uma coluna, separe pelo caractere |. Confira os seis registros antes de pedir a análise."
         },
@@ -369,20 +369,20 @@ export const modulo3: Modulo = {
           ],
           "linhas": [
             [
-              "Volume: São Luís registra 120 atendimentos.",
-              "Avaliar capacidade; maior volume não prova pior atendimento."
+              "Vendas: Pão de queijo registra 126 unidades em junho.",
+              "Avaliar produção e procura; maior venda não prova maior lucro."
             ],
             [
-              "Espera: Bacabal tem média de 9 dias.",
-              "Investigar fila e distribuição; a média não revela cada caso."
+              "Estoque: Salgado termina maio com 6 unidades registradas.",
+              "Conferir validade e contagem física antes de planejar novas compras."
             ],
             [
-              "Retorno: 12 de 40 em Bacabal, ou 30%.",
-              "Verificar motivo do retorno antes de chamar isso de retrabalho."
+              "Percentual vendido: Bolo vende 56 de 80 unidades em maio, ou 70%.",
+              "Investigar procura e quantidade produzida antes de mudar o preço."
             ],
             [
-              "Avaliação: Caxias tem 4,8 com 15 respostas de 60 atendimentos.",
-              "Considerar cobertura de 25% e possível viés, não declarar a melhor unidade."
+              "Receita: Bolo registra R$ 945 em junho.",
+              "Conferir recebimentos, custos e despesas; receita não é saldo de caixa nem lucro."
             ]
           ]
         },
@@ -392,22 +392,22 @@ export const modulo3: Modulo = {
           "titulo": "Crie taxas e um gráfico",
           "tituloEnfase": "taxas e um gráfico",
           "nomePrompt": "Fórmula e gráfico conferíveis",
-          "prompt": "# Perfil\nAtue como apoio no Google Planilhas.\n# Contexto\nUso a base didática fictícia desta aula em A1:F7. B contém atendimentos, C espera média em dias, D retornos em 30 dias e F respostas de avaliação. Não há dados pessoais.\n# Objetivo\nCrie em G a taxa de retorno (D dividido por B) e em H a cobertura da avaliação (F dividido por B). Use percentuais e trate denominador zero como informação ausente, não como taxa zero.\n# Modelo de Entrega\nMostre as fórmulas da linha 2 adequadas à localidade da planilha e explique como preencher até a linha 7. Crie um gráfico de barras com unidade no eixo de categorias e espera média em dias no eixo numérico. Não misture dias com percentuais no mesmo eixo. Se não puder inserir o gráfico, forneça as etapas manuais. Indique os intervalos usados e peça conferência: Imperatriz deve ter retorno de 30% e cobertura de 50%. Não invente causas para as diferenças.",
-          "dica": "Confira uma divisão manualmente. Dê ao gráfico o título “Espera média por unidade — base fictícia”."
+          "prompt": "# Perfil\nAtue como apoio no Google Planilhas.\n# Contexto\nUso a base didática fictícia desta aula em A1:F7. A contém produto, B mês, C unidades disponíveis, D unidades vendidas, E receita de vendas em reais e F estoque final registrado. Não há dados pessoais.\n# Objetivo\nCrie em G o percentual vendido (D dividido por C) e em H o saldo esperado em unidades (C menos D). Use percentual em G e número de unidades em H. Trate denominador zero como informação ausente, não como taxa zero. Não preencha F com o cálculo de H: o estoque registrado depende de conferência física.\n# Modelo de Entrega\nMostre as fórmulas da linha 2 adequadas à localidade da planilha e explique como preencher até a linha 7. Crie um gráfico de colunas com produtos no eixo de categorias, unidades vendidas no eixo numérico e uma série para cada mês. Não misture reais, unidades e percentuais no mesmo eixo. Se não puder inserir o gráfico, forneça as etapas manuais. Indique os intervalos usados e peça conferência: Bolo em maio deve ter percentual vendido de 70% e saldo esperado de 24 unidades. Não invente causas para as diferenças.",
+          "dica": "Confira uma divisão manualmente. Dê ao gráfico o título “Unidades vendidas por produto e mês — base fictícia”."
         },
         {
           "tipo": "resultado",
           "rotulo": "Faça na sua conta",
           "titulo": "Agora faça na sua conta",
           "tituloEnfase": "na sua conta",
-          "texto": "Repita o exercício. Confira a entrega antes de usar no atendimento.",
+          "texto": "Repita o exercício com os dados fictícios. Confira a entrega antes de usar no seu negócio.",
           "esperado": [
-            "Uma comparação exploratória sem ranking automático de qualidade."
+            "Uma comparação de vendas e estoque sem confundir receita, caixa e lucro."
           ],
           "confira": [
-            "Conferi colunas, seis registros e a avaliação em branco",
-            "Validei uma taxa de retorno e uma cobertura manualmente",
-            "Conferi o gráfico e registrei uma hipótese para investigar com a equipe"
+            "Conferi colunas, seis registros e o estoque não informado em branco",
+            "Validei um percentual vendido e um saldo esperado manualmente",
+            "Conferi o gráfico e registrei o que falta para analisar estoque e caixa"
           ]
         }
       ]
@@ -510,8 +510,8 @@ export const modulo3: Modulo = {
           "rotulo": "Criar imagem",
           "titulo": "Fotografe um produto fictício",
           "tituloEnfase": "um produto fictício",
-          "nomePrompt": "Produto maranhense em destaque",
-          "prompt": "# Perfil\nAtue como fotógrafo de produtos para pequenos negócios.\n# Contexto\nEste é um exercício didático fictício para uma pequena loja de artesanato de [[São Luís]]. O produto imaginado é um cesto de fibra trançada, sem marca. Não represente uma peça como produção de artesão real nem atribua certificações ou origem comprovada.\n# Objetivo\nCrie uma imagem com aparência de fotografia de catálogo: um cesto centralizado sobre mesa clara, fundo neutro, luz natural suave pela esquerda e enquadramento a três quartos. Mostre a trama sem brilho artificial e sem objetos que confundam o que está à venda.\n# Modelo de Entrega\nUse proporção quadrada 1:1, com margem para recorte. Não inclua pessoas, logotipos, selos ou texto na imagem. Não invente assinatura de artesão. O resultado será identificado como imagem gerada por IA. Antes de publicar, vou conferir forma, alças, textura e fidelidade ao produto real; não trate esta simulação como foto documental.",
+          "nomePrompt": "Imagem para o Instagram da minha loja",
+          "prompt": "# Perfil\nAtue como fotógrafo de produtos para pequenos negócios.\n# Contexto\nEste é um exercício didático fictício para o Instagram e o catálogo de uma pequena loja de artesanato de [[seu município]]. O produto imaginado é um cesto de fibra trançada, sem marca. Não represente uma peça como produção de artesão real nem atribua certificações ou origem comprovada. Não inclua dados pessoais.\n# Objetivo\nCrie uma imagem com aparência de fotografia de catálogo: um cesto centralizado sobre mesa clara, fundo neutro, luz natural suave pela esquerda e enquadramento a três quartos. Mostre a trama sem brilho artificial e sem objetos que confundam o que está à venda.\n# Modelo de Entrega\nUse proporção quadrada 1:1, com margem para recorte no Instagram. Não inclua pessoas, logotipos, selos ou texto na imagem. Não invente assinatura de artesão. O resultado será identificado como imagem gerada por IA. Antes de publicar, vou conferir forma, alças, textura e fidelidade ao produto real; não trate esta simulação como foto documental.",
           "observe": [
             "As alças e a trama têm continuidade?",
             "O fundo não sugere acessórios incluídos na venda?",
@@ -561,7 +561,7 @@ export const modulo3: Modulo = {
           "rotulo": "Faça na sua conta",
           "titulo": "Agora faça na sua conta",
           "tituloEnfase": "na sua conta",
-          "texto": "Repita o exercício. Confira a entrega antes de usar no atendimento.",
+          "texto": "Repita o exercício com os dados fictícios. Confira a entrega antes de usar no seu negócio.",
           "esperado": [
             "Uma imagem de exercício conferida com critérios visuais e de uso."
           ],

@@ -5,8 +5,9 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system — mesmo da referência (book digital Couto Performance):
- * areia, tinta, cobre e verde; família Inter em títulos e texto.
+ * Design system — paleta do Google Gemini:
+ * azul #4796E3/#1B72E8, violeta #9177C7 e coral #D96570 sobre cinzas
+ * azulados do Google (#F8F9FD, #1B1C1F); família Inter em títulos e texto.
  * Todos os valores em oklch (hex de origem no comentário).
  */
 
@@ -255,15 +256,15 @@
   text-transform: uppercase;
 }
 
-/* Botão escuro com leve brilho (Começar, Revelar, Concluir) */
+/* Botão em degradê Gemini azul → violeta (Começar, Revelar, Concluir) */
 @utility btn-tinta {
-  background: linear-gradient(180deg, var(--tinta-2), var(--tinta));
-  color: var(--areia);
+  background: linear-gradient(120deg, #1b72e8, #7a5fc0);
+  color: var(--branco);
   box-shadow:
-    0 1px 0 oklch(1 0 0 / 0.12) inset,
-    0 6px 16px -6px oklch(0.192 0.014 34.4 / 0.5);
+    0 1px 0 oklch(1 0 0 / 0.18) inset,
+    0 6px 16px -6px oklch(0.56 0.16 256 / 0.55);
   &:hover {
-    background: var(--tinta-2);
+    background: linear-gradient(120deg, #2b7ef0, #8a6fd0);
   }
 }
 

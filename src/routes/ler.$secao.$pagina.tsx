@@ -148,9 +148,9 @@ function Leitor() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    marcarVisto(n, i);
+    marcarVisto(n, i, passos.length);
     window.scrollTo({ top: 0 });
-  }, [n, i]);
+  }, [n, i, passos.length]);
 
   const prox = aulaVizinha(info, 1);
   const ant = aulaVizinha(info, -1);

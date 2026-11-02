@@ -181,7 +181,7 @@
   * {
     border-color: var(--color-border);
     scrollbar-width: thin;
-    scrollbar-color: oklch(0.85 0.02 65) transparent;
+    scrollbar-color: oklch(0.85 0.02 264) transparent;
   }
 
   html,
@@ -193,7 +193,7 @@
   }
 
   ::selection {
-    background: oklch(0.901 0.042 63.8); /* #F3D9C2 */
+    background: oklch(0.9 0.05 252); /* azul Gemini claro */
   }
 }
 
@@ -210,19 +210,19 @@
 
 /* ---------- Utilitários do design system ---------- */
 
-/* Palavra em degradê tinta → cobre (título da capa) */
+/* Palavra em degradê Gemini: azul → violeta → coral (título da capa) */
 @utility acento {
-  background: linear-gradient(135deg, var(--tinta) 20%, var(--cobre) 100%);
+  background: linear-gradient(120deg, #4796e3 10%, #9177c7 55%, #d96570 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-/* Fundo do palco: areia com luz quente no alto à direita */
+/* Fundo do palco: luz azul-violeta suave no alto à direita */
 @utility palco-fundo {
   background:
-    radial-gradient(60% 70% at 92% 8%, oklch(0.86 0.04 65 / 0.75), transparent 70%),
-    radial-gradient(50% 60% at 10% 100%, oklch(0.93 0.008 240 / 0.8), transparent 70%),
+    radial-gradient(60% 70% at 92% 8%, oklch(0.88 0.05 270 / 0.6), transparent 70%),
+    radial-gradient(50% 60% at 10% 100%, oklch(0.93 0.03 252 / 0.8), transparent 70%),
     var(--areia);
 }
 

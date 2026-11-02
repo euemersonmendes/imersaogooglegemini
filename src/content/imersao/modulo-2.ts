@@ -35,7 +35,7 @@ export const modulo2: Modulo = {
             { id: "O", sigla: "O", nome: "Resultado", itens: ["Prioridade de melhoria para o próximo mês", "Evidência e lacuna por canal"] },
           ],
           quadros: [
-            { legenda: "Um pedido de análise ainda não define uma entrega útil.", abertos: [] },
+            { legenda: "Pedir “analise minhas vendas” ainda não define uma entrega útil.", abertos: [] },
             { legenda: "O: escolha primeiro a decisão que será apoiada.", abertos: ["O"], foco: "O" },
             { legenda: "P: defina as comparações necessárias para decidir.", abertos: ["O", "P"], foco: "P" },
             { legenda: "I: identifique os dados exigidos pelas comparações.", abertos: ["O", "P", "I"], foco: "I" },
@@ -173,7 +173,7 @@ Entregue [[formato, campos e tamanho]]. Mostre as evidências e os cálculos rel
         },
         {
           tipo: "prompt", rotulo: "Perguntar antes", titulo: "Peça perguntas antes", tituloEnfase: "perguntas antes",
-          texto: "Cole no Gemini e responda às perguntas. Observe se ele espera sua resposta em vez de inventar as condições da oficina.",
+          texto: "Cole no Gemini e responda às perguntas. Observe se ele espera sua resposta em vez de inventar as condições da promoção.",
           nomePrompt: "Esclarecer uma promoção",
           prompt: `# Perfil
 Atue como consultor de vendas para pequenos negócios.

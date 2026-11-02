@@ -17,6 +17,7 @@ import { Route as CertificadoRouteImport } from './routes/certificado'
 import { Route as ExercicioRouteImport } from './routes/exercicio'
 import { Route as AdminTurmasRouteImport } from './routes/admin_.turmas'
 import { Route as ApiExercicioRouteImport } from './routes/api/exercicio'
+import { Route as ValidarCodigoRouteImport } from './routes/validar.$codigo'
 import { Route as AdminAlunoIdRouteImport } from './routes/admin_.aluno.$id'
 import { Route as AdminTurmaCodigoRouteImport } from './routes/admin_.turma.$codigo'
 import { Route as LerSecaoPaginaRouteImport } from './routes/ler.$secao.$pagina'
@@ -61,6 +62,11 @@ const ApiExercicioRoute = ApiExercicioRouteImport.update({
   path: '/api/exercicio',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ValidarCodigoRoute = ValidarCodigoRouteImport.update({
+  id: '/validar/$codigo',
+  path: '/validar/$codigo',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminAlunoIdRoute = AdminAlunoIdRouteImport.update({
   id: '/admin_/aluno/$id',
   path: '/admin/aluno/$id',
@@ -86,6 +92,7 @@ export interface FileRoutesByFullPath {
   '/exercicio': typeof ExercicioRoute
   '/admin/turmas': typeof AdminTurmasRoute
   '/api/exercicio': typeof ApiExercicioRoute
+  '/validar/$codigo': typeof ValidarCodigoRoute
   '/admin/aluno/$id': typeof AdminAlunoIdRoute
   '/admin/turma/$codigo': typeof AdminTurmaCodigoRoute
   '/ler/$secao/$pagina': typeof LerSecaoPaginaRoute
@@ -99,6 +106,7 @@ export interface FileRoutesByTo {
   '/exercicio': typeof ExercicioRoute
   '/admin/turmas': typeof AdminTurmasRoute
   '/api/exercicio': typeof ApiExercicioRoute
+  '/validar/$codigo': typeof ValidarCodigoRoute
   '/admin/aluno/$id': typeof AdminAlunoIdRoute
   '/admin/turma/$codigo': typeof AdminTurmaCodigoRoute
   '/ler/$secao/$pagina': typeof LerSecaoPaginaRoute
@@ -113,6 +121,7 @@ export interface FileRoutesById {
   '/exercicio': typeof ExercicioRoute
   '/admin_/turmas': typeof AdminTurmasRoute
   '/api/exercicio': typeof ApiExercicioRoute
+  '/validar/$codigo': typeof ValidarCodigoRoute
   '/admin_/aluno/$id': typeof AdminAlunoIdRoute
   '/admin_/turma/$codigo': typeof AdminTurmaCodigoRoute
   '/ler/$secao/$pagina': typeof LerSecaoPaginaRoute
@@ -128,6 +137,7 @@ export interface FileRouteTypes {
     | '/exercicio'
     | '/admin/turmas'
     | '/api/exercicio'
+    | '/validar/$codigo'
     | '/admin/aluno/$id'
     | '/admin/turma/$codigo'
     | '/ler/$secao/$pagina'
@@ -141,6 +151,7 @@ export interface FileRouteTypes {
     | '/exercicio'
     | '/admin/turmas'
     | '/api/exercicio'
+    | '/validar/$codigo'
     | '/admin/aluno/$id'
     | '/admin/turma/$codigo'
     | '/ler/$secao/$pagina'
@@ -154,6 +165,7 @@ export interface FileRouteTypes {
     | '/exercicio'
     | '/admin_/turmas'
     | '/api/exercicio'
+    | '/validar/$codigo'
     | '/admin_/aluno/$id'
     | '/admin_/turma/$codigo'
     | '/ler/$secao/$pagina'
@@ -168,6 +180,7 @@ export interface RootRouteChildren {
   ExercicioRoute: typeof ExercicioRoute
   AdminTurmasRoute: typeof AdminTurmasRoute
   ApiExercicioRoute: typeof ApiExercicioRoute
+  ValidarCodigoRoute: typeof ValidarCodigoRoute
   AdminAlunoIdRoute: typeof AdminAlunoIdRoute
   AdminTurmaCodigoRoute: typeof AdminTurmaCodigoRoute
   LerSecaoPaginaRoute: typeof LerSecaoPaginaRoute
@@ -231,6 +244,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiExercicioRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/validar/$codigo': {
+      id: '/validar/$codigo'
+      path: '/validar/$codigo'
+      fullPath: '/validar/$codigo'
+      preLoaderRoute: typeof ValidarCodigoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin_/aluno/$id': {
       id: '/admin_/aluno/$id'
       path: '/admin/aluno/$id'
@@ -264,6 +284,7 @@ const rootRouteChildren: RootRouteChildren = {
   ExercicioRoute: ExercicioRoute,
   AdminTurmasRoute: AdminTurmasRoute,
   ApiExercicioRoute: ApiExercicioRoute,
+  ValidarCodigoRoute: ValidarCodigoRoute,
   AdminAlunoIdRoute: AdminAlunoIdRoute,
   AdminTurmaCodigoRoute: AdminTurmaCodigoRoute,
   LerSecaoPaginaRoute: LerSecaoPaginaRoute,

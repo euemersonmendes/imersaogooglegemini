@@ -5,7 +5,7 @@ async function capturar(el: HTMLElement) {
   return html2canvas(el, { scale: 3, backgroundColor: "#ffffff", useCORS: true });
 }
 
-function baixar(blob: Blob, nome: string) {
+export function baixar(blob: Blob, nome: string) {
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
@@ -23,11 +23,11 @@ export function nomeArquivo(nome: string, ext: string) {
 
 export async function baixarImagem(el: HTMLElement, nome: string) {
   const canvas = await capturar(el);
-  const blob = await new Promise<Blob>((r) => canvas.toBlob((b) => r(b!), "image/png"));
+  const blob = await new Promise<Blob>((resolve, reject) => canvas.toBlob((b) => b ? resolve(b) : reject(new Error("Não foi possível gerar a imagem.")), "image/png"));
   baixar(blob, nomeArquivo(nome, "png"));
 }
 
-export async function baixarPdf(el: HTMLElement, nome: string, janela?: Window | null) {
+export async function gerarPdf(el: HTMLElement) {
   const canvas = await capturar(el);
   const { jsPDF } = await import("jspdf");
   const pdf = new jsPDF({ orientation: "landscape", unit: "mm", format: "a4" });
@@ -35,7 +35,11 @@ export async function baixarPdf(el: HTMLElement, nome: string, janela?: Window |
   const ratio = Math.min((pw - 2 * m) / canvas.width, (ph - 2 * m) / canvas.height);
   const w = canvas.width * ratio, h = canvas.height * ratio;
   pdf.addImage(canvas.toDataURL("image/jpeg", 0.92), "JPEG", (pw - w) / 2, (ph - h) / 2, w, h, undefined, "FAST");
-  const blob = pdf.output("blob");
+  return pdf.output("blob");
+}
+
+export async function baixarPdf(el: HTMLElement, nome: string, janela?: Window | null) {
+  const blob = await gerarPdf(el);
   baixar(blob, nomeArquivo(nome, "pdf"));
   // Abre também numa aba nova: funciona mesmo onde o download direto é bloqueado.
   if (janela && !janela.closed) janela.location.href = URL.createObjectURL(blob);

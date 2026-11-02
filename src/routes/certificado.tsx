@@ -10,6 +10,7 @@ import { TOTAL_AULAS_CURSO, certificadoLiberado } from "@/lib/certificado";
 import { useProgresso } from "@/lib/progresso";
 import { useSessao } from "@/lib/sessao";
 import { CartaoCertificado } from "@/components/admin/CartaoCertificado";
+import { CompartilharCertificado } from "@/components/admin/CompartilharCertificado";
 
 export const Route = createFileRoute("/certificado")({
   head: () => ({
@@ -77,6 +78,7 @@ function Certificado() {
           <Link to="/book" className="selo flex items-center gap-2 text-apagado hover:text-cobre-texto"><ArrowLeft className="size-3.5" /> Voltar à capa</Link>
           {cert && liberado && (
             <div className="ml-auto flex flex-wrap gap-2">
+              <CompartilharCertificado cartaoRef={cartao} nome={sessao.nome} codigo={cert.codigo} disabled={!!gerando} />
               <button type="button" disabled={!!gerando} onClick={() => void exportar("pdf")} className="btn-tinta flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold">
                 {gerando === "pdf" ? <Loader className="size-4 animate-spin" /> : <FileDown className="size-4" />} Baixar PDF
               </button>

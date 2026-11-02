@@ -10,6 +10,7 @@
 <!-- LOVABLE:END -->
 
 ## Project rules
+- Certificate sharing generates the same local PDF as downloads and uses user-initiated native file sharing; unsupported browsers download it and open WhatsApp with an explicit manual-attachment notice, without uploading student certificates publicly.
 - Book content is typed data: Módulo → Aula → Passos in `src/content/imersao/*.ts` (types in `tipos.ts`), rendered per step type by `src/components/imersao/Passos.tsx`; add lessons by editing data so sidebar, tabs and progress stay automatic.
 - Reader URLs are `/ler/<aula>/<passo>` (e.g. `/ler/1.1/2`), mirroring the reference book's section/page addressing; passo 1 is always the auto-generated Objetivo.
 - Reader progress lives in `src/lib/progresso.ts` (useSyncExternalStore, per-user localStorage) and is mirrored to the `progresso` table so the admin panel can see each student's status.

@@ -8,6 +8,7 @@ import { definirCertificado, type AlunoStatus } from "@/lib/conta.functions";
 import { baixarPdf } from "@/lib/exportarCertificado";
 import { supabase } from "@/integrations/supabase/client";
 import { CartaoCertificado } from "@/components/admin/CartaoCertificado";
+import { CompartilharCertificado } from "@/components/admin/CompartilharCertificado";
 
 type Cert = { codigo: string; emitido_em: string; revogado: boolean } | null;
 
@@ -52,10 +53,11 @@ export function PdfCertificado({ aluno, aoFechar }: { aluno: AlunoStatus; aoFech
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto barra-clara bg-black/70 p-4 md:p-8" onClick={aoFechar}>
       <div className="w-full max-w-4xl" onClick={(e) => e.stopPropagation()}>
-        <div className="mt-2 mb-4 flex items-center gap-3 rounded-2xl border border-linha bg-branco p-3 sombra">
+        <div className="mt-2 mb-4 flex flex-wrap items-center gap-3 rounded-2xl border border-linha bg-branco p-3 sombra">
           <p className="text-sm font-semibold">Certificado de {aluno.nome || aluno.email}</p>
           {cert === undefined && <span className="flex items-center gap-2 text-xs text-apagado"><Loader className="size-3.5 animate-spin" /> Preparando…</span>}
-          <div className="ml-auto flex items-center gap-2">
+          <div className="ml-auto flex flex-wrap items-center gap-2">
+            {cert && !cert.revogado && <CompartilharCertificado cartaoRef={cartao} nome={aluno.nome || aluno.email} codigo={cert.codigo} disabled={gerando} />}
             {cert && !cert.revogado && (
               <button type="button" disabled={gerando} onClick={() => void baixar()} className="btn-tinta flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold">
                 {gerando ? <Loader className="size-4 animate-spin" /> : <FileDown className="size-4" />} Baixar PDF

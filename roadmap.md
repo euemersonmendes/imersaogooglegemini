@@ -1,4 +1,5 @@
 # Roadmap
+- [x] Exercício prático do negócio (gestão) em todas as 20 aulas, com teste garantindo a regra
 - [x] Compartilhar o PDF do certificado pelo WhatsApp no aluno e no painel
 - [x] Validação pública do certificado por QR code, preservando a privacidade e os códigos já impressos
 - [x] Tela de código da turma

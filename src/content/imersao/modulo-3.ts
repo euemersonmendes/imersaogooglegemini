@@ -145,6 +145,15 @@ export const modulo3: Modulo = {
           "titulo": "Agora faça na sua conta",
           "tituloEnfase": "na sua conta",
           "texto": "Repita o exercício com os dados fictícios. Confira a entrega antes de usar no seu negócio.",
+          "exercicio": {
+            "situacao": "Escolha uma pergunta real de mercado: [[quem compra o seu produto na sua região, quanto cobram os concorrentes ou se há demanda]].",
+            "tarefa": [
+              "Monte o plano da pesquisa com a pergunta, a região e o que você já sabe dos seus clientes.",
+              "Rode a pesquisa e confira duas fontes centrais, com data e território.",
+              "Trate a conclusão como hipótese e escolha um teste de uma semana: [[uma oferta, um horário ou um canal]]."
+            ],
+            "entrega": "Uma oportunidade de mercado transformada em um teste pequeno e mensurável."
+          },
           "esperado": [
             "Um relatório conferido, com uma oportunidade tratada como hipótese."
           ],
@@ -242,6 +251,15 @@ export const modulo3: Modulo = {
           "titulo": "Agora faça na sua conta",
           "tituloEnfase": "na sua conta",
           "texto": "Repita o exercício com os dados fictícios. Confira a entrega antes de usar no seu negócio.",
+          "exercicio": {
+            "situacao": "Coloque no notebook [[o plano ou a meta do seu negócio]] e os resultados reais: a planilha ou o registro de vendas exportado como documento.",
+            "tarefa": [
+              "Suba os dois documentos no notebook, sem dados pessoais de clientes.",
+              "Pergunte onde o resultado ficou longe da meta e confira cada citação no documento original.",
+              "Registre o que falta para decidir: [[custo, prazo ou informação ausente]]."
+            ],
+            "entrega": "A comparação entre a sua meta e o seu resultado, conferida na fonte."
+          },
           "esperado": [
             "Uma comparação rastreável entre o plano e os resultados."
           ],
@@ -307,6 +325,15 @@ export const modulo3: Modulo = {
           "titulo": "Agora faça na sua conta",
           "tituloEnfase": "na sua conta",
           "texto": "Repita o exercício com os dados fictícios. Confira a entrega antes de usar no seu negócio.",
+          "exercicio": {
+            "situacao": "Leve ao Canvas uma oferta real, com preços e condições: [[o produto, o valor e as regras da sua promoção]].",
+            "tarefa": [
+              "Peça o material de divulgação com os seus preços e condições, sem inventar estoque ou prazos.",
+              "Ajuste um trecho para o tom dos seus clientes e revise a página inteira.",
+              "Exporte para o Docs e programe a publicação no canal que você usa: WhatsApp, Instagram ou balcão."
+            ],
+            "entrega": "Um material de divulgação pronto para publicar, com os seus números."
+          },
           "esperado": [
             "Um cardápio editável com legenda para Instagram e condições da oferta preservadas."
           ],
@@ -401,6 +428,15 @@ export const modulo3: Modulo = {
           "titulo": "Agora faça na sua conta",
           "tituloEnfase": "na sua conta",
           "texto": "Repita o exercício com os dados fictícios. Confira a entrega antes de usar no seu negócio.",
+          "exercicio": {
+            "situacao": "Use uma planilha real sua: vendas por produto ou mês, contas a pagar ou controle de estoque.",
+            "tarefa": [
+              "Abra a planilha no Gemini e explique as colunas, os períodos e o que cada número significa.",
+              "Peça a comparação que orienta a decisão: [[o que vende mais, o que atrasa ou o que mais pesa no caixa]].",
+              "Confira um cálculo manualmente e anote a decisão que a resposta sugere."
+            ],
+            "entrega": "Um padrão dos seus próprios números, com uma decisão a tomar."
+          },
           "esperado": [
             "Uma comparação de vendas e estoque sem confundir receita, caixa e lucro."
           ],
@@ -562,6 +598,15 @@ export const modulo3: Modulo = {
           "titulo": "Agora faça na sua conta",
           "tituloEnfase": "na sua conta",
           "texto": "Repita o exercício com os dados fictícios. Confira a entrega antes de usar no seu negócio.",
+          "exercicio": {
+            "situacao": "Escolha um produto real para fotografar melhor: [[um item que você mais vende]].",
+            "tarefa": [
+              "Peça a imagem com cena, luz e enquadramento, sem prometer o que o produto não é.",
+              "Edite um detalhe e compare com a foto original do produto.",
+              "Guarde a versão final para usar em [[WhatsApp, Instagram ou catálogo]]."
+            ],
+            "entrega": "Uma imagem do seu produto pronta para divulgar."
+          },
           "esperado": [
             "Uma imagem de exercício conferida com critérios visuais e de uso."
           ],

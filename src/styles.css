@@ -299,3 +299,17 @@
     background: var(--cobre);
   }
 }
+
+/* Barra de rolagem fina e visível sobre fundo claro */
+@utility barra-clara {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in oklab, var(--tinta) 30%, transparent) transparent;
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--tinta) 25%, transparent);
+    border-radius: 999px;
+  }
+}

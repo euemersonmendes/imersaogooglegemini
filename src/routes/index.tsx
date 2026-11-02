@@ -4,6 +4,7 @@ import { ArrowRight, Award, Check, LogOut, Settings, Sparkles } from "lucide-rea
 
 import { BOOK, aulas, modulos } from "@/content/imersao";
 import { Glifo } from "@/components/imersao/Glifo";
+import { LogoGemini } from "@/components/imersao/LogoGemini";
 import { useProgresso } from "@/lib/progresso";
 import { sair, useSessao } from "@/lib/sessao";
 import { cn } from "@/lib/utils";

@@ -39,7 +39,7 @@ export function LinhaAluno({ a, aoMudar, semTurma = false }: { a: AlunoStatus; a
           <div className="h-2 w-24 overflow-hidden rounded-full bg-linha">
             <div className="h-full bg-verde" style={{ width: `${pct}%` }} />
           </div>
-          <span className="text-xs">{a.concluidas}/{TOTAL_AULAS_CURSO}</span>
+          <span className="text-xs"><b>{pct}%</b> · {a.concluidas}/{TOTAL_AULAS_CURSO} aulas</span>
         </div>
         <p className="mt-1 text-xs text-apagado">{a.ultima_aula ? `Parou na aula ${a.ultima_aula}` : "Ainda não começou"}</p>
       </td>

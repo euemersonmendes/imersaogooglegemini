@@ -5,23 +5,11 @@ import { toast } from "sonner";
 import { baixarImagem, baixarPdf } from "@/lib/exportarCertificado";
 
 import { supabase } from "@/integrations/supabase/client";
-import { BOOK, modulos } from "@/content/imersao";
-import { LogoGemini } from "@/components/imersao/LogoGemini";
+import { BOOK } from "@/content/imersao";
 import { TOTAL_AULAS_CURSO, certificadoLiberado } from "@/lib/certificado";
 import { useProgresso } from "@/lib/progresso";
 import { useSessao } from "@/lib/sessao";
-import QRCode from "qrcode";
-
-const SITE = "https://imersaogemini.lovable.app";
-
-function QrPerfil({ userId }: { userId: string }) {
-  const [src, setSrc] = useState("");
-  useEffect(() => {
-    void QRCode.toDataURL(`${SITE}/admin/aluno/${userId}`, { margin: 1, width: 240, color: { dark: "#1B1C1F", light: "#FFFFFF" } }).then(setSrc);
-  }, [userId]);
-  if (!src) return <div className="size-24" />;
-  return <img src={src} alt="QR code para validar o certificado" className="size-24" />;
-}
+import { CartaoCertificado } from "@/components/admin/CartaoCertificado";
 
 export const Route = createFileRoute("/certificado")({
   head: () => ({

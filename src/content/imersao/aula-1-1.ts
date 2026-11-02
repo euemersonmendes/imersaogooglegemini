@@ -54,6 +54,15 @@ export const aula11: Aula = {
       titulo: "Agora faça na sua conta",
       tituloEnfase: "na sua conta",
       texto: "Repita na sua tela o que você acabou de ver. Depois, pense em uma tarefa simples do seu negócio para pedir ajuda ao Gemini, sem incluir dados pessoais de clientes.",
+      exercicio: {
+        situacao: "Abra o Gemini e deixe a tela pronta para trabalhar: o chat de um lado e a sua lista real de tarefas da semana do outro.",
+        tarefa: [
+          "Escreva três tarefas reais da sua semana, uma de cada área: caixa ou financeiro, vendas ou divulgação e atendimento.",
+          "Na caixa de mensagem, peça ajuda com a primeira: [[descreva a tarefa com o seu produto, prazo ou problema]].",
+          "Leia a resposta e marque o que serve, o que falta confirmar e o que você ainda precisa decidir sozinho.",
+        ],
+        entrega: "A primeira tarefa da semana encaminhada com ajuda do Gemini.",
+      },
       esperado: ["Você sabe onde ficam a caixa de mensagem, o seletor de modelo, as Ferramentas e o botão +"],
       confira: [
         "Abri o Gemini e encontrei o seletor de modelo",

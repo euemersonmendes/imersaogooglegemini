@@ -9,6 +9,8 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as IndexRouteImport } from './routes/index'
+import { Route as AcessoRouteImport } from './routes/acesso'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as BookRouteImport } from './routes/book'
 import { Route as CertificadoRouteImport } from './routes/certificado'
@@ -19,6 +21,16 @@ import { Route as AdminAlunoIdRouteImport } from './routes/admin_.aluno.$id'
 import { Route as AdminTurmaCodigoRouteImport } from './routes/admin_.turma.$codigo'
 import { Route as LerSecaoPaginaRouteImport } from './routes/ler.$secao.$pagina'
 
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AcessoRoute = AcessoRouteImport.update({
+  id: '/acesso',
+  path: '/acesso',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
@@ -66,6 +78,8 @@ const LerSecaoPaginaRoute = LerSecaoPaginaRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
+  '/': typeof IndexRoute
+  '/acesso': typeof AcessoRoute
   '/admin': typeof AdminRoute
   '/book': typeof BookRoute
   '/certificado': typeof CertificadoRoute
@@ -77,6 +91,8 @@ export interface FileRoutesByFullPath {
   '/ler/$secao/$pagina': typeof LerSecaoPaginaRoute
 }
 export interface FileRoutesByTo {
+  '/': typeof IndexRoute
+  '/acesso': typeof AcessoRoute
   '/admin': typeof AdminRoute
   '/book': typeof BookRoute
   '/certificado': typeof CertificadoRoute
@@ -89,6 +105,8 @@ export interface FileRoutesByTo {
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/': typeof IndexRoute
+  '/acesso': typeof AcessoRoute
   '/admin': typeof AdminRoute
   '/book': typeof BookRoute
   '/certificado': typeof CertificadoRoute
@@ -102,6 +120,8 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
+    | '/'
+    | '/acesso'
     | '/admin'
     | '/book'
     | '/certificado'
@@ -113,6 +133,8 @@ export interface FileRouteTypes {
     | '/ler/$secao/$pagina'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/'
+    | '/acesso'
     | '/admin'
     | '/book'
     | '/certificado'
@@ -124,6 +146,8 @@ export interface FileRouteTypes {
     | '/ler/$secao/$pagina'
   id:
     | '__root__'
+    | '/'
+    | '/acesso'
     | '/admin'
     | '/book'
     | '/certificado'
@@ -136,6 +160,8 @@ export interface FileRouteTypes {
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute
+  AcessoRoute: typeof AcessoRoute
   AdminRoute: typeof AdminRoute
   BookRoute: typeof BookRoute
   CertificadoRoute: typeof CertificadoRoute
@@ -149,6 +175,20 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/acesso': {
+      id: '/acesso'
+      path: '/acesso'
+      fullPath: '/acesso'
+      preLoaderRoute: typeof AcessoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin': {
       id: '/admin'
       path: '/admin'
@@ -216,6 +256,8 @@ declare module '@tanstack/react-router' {
 }
 
 const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
+  AcessoRoute: AcessoRoute,
   AdminRoute: AdminRoute,
   BookRoute: BookRoute,
   CertificadoRoute: CertificadoRoute,

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
+import { useRouter } from "@tanstack/react-router";
 import { KeyRound, Loader } from "lucide-react";
 
 import { LogoGemini } from "@/components/imersao/LogoGemini";

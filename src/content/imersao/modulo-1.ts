@@ -203,7 +203,7 @@ Confirme qual preferência você entendeu. Se não puder salvá-la nesta conta, 
             tarefa: [
               "Salve como memória ou instrução: respostas sobre meu negócio devem terminar com próximos passos e o que conferir.",
               "Revise a lista de memórias e exclua o que não for sobre o seu trabalho.",
-              "Teste em um chat novo com uma decisão real de gestão, sem dados pessoais de clientes.",
+              "Teste em um chat novo com [[uma decisão real da sua gestão]], sem dados pessoais de clientes.",
             ],
             entrega: "Um padrão fixo de resposta para as decisões do dia a dia.",
           },

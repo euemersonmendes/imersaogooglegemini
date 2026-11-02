@@ -95,7 +95,7 @@ export const modulo4: Modulo = {
             "tarefa": [
               "Peça o resumo com decisões e pendências da conversa e confira cada ponto nas mensagens originais.",
               "Peça o rascunho da resposta no seu tom e retire qualquer promessa sem autorização.",
-              "Envie com data clara para a resposta que falta."
+              "Envie com data clara para a resposta que falta: [[o prazo que você combinau]]."
             ],
             "entrega": "A pendência mais antiga da sua caixa de entrada respondida."
           },
@@ -238,7 +238,7 @@ export const modulo4: Modulo = {
           "exercicio": {
             "situacao": "Prepare uma proposta real: [[um orçamento para cliente, um serviço para empresa ou um pedido de crédito]].",
             "tarefa": [
-              "Liste no Docs os números confirmados: serviços, valores e condições do seu negócio.",
+              "Liste no Docs os números confirmados: [[os serviços, os valores e as condições]].",
               "Peça a estrutura da proposta, separando o que é estimativa do que já está fechado.",
               "Revise cada valor na fonte e gere os slides para apresentar."
             ],
@@ -391,7 +391,7 @@ export const modulo4: Modulo = {
           "exercicio": {
             "situacao": "Use as anotações de uma reunião real: [[com sócio, funcionário, fornecedor ou contador]].",
             "tarefa": [
-              "Peça a minuta da ata com decisões, responsáveis e prazos, marcando o que falta confirmar.",
+              "Peça a minuta da ata com as decisões de [[sua reunião]], responsáveis e prazos, marcando o que falta confirmar.",
               "Guarde a ata no Drive, na pasta do negócio, e confira as tarefas na semana seguinte.",
               "Compare as versões dos documentos citados antes de aceitar qualquer mudança."
             ],
@@ -527,7 +527,7 @@ export const modulo4: Modulo = {
           "exercicio": {
             "situacao": "Escolha a rotina do seu negócio que mais toma tempo: [[lançar vendas, responder clientes, conferir estoque ou preparar cobranças]].",
             "tarefa": [
-              "Dê as notas de 1 a 5 e justifique por que essa rotina vem primeiro.",
+              "Dê as notas de 1 a 5 para [[as rotinas do seu dia]] e justifique por que uma vem primeiro.",
               "Monte com o Gemini um teste pequeno e defina como vai medir: tempo gasto, erros e clareza.",
               "Agende a revisão em 30 dias para comparar com a forma atual."
             ],

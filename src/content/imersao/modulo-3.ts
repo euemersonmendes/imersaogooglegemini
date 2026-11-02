@@ -328,7 +328,7 @@ export const modulo3: Modulo = {
           "exercicio": {
             "situacao": "Leve ao Canvas uma oferta real, com preços e condições: [[o produto, o valor e as regras da sua promoção]].",
             "tarefa": [
-              "Peça o material de divulgação com os seus preços e condições, sem inventar estoque ou prazos.",
+              "Peça o material de divulgação com [[o produto, os preços e as condições da oferta]], sem inventar estoque ou prazos.",
               "Ajuste um trecho para o tom dos seus clientes e revise a página inteira.",
               "Exporte para o Docs e programe a publicação no canal que você usa: WhatsApp, Instagram ou balcão."
             ],

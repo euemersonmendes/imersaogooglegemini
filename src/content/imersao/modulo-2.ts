@@ -84,7 +84,7 @@ Entregue um cartão curto com O, P, I e lacunas. Separe informações fornecidas
           exercicio: {
             situacao: "Pense em uma decisão real pendente do seu negócio: [[comprar estoque, ajustar preço, contratar alguém ou divulgar]].",
             tarefa: [
-              "Descreva a entrega que você precisa: uma decisão, um valor ou um material pronto.",
+              "Descreva a entrega que você precisa para [[sua decisão pendente]]: uma decisão, um valor ou um material pronto.",
               "Liste o que você já sabe — preços, vendas do mês, condições do fornecedor — e o que falta, sem inventar.",
               "Monte o cartão IPO com o Gemini e revise as lacunas que ele marcou.",
             ],

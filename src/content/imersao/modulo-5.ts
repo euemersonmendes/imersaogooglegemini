@@ -525,7 +525,7 @@ export const modulo5: Modulo = {
           "exercicio": {
             "situacao": "Monte o briefing do resumo mensal do seu negócio, com os números que você já tem em mãos.",
             "tarefa": [
-              "Preencha os quatro blocos: objetivo, insumos, limites e entrega.",
+              "Preencha os quatro blocos com [[o objetivo, os insumos e os limites do seu negócio]].",
               "Teste com os dados do mês e depois retire um número: o agente deve marcar a lacuna, não inventar.",
               "Guarde o briefing para repetir todo mês, sempre com a sua revisão."
             ],

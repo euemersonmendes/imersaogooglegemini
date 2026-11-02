@@ -28,11 +28,11 @@ export const modulo2: Modulo = {
         {
           tipo: "mapa", rotulo: "Planejar", titulo: "Comece pela decisão", tituloEnfase: "pela decisão",
           texto: "Clique em Revelar. Veja como a decisão orienta a transformação e, só então, a escolha dos dados.",
-          pedido: "Preciso decidir qual etapa do atendimento investigar em Caxias.", fluxo: "volta", rotuloSeta: "PLANEJAR",
+          pedido: "Preciso decidir qual canal de vendas da minha loja melhorar primeiro.", fluxo: "volta", rotuloSeta: "PLANEJAR",
           nos: [
-            { id: "I", sigla: "I", nome: "Conteúdo", itens: ["Volumes e prazos por etapa", "Dois meses comparáveis", "Metas, se disponíveis"] },
+            { id: "I", sigla: "I", nome: "Conteúdo", itens: ["Pedidos e prazos por canal", "Dois meses comparáveis", "Metas, se disponíveis"] },
             { id: "P", sigla: "P", nome: "Transformação", itens: ["Comparar volumes e prazos separadamente", "Calcular variações", "Não atribuir causas sem evidência"] },
-            { id: "O", sigla: "O", nome: "Resultado", itens: ["Quadro de prioridades para a reunião", "Evidência e lacuna por etapa"] },
+            { id: "O", sigla: "O", nome: "Resultado", itens: ["Prioridade de melhoria para o próximo mês", "Evidência e lacuna por canal"] },
           ],
           quadros: [
             { legenda: "Um pedido de análise ainda não define uma entrega útil.", abertos: [] },
@@ -49,7 +49,7 @@ export const modulo2: Modulo = {
           prompt: `# Perfil
 Atue como facilitador de planejamento de tarefas.
 # Contexto
-Estes são dados didáticos fictícios. Uma equipe de atendimento em Caxias quer decidir qual etapa investigar antes de propor melhorias. Dispõe de volumes e prazos médios de dois meses, mas não informou metas. Não há dados pessoais.
+Estes são dados didáticos fictícios. Sou dono de uma pequena loja de roupas e quero decidir qual canal de vendas (balcão, WhatsApp ou Instagram) melhorar primeiro. Tenho número de pedidos e prazos médios de entrega de dois meses, mas não defini metas. Não há dados pessoais.
 # Objetivo
 Ajude a estruturar o trabalho pelo Modelo IPO. Não execute a análise. Entreviste-me na ordem O: resultado e decisão; P: operações necessárias; I: conteúdo disponível. Faça uma pergunta por vez e aguarde. Limite a entrevista a cinco perguntas; não repita informações já dadas.
 # Modelo de Entrega
@@ -71,7 +71,7 @@ Ao terminar, entregue um cartão com O, P, I e principal lacuna. Diferencie o in
           prompt: `# Perfil
 Atue como entrevistador para organizar uma tarefa com o Modelo IPO.
 # Contexto
-Minha necessidade é [[descreva uma tarefa de atendimento, consultoria ou gestão sem identificar pessoas]]. Se eu usar números de exercício, considere: Estes são dados didáticos fictícios. Não solicite nomes, contatos nem documentos pessoais.
+Minha necessidade é [[descreva uma tarefa do seu negócio — vendas, clientes, estoque, caixa, preços ou divulgação — sem identificar pessoas]]. Se eu usar números de exercício, considere: Estes são dados didáticos fictícios. Não solicite nomes, contatos nem documentos pessoais.
 # Objetivo
 Antes de executar qualquer trabalho, descubra O: entrega, público e decisão; P: operações e critérios; I: dados e fontes necessários. Faça uma pergunta por vez, espere minha resposta e adapte a seguinte. Faça no máximo cinco perguntas.
 # Modelo de Entrega
@@ -98,30 +98,30 @@ Entregue um cartão curto com O, P, I e lacunas. Separe informações fornecidas
           nomePrompt: "Prioridade de investigação",
           intro: { titulo: "Do cartão à mensagem", texto: "Contexto carrega o I; Objetivo conecta P e O; os outros blocos orientam o papel e a entrega." },
           blocos: [
-            { titulo: "Perfil", pergunta: "Que papel o Gemini assume?", texto: "Atue como analista de atendimentos. Diferencie observações de hipóteses.", nota: "Defina como trabalhar, não um currículo imaginário." },
-            { titulo: "Contexto", pergunta: "Quais dados e limites existem?", ipo: "I", texto: "Estes são dados didáticos fictícios de Caxias. Prazos em dias; volumes são atendimentos concluídos. Mesmas definições nos dois meses; metas não informadas.\nEtapa | Março: volume | Março: prazo | Abril: volume | Abril: prazo\nTriagem | 100 | 1 | 105 | 1\nOrientação | 50 | 2 | 55 | 3\nEncaminhamento | 40 | 3 | 42 | 6" },
-            { titulo: "Objetivo", pergunta: "O que fazer e para quê?", ipo: "PO", texto: "Compare os meses por etapa, calcule variações de volume e prazo e sugira onde investigar primeiro. Apoie a reunião de gestão, sem recomendar solução antes de verificar causas." },
+            { titulo: "Perfil", pergunta: "Que papel o Gemini assume?", texto: "Atue como apoio ao dono de uma pequena loja na análise das vendas. Diferencie observações de hipóteses.", nota: "Defina como trabalhar, não um currículo imaginário." },
+            { titulo: "Contexto", pergunta: "Quais dados e limites existem?", ipo: "I", texto: "Estes são dados didáticos fictícios de uma pequena loja de roupas. Prazos em dias até a entrega; volumes são pedidos concluídos. Mesmas definições nos dois meses; metas não informadas.\nCanal | Março: volume | Março: prazo | Abril: volume | Abril: prazo\nBalcão | 100 | 1 | 105 | 1\nWhatsApp | 50 | 2 | 55 | 3\nInstagram | 40 | 3 | 42 | 6" },
+            { titulo: "Objetivo", pergunta: "O que fazer e para quê?", ipo: "PO", texto: "Compare os meses por etapa, calcule variações de volume e prazo e sugira onde investigar primeiro. Apoie minha decisão do próximo mês, sem recomendar solução antes de verificar causas." },
             { titulo: "Modelo de Entrega", pergunta: "Como conferir o resultado?", texto: "Apresente prioridade, tabela de variações e lacunas. Mostre cálculos, unidades e períodos. Não invente metas ou causas; termine com uma pergunta de investigação." },
           ],
           fecho: { titulo: "Confira a ligação", texto: "O conteúdo precisa permitir a transformação, e a transformação deve produzir a entrega desejada." },
         },
         {
           tipo: "prompt", rotulo: "Demonstração", titulo: "Execute o pedido estruturado", tituloEnfase: "o pedido estruturado",
-          texto: "Cole em um novo chat. Confira os cálculos: o prazo de encaminhamento passa de 3 para 6 dias, um aumento de 100%.",
-          nomePrompt: "Comparar etapas de atendimento",
+          texto: "Cole em um novo chat. Confira os cálculos: o prazo de entrega dos pedidos do Instagram passa de 3 para 6 dias, um aumento de 100%.",
+          nomePrompt: "Comparar canais de venda da loja",
           prompt: `# Perfil
-Atue como analista de atendimentos; separe evidência de hipótese.
+Atue como apoio ao dono de uma pequena loja; separe evidência de hipótese.
 # Contexto
-Estes são dados didáticos fictícios de Caxias. Volumes são atendimentos concluídos; prazos médios estão em dias. As definições são iguais nos dois meses. Não há metas nem causas informadas.
-Etapa | Março: volume | Março: prazo | Abril: volume | Abril: prazo
-Triagem | 100 | 1 | 105 | 1
-Orientação | 50 | 2 | 55 | 3
-Encaminhamento | 40 | 3 | 42 | 6
+Estes são dados didáticos fictícios de uma pequena loja de roupas. Volumes são pedidos concluídos; prazos médios até a entrega estão em dias. As definições são iguais nos dois meses. Não há metas nem causas informadas.
+Canal | Março: volume | Março: prazo | Abril: volume | Abril: prazo
+Balcão | 100 | 1 | 105 | 1
+WhatsApp | 50 | 2 | 55 | 3
+Instagram | 40 | 3 | 42 | 6
 # Objetivo
-Compare março e abril, separando volume de prazo. Calcule as variações percentuais e sugira a etapa a investigar primeiro para a reunião de gestão. Não confunda aumento de prazo com causa demonstrada.
+Compare março e abril, separando volume de prazo. Calcule as variações percentuais e sugira o canal a melhorar primeiro no próximo mês. Não confunda aumento de prazo com causa demonstrada.
 # Modelo de Entrega
-Abra com uma prioridade justificada. Entregue tabela com etapa, variação de volume, variação de prazo e evidência. Mostre a fórmula utilizada. Termine com lacunas e uma pergunta para a equipe. Não invente dados, metas ou causas.`,
-          observe: ["Volume de encaminhamento: aumento de 5%", "Prazo de orientação: aumento de 50%", "Ausência de meta não vira descumprimento comprovado"],
+Abra com uma prioridade justificada. Entregue tabela com canal, variação de volume, variação de prazo e evidência. Mostre a fórmula utilizada. Termine com lacunas e uma pergunta para eu investigar. Não invente dados, metas ou causas.`,
+          observe: ["Pedidos pelo Instagram: aumento de 5%", "Prazo de entrega no WhatsApp: aumento de 50%", "Ausência de meta não vira descumprimento comprovado"],
         },
         {
           tipo: "prompt", rotulo: "Sua vez", titulo: "Escreva os quatro blocos", tituloEnfase: "os quatro blocos",
@@ -130,7 +130,7 @@ Abra com uma prioridade justificada. Entregue tabela com etapa, variação de vo
           prompt: `# Perfil
 Atue como [[papel necessário à tarefa]], usando evidências e distinguindo fatos de hipóteses.
 # Contexto
-A situação é [[situação e público da entrega]]. O conteúdo disponível é [[dados autorizados, períodos, unidades e fontes do I]]. As limitações são [[informações ausentes e limites de uso]]. Não incluo dados pessoais. Se o caso for um exercício, declare: Estes são dados didáticos fictícios.
+A situação é [[situação e público da entrega]]. O conteúdo disponível é [[dados do seu negócio, períodos, unidades de medida e fontes do I]]. As limitações são [[informações ausentes e limites de uso]]. Não incluo dados pessoais. Se o caso for um exercício, declare: Estes são dados didáticos fictícios.
 # Objetivo
 Realize [[operações concretas do P]] para produzir [[resultado do O]] e apoiar [[decisão ou ação]]. Use [[critérios de comparação ou priorização]]. Não extrapole o conteúdo fornecido.
 # Modelo de Entrega
@@ -142,7 +142,7 @@ Entregue [[formato, campos e tamanho]]. Mostre as evidências e os cálculos rel
           texto: "Compare os pedidos sobre o mesmo caso. A estrutura melhora o direcionamento, mas não dispensa conferir a resposta.",
           colunas: ["Pedido vago", "Pedido em blocos"],
           linhas: [
-            ["Analise os atendimentos.", "Perfil: analista que separa evidência de hipótese."],
+            ["Analise as vendas.", "Perfil: apoio ao dono que separa evidência de hipótese."],
             ["Sem dados nem períodos definidos.", "Contexto: tabela fictícia de março e abril, com unidades."],
             ["Sem decisão definida.", "Objetivo: comparar variações e priorizar investigação."],
             ["Qualquer texto parece suficiente.", "Modelo de Entrega: prioridade, cálculos e lacunas verificáveis."],
@@ -174,28 +174,28 @@ Entregue [[formato, campos e tamanho]]. Mostre as evidências e os cálculos rel
         {
           tipo: "prompt", rotulo: "Perguntar antes", titulo: "Peça perguntas antes", tituloEnfase: "perguntas antes",
           texto: "Cole no Gemini e responda às perguntas. Observe se ele espera sua resposta em vez de inventar as condições da oficina.",
-          nomePrompt: "Esclarecer uma oficina",
+          nomePrompt: "Esclarecer uma promoção",
           prompt: `# Perfil
-Atue como planejador de oficinas para pequenos negócios.
+Atue como consultor de vendas para pequenos negócios.
 # Contexto
-Estes são dados didáticos fictícios. Uma unidade em Bacabal pretende realizar uma oficina de precificação para o setor de alimentação. Ainda não definimos público, duração nem recursos. Não há dados pessoais.
+Estes são dados didáticos fictícios. Tenho uma pequena lanchonete e quero fazer uma promoção para aumentar as vendas no fim da tarde. Ainda não defini público, duração, desconto nem orçamento. Não há dados pessoais.
 # Objetivo
-Antes de sugerir a programação, faça até três perguntas essenciais, uma por vez, esperando minha resposta. Comece pelo que os participantes precisam conseguir fazer ao final. Use as respostas para escolher as perguntas seguintes.
+Antes de sugerir a programação, faça até três perguntas essenciais, uma por vez, esperando minha resposta. Comece pelo resultado que quero alcançar com a promoção. Use as respostas para escolher as perguntas seguintes.
 # Modelo de Entrega
-Após a entrevista, entregue uma proposta de até cinco tópicos com objetivo, atividade e material necessário. Marque o que não foi definido como “a confirmar”. Não invente orçamento, agenda, disponibilidade de espaço ou compromissos institucionais. Termine indicando o que preciso validar com a equipe.`,
-          observe: ["Pergunta pelo resultado de aprendizagem antes da programação", "Aguarda minha resposta", "Restrições ausentes continuam marcadas"],
+Após a entrevista, entregue uma proposta de até cinco tópicos com objetivo, oferta, divulgação e o que preciso preparar. Marque o que não foi definido como “a confirmar”. Não invente custos, margens, estoque ou preços. Termine indicando o que preciso conferir antes de divulgar.`,
+          observe: ["Pergunta pelo resultado desejado antes de sugerir a promoção", "Aguarda minha resposta", "Restrições ausentes continuam marcadas"],
         },
         {
           tipo: "prompt", rotulo: "Dar exemplos", titulo: "Mostre o padrão desejado", tituloEnfase: "o padrão desejado",
           texto: "Teste em outro chat. Compare a saída com o exemplo: o formato pode ser reaproveitado, mas as informações não podem ser transferidas.",
           nomePrompt: "Exemplo para orientar o registro",
           prompt: `# Perfil
-Atue como redator de registros curtos de atendimento, com linguagem clara.
+Atue como redator de anotações curtas sobre o meu negócio, com linguagem clara.
 # Contexto
 Estes são dados didáticos fictícios e não contêm dados pessoais.
-Exemplo de entrada: negócio de moda em Timon mistura receitas e despesas pessoais.
+Exemplo de entrada: minha loja de moda mistura receitas da loja e despesas pessoais.
 Exemplo de saída: Situação: mistura de finanças. Próximo passo sugerido: separar registros pessoais e do negócio. A confirmar: forma atual de controle.
-Nova entrada: negócio de artesanato em Balsas registra vendas em caderno, mas não soma as despesas com embalagem.
+Nova entrada: minha loja de artesanato registra vendas em caderno, mas não soma as despesas com embalagem.
 # Objetivo
 Reescreva apenas a nova entrada seguindo o padrão do exemplo. Use o exemplo como referência de estrutura, não como fonte de fatos do novo caso.
 # Modelo de Entrega
@@ -227,7 +227,7 @@ Entregue uma tabela de alternativas, vantagens, limites e critérios. Depois rev
     {
       n: "2.4", titulo: "Skills: transformar prompts em atalhos", curto: "Skills", ferramenta: "Gemini · Skills",
       objetivo: "Transformar um prompt validado em instruções reutilizáveis e testar seu acionamento.",
-      voceSaiCom: "Uma skill de resposta a pedidos de consultoria, revisada e testada em outro caso.",
+      voceSaiCom: "Uma skill de resposta a clientes no WhatsApp, revisada e testada em outro caso.",
       saibaMais: "Skills guardam instruções reutilizáveis e podem ser acionadas quando um pedido combina. A migração dos Gems não dispensa revisar instruções, limites e resultados.",
       fontes: [
         { nome: "Ajuda do Gemini", url: "https://support.google.com/gemini" },
@@ -240,7 +240,7 @@ Entregue uma tabela de alternativas, vantagens, limites e critérios. Depois rev
         },
         {
           tipo: "mapa", rotulo: "Do prompt à skill", titulo: "Reaproveite o que funcionou", tituloEnfase: "o que funcionou",
-          texto: "Revele o caminho. Guarde as regras do trabalho, não os dados de um atendimento específico.",
+          texto: "Revele o caminho. Guarde as regras do seu atendimento, não os dados de um cliente específico.",
           fluxo: "ida", rotuloSeta: "REUTILIZAR",
           nos: [
             { id: "prompt", sigla: "1", nome: "Prompt que funcionou", itens: ["Entrega conferida", "Critérios e limites ajustados"] },
@@ -256,19 +256,19 @@ Entregue uma tabela de alternativas, vantagens, limites e critérios. Depois rev
         {
           tipo: "prompt", rotulo: "Criar skill", titulo: "Transforme conversa em skill", tituloEnfase: "em skill",
           texto: "Use uma conversa com resposta já revisada. Cole o pedido, confira o rascunho e use Criar skill para salvar as instruções validadas.",
-          nomePrompt: "Resposta a pedido de consultoria",
+          nomePrompt: "Resposta a clientes no WhatsApp",
           prompt: `# Perfil
 Atue como organizador de instruções reutilizáveis para uma skill do Gemini.
 # Contexto
-Quero aproveitar o padrão desta conversa já revisada: [[resuma o pedido e a resposta validada, sem dados pessoais]]. Para o teste, use este cenário: Estes são dados didáticos fictícios. Um negócio de beleza em Imperatriz pede consultoria para organizar o caixa; não informou objetivo específico nem disponibilidade.
+Quero aproveitar o padrão desta conversa já revisada: [[resuma o pedido e a resposta validada, sem dados pessoais]]. Para o teste, use este cenário: Estes são dados didáticos fictícios. Uma cliente pergunta ao meu salão de beleza se há horário para escova no sábado e quanto custa; não informou o horário que prefere.
 # Objetivo
-Crie a skill “Resposta a pedido de consultoria”. Extraia regras de redação e verificação, sem guardar fatos particulares da conversa. Defina que ela se aplica ao redigir respostas iniciais a pedidos de consultoria, não a aprovar serviços ou executar envios.
+Crie a skill “Resposta a clientes no WhatsApp”. Extraia regras de redação e verificação, sem guardar fatos particulares da conversa. Defina que ela se aplica ao redigir respostas iniciais a clientes no WhatsApp, não a confirmar agendamentos ou executar envios.
 # Modelo de Entrega
-Entregue nome, descrição de acionamento e instruções prontas para revisar e salvar. Oriente acolher o pedido, resumir a necessidade e perguntar o essencial. Proíba inventar preços, prazos, vagas ou promessas institucionais. Marque lacunas, não solicite dados pessoais e exija revisão humana antes do envio. Inclua um pedido de teste e o comportamento esperado.`,
+Entregue nome, descrição de acionamento e instruções prontas para revisar e salvar. Oriente acolher o pedido, resumir a necessidade e perguntar o essencial. Proíba inventar preços, prazos, horários disponíveis ou promoções. Marque lacunas, não solicite dados pessoais e exija revisão humana antes do envio. Inclua um pedido de teste e o comportamento esperado.`,
           recebe: {
             titulo: "Rascunho fictício de skill", texto: "Exemplo do que revisar antes de salvar.",
             secoes: [
-              { rotulo: "Nome e acionamento", itens: ["Resposta a pedido de consultoria", "Usar ao redigir uma resposta inicial de consultoria"] },
+              { rotulo: "Nome e acionamento", itens: ["Resposta a clientes no WhatsApp", "Usar ao redigir uma resposta inicial a um cliente"] },
               { rotulo: "Regras estáveis", itens: ["Acolha e resuma sem acrescentar fatos", "Pergunte objetivo e restrições essenciais", "Não prometa preço, prazo ou disponibilidade", "Não envie; entregue rascunho para revisão"] },
               { rotulo: "Teste", itens: ["Pedido fictício: responder a negócio de beleza sobre caixa", "Esperado: acolhimento e perguntas, sem promessa de serviço"] },
             ], aceite: "Salve apenas instruções revisadas e sem dados do caso; teste depois em uma nova conversa.",
@@ -290,7 +290,7 @@ Entregue nome, descrição de acionamento e instruções prontas para revisar e 
           tipo: "resultado", rotulo: "Faça na sua conta", titulo: "Agora faça na sua conta", tituloEnfase: "na sua conta",
           texto: "Salve a skill revisada e teste outro pedido fictício em um novo chat. Compare com as regras antes de usar em trabalho real.",
           esperado: ["Uma skill reutilizável, sem dados pessoais, com teste de acionamento e resposta."],
-          confira: ["Salvei regras gerais sem dados específicos do atendimento", "Testei outro caso e conferi se a skill foi ativada", "Revisei lacunas, promessas e dados inventados antes de usar a resposta"],
+          confira: ["Salvei regras gerais sem dados de clientes", "Testei outro caso e conferi se a skill foi ativada", "Revisei lacunas, promessas e dados inventados antes de usar a resposta"],
         },
       ],
     },

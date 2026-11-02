@@ -1,5 +1,7 @@
 import { useSyncExternalStore } from "react";
 
+import { supabase } from "@/integrations/supabase/client";
+
 const CHAVE = "imersao-gemini:v2";
 
 export type Progresso = {
@@ -17,12 +19,54 @@ export type Progresso = {
 const VAZIO: Progresso = { concluidas: [], vistos: {}, checks: {}, notas: {} };
 
 let estado: Progresso | null = null;
+let usuario: string | null = null;
+let timer: ReturnType<typeof setTimeout> | undefined;
 const ouvintes = new Set<() => void>();
+
+function chave() {
+  return usuario ? `${CHAVE}:${usuario}` : CHAVE;
+}
+
+/** Ao entrar: carrega o progresso salvo na conta (ou envia o local, se a conta ainda não tem). */
+export async function vincularUsuario(id: string) {
+  usuario = id;
+  estado = null;
+  const local = ler();
+  const { data } = await supabase.from("progresso").select("dados").eq("user_id", id).maybeSingle();
+  if (data?.dados && Object.keys(data.dados as object).length) {
+    estado = { ...VAZIO, ...(data.dados as Partial<Progresso>) };
+    try {
+      window.localStorage.setItem(chave(), JSON.stringify(estado));
+    } catch {
+      /* sem armazenamento */
+    }
+    ouvintes.forEach((o) => o());
+  } else if (local !== VAZIO) {
+    enviar(local);
+  }
+}
+
+export function desvincularUsuario() {
+  usuario = null;
+  estado = VAZIO;
+  ouvintes.forEach((o) => o());
+}
+
+function enviar(p: Progresso) {
+  if (!usuario) return;
+  const id = usuario;
+  clearTimeout(timer);
+  timer = setTimeout(() => {
+    void supabase
+      .from("progresso")
+      .upsert({ user_id: id, dados: p as never, concluidas: p.concluidas.length, atualizado_em: new Date().toISOString() }, { onConflict: "user_id" });
+  }, 800);
+}
 
 function ler(): Progresso {
   if (estado) return estado;
   try {
-    const bruto = window.localStorage.getItem(CHAVE);
+    const bruto = window.localStorage.getItem(chave());
     estado = bruto ? { ...VAZIO, ...(JSON.parse(bruto) as Partial<Progresso>) } : VAZIO;
   } catch {
     estado = VAZIO;
@@ -33,10 +77,11 @@ function ler(): Progresso {
 function gravar(novo: Progresso) {
   estado = novo;
   try {
-    window.localStorage.setItem(CHAVE, JSON.stringify(novo));
+    window.localStorage.setItem(chave(), JSON.stringify(novo));
   } catch {
     /* armazenamento bloqueado: segue em memória */
   }
+  enviar(novo);
   ouvintes.forEach((o) => o());
 }
 

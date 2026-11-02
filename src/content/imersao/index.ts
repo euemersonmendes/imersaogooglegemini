@@ -6,13 +6,16 @@ import { modulo4 } from "./modulo-4";
 import { modulo5 } from "./modulo-5";
 
 export const BOOK = {
-  selo: "Book digital · Sebrae Maranhão · Para micro e pequenos empresários",
+  selo: "Book digital · Para micro e pequenos empresários",
+  instrutor: "Emerson Mendes",
+  cargaHoraria: "16 horas",
   nome: "Imersão Gemini",
   tituloAntes: "Imersão",
   tituloAcento: "Gemini",
   chamada:
-    "Para quem toca o próprio negócio: o instrutor mostra a função, você faz na sua conta e já aplica em vendas, atendimento, divulgação e gestão da sua empresa. Acompanhe pelo telão ou pelo seu notebook: a tela é a mesma.",
-  chamadaCelular: "Gemini para micro e pequenos empresários. Reveja os passos, copie os prompts e confira cada resultado.",
+    "Para quem toca o próprio negócio: use a inteligência artificial Gemini para resolver os problemas do dia a dia da empresa — financeiro e fluxo de caixa, marketing e vendas, compras e estoque, gestão de pessoas e atendimento. O instrutor mostra, você faz na sua conta e já aplica.",
+  areas: ["Financeiro", "Fluxo de caixa", "Marketing e vendas", "Compras e estoque", "Gestão de pessoas", "Atendimento", "Gestão do dia a dia"],
+  chamadaCelular: "Gemini para resolver o dia a dia da pequena empresa: caixa, vendas, compras, equipe e atendimento.",
 };
 
 export const modulos: Modulo[] = [modulo1, modulo2, modulo3, modulo4, modulo5];

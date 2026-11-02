@@ -35,7 +35,7 @@ export function CartaoCertificado({ userId, nome, codigo, emitidoEm, cartaoRef }
       <p className="mt-8 text-apagado">Certificamos que</p>
       <p className="mt-2 text-4xl font-semibold tracking-tight md:text-5xl">{nome}</p>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-apagado">
-          concluiu a Imersão Google Gemini para micro e pequenos empresários, com carga horária de {BOOK.cargaHoraria}, abrangendo {modulos.length} módulos e {TOTAL_AULAS_CURSO} aulas sobre o uso da inteligência artificial no financeiro, fluxo de caixa, marketing, vendas, compras, gestão de pessoas e atendimento.
+          concluiu a Imersão Google Gemini para micro e pequenos empresários, com carga horária de {BOOK.cargaHoraria}, abrangendo {modulos.length} módulos e {TOTAL_AULAS_CURSO} aulas sobre o uso da inteligência artificial na gestão de negócios.
         </p>
       <div className="mt-10 border-t border-linha pt-6">
         <p className="text-center text-xs font-semibold uppercase tracking-[0.25em] text-cobre-texto">Grade de aulas da imersão</p>

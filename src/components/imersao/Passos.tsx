@@ -14,7 +14,7 @@ import type {
   PassoTela,
   PassoTexto,
 } from "@/content/imersao/tipos";
-import { alternarCheck, alternarConcluida, darNota, useProgresso } from "@/lib/progresso";
+import { alternarCheck, alternarConcluida, darNota, podeConcluir, useProgresso } from "@/lib/progresso";
 import { Faisca } from "./Glifo";
 import { Inline, Rico, textoParaCopiar } from "./Rico";
 import { TelaIlustrada, telas } from "./telas";

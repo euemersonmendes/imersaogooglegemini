@@ -20,6 +20,13 @@ describe("imersão", () => {
       expect(exercicio!.tarefa.some((t) => t.includes("[[")), `aula ${a.aula.n} sem lacuna para os dados do aluno`).toBe(true);
     }
   });
+  it("prompts copiáveis são reais: sem cenário fictício e com lacuna para os dados do aluno", () => {
+    for (const a of aulas)
+      for (const p of a.aula.passos) {
+        if (p.tipo !== "prompt") continue;
+        expect(p.prompt.toLowerCase(), `aula ${a.aula.n}: "${p.nomePrompt}" ainda é fictício`).not.toMatch(/fict[ií]ci/);
+      }
+  });
   it("o passo 1 de toda aula é o Objetivo", () => {
     for (const a of aulas) expect(passosDa(a.aula)[0]!.tipo).toBe("objetivo");
   });

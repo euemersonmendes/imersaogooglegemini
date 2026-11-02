@@ -146,6 +146,36 @@ function Capa() {
             );
           })}
         </div>
+
+        {/* Todas as aulas */}
+        <section aria-labelledby="todas-aulas" className="mt-14">
+          <div className="flex flex-wrap items-end gap-3">
+            <h2 id="todas-aulas" className="text-2xl font-bold tracking-tight">Todas as aulas da imersão</h2>
+            <span className="ml-auto text-sm text-apagado">{feitas} de {total} concluídas</span>
+          </div>
+          <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {modulos.map((m, mi) => (
+              <div key={m.n} className="rounded-2xl border border-linha bg-branco p-5">
+                <p className="sobretitulo text-cobre-texto">Módulo {mi + 1}</p>
+                <h3 className="mt-1 font-bold leading-snug">{m.nomeCompleto}</h3>
+                <ul className="mt-3 flex flex-col">
+                  {m.aulas.map((a) => {
+                    const ok = prog.concluidas.includes(a.n);
+                    return (
+                      <li key={a.n}>
+                        <Link to="/ler/$secao/$pagina" params={{ secao: a.n, pagina: "1" }} className="group flex items-center gap-3 rounded-lg px-2 py-2 text-sm hover:bg-areia">
+                          <span className="w-8 font-mono text-xs text-cobre">{a.n}</span>
+                          <span className="flex-1 group-hover:text-cobre-texto">{a.titulo}</span>
+                          {ok ? <Check className="size-4 text-verde" aria-label="Concluída" /> : <ArrowRight className="size-4 text-apagado opacity-0 group-hover:opacity-100" />}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
     </div>
   );

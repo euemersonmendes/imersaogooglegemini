@@ -425,6 +425,24 @@ function Resultado({ p, n }: { p: PassoResultado; n: string }) {
   return (
     <div className="grid gap-5 lg:grid-cols-[1fr_1fr]">
       <div className="flex flex-col gap-4">
+        {p.exercicio && (
+          <Cartao className="border-cobre-borda bg-cobre-suave">
+            <p className="sobretitulo mb-2">Exercício prático · Seu negócio</p>
+            <p className="text-[15px] leading-relaxed">{p.exercicio.situacao}</p>
+            <ol className="mt-3 flex flex-col gap-2">
+              {p.exercicio.tarefa.map((t, i) => (
+                <li key={i} className="flex gap-3 text-[15px] leading-relaxed">
+                  <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-cobre-texto text-[11px] font-bold text-branco">{i + 1}</span>
+                  <Inline texto={t} />
+                </li>
+              ))}
+            </ol>
+            <p className="mt-3 border-t border-cobre-borda pt-3 text-sm font-semibold">
+              <span className="sobretitulo mr-2">Entrega</span>
+              {p.exercicio.entrega}
+            </p>
+          </Cartao>
+        )}
         <Cartao>
           <p className="sobretitulo mb-3">Faça na sua conta</p>
           <Lista itens={p.esperado} />

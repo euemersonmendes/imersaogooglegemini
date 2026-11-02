@@ -35,8 +35,19 @@ export const Route = createFileRoute("/ler/$secao/$pagina")({
 
 function Lateral({ atual, aoFechar }: { atual: string; aoFechar?: () => void }) {
   const prog = useProgresso();
+  const [confirmando, setConfirmando] = useState(false);
+
+  function reiniciar() {
+    if (!confirmando) {
+      setConfirmando(true);
+      return;
+    }
+    zerarProgresso();
+    setConfirmando(false);
+  }
+
   return (
-    <nav className="flex h-full flex-col gap-6 overflow-y-auto bg-tinta px-4 py-6 text-escuro-texto esconde-barra">
+    <nav className="flex h-full flex-col bg-tinta px-4 py-6 text-escuro-texto">
       <div className="flex items-center justify-between px-2">
         <Link to="/" className="text-lg font-bold text-branco">
           {BOOK.tituloAntes} <span className="text-cobre">{BOOK.tituloAcento}</span>
@@ -47,32 +58,58 @@ function Lateral({ atual, aoFechar }: { atual: string; aoFechar?: () => void }) 
           </button>
         )}
       </div>
-      {modulos.map((m, mi) => (
-        <div key={m.id}>
-          <p className="mb-2 flex items-center gap-2 px-2 text-[11px] font-bold uppercase tracking-[0.14em] text-escuro-texto-2">
-            <Glifo id={m.glifo} className="size-3.5" /> {mi + 1} · {m.nome}
-          </p>
-          <div className="flex flex-col gap-0.5">
-            {m.aulas.map((a) => {
-              const ativa = a.n === atual;
-              const feita = prog.concluidas.includes(a.n);
-              return (
-                <Link
-                  key={a.n}
-                  to="/ler/$secao/$pagina"
-                  params={{ secao: a.n, pagina: "1" }}
-                  onClick={aoFechar}
-                  className={cn("flex items-center gap-3 rounded-lg px-2 py-2 text-sm transition-colors", ativa ? "bg-escuro-hover text-branco" : "hover:bg-escuro-hover")}
-                >
-                  <span className={cn("w-7 shrink-0 font-mono text-xs", ativa ? "text-cobre" : "text-escuro-texto-2")}>{a.n}</span>
-                  <span className="flex-1 leading-snug">{a.curto}</span>
-                  {feita && <Check className="size-3.5 text-verde" />}
-                </Link>
-              );
-            })}
-          </div>
+      <div className="mt-6 flex-1 overflow-y-auto barra-lateral pr-2">
+        <div className="flex flex-col gap-6">
+          {modulos.map((m, mi) => (
+            <div key={m.id}>
+              <p className="mb-2 flex items-center gap-2 px-2 text-[11px] font-bold uppercase tracking-[0.14em] text-escuro-texto-2">
+                <Glifo id={m.glifo} className="size-3.5" /> {mi + 1} · {m.nome}
+              </p>
+              <div className="flex flex-col gap-0.5">
+                {m.aulas.map((a) => {
+                  const ativa = a.n === atual;
+                  const feita = prog.concluidas.includes(a.n);
+                  return (
+                    <Link
+                      key={a.n}
+                      to="/ler/$secao/$pagina"
+                      params={{ secao: a.n, pagina: "1" }}
+                      onClick={aoFechar}
+                      className={cn("flex items-center gap-3 rounded-lg px-2 py-2 text-sm transition-colors", ativa ? "bg-escuro-hover text-branco" : "hover:bg-escuro-hover")}
+                    >
+                      <span className={cn("w-7 shrink-0 font-mono text-xs", ativa ? "text-cobre" : "text-escuro-texto-2")}>{a.n}</span>
+                      <span className="flex-1 leading-snug">{a.curto}</span>
+                      {feita && <Check className="size-3.5 text-verde" />}
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
+      <div className="mt-6 border-t border-escuro-borda pt-4">
+        {confirmando ? (
+          <div className="flex items-center gap-2">
+            <p className="flex-1 text-xs leading-snug text-escuro-texto-2">Apaga aulas concluídas e passos vistos. Confirma?</p>
+            <button type="button" onClick={reiniciar} className="rounded-lg bg-verde-suave px-3 py-1.5 text-xs font-bold text-verde-texto">
+              Sim
+            </button>
+            <button type="button" onClick={() => setConfirmando(false)} className="rounded-lg border border-escuro-borda px-3 py-1.5 text-xs font-semibold text-escuro-texto hover:bg-escuro-hover">
+              Não
+            </button>
+          </div>
+        ) : (
+          <button
+            type="button"
+            onClick={reiniciar}
+            title="Zera aulas concluídas, passos vistos e checklists"
+            className="flex w-full items-center justify-center gap-2 rounded-lg border border-escuro-borda px-3 py-2 text-xs font-semibold text-escuro-texto transition-colors hover:border-cobre hover:bg-escuro-hover hover:text-branco"
+          >
+            <RotateCcw className="size-3.5" /> Reiniciar curso
+          </button>
+        )}
+      </div>
     </nav>
   );
 }

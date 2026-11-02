@@ -9,6 +9,7 @@ import { apagarTurma, editarTurma, listarAlunos, salvarTurma, type AlunoStatus }
 import { TOTAL_AULAS_CURSO } from "@/lib/certificado";
 import { useSessao } from "@/lib/sessao";
 import { cn } from "@/lib/utils";
+import { resumoTurma } from "@/lib/turmas";
 
 export const Route = createFileRoute("/admin_/turmas")({
   head: () => ({
@@ -28,17 +29,6 @@ export const Route = createFileRoute("/admin_/turmas")({
 const campo = "w-full rounded-xl border border-linha-2 bg-areia px-3 py-2.5 text-sm outline-none focus:border-cobre";
 type Turma = { codigo: string; nome: string; ativa: boolean };
 
-export function resumoTurma(alunos: AlunoStatus[]) {
-  const n = alunos.length;
-  const soma = alunos.reduce((s, a) => s + a.concluidas, 0);
-  return {
-    alunos: n,
-    comecaram: alunos.filter((a) => a.concluidas > 0 || a.ultima_aula).length,
-    concluiram: alunos.filter((a) => a.concluidas >= TOTAL_AULAS_CURSO).length,
-    certificados: alunos.filter((a) => a.certificado === "emitido").length,
-    media: n ? Math.round((soma / n / TOTAL_AULAS_CURSO) * 100) : 0,
-  };
-}
 
 function PaginaTurmas() {
   const sessao = useSessao();
@@ -194,6 +184,9 @@ function CartaoTurma({ t, alunos, aoMudar }: { t: Turma | null; alunos: AlunoSta
           </div>
         ))}
       </dl>
+      <Link to="/admin/turma/$codigo" params={{ codigo: t ? t.codigo : "SEM-TURMA" }} className="btn-claro mt-4 flex items-center justify-center rounded-xl px-4 py-2 text-sm font-semibold">
+        Abrir turma e gerenciar alunos →
+      </Link>
       {alunos.length > 0 && (
         <ul className="mt-4 flex max-h-48 flex-col gap-1.5 overflow-y-auto barra-clara text-sm">
           {alunos.map((a) => (

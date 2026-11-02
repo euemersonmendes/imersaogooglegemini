@@ -40,8 +40,12 @@ export function AcessoUsuario() {
   return (
     <div className="flex min-h-screen items-center justify-center overflow-y-auto bg-areia px-5 py-10 text-tinta">
       <form onSubmit={enviar} className="w-full max-w-md rounded-3xl border border-linha bg-branco p-8 sombra">
-        <div className="flex size-12 items-center justify-center rounded-2xl bg-cobre-suave text-cobre-texto">
-          <KeyRound className="size-6" />
+        <div className="flex items-center gap-3">
+          <LogoGemini className="size-12" />
+          <span className="text-lg font-bold tracking-tight">Google Gemini</span>
+          <span className="ml-auto flex size-10 items-center justify-center rounded-2xl bg-cobre-suave text-cobre-texto">
+            <KeyRound className="size-5" />
+          </span>
         </div>
         <p className="sobretitulo mt-6">Imersão Google Gemini · com {BOOK.instrutor}</p>
         <h1 className="mt-2 text-3xl font-bold leading-tight tracking-tight">Acesso do usuário</h1>

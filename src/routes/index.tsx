@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Award, BookOpen, KeyRound, LogOut, Settings, Sparkles } from "lucide-react";
+import { ArrowRight, Award, BookOpen, GraduationCap, KeyRound, LogOut, Settings, Sparkles } from "lucide-react";
+
+import instrutorFoto from "@/assets/instrutor.emerson.asset.json";
 
 import { BOOK, modulos, aulas } from "@/content/imersao";
 import { Glifo } from "@/components/imersao/Glifo";
@@ -166,6 +168,40 @@ function Apresentacao() {
                 <p className="mt-2 text-sm leading-relaxed text-apagado">{c.texto}</p>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* Instrutor */}
+        <section aria-labelledby="quem-ensina" className="mt-16">
+          <div className="grid gap-8 rounded-3xl border border-linha bg-branco p-6 sombra md:grid-cols-[300px_1fr] md:p-10">
+            <img
+              src={instrutorFoto.url}
+              alt="Emerson Mendes, instrutor da Imersão Google Gemini"
+              className="h-72 w-full rounded-2xl border border-linha object-cover object-top md:h-full md:max-h-[420px]"
+              loading="lazy"
+            />
+            <div className="flex flex-col justify-center">
+              <p className="sobretitulo text-cobre-texto">Quem ensina</p>
+              <h2 id="quem-ensina" className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">Emerson Mendes</h2>
+              <p className="mt-3 text-lg font-semibold text-cobre-texto">Cientista de Dados · Instrutor da imersão</p>
+              <p className="mt-3 max-w-2xl text-apagado">
+                Emerson vai conduzir você aula por aula, mostrando como usar o Gemini para resolver o dia a dia da sua empresa — do fluxo de caixa ao atendimento.
+              </p>
+              <ul className="mt-5 flex flex-col gap-2.5">
+                {[
+                  "Pós-graduado em Data Science",
+                  "Pós-graduando em Engenharia de IA",
+                  "Especialista em Investimentos, credenciado na CVM",
+                ].map((cred) => (
+                  <li key={cred} className="flex items-center gap-3 rounded-xl border border-linha bg-areia px-4 py-3 text-sm font-semibold">
+                    <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-cobre-suave text-cobre-texto">
+                      <GraduationCap className="size-4" />
+                    </span>
+                    {cred}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </section>
 

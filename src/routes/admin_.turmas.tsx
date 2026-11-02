@@ -11,6 +11,8 @@ import { useSessao } from "@/lib/sessao";
 import { cn } from "@/lib/utils";
 import { resumoTurma } from "@/lib/turmas";
 
+const linkInscricao = (codigo: string) => `https://imersaogemini.lovable.app/inscricao/${encodeURIComponent(codigo)}`;
+
 export const Route = createFileRoute("/admin_/turmas")({
   head: () => ({
     meta: [
@@ -184,6 +186,15 @@ function CartaoTurma({ t, alunos, aoMudar }: { t: Turma | null; alunos: AlunoSta
           </div>
         ))}
       </dl>
+      {t && (
+        <div className="mt-4 rounded-xl border border-linha bg-areia p-3">
+          <p className="text-xs font-semibold text-apagado">Link de inscrição desta turma{!t.ativa && " (inativo — ative o código para aceitar inscrições)"}</p>
+          <div className="mt-1.5 flex gap-2">
+            <input readOnly value={linkInscricao(t.codigo)} onFocus={(e) => e.currentTarget.select()} className="min-w-0 flex-1 rounded-lg border border-linha-2 bg-branco px-2 py-1.5 font-mono text-xs" />
+            <button type="button" onClick={() => { navigator.clipboard.writeText(linkInscricao(t.codigo)); toast.success("Link de inscrição copiado"); }} className="btn-tinta rounded-lg px-3 py-1.5 text-xs font-semibold">Copiar</button>
+          </div>
+        </div>
+      )}
       <Link to="/admin/turma/$codigo" params={{ codigo: t ? t.codigo : "SEM-TURMA" }} className="btn-claro mt-4 flex items-center justify-center rounded-xl px-4 py-2 text-sm font-semibold">
         Abrir turma e gerenciar alunos →
       </Link>

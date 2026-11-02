@@ -128,7 +128,7 @@ function RootComponent() {
   const sessao = useSessao();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   // Legacy printed QR links expose only the public certificate view to visitors.
-  const publica = pathname === "/" || pathname === "/acesso" || pathname.startsWith("/validar/") || pathname.startsWith("/admin/aluno/");
+  const publica = pathname === "/" || pathname === "/acesso" || pathname.startsWith("/validar/") || pathname.startsWith("/admin/aluno/") || pathname.startsWith("/inscricao/");
 
   return (
     <QueryClientProvider client={queryClient}>

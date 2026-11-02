@@ -18,6 +18,7 @@ import { Route as ExercicioRouteImport } from './routes/exercicio'
 import { Route as AdminMetricasRouteImport } from './routes/admin_.metricas'
 import { Route as AdminTurmasRouteImport } from './routes/admin_.turmas'
 import { Route as ApiExercicioRouteImport } from './routes/api/exercicio'
+import { Route as InscricaoCodigoRouteImport } from './routes/inscricao.$codigo'
 import { Route as ValidarCodigoRouteImport } from './routes/validar.$codigo'
 import { Route as AdminAlunoIdRouteImport } from './routes/admin_.aluno.$id'
 import { Route as AdminTurmaCodigoRouteImport } from './routes/admin_.turma.$codigo'
@@ -68,6 +69,11 @@ const ApiExercicioRoute = ApiExercicioRouteImport.update({
   path: '/api/exercicio',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InscricaoCodigoRoute = InscricaoCodigoRouteImport.update({
+  id: '/inscricao/$codigo',
+  path: '/inscricao/$codigo',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ValidarCodigoRoute = ValidarCodigoRouteImport.update({
   id: '/validar/$codigo',
   path: '/validar/$codigo',
@@ -99,6 +105,7 @@ export interface FileRoutesByFullPath {
   '/admin/metricas': typeof AdminMetricasRoute
   '/admin/turmas': typeof AdminTurmasRoute
   '/api/exercicio': typeof ApiExercicioRoute
+  '/inscricao/$codigo': typeof InscricaoCodigoRoute
   '/validar/$codigo': typeof ValidarCodigoRoute
   '/admin/aluno/$id': typeof AdminAlunoIdRoute
   '/admin/turma/$codigo': typeof AdminTurmaCodigoRoute
@@ -114,6 +121,7 @@ export interface FileRoutesByTo {
   '/admin/metricas': typeof AdminMetricasRoute
   '/admin/turmas': typeof AdminTurmasRoute
   '/api/exercicio': typeof ApiExercicioRoute
+  '/inscricao/$codigo': typeof InscricaoCodigoRoute
   '/validar/$codigo': typeof ValidarCodigoRoute
   '/admin/aluno/$id': typeof AdminAlunoIdRoute
   '/admin/turma/$codigo': typeof AdminTurmaCodigoRoute
@@ -130,6 +138,7 @@ export interface FileRoutesById {
   '/admin_/metricas': typeof AdminMetricasRoute
   '/admin_/turmas': typeof AdminTurmasRoute
   '/api/exercicio': typeof ApiExercicioRoute
+  '/inscricao/$codigo': typeof InscricaoCodigoRoute
   '/validar/$codigo': typeof ValidarCodigoRoute
   '/admin_/aluno/$id': typeof AdminAlunoIdRoute
   '/admin_/turma/$codigo': typeof AdminTurmaCodigoRoute
@@ -147,6 +156,7 @@ export interface FileRouteTypes {
     | '/admin/metricas'
     | '/admin/turmas'
     | '/api/exercicio'
+    | '/inscricao/$codigo'
     | '/validar/$codigo'
     | '/admin/aluno/$id'
     | '/admin/turma/$codigo'
@@ -162,6 +172,7 @@ export interface FileRouteTypes {
     | '/admin/metricas'
     | '/admin/turmas'
     | '/api/exercicio'
+    | '/inscricao/$codigo'
     | '/validar/$codigo'
     | '/admin/aluno/$id'
     | '/admin/turma/$codigo'
@@ -177,6 +188,7 @@ export interface FileRouteTypes {
     | '/admin_/metricas'
     | '/admin_/turmas'
     | '/api/exercicio'
+    | '/inscricao/$codigo'
     | '/validar/$codigo'
     | '/admin_/aluno/$id'
     | '/admin_/turma/$codigo'
@@ -193,6 +205,7 @@ export interface RootRouteChildren {
   AdminMetricasRoute: typeof AdminMetricasRoute
   AdminTurmasRoute: typeof AdminTurmasRoute
   ApiExercicioRoute: typeof ApiExercicioRoute
+  InscricaoCodigoRoute: typeof InscricaoCodigoRoute
   ValidarCodigoRoute: typeof ValidarCodigoRoute
   AdminAlunoIdRoute: typeof AdminAlunoIdRoute
   AdminTurmaCodigoRoute: typeof AdminTurmaCodigoRoute
@@ -264,6 +277,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiExercicioRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/inscricao/$codigo': {
+      id: '/inscricao/$codigo'
+      path: '/inscricao/$codigo'
+      fullPath: '/inscricao/$codigo'
+      preLoaderRoute: typeof InscricaoCodigoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/validar/$codigo': {
       id: '/validar/$codigo'
       path: '/validar/$codigo'
@@ -305,6 +325,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminMetricasRoute: AdminMetricasRoute,
   AdminTurmasRoute: AdminTurmasRoute,
   ApiExercicioRoute: ApiExercicioRoute,
+  InscricaoCodigoRoute: InscricaoCodigoRoute,
   ValidarCodigoRoute: ValidarCodigoRoute,
   AdminAlunoIdRoute: AdminAlunoIdRoute,
   AdminTurmaCodigoRoute: AdminTurmaCodigoRoute,

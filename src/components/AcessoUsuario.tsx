@@ -12,13 +12,13 @@ import { cn } from "@/lib/utils";
 
 const campo = "mt-1 w-full rounded-xl border border-linha-2 bg-areia px-4 py-3 outline-none focus:border-cobre";
 
-export function AcessoUsuario() {
+export function AcessoUsuario({ codigoInicial }: { codigoInicial?: string } = {}) {
   const cadastrar = useServerFn(cadastrarAluno);
-  const [modo, setModo] = useState<"entrar" | "criar">("entrar");
+  const [modo, setModo] = useState<"entrar" | "criar">(codigoInicial ? "criar" : "entrar");
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [codigo, setCodigo] = useState("");
+  const [codigo, setCodigo] = useState(codigoInicial ?? "");
   const [erro, setErro] = useState("");
   const [enviando, setEnviando] = useState(false);
   const router = useRouter();

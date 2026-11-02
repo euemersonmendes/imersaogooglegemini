@@ -25,7 +25,7 @@ export function CompartilharCertificado({ cartaoRef, nome, codigo, disabled = fa
       const blob = await gerarPdf(cartao);
       const pdf = new File([blob], nomeArquivo(nome, "pdf"), { type: "application/pdf" });
       setArquivo(pdf);
-      setSuportaArquivo(Boolean(navigator.share && navigator.canShare?.({ files: [pdf] })));
+      setSuportaArquivo(typeof navigator.share === "function" && typeof navigator.canShare === "function" && navigator.canShare({ files: [pdf] }));
     } catch {
       setErro(true);
     } finally {

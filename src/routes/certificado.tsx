@@ -10,6 +10,18 @@ import { LogoGemini } from "@/components/imersao/LogoGemini";
 import { TOTAL_AULAS_CURSO, certificadoLiberado } from "@/lib/certificado";
 import { useProgresso } from "@/lib/progresso";
 import { useSessao } from "@/lib/sessao";
+import QRCode from "qrcode";
+
+const SITE = "https://imersaogemini.lovable.app";
+
+function QrPerfil({ userId }: { userId: string }) {
+  const [src, setSrc] = useState("");
+  useEffect(() => {
+    void QRCode.toDataURL(`${SITE}/admin/aluno/${userId}`, { margin: 1, width: 240, color: { dark: "#1B1C1F", light: "#FFFFFF" } }).then(setSrc);
+  }, [userId]);
+  if (!src) return <div className="size-24" />;
+  return <img src={src} alt="QR code para validar o certificado" className="size-24" />;
+}
 
 export const Route = createFileRoute("/certificado")({
   head: () => ({
@@ -36,10 +48,14 @@ function Certificado() {
   const [gerando, setGerando] = useState<"" | "pdf" | "png">("");
   async function exportar(tipo: "pdf" | "png") {
     if (!cartao.current) return;
+    const janela = tipo === "pdf" ? window.open("", "_blank") : null;
+    janela?.document.write("<p style='font-family:sans-serif;padding:2rem'>Gerando o PDF do certificado…</p>");
     setGerando(tipo);
     try {
-      await (tipo === "pdf" ? baixarPdf : baixarImagem)(cartao.current, sessao.nome);
+      if (tipo === "pdf") await baixarPdf(cartao.current, sessao.nome, janela);
+      else await baixarImagem(cartao.current, sessao.nome);
     } catch {
+      janela?.close();
       toast.error("Não foi possível gerar o arquivo. Tente de novo.");
     } finally {
       setGerando("");
@@ -117,7 +133,14 @@ function Certificado() {
                 <p className="text-apagado">Data de emissão</p>
               </div>
             </div>
-            <p className="mt-10 font-mono text-xs text-apagado">Código de verificação: {cert.codigo}</p>
+            <div className="mt-10 flex items-center justify-center gap-4 text-left">
+              {sessao.user && <QrPerfil userId={sessao.user.id} />}
+              <div className="text-xs text-apagado">
+                <p className="font-semibold text-tinta">Valide este certificado</p>
+                <p>Aponte a câmera para o QR code.</p>
+                <p className="mt-1 font-mono">Código: {cert.codigo}</p>
+              </div>
+            </div>
           </div>
         )}
       </div>

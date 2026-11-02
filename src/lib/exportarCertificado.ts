@@ -27,7 +27,7 @@ export async function baixarImagem(el: HTMLElement, nome: string) {
   baixar(blob, nomeArquivo(nome, "png"));
 }
 
-export async function baixarPdf(el: HTMLElement, nome: string) {
+export async function baixarPdf(el: HTMLElement, nome: string, janela?: Window | null) {
   const canvas = await capturar(el);
   const { jsPDF } = await import("jspdf");
   const pdf = new jsPDF({ orientation: "landscape", unit: "mm", format: "a4" });
@@ -35,5 +35,8 @@ export async function baixarPdf(el: HTMLElement, nome: string) {
   const ratio = Math.min((pw - 2 * m) / canvas.width, (ph - 2 * m) / canvas.height);
   const w = canvas.width * ratio, h = canvas.height * ratio;
   pdf.addImage(canvas.toDataURL("image/jpeg", 0.92), "JPEG", (pw - w) / 2, (ph - h) / 2, w, h, undefined, "FAST");
-  baixar(pdf.output("blob"), nomeArquivo(nome, "pdf"));
+  const blob = pdf.output("blob");
+  baixar(blob, nomeArquivo(nome, "pdf"));
+  // Abre também numa aba nova: funciona mesmo onde o download direto é bloqueado.
+  if (janela && !janela.closed) janela.location.href = URL.createObjectURL(blob);
 }

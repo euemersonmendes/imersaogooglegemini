@@ -30,7 +30,7 @@ function PaginaAluno() {
       <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-areia px-5 text-center text-tinta">
         <h1 className="text-2xl font-bold">Área do administrador</h1>
         <p className="text-apagado">Entre com a conta do instrutor para validar este certificado.</p>
-        <Link to="/" className="btn-tinta rounded-xl px-5 py-2.5 font-semibold">Voltar à capa</Link>
+        <Link to="/book" className="btn-tinta rounded-xl px-5 py-2.5 font-semibold">Voltar à capa</Link>
       </div>
     );
   return <Perfil />;

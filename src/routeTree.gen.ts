@@ -10,7 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AcessoRouteImport } from './routes/acesso'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as BookRouteImport } from './routes/book'
 import { Route as CertificadoRouteImport } from './routes/certificado'
 import { Route as ExercicioRouteImport } from './routes/exercicio'
 import { Route as AdminTurmasRouteImport } from './routes/admin_.turmas'
@@ -24,9 +26,19 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AcessoRoute = AcessoRouteImport.update({
+  id: '/acesso',
+  path: '/acesso',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookRoute = BookRouteImport.update({
+  id: '/book',
+  path: '/book',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CertificadoRoute = CertificadoRouteImport.update({
@@ -67,7 +79,9 @@ const LerSecaoPaginaRoute = LerSecaoPaginaRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/acesso': typeof AcessoRoute
   '/admin': typeof AdminRoute
+  '/book': typeof BookRoute
   '/certificado': typeof CertificadoRoute
   '/exercicio': typeof ExercicioRoute
   '/admin/turmas': typeof AdminTurmasRoute
@@ -78,7 +92,9 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/acesso': typeof AcessoRoute
   '/admin': typeof AdminRoute
+  '/book': typeof BookRoute
   '/certificado': typeof CertificadoRoute
   '/exercicio': typeof ExercicioRoute
   '/admin/turmas': typeof AdminTurmasRoute
@@ -90,7 +106,9 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/acesso': typeof AcessoRoute
   '/admin': typeof AdminRoute
+  '/book': typeof BookRoute
   '/certificado': typeof CertificadoRoute
   '/exercicio': typeof ExercicioRoute
   '/admin_/turmas': typeof AdminTurmasRoute
@@ -103,7 +121,9 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/acesso'
     | '/admin'
+    | '/book'
     | '/certificado'
     | '/exercicio'
     | '/admin/turmas'
@@ -114,7 +134,9 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/acesso'
     | '/admin'
+    | '/book'
     | '/certificado'
     | '/exercicio'
     | '/admin/turmas'
@@ -125,7 +147,9 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/acesso'
     | '/admin'
+    | '/book'
     | '/certificado'
     | '/exercicio'
     | '/admin_/turmas'
@@ -137,7 +161,9 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AcessoRoute: typeof AcessoRoute
   AdminRoute: typeof AdminRoute
+  BookRoute: typeof BookRoute
   CertificadoRoute: typeof CertificadoRoute
   ExercicioRoute: typeof ExercicioRoute
   AdminTurmasRoute: typeof AdminTurmasRoute
@@ -156,11 +182,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/acesso': {
+      id: '/acesso'
+      path: '/acesso'
+      fullPath: '/acesso'
+      preLoaderRoute: typeof AcessoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin': {
       id: '/admin'
       path: '/admin'
       fullPath: '/admin'
       preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/book': {
+      id: '/book'
+      path: '/book'
+      fullPath: '/book'
+      preLoaderRoute: typeof BookRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/certificado': {
@@ -217,7 +257,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AcessoRoute: AcessoRoute,
   AdminRoute: AdminRoute,
+  BookRoute: BookRoute,
   CertificadoRoute: CertificadoRoute,
   ExercicioRoute: ExercicioRoute,
   AdminTurmasRoute: AdminTurmasRoute,

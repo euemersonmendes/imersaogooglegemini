@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
   type ErrorComponentProps,
@@ -125,13 +126,16 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const sessao = useSessao();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  // Páginas públicas: a apresentação e a tela de acesso.
+  const publica = pathname === "/" || pathname === "/acesso";
 
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       {sessao.carregando ? (
         <div className="flex min-h-screen items-center justify-center bg-areia text-apagado">Carregando…</div>
-      ) : sessao.user ? (
+      ) : sessao.user || publica ? (
         <Outlet />
       ) : (
         <AcessoUsuario />

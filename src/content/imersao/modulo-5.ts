@@ -406,9 +406,9 @@ export const modulo5: Modulo = {
         {
           "tipo": "anatomia",
           "rotulo": "Quatro blocos",
-          "titulo": "Desmonte o briefing do relatório",
-          "tituloEnfase": "do relatório",
-          "nomePrompt": "Relatório mensal com revisão",
+          "titulo": "Desmonte o briefing do resumo",
+          "tituloEnfase": "do resumo",
+          "nomePrompt": "Resumo mensal com revisão",
           "texto": "Leia os quatro blocos e observe onde o agente deve parar. O modelo serve para qualquer agente, não só para o Spark.",
           "intro": {
             "titulo": "Teste sem dados reais",
@@ -434,7 +434,7 @@ export const modulo5: Modulo = {
             {
               "titulo": "Entrega",
               "pergunta": "Como testar o aceite?",
-              "texto": "Entregue resumo, tabela por setor, total, diferença para a meta e pendências. O total esperado é 50 e faltam 10 para a meta de treino. Aguarde revisão antes de enviar."
+              "texto": "Entregue resumo, tabela por serviço, total, diferença para a previsão e pendências. O total esperado é 50 e faltam 10 para a meta de treino. Aguarde revisão antes de enviar."
             }
           ],
           "fecho": {
@@ -447,11 +447,11 @@ export const modulo5: Modulo = {
           "rotulo": "Sua vez",
           "titulo": "Preencha seu briefing de agente",
           "tituloEnfase": "seu briefing de agente",
-          "nomePrompt": "Sua vez: relatório mensal",
+          "nomePrompt": "Sua vez: resumo do mês",
           "texto": "Troque as lacunas, cole e confira o rascunho. No Spark, adapte o briefing ao inglês; não presuma acesso a fontes ou ferramentas.",
-          "prompt": "# Objetivo\nPrepare um rascunho de relatório de atendimentos de [[abril]] para a coordenação da unidade de [[Balsas]], apoiando a revisão do resultado mensal.\n# Insumos\nEstes são dados didáticos fictícios. Use somente esta base agregada: [[alimentação: 30; moda: 20; meta total: 60]]. Identifique a origem como base de treino desta conversa. Não há dados pessoais nem histórico de outros meses. Confira se o período e as definições permitem comparar os números.\n# Limites\nNão invente resultados ou fontes. Marque lacunas e pergunte quando faltar informação indispensável. Siga a LGPD: não solicite nomes, contatos ou documentos pessoais. Não altere registros e não envie mensagens ou arquivos. Solicite aprovação humana explícita antes de compartilhar qualquer conteúdo; este pedido não autoriza envio.\n# Entrega\nApresente resumo executivo, tabela por setor, total conferido, diferença para a meta e pendências. Separe fatos de sugestões. Mostre os cálculos e as referências disponíveis. Aguarde minha revisão antes de qualquer próxima ação.",
+          "prompt": "# Objetivo\nPrepare um rascunho do resumo de serviços de [[abril]] do meu [[salão de beleza]], para eu revisar o resultado do mês.\n# Insumos\nEstes são dados didáticos fictícios. Use somente esta base agregada: [[cortes: 30; escovas: 20; previsão total: 60]]. Identifique a origem como base de treino desta conversa. Não há dados pessoais nem histórico de outros meses. Confira se o período e as definições permitem comparar os números.\n# Limites\nNão invente resultados ou fontes. Marque lacunas e pergunte quando faltar informação indispensável. Siga a LGPD: não solicite nomes, contatos ou documentos pessoais. Não altere registros e não envie mensagens ou arquivos. Solicite aprovação humana explícita antes de compartilhar qualquer conteúdo; este pedido não autoriza envio.\n# Entrega\nApresente resumo executivo, tabela por serviço, total conferido, diferença para a previsão e pendências. Separe fatos de sugestões. Mostre os cálculos e as referências disponíveis. Aguarde minha revisão antes de qualquer próxima ação.",
           "observe": [
-            "O total e a diferença para a meta podem ser recalculados.",
+            "O total e a diferença para a previsão podem ser recalculados.",
             "O texto não cria tendência sem histórico nem fonte inexistente.",
             "Compartilhamento continua bloqueado até aprovação humana."
           ]

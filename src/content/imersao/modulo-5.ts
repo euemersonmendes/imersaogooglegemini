@@ -202,6 +202,15 @@ export const modulo5: Modulo = {
           "titulo": "Agora faça na sua conta",
           "tituloEnfase": "na sua conta",
           "texto": "Teste uma delegação pequena e revise a entrega antes de ampliar as permissões.",
+          "exercicio": {
+            "situacao": "Escolha uma tarefa que se repete e pode ser delegada com limites: resumir o mês, preparar cobranças ou organizar pedidos.",
+            "tarefa": [
+              "Escreva o briefing com objetivo, insumos, limites e entrega.",
+              "Proíba ações externas sem a sua aprovação e dados pessoais de clientes.",
+              "Teste com [[os totais reais do mês]] e confira a entrega antes de usar."
+            ],
+            "entrega": "Um contrato de delegação testado com os seus números."
+          },
           "esperado": [
             "Um briefing testado, sem autorizar ações externas."
           ],
@@ -275,6 +284,15 @@ export const modulo5: Modulo = {
           "titulo": "Agora faça na sua conta",
           "tituloEnfase": "na sua conta",
           "texto": "Confira as duas rotinas na lista. Se a função não estiver disponível, guarde os pedidos sem registrar o agendamento como concluído.",
+          "exercicio": {
+            "situacao": "Escolha as duas revisões que você mais esquece: [[conferir pagamentos, olhar o estoque ou revisar a meta do mês]].",
+            "tarefa": [
+              "Programe o resumo semanal no dia e horário em que você realmente confere o negócio.",
+              "Programe o lembrete mensal da meta: [[ex.: revisar o fluxo de caixa toda segunda-feira]].",
+              "Confira a recorrência e a próxima execução das duas rotinas."
+            ],
+            "entrega": "As revisões periódicas do negócio rodando sozinhas."
+          },
           "esperado": [
             "Duas rotinas conferidas ou uma limitação de disponibilidade claramente registrada."
           ],
@@ -363,6 +381,15 @@ export const modulo5: Modulo = {
           "titulo": "Agora faça na sua conta",
           "tituloEnfase": "na sua conta",
           "texto": "Compare duas opções e abra as referências. Sem o painel, compare trechos públicos no chat e registre essa limitação.",
+          "exercicio": {
+            "situacao": "Escolha uma comparação pendente real: [[dois fornecedores, uma linha de crédito ou um curso e ferramenta]].",
+            "tarefa": [
+              "Abra as páginas oficiais e peça a tabela comparativa com preços, prazos e condições.",
+              "Abra os links citados e confira os dados antes de decidir.",
+              "Reserve a decisão final para você: [[comprar, fechar ou pedir mais informações]]."
+            ],
+            "entrega": "Uma comparação de opções reais, com fontes abertas e conferidas."
+          },
           "esperado": [
             "Uma comparação revisada, sem envio de dados nem contratação."
           ],
@@ -495,6 +522,15 @@ export const modulo5: Modulo = {
           "titulo": "Agora faça na sua conta",
           "tituloEnfase": "na sua conta",
           "texto": "Teste o briefing e depois retire a meta da base. Confira se o agente marca a lacuna em vez de inventar uma comparação.",
+          "exercicio": {
+            "situacao": "Monte o briefing do resumo mensal do seu negócio, com os números que você já tem em mãos.",
+            "tarefa": [
+              "Preencha os quatro blocos com [[o objetivo, os insumos e os limites do seu negócio]].",
+              "Teste com os dados do mês e depois retire um número: o agente deve marcar a lacuna, não inventar.",
+              "Guarde o briefing para repetir todo mês, sempre com a sua revisão."
+            ],
+            "entrega": "O resumo mensal da sua empresa delegado com segurança."
+          },
           "esperado": [
             "Um briefing revisado e testado com dados completos e com uma lacuna."
           ],

@@ -90,6 +90,15 @@ export const modulo4: Modulo = {
           "titulo": "Agora faça na sua conta",
           "tituloEnfase": "na sua conta",
           "texto": "Repita com uma conversa fictícia ou autorizada. Remova dados pessoais e mantenha o envio sob seu controle.",
+          "exercicio": {
+            "situacao": "Escolha uma conversa pendente real: [[um fornecedor que atrasou, um cliente que pediu orçamento ou um parceiro]].",
+            "tarefa": [
+              "Peça o resumo com decisões e pendências da conversa e confira cada ponto nas mensagens originais.",
+              "Peça o rascunho da resposta no seu tom e retire qualquer promessa sem autorização.",
+              "Envie com data clara para a resposta que falta: [[o prazo que você combinau]]."
+            ],
+            "entrega": "A pendência mais antiga da sua caixa de entrada respondida."
+          },
           "esperado": [
             "Um resumo rastreável e um rascunho de resposta sem compromissos inventados."
           ],
@@ -226,6 +235,15 @@ export const modulo4: Modulo = {
           "titulo": "Agora faça na sua conta",
           "tituloEnfase": "na sua conta",
           "texto": "Crie uma proposta curta com orçamento baseado em arquivos fictícios e transforme a versão revisada em uma apresentação para banco ou parceiro.",
+          "exercicio": {
+            "situacao": "Prepare uma proposta real: [[um orçamento para cliente, um serviço para empresa ou um pedido de crédito]].",
+            "tarefa": [
+              "Liste no Docs os números confirmados: [[os serviços, os valores e as condições]].",
+              "Peça a estrutura da proposta, separando o que é estimativa do que já está fechado.",
+              "Revise cada valor na fonte e gere os slides para apresentar."
+            ],
+            "entrega": "Uma proposta apresentável, com os seus valores conferidos."
+          },
           "esperado": [
             "Uma proposta fundamentada e cinco slides que distinguem valores confirmados de estimativas."
           ],
@@ -370,6 +388,15 @@ export const modulo4: Modulo = {
           "titulo": "Agora faça na sua conta",
           "tituloEnfase": "na sua conta",
           "texto": "Use anotações fictícias ou autorizadas e compare dois documentos. Valide a minuta antes de compartilhar compromissos.",
+          "exercicio": {
+            "situacao": "Use as anotações de uma reunião real: [[com sócio, funcionário, fornecedor ou contador]].",
+            "tarefa": [
+              "Peça a minuta da ata com as decisões de [[sua reunião]], responsáveis e prazos, marcando o que falta confirmar.",
+              "Guarde a ata no Drive, na pasta do negócio, e confira as tarefas na semana seguinte.",
+              "Compare as versões dos documentos citados antes de aceitar qualquer mudança."
+            ],
+            "entrega": "Uma reunião transformada em tarefas com responsáveis e prazos."
+          },
           "esperado": [
             "Uma minuta verificável e um resumo que distingue mudanças comprovadas de lacunas."
           ],
@@ -497,6 +524,15 @@ export const modulo4: Modulo = {
           "titulo": "Agora faça na sua conta",
           "tituloEnfase": "na sua conta",
           "texto": "Escolha uma rotina e agende o primeiro teste. Compare o resultado com a forma atual antes de ampliar o uso.",
+          "exercicio": {
+            "situacao": "Escolha a rotina do seu negócio que mais toma tempo: [[lançar vendas, responder clientes, conferir estoque ou preparar cobranças]].",
+            "tarefa": [
+              "Dê as notas de 1 a 5 para [[as rotinas do seu dia]] e justifique por que uma vem primeiro.",
+              "Monte com o Gemini um teste pequeno e defina como vai medir: tempo gasto, erros e clareza.",
+              "Agende a revisão em 30 dias para comparar com a forma atual."
+            ],
+            "entrega": "Um plano de 30 dias para a rotina mais pesada do seu dia."
+          },
           "esperado": [
             "Um plano de 30 dias com tarefa prioritária, medida inicial e pontos de revisão."
           ],

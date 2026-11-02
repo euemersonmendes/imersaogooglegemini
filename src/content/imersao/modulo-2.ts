@@ -81,6 +81,15 @@ Entregue um cartão curto com O, P, I e lacunas. Separe informações fornecidas
         {
           tipo: "resultado", rotulo: "Faça na sua conta", titulo: "Agora faça na sua conta", tituloEnfase: "na sua conta",
           texto: "Guarde o cartão revisado para a próxima aula. Não avance com suposições apresentadas como fatos.",
+          exercicio: {
+            situacao: "Pense em uma decisão real pendente do seu negócio: [[comprar estoque, ajustar preço, contratar alguém ou divulgar]].",
+            tarefa: [
+              "Descreva a entrega que você precisa para [[sua decisão pendente]]: uma decisão, um valor ou um material pronto.",
+              "Liste o que você já sabe — preços, vendas do mês, condições do fornecedor — e o que falta, sem inventar.",
+              "Monte o cartão IPO com o Gemini e revise as lacunas que ele marcou.",
+            ],
+            entrega: "Um cartão IPO da sua decisão pendente, com as lacunas explícitas.",
+          },
           esperado: ["Um cartão IPO que conecta decisão, operações e dados disponíveis."],
           confira: ["Defini a entrega e a decisão que ela apoia", "Conferi as operações e marquei lacunas sem inventar dados", "Revisei o cartão e removi dados pessoais"],
         },
@@ -151,6 +160,15 @@ Entregue [[formato, campos e tamanho]]. Mostre as evidências e os cálculos rel
         {
           tipo: "resultado", rotulo: "Faça na sua conta", titulo: "Agora faça na sua conta", tituloEnfase: "na sua conta",
           texto: "Execute seu pedido e ajuste o que ficou ambíguo. Guarde a versão revisada, não apenas a primeira resposta.",
+          exercicio: {
+            situacao: "Transforme o cartão IPO da aula anterior em um pedido de quatro blocos, com os números do seu negócio.",
+            tarefa: [
+              "Escreva o Perfil e o Contexto com [[seus números: vendas por canal, prazos ou despesas do mês]].",
+              "Ligue o Objetivo a uma decisão real e feche o Modelo de Entrega com formato e critérios de conferência.",
+              "Envie, confira um cálculo manualmente e guarde o prompt que funcionou.",
+            ],
+            entrega: "Um prompt estruturado respondendo a uma pergunta real da sua gestão.",
+          },
           esperado: ["Um prompt em quatro blocos e uma resposta conferida."],
           confira: ["Preenchi as lacunas sem incluir dados pessoais", "Conferi números, períodos e aderência ao cartão IPO", "Marquei informações ausentes e rejeitei dados inventados"],
         },
@@ -219,6 +237,15 @@ Entregue uma tabela de alternativas, vantagens, limites e critérios. Depois rev
         {
           tipo: "resultado", rotulo: "Faça na sua conta", titulo: "Agora faça na sua conta", tituloEnfase: "na sua conta",
           texto: "Adapte uma técnica ao seu prompt da aula anterior. Compare a nova resposta com a original e guarde só o que ajudou.",
+          exercicio: {
+            situacao: "Escolha uma necessidade real: esclarecer uma promoção, padronizar um registro do dia ou comparar alternativas de compra.",
+            tarefa: [
+              "Aplique uma técnica ao seu pedido: perguntar antes, dar exemplos ou alternativas com critérios.",
+              "Responda às perguntas do Gemini com [[dados reais do seu negócio]], sem dados pessoais de clientes.",
+              "Compare a resposta com a que você receberia sem a técnica e guarde a melhor.",
+            ],
+            entrega: "Uma técnica testada em uma tarefa real de gestão.",
+          },
           esperado: ["Uma técnica escolhida por uma necessidade real e testada no Gemini."],
           confira: ["Testei perguntas, exemplos e alternativas com critérios", "Conferi a resposta e marquei suposições ou dados inventados", "Adaptei uma técnica sem incluir dados pessoais"],
         },
@@ -289,6 +316,15 @@ Entregue nome, descrição de acionamento e instruções prontas para revisar e 
         {
           tipo: "resultado", rotulo: "Faça na sua conta", titulo: "Agora faça na sua conta", tituloEnfase: "na sua conta",
           texto: "Salve a skill revisada e teste outro pedido fictício em um novo chat. Compare com as regras antes de usar em trabalho real.",
+          exercicio: {
+            situacao: "Transforme em atalho uma tarefa que se repete toda semana: responder clientes, registrar vendas ou resumir o caixa.",
+            tarefa: [
+              "Escolha [[sua tarefa recorrente]] e anote só as regras estáveis dela, sem dados de um caso específico.",
+              "Crie a skill com descrição de quando acionar e limite de não inventar preços ou prazos.",
+              "Teste em um chat novo com [[um pedido real seu]] e confira a resposta antes de usar.",
+            ],
+            entrega: "Um atalho pronto para a rotina semanal da sua empresa.",
+          },
           esperado: ["Uma skill reutilizável, sem dados pessoais, com teste de acionamento e resposta."],
           confira: ["Salvei regras gerais sem dados de clientes", "Testei outro caso e conferi se a skill foi ativada", "Revisei lacunas, promessas e dados inventados antes de usar a resposta"],
         },

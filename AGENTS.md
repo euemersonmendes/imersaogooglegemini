@@ -12,6 +12,7 @@
 ## Project rules
 - Certificate sharing generates the same local PDF as downloads and uses user-initiated native file sharing; unsupported browsers download it and open WhatsApp with an explicit manual-attachment notice, without uploading student certificates publicly.
 - Book content is typed data: Módulo → Aula → Passos in `src/content/imersao/*.ts` (types in `tipos.ts`), rendered per step type by `src/components/imersao/Passos.tsx`; add lessons by editing data so sidebar, tabs and progress stay automatic.
+- Every aula ends with a `resultado` step carrying an `exercicio` (situacao, tarefa ≥2 with a `[[...]]` gap for the student's own data, entrega) — a hands-on exercise applied to the student's own business management; `imersao.test.ts` enforces this for every new lesson.
 - Reader URLs are `/ler/<aula>/<passo>` (e.g. `/ler/1.1/2`), mirroring the reference book's section/page addressing; passo 1 is always the auto-generated Objetivo.
 - Reader progress lives in `src/lib/progresso.ts` (useSyncExternalStore, per-user localStorage) and is mirrored to the `progresso` table so the admin panel can see each student's status.
 - Access is per-user Cloud auth: students self-register with an active code from `turmas` or the admin creates them; the root gates course/admin pages, excluding the presentation, access and certificate verification pages so public validation works without login.

@@ -26,7 +26,7 @@ const COMO_FUNCIONA = [
   {
     icone: BookOpen,
     titulo: "Aulas em passos",
-    texto: "Cada aula é um passo a passo com telas anotadas do Gemini e prompts prontos para copiar, adaptar e usar no seu negócio.",
+    texto: "Cada aula termina com um exercício prático do seu negócio: caixa, vendas, compras, estoque, equipe ou atendimento — você aplica com os seus números e sai com o resultado pronto.",
   },
   {
     icone: Sparkles,

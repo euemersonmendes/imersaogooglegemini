@@ -47,6 +47,7 @@ export async function vincularUsuario(id: string) {
 }
 
 export function desvincularUsuario() {
+  descarregar();
   usuario = null;
   estado = VAZIO;
   ouvintes.forEach((o) => o());

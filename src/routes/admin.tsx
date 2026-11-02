@@ -80,10 +80,10 @@ function Painel() {
           ))}
         </div>
 
-        <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_340px]">
-          <section className="min-w-0 rounded-2xl border border-linha bg-branco p-5">
+        <div className="mt-8 flex flex-col gap-8">
+          <section className="min-w-0 border-y border-linha py-5">
             <div className="flex flex-wrap items-center gap-3">
-              <h2 className="text-xl font-bold">Alunos</h2>
+              <h2 className="text-xl font-bold">Andamento de todos os alunos</h2>
               <label className="relative ml-auto w-full sm:w-64">
                 <Search className="absolute left-3 top-3 size-4 text-apagado" />
                 <input value={busca} onChange={(e) => setBusca(e.target.value)} placeholder="Buscar nome, e-mail ou turma" className={cn(campo, "pl-9")} />
@@ -97,7 +97,7 @@ function Painel() {
                   <tr className="border-b border-linha">
                     <th className="py-2 pr-3">Aluno</th>
                     <th className="py-2 pr-3">Turma</th>
-                    <th className="py-2 pr-3">Andamento</th>
+                    <th className="py-2 pr-3">Progresso · aulas concluídas</th>
                     <th className="py-2 pr-3">Último acesso</th>
                     <th className="py-2 pr-3">Certificado</th>
                     <th className="py-2" />
@@ -113,7 +113,7 @@ function Painel() {
             </div>
           </section>
 
-          <div className="flex flex-col gap-6">
+          <div className="grid gap-6 md:grid-cols-2">
             <NovoAcesso turmas={data?.turmas ?? []} aoCriar={atualizar} />
             <Turmas turmas={data?.turmas ?? []} aoMudar={atualizar} />
           </div>

@@ -325,3 +325,27 @@
 .fonte-certificado {
   font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
+
+/* Certificado premium: moldura em degradê Gemini, fundo com brilho e marca d'água */
+.cert-moldura {
+  background: linear-gradient(120deg, #4796e3, #9177c7 50%, #d96570);
+  padding: 6px;
+}
+.cert-fundo {
+  background:
+    radial-gradient(55% 80% at 100% 0%, rgba(145, 119, 199, 0.14), transparent 70%),
+    radial-gradient(50% 70% at 0% 100%, rgba(71, 150, 227, 0.14), transparent 70%),
+    repeating-linear-gradient(45deg, rgba(27, 114, 232, 0.025) 0 2px, transparent 2px 14px),
+    #ffffff;
+}
+.cert-faixa {
+  background: linear-gradient(180deg, #1b72e8 0%, #9177c7 55%, #d96570 100%);
+}
+.cert-linha {
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #4796e3, #9177c7, #d96570, transparent);
+}
+.cert-selo {
+  background: conic-gradient(from 200deg, #4796e3, #9177c7, #d96570, #f2a60c, #4796e3);
+  box-shadow: 0 10px 30px -8px rgba(145, 119, 199, 0.55);
+}

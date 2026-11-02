@@ -27,36 +27,62 @@ export function CartaoCertificado({ userId, nome, codigo, emitidoEm, cartaoRef, 
   return (
     <div className="space-y-6">
       {/* Frente */}
-      <div ref={cartaoRef} className="fonte-certificado rounded-3xl border-4 border-double border-cobre bg-branco p-8 text-center sombra md:p-14 print:mt-0 print:shadow-none">
-        <div className="flex flex-col items-center gap-2">
-          <LogoGemini className="size-20 md:size-24" />
-          <span className="text-xs font-semibold uppercase tracking-[0.3em] text-apagado">Google Gemini</span>
-        </div>
-        <p className="mt-6 text-sm font-semibold uppercase tracking-[0.25em] text-cobre-texto">Certificado de conclusão</p>
-        <h1 className="mt-3 text-4xl font-bold tracking-tight md:text-5xl">
-          Imersão <span className="text-cobre-texto">Google Gemini</span>
-        </h1>
-        <p className="mt-8 text-apagado">Certificamos que</p>
-        <p className="mt-2 text-4xl font-semibold tracking-tight md:text-5xl">{nome}</p>
-        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-apagado">
-          concluiu a Imersão Google Gemini para micro e pequenos empresários, com carga horária de {BOOK.cargaHoraria}, abrangendo {modulos.length} módulos e {TOTAL_AULAS_CURSO} aulas sobre o uso da inteligência artificial na gestão de negócios.
-        </p>
-        <div className="mx-auto mt-12 grid max-w-2xl gap-8 text-sm sm:grid-cols-2">
-          <div>
-            <div className="mx-auto w-48 border-t border-tinta pt-2 font-semibold">{BOOK.instrutor}</div>
-            <p className="text-apagado">Instrutor e responsável</p>
+      <div ref={cartaoRef} className="fonte-certificado cert-moldura rounded-3xl sombra print:mt-0 print:shadow-none">
+        <div className="cert-fundo relative flex overflow-hidden rounded-[20px] md:aspect-[297/200]">
+          {/* Faixa lateral */}
+          <div className="cert-faixa relative hidden w-[17%] shrink-0 flex-col items-center justify-between py-10 md:flex">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.4em] text-branco/80 [writing-mode:vertical-rl] rotate-180">Imersão Google Gemini · {BOOK.cargaHoraria}</span>
+            <div className="cert-selo flex size-24 items-center justify-center rounded-full p-1">
+              <div className="flex size-full flex-col items-center justify-center rounded-full bg-branco text-center">
+                <LogoGemini className="size-8" />
+                <span className="mt-0.5 text-[9px] font-bold uppercase tracking-widest text-tinta">Concluído</span>
+              </div>
+            </div>
           </div>
-          <div>
-            <div className="mx-auto w-48 border-t border-tinta pt-2 font-semibold">{new Date(emitidoEm).toLocaleDateString("pt-BR")}</div>
-            <p className="text-apagado">Data de emissão</p>
-          </div>
-        </div>
-        <div className="mt-10 flex items-center justify-center gap-4 text-left">
-          {qr ? <img src={qr} alt="QR code para validar o certificado" className="size-24" /> : <div className="size-24" />}
-          <div className="text-xs text-apagado">
-            <p className="font-semibold text-tinta">Valide este certificado</p>
-            <p>Aponte a câmera para o QR code.</p>
-            <p className="mt-1 font-mono">Código: {codigo}</p>
+          {/* Marca d'água */}
+          <LogoGemini className="pointer-events-none absolute -right-16 -bottom-16 size-80 opacity-[0.06]" />
+
+          <div className="relative flex flex-1 flex-col justify-between px-8 py-8 text-left md:px-14 md:py-10">
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <LogoGemini className="size-12 md:size-14" />
+                <div>
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.35em] text-apagado">Google Gemini</p>
+                  <p className="text-sm font-bold uppercase tracking-[0.25em] text-cobre-texto">Certificado de conclusão</p>
+                </div>
+              </div>
+              <p className="hidden text-right text-[11px] uppercase tracking-[0.2em] text-apagado sm:block">{modulos.length} módulos · {TOTAL_AULAS_CURSO} aulas<br /><b className="text-tinta">{BOOK.cargaHoraria}</b></p>
+            </div>
+
+            <div className="mt-8 md:mt-0">
+              <p className="text-base text-apagado md:text-lg">Certificamos que</p>
+              <p className="mt-1 text-4xl font-extrabold leading-tight tracking-tight text-tinta md:text-6xl">{nome}</p>
+              <div className="cert-linha mt-4 w-full max-w-3xl" />
+              <p className="mt-5 max-w-4xl text-lg leading-relaxed text-tinta/80 md:text-xl">
+                concluiu a <b className="text-tinta">Imersão Google Gemini</b> para micro e pequenos empresários, com carga horária de <b className="text-tinta">{BOOK.cargaHoraria}</b>, abrangendo {modulos.length} módulos e {TOTAL_AULAS_CURSO} aulas sobre o uso da inteligência artificial na gestão de negócios.
+              </p>
+            </div>
+
+            <div className="mt-8 flex flex-wrap items-end justify-between gap-6 md:mt-0">
+              <div className="flex gap-10 text-sm">
+                <div>
+                  <div className="w-52 border-t-2 border-tinta pt-2 text-base font-bold">{BOOK.instrutor}</div>
+                  <p className="text-apagado">Instrutor e responsável</p>
+                </div>
+                <div>
+                  <div className="w-40 border-t-2 border-tinta pt-2 text-base font-bold">{new Date(emitidoEm).toLocaleDateString("pt-BR")}</div>
+                  <p className="text-apagado">Data de emissão</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 rounded-2xl border border-linha bg-branco/90 p-2.5 pr-4">
+                {qr ? <img src={qr} alt="QR code para validar o certificado" className="size-20" /> : <div className="size-20" />}
+                <div className="text-[11px] text-apagado">
+                  <p className="font-semibold text-tinta">Valide este certificado</p>
+                  <p>Aponte a câmera para o QR code.</p>
+                  <p className="mt-1 max-w-[11rem] break-all font-mono text-[10px]">{codigo}</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -321,3 +321,7 @@
     border-radius: 999px;
   }
 }
+
+.fonte-certificado {
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+}

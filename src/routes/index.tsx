@@ -39,11 +39,25 @@ function Capa() {
           <p className="selo text-apagado">{BOOK.selo}</p>
           <div className="ml-auto flex flex-wrap items-center gap-2 text-sm">
             <span className="text-apagado">Olá, <span className="font-semibold text-tinta">{sessao.nome.split(" ")[0]}</span></span>
-            <Link to="/certificado" className="btn-claro flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-semibold"><Award className="size-4" /> Certificado</Link>
+            {feitas >= total ? (
+              <Link to="/certificado" title="Você concluiu todas as aulas — seu certificado está pronto" className="btn-tinta relative flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-semibold">
+                <span className="absolute -right-1 -top-1 flex size-3"><span className="absolute inline-flex size-full animate-ping rounded-full bg-cobre opacity-75" /><span className="relative inline-flex size-3 rounded-full bg-cobre" /></span>
+                <Award className="size-4" /> Certificado liberado!
+              </Link>
+            ) : (
+              <Link to="/certificado" className="btn-claro flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-semibold"><Award className="size-4" /> Certificado</Link>
+            )}
             {sessao.admin && <Link to="/admin" className="btn-claro flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-semibold"><Settings className="size-4" /> Administração</Link>}
             <button type="button" onClick={() => void sair()} className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-semibold text-apagado hover:text-tinta"><LogOut className="size-4" /> Sair</button>
           </div>
         </div>
+        {feitas >= total && (
+          <Link to="/certificado" role="status" className="mt-5 flex items-center gap-3 rounded-2xl border border-cobre bg-cobre-suave px-4 py-3 text-sm hover:brightness-95">
+            <Award className="size-6 shrink-0 text-cobre-texto" />
+            <span className="flex-1"><b>Parabéns, você concluiu todas as {total} aulas!</b> Seu certificado está pronto para imprimir ou salvar em PDF.</span>
+            <span className="flex items-center gap-1 font-semibold text-cobre-texto">Ver certificado <ArrowRight className="size-4" /></span>
+          </Link>
+        )}
         <div className="mt-6 grid gap-8 md:grid-cols-[1.2fr_1fr] md:items-end">
           <div>
             <div className="flex items-center gap-3">

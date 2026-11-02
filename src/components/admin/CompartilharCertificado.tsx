@@ -33,14 +33,17 @@ export function CompartilharCertificado({ cartaoRef, versoRef, nome, codigo, dis
     }
   }
 
+  const mensagem = `Certificado de ${nome} — Imersão Google Gemini, 16 horas. Valide pelo QR code no PDF ou pelo link: https://imersaogemini.lovable.app/validar/${codigo}`;
+
+  function abrirWhatsApp() {
+    if (!arquivo) return;
+    baixar(arquivo, arquivo.name);
+    window.open(`https://wa.me/?text=${encodeURIComponent(mensagem)}`, "_blank", "noopener,noreferrer");
+  }
+
   async function compartilhar() {
     if (!arquivo) return;
-    const mensagem = `Certificado de ${nome} — Imersão Google Gemini, 16 horas. Valide pelo QR code no PDF ou pelo link: https://imersaogemini.lovable.app/validar/${codigo}`;
-    if (!suportaArquivo) {
-      baixar(arquivo, arquivo.name);
-      window.open(`https://wa.me/?text=${encodeURIComponent(mensagem)}`, "_blank", "noopener,noreferrer");
-      return;
-    }
+    if (!suportaArquivo) return abrirWhatsApp();
     setOcupado(true);
     try {
       await navigator.share({ files: [arquivo], title: `Certificado de ${nome}`, text: mensagem });
@@ -60,12 +63,17 @@ export function CompartilharCertificado({ cartaoRef, versoRef, nome, codigo, dis
       <DialogContent className="max-w-[calc(100%-2rem)] sm:max-w-lg">
         <DialogTitle>Certificado de {nome}</DialogTitle>
         <DialogDescription>
-          {ocupado && !arquivo ? "Preparando o PDF com o nome do aluno e o QR code…" : erro ? "Não foi possível gerar o PDF. Feche esta janela e tente novamente." : suportaArquivo ? "Escolha o WhatsApp e o destinatário na janela de compartilhamento." : "O navegador não permite anexar o PDF automaticamente. Baixe o arquivo e anexe-o na conversa do WhatsApp que será aberta."}
+          {ocupado && !arquivo ? "Preparando o PDF com o nome do aluno e o QR code…" : erro ? "Não foi possível gerar o PDF. Feche esta janela e tente novamente." : suportaArquivo ? "Escolha o WhatsApp na janela de compartilhamento. Se ele não aparecer na lista, use o botão \"Baixar PDF e abrir WhatsApp\" e anexe o arquivo na conversa." : "O navegador não permite anexar o PDF automaticamente. Baixe o arquivo e anexe-o na conversa do WhatsApp que será aberta."}
         </DialogDescription>
         <Button disabled={!arquivo || ocupado} onClick={() => void compartilhar()}>
           {ocupado ? <Loader className="animate-spin" /> : <MessageCircle />}
           {suportaArquivo ? "Compartilhar PDF" : "Baixar PDF e abrir WhatsApp"}
         </Button>
+        {suportaArquivo && (
+          <Button variant="outline" disabled={!arquivo || ocupado} onClick={abrirWhatsApp}>
+            <MessageCircle /> Baixar PDF e abrir WhatsApp
+          </Button>
+        )}
       </DialogContent>
     </Dialog>
   </>;

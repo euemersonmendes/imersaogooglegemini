@@ -117,6 +117,15 @@ Apresente três ações simples para vender mais, como divulgar no WhatsApp ou I
         {
           tipo: "resultado", rotulo: "Faça na sua conta", titulo: "Agora faça na sua conta", tituloEnfase: "na sua conta",
           texto: "Finalize a personalização e confirme se ela ajuda no seu trabalho, sem dispensar sua revisão.",
+          exercicio: {
+            situacao: "Use as instruções da aula trocando os campos pelo seu trabalho: o tipo de negócio, o que você decide sozinho e o formato de resposta que ajuda a decidir.",
+            tarefa: [
+              "Salve instruções com o seu contexto: dono de [[tipo do seu negócio]], decisões de [[caixa, vendas, compras ou equipe]].",
+              "Teste com uma pergunta real da gestão, como: por onde começo a organizar o fluxo de caixa ou o estoque?",
+              "Compare com a resposta da mesma pergunta sem instruções e ajuste o que ficou genérico.",
+            ],
+            entrega: "O Gemini respondendo no seu contexto, com próximos passos aplicáveis.",
+          },
           esperado: ["Instruções salvas com contexto profissional e comparação antes/depois."],
           confira: ["Salvei instruções revisadas sem dados pessoais ou restritos", "Repeti a mesma pergunta com o mesmo modelo e comparei as respostas", "Conferi lacunas e corrigi instruções que geraram suposições"],
         },
@@ -189,6 +198,15 @@ Confirme qual preferência você entendeu. Se não puder salvá-la nesta conta, 
         {
           tipo: "resultado", rotulo: "Faça na sua conta", titulo: "Agora faça na sua conta", tituloEnfase: "na sua conta",
           texto: "Confira o que ficou salvo e mantenha somente o necessário. Revise também toda resposta antes de usar no trabalho.",
+          exercicio: {
+            situacao: "Defina um jeito fixo de receber respostas que ajude a decidir no seu negócio: resumo curto, próximos passos e o que conferir antes de agir.",
+            tarefa: [
+              "Salve como memória ou instrução: respostas sobre meu negócio devem terminar com próximos passos e o que conferir.",
+              "Revise a lista de memórias e exclua o que não for sobre o seu trabalho.",
+              "Teste em um chat novo com uma decisão real de gestão, sem dados pessoais de clientes.",
+            ],
+            entrega: "Um padrão fixo de resposta para as decisões do dia a dia.",
+          },
           esperado: ["Uma preferência revisada e controles de privacidade localizados, ou limitações da conta identificadas."],
           confira: ["Conferi e editei ou excluí a memória de teste, quando disponível", "Testei o chat temporário sem dados pessoais e verifiquei o indicador", "Revisei a atividade e as opções de exclusão permitidas na minha conta"],
         },

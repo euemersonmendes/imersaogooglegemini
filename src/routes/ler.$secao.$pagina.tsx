@@ -216,12 +216,26 @@ function Leitor() {
           ) : (
             <span />
           )}
-          <span className="text-xs text-apagado">
+          <span className="flex items-center gap-3 text-xs text-apagado">
             {i} / {passos.length}
+            {ultimo && (
+              <button
+                type="button"
+                onClick={() => alternarConcluida(n)}
+                className={cn("hidden items-center gap-1.5 rounded-lg border px-3 py-1.5 font-semibold sm:flex", feita ? "border-verde-borda bg-verde-suave text-verde-texto" : "border-linha-2 text-tinta hover:border-cobre")}
+              >
+                <Check className="size-3.5" /> {feita ? "Aula concluída" : "Marcar como concluída"}
+              </button>
+            )}
           </span>
           {destinoProx ? (
-            <Link to="/ler/$secao/$pagina" params={destinoProx} className="btn-tinta flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold">
-              {i < passos.length ? "Próximo" : `Aula ${destinoProx.secao}`} <ArrowRight className="size-4" />
+            <Link
+              to="/ler/$secao/$pagina"
+              params={destinoProx}
+              onClick={() => ultimo && alternarConcluida(n, true)}
+              className="btn-tinta flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold"
+            >
+              {!ultimo ? "Próximo" : `Concluir e ir para ${destinoProx.secao}`} <ArrowRight className="size-4" />
             </Link>
           ) : (
             <Link to="/" className="btn-tinta rounded-xl px-4 py-2.5 text-sm font-semibold">

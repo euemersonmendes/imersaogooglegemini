@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Printer } from "lucide-react";
+import { ArrowLeft, FileDown, ImageDown, Loader, Printer } from "lucide-react";
+import { toast } from "sonner";
+import { baixarImagem, baixarPdf } from "@/lib/exportarCertificado";
 
 import { supabase } from "@/integrations/supabase/client";
 import { BOOK, modulos } from "@/content/imersao";
@@ -30,6 +32,19 @@ function Certificado() {
   const prog = useProgresso();
   const [cert, setCert] = useState<Cert | undefined>(undefined);
   const feitas = prog.concluidas.length;
+  const cartao = useRef<HTMLDivElement>(null);
+  const [gerando, setGerando] = useState<"" | "pdf" | "png">("");
+  async function exportar(tipo: "pdf" | "png") {
+    if (!cartao.current) return;
+    setGerando(tipo);
+    try {
+      await (tipo === "pdf" ? baixarPdf : baixarImagem)(cartao.current, sessao.nome);
+    } catch {
+      toast.error("Não foi possível gerar o arquivo. Tente de novo.");
+    } finally {
+      setGerando("");
+    }
+  }
 
   useEffect(() => {
     const id = sessao.user?.id;
@@ -57,9 +72,17 @@ function Certificado() {
         <div className="flex flex-wrap items-center gap-3 print:hidden">
           <Link to="/" className="selo flex items-center gap-2 text-apagado hover:text-cobre-texto"><ArrowLeft className="size-3.5" /> Voltar à capa</Link>
           {cert && liberado && (
-            <button type="button" onClick={() => window.print()} className="btn-tinta ml-auto flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold">
-              <Printer className="size-4" /> Imprimir ou salvar em PDF
-            </button>
+            <div className="ml-auto flex flex-wrap gap-2">
+              <button type="button" disabled={!!gerando} onClick={() => void exportar("pdf")} className="btn-tinta flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold">
+                {gerando === "pdf" ? <Loader className="size-4 animate-spin" /> : <FileDown className="size-4" />} Baixar PDF
+              </button>
+              <button type="button" disabled={!!gerando} onClick={() => void exportar("png")} className="btn-claro flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold">
+                {gerando === "png" ? <Loader className="size-4 animate-spin" /> : <ImageDown className="size-4" />} Baixar imagem
+              </button>
+              <button type="button" onClick={() => window.print()} className="btn-claro flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold">
+                <Printer className="size-4" /> Imprimir
+              </button>
+            </div>
           )}
         </div>
 
@@ -70,7 +93,7 @@ function Certificado() {
         ) : !cert ? (
           <Aviso titulo="Conclua todas as aulas" texto={`Você concluiu ${feitas} de ${TOTAL_AULAS_CURSO} aulas. O certificado é liberado automaticamente quando todas estiverem concluídas.`} />
         ) : (
-          <div className="fonte-certificado mt-8 rounded-3xl border-4 border-double border-cobre bg-branco p-8 text-center sombra md:p-14 print:mt-0 print:shadow-none">
+          <div ref={cartao} className="fonte-certificado mt-8 rounded-3xl border-4 border-double border-cobre bg-branco p-8 text-center sombra md:p-14 print:mt-0 print:shadow-none">
             <div className="flex flex-col items-center gap-2">
               <LogoGemini className="size-20 md:size-24" />
               <span className="text-xs font-semibold uppercase tracking-[0.3em] text-apagado">Google Gemini</span>

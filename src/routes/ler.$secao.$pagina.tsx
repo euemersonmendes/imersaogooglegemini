@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { createFileRoute, Link, redirect, useNavigate } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Check, LogOut, Menu, Minimize2, MonitorPlay, PanelLeftClose, PanelLeftOpen, RotateCcw, X } from "lucide-react";
 import { sair } from "@/lib/sessao";
+import { supabase } from "@/integrations/supabase/client";
 
 import { BOOK, ROTULO_TIPO, acharAula, aulaVizinha, modulos, passosDa, type AulaInfo } from "@/content/imersao";
 import { CorpoPasso } from "@/components/imersao/Passos";
@@ -44,6 +45,10 @@ function Lateral({ atual, aoFechar, aoRecolher }: { atual: string; aoFechar?: ()
       return;
     }
     zerarProgresso();
+    // Reiniciar a imersão zera também o certificado (revogados ficam como estão).
+    void supabase.auth.getUser().then(({ data }) => {
+      if (data.user) void supabase.from("certificados").delete().eq("user_id", data.user.id).eq("revogado", false);
+    });
     setConfirmando(false);
   }
 

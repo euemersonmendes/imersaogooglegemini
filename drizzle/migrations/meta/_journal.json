@@ -15,6 +15,13 @@
       "when": 1793623451506,
       "tag": "0001_bloquear_progresso_conta_removida",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1793626728474,
+      "tag": "0002_aluno_zera_certificado_ao_reiniciar",
+      "breakpoints": true
     }
   ]
 }

@@ -1,0 +1,2 @@
+GRANT DELETE ON public.certificados TO authenticated;
+CREATE POLICY "aluno apaga o próprio certificado ao reiniciar" ON public.certificados FOR DELETE TO authenticated USING (user_id = auth.uid() AND revogado = false);

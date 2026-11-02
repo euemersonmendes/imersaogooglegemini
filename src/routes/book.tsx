@@ -9,7 +9,7 @@ import { useProgresso } from "@/lib/progresso";
 import { sair, useSessao } from "@/lib/sessao";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/book")({
   head: () => ({
     meta: [
       { title: "Imersão Gemini com Emerson Mendes — IA para pequenas empresas" },
@@ -38,6 +38,7 @@ function Capa() {
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
           <p className="selo text-apagado">{BOOK.selo}</p>
           <div className="ml-auto flex flex-wrap items-center gap-2 text-sm">
+            <Link to="/" className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-semibold text-apagado hover:text-tinta"><Presentation className="size-4" /> Apresentação</Link>
             <span className="text-apagado">Olá, <span className="font-semibold text-tinta">{sessao.nome.split(" ")[0]}</span></span>
             {feitas >= total ? (
               <Link to="/certificado" title="Você concluiu todas as aulas — seu certificado está pronto" className="btn-tinta relative flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-semibold">

@@ -9,8 +9,8 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as BookRouteImport } from './routes/book'
 import { Route as CertificadoRouteImport } from './routes/certificado'
 import { Route as ExercicioRouteImport } from './routes/exercicio'
 import { Route as AdminTurmasRouteImport } from './routes/admin_.turmas'
@@ -19,14 +19,14 @@ import { Route as AdminAlunoIdRouteImport } from './routes/admin_.aluno.$id'
 import { Route as AdminTurmaCodigoRouteImport } from './routes/admin_.turma.$codigo'
 import { Route as LerSecaoPaginaRouteImport } from './routes/ler.$secao.$pagina'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookRoute = BookRouteImport.update({
+  id: '/book',
+  path: '/book',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CertificadoRoute = CertificadoRouteImport.update({
@@ -66,8 +66,8 @@ const LerSecaoPaginaRoute = LerSecaoPaginaRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/book': typeof BookRoute
   '/certificado': typeof CertificadoRoute
   '/exercicio': typeof ExercicioRoute
   '/admin/turmas': typeof AdminTurmasRoute
@@ -77,8 +77,8 @@ export interface FileRoutesByFullPath {
   '/ler/$secao/$pagina': typeof LerSecaoPaginaRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/book': typeof BookRoute
   '/certificado': typeof CertificadoRoute
   '/exercicio': typeof ExercicioRoute
   '/admin/turmas': typeof AdminTurmasRoute
@@ -89,8 +89,8 @@ export interface FileRoutesByTo {
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/book': typeof BookRoute
   '/certificado': typeof CertificadoRoute
   '/exercicio': typeof ExercicioRoute
   '/admin_/turmas': typeof AdminTurmasRoute
@@ -102,8 +102,8 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
     | '/admin'
+    | '/book'
     | '/certificado'
     | '/exercicio'
     | '/admin/turmas'
@@ -113,8 +113,8 @@ export interface FileRouteTypes {
     | '/ler/$secao/$pagina'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
     | '/admin'
+    | '/book'
     | '/certificado'
     | '/exercicio'
     | '/admin/turmas'
@@ -124,8 +124,8 @@ export interface FileRouteTypes {
     | '/ler/$secao/$pagina'
   id:
     | '__root__'
-    | '/'
     | '/admin'
+    | '/book'
     | '/certificado'
     | '/exercicio'
     | '/admin_/turmas'
@@ -136,8 +136,8 @@ export interface FileRouteTypes {
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
+  BookRoute: typeof BookRoute
   CertificadoRoute: typeof CertificadoRoute
   ExercicioRoute: typeof ExercicioRoute
   AdminTurmasRoute: typeof AdminTurmasRoute
@@ -149,18 +149,18 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/admin': {
       id: '/admin'
       path: '/admin'
       fullPath: '/admin'
       preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/book': {
+      id: '/book'
+      path: '/book'
+      fullPath: '/book'
+      preLoaderRoute: typeof BookRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/certificado': {
@@ -216,8 +216,8 @@ declare module '@tanstack/react-router' {
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
+  BookRoute: BookRoute,
   CertificadoRoute: CertificadoRoute,
   ExercicioRoute: ExercicioRoute,
   AdminTurmasRoute: AdminTurmasRoute,

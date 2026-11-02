@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import { useServerFn } from "@tanstack/react-start";
 import { useMutation } from "@tanstack/react-query";
 import { Award, FileDown, Trash2 } from "lucide-react";
@@ -78,6 +79,7 @@ export function LinhaAluno({ a, aoMudar, semTurma = false }: { a: AlunoStatus; a
           </button>
         )}
       </td>
+      {pdf && createPortal(<PdfCertificado aluno={a} aoFechar={() => setPdf(false)} />, document.body)}
     </tr>
   );
 }

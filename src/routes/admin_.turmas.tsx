@@ -94,7 +94,7 @@ function NovaTurma({ aoCriar }: { aoCriar: () => void }) {
   const m = useMutation({
     mutationFn: () => salvar({ data: { codigo, nome, ativa: true } }),
     onSuccess: (r) => {
-      if (!r.ok) return toast.error(r.erro);
+      if (!r.ok) { toast.error(r.erro); return; }
       toast.success("Turma criada.");
       setCodigo("");
       setNome("");
@@ -124,7 +124,7 @@ function CartaoTurma({ t, alunos, aoMudar }: { t: Turma | null; alunos: AlunoSta
   const mEditar = useMutation({
     mutationFn: (d: { codigo: string; nome: string; ativa: boolean }) => editar({ data: { antigo: t!.codigo, ...d } }),
     onSuccess: (res) => {
-      if (!res.ok) return toast.error(res.erro);
+      if (!res.ok) { toast.error(res.erro); return; }
       setEditando(false);
       aoMudar();
     },
@@ -133,7 +133,7 @@ function CartaoTurma({ t, alunos, aoMudar }: { t: Turma | null; alunos: AlunoSta
   const mApagar = useMutation({
     mutationFn: () => apagar({ data: { codigo: t!.codigo } }),
     onSuccess: (res) => {
-      if (!res.ok) return toast.error(res.erro);
+      if (!res.ok) { toast.error(res.erro); return; }
       toast.success("Turma apagada. Os alunos continuam com acesso.");
       aoMudar();
     },

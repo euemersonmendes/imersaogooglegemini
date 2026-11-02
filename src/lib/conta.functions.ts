@@ -66,6 +66,8 @@ export type AlunoStatus = {
   ultima_aula: string | null;
   atualizado_em: string | null;
   certificado: "emitido" | "revogado" | "nenhum";
+  cert_codigo: string | null;
+  cert_emitido_em: string | null;
   admin: boolean;
 };
 
@@ -99,6 +101,8 @@ export const listarAlunos = createServerFn({ method: "GET" })
         ultima_aula: dados.ultimo?.aula ?? null,
         atualizado_em: pr?.atualizado_em ?? null,
         certificado: c ? (c.revogado ? "revogado" : "emitido") : (pr?.concluidas ?? 0) >= 20 ? "emitido" : "nenhum",
+        cert_codigo: c?.codigo ?? null,
+        cert_emitido_em: c?.emitido_em ?? null,
         admin: !!papeis.data?.some((r) => r.user_id === p.id),
       };
     });

@@ -1,14 +1,3 @@
-<!-- LOVABLE:BEGIN -->
-> [!IMPORTANT]
-> This project is connected to [Lovable](https://lovable.dev). Avoid rewriting
-> published git history — force pushing, or rebasing/amending/squashing commits
-> that are already pushed — as it rewrites history on Lovable's side and the
-> user will likely lose their project history.
->
-> Commits you push to the connected branch sync back to Lovable and show up in
-> the editor, so keep the branch in a working state.
-<!-- LOVABLE:END -->
-
 ## Project rules
 - Certificate sharing generates the same local PDF as downloads and uses user-initiated native file sharing; unsupported browsers download it and open WhatsApp with an explicit manual-attachment notice, without uploading student certificates publicly.
 - Book content is typed data: Módulo → Aula → Passos in `src/content/imersao/*.ts` (types in `tipos.ts`), rendered per step type by `src/components/imersao/Passos.tsx`; add lessons by editing data so sidebar, tabs and progress stay automatic.

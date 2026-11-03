@@ -7,7 +7,8 @@ import { LogoGemini } from "@/components/imersao/LogoGemini";
 import { BOOK, modulos } from "@/content/imersao";
 import { TOTAL_AULAS_CURSO } from "@/lib/certificado";
 
-const SITE = "https://imersaogooglegemini.lovable.app";
+const obterOrigemSite = () =>
+  typeof window !== "undefined" ? window.location.origin : (import.meta.env["VITE_SITE_URL"] || "https://imersaogooglegemini.com.br");
 
 type Props = {
   userId: string;
@@ -21,7 +22,7 @@ type Props = {
 export function CartaoCertificado({ userId, nome, codigo, emitidoEm, cartaoRef, versoRef }: Props) {
   const [qr, setQr] = useState("");
   useEffect(() => {
-    void QRCode.toDataURL(`${SITE}/validar/${codigo}`, { margin: 1, width: 240, color: { dark: "#1B1C1F", light: "#FFFFFF" } }).then(setQr);
+    void QRCode.toDataURL(`${obterOrigemSite()}/validar/${codigo}`, { margin: 1, width: 240, color: { dark: "#1B1C1F", light: "#FFFFFF" } }).then(setQr);
   }, [codigo]);
 
   return (

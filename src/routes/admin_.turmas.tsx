@@ -11,7 +11,10 @@ import { useSessao } from "@/lib/sessao";
 import { cn } from "@/lib/utils";
 import { resumoTurma } from "@/lib/turmas";
 
-const linkInscricao = (codigo: string) => `https://imersaogooglegemini.lovable.app/inscricao/${encodeURIComponent(codigo)}`;
+const linkInscricao = (codigo: string) => {
+  const origem = typeof window !== "undefined" ? window.location.origin : (import.meta.env["VITE_SITE_URL"] || "");
+  return `${origem}/inscricao/${encodeURIComponent(codigo)}`;
+};
 
 export const Route = createFileRoute("/admin_/turmas")({
   head: () => ({

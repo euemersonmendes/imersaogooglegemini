@@ -151,7 +151,17 @@ function Prompt({ p }: { p: PassoPrompt }) {
             {p.recebe.aceite && <p className="mt-4 rounded-lg bg-verde-suave px-3 py-2 text-sm text-verde-texto">{p.recebe.aceite}</p>}
           </Cartao>
         )}
-        {p.tela && <TelaIlustrada id={p.tela} mostrarPontos={false} />}
+        {p.tela && (
+          <div>
+            <TelaIlustrada id={p.tela} mostrarPontos={false} {...(p.marca ? { marca: { x: 59, y: 51 } } : {})} />
+            {p.marca && (
+              <p className="mt-2 flex items-center gap-2 text-sm text-apagado">
+                <span className="flex size-5 items-center justify-center rounded-full bg-tinta text-[11px] font-bold text-branco">a</span>
+                {p.marca}
+              </p>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

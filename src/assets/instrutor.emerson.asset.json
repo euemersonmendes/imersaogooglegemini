@@ -1,11 +1,6 @@
 {
-  "version": 1,
-  "asset_id": "d3dc401e-70f0-4956-9946-7411d7e27e71",
-  "project_id": "dd2a80e5-fe2e-46ec-a981-c4fae66b45cb",
-  "url": "/__l5e/assets-v1/d3dc401e-70f0-4956-9946-7411d7e27e71/emerson-mendes.jpeg",
-  "r2_key": "a/v1/dd2a80e5-fe2e-46ec-a981-c4fae66b45cb/d3dc401e-70f0-4956-9946-7411d7e27e71/emerson-mendes.jpeg",
+  "url": "/emerson-mendes.jpeg",
   "original_filename": "emerson-mendes.jpeg",
   "size": 78438,
-  "content_type": "image/jpeg",
-  "created_at": "2026-11-02T13:25:25Z"
+  "content_type": "image/jpeg"
 }

@@ -18,6 +18,24 @@ function validarAluno(d: NovoAluno) {
 }
 
 async function criarConta(v: ReturnType<typeof validarAluno>, turma: string | null) {
+  if (!process.env["SUPABASE_SERVICE_ROLE_KEY"]) {
+    const { createClient } = await import("@supabase/supabase-js");
+    const sb = createClient(process.env["SUPABASE_URL"]!, process.env["SUPABASE_PUBLISHABLE_KEY"]!, {
+      auth: { persistSession: false, autoRefreshToken: false },
+    });
+    const { error } = await sb.auth.signUp({
+      email: v.email,
+      password: v.senha,
+      options: { data: { nome: v.nome, turma } },
+    });
+    if (error) {
+      if (/already|registered|exists/i.test(error.message)) return { ok: false as const, erro: "Este e-mail já tem acesso. Use a opção Entrar." };
+      if (/weak|pwned|easy to guess/i.test(error.message)) return { ok: false as const, erro: "Essa senha é muito fácil de adivinhar. Escolha outra, misturando letras e números." };
+      console.error(error);
+      return { ok: false as const, erro: "Não foi possível criar o acesso agora." };
+    }
+    return { ok: true as const };
+  }
   const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
   const { error } = await supabaseAdmin.auth.admin.createUser({
     email: v.email,
@@ -43,6 +61,9 @@ export const cadastrarAluno = createServerFn({ method: "POST" })
       v = validarAluno(data);
     } catch (e) {
       return { ok: false as const, erro: (e as Error).message };
+    }
+    if (!process.env["SUPABASE_SERVICE_ROLE_KEY"]) {
+      return { ok: false as const, erro: "Cadastro requer SUPABASE_SERVICE_ROLE_KEY configurada no ambiente." };
     }
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const { data: turma } = await supabaseAdmin.from("turmas").select("codigo").eq("codigo", v.codigo).eq("ativa", true).maybeSingle();
@@ -83,9 +104,16 @@ export const listarAlunos = createServerFn({ method: "GET" })
       sb.from("user_roles").select("user_id, role").eq("role", "admin"),
       sb.from("turmas").select("*").order("criado_em"),
     ]);
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const { data: usuarios } = await supabaseAdmin.auth.admin.listUsers({ perPage: 1000 });
-    const acesso = new Map((usuarios?.users ?? []).map((u) => [u.id, u.last_sign_in_at ?? null]));
+    let acesso = new Map<string, string | null>();
+    if (process.env["SUPABASE_SERVICE_ROLE_KEY"]) {
+      try {
+        const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+        const { data: usuarios } = await supabaseAdmin.auth.admin.listUsers({ perPage: 1000 });
+        acesso = new Map((usuarios?.users ?? []).map((u) => [u.id, u.last_sign_in_at ?? null]));
+      } catch {
+        /* sem chave service_role local */
+      }
+    }
     const alunos: AlunoStatus[] = (perfis.data ?? []).map((p) => {
       const pr = progs.data?.find((x) => x.user_id === p.id);
       const c = certs.data?.find((x) => x.user_id === p.id);
@@ -96,7 +124,7 @@ export const listarAlunos = createServerFn({ method: "GET" })
         email: p.email,
         turma: p.turma,
         criado_em: p.criado_em,
-        ultimo_acesso: acesso.get(p.id) ?? null,
+        ultimo_acesso: acesso.get(p.id) ?? pr?.atualizado_em ?? null,
         concluidas: pr?.concluidas ?? 0,
         ultima_aula: dados.ultimo?.aula ?? null,
         atualizado_em: pr?.atualizado_em ?? null,
@@ -152,6 +180,9 @@ export const removerAluno = createServerFn({ method: "POST" })
   .handler(async ({ data, context }) => {
     await exigirAdmin(context);
     if (data.userId === context.userId) return { ok: false, erro: "Você não pode remover o próprio acesso." };
+    if (!process.env["SUPABASE_SERVICE_ROLE_KEY"]) {
+      return { ok: false, erro: "Remoção de conta requer SUPABASE_SERVICE_ROLE_KEY no servidor." };
+    }
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     await supabaseAdmin.from("progresso").delete().eq("user_id", data.userId);
     await supabaseAdmin.from("certificados").delete().eq("user_id", data.userId);
@@ -180,8 +211,12 @@ export const editarTurma = createServerFn({ method: "POST" })
     if (existe) return { ok: false, erro: "Já existe uma turma com esse código." };
     const { error } = await sb.from("turmas").insert({ codigo: data.codigo, nome: data.nome, ativa: data.ativa });
     if (error) return { ok: false, erro: "Não foi possível salvar a turma." };
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    await supabaseAdmin.from("profiles").update({ turma: data.codigo }).eq("turma", data.antigo);
+    if (process.env["SUPABASE_SERVICE_ROLE_KEY"]) {
+      const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+      await supabaseAdmin.from("profiles").update({ turma: data.codigo }).eq("turma", data.antigo);
+    } else {
+      await sb.from("profiles").update({ turma: data.codigo }).eq("turma", data.antigo);
+    }
     await sb.from("turmas").delete().eq("codigo", data.antigo);
     return { ok: true };
   });
@@ -193,7 +228,11 @@ export const apagarTurma = createServerFn({ method: "POST" })
     await exigirAdmin(context);
     const { error } = await context.supabase.from("turmas").delete().eq("codigo", data.codigo);
     if (error) return { ok: false, erro: "Não foi possível apagar a turma." };
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    await supabaseAdmin.from("profiles").update({ turma: null }).eq("turma", data.codigo);
+    if (process.env["SUPABASE_SERVICE_ROLE_KEY"]) {
+      const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+      await supabaseAdmin.from("profiles").update({ turma: null }).eq("turma", data.codigo);
+    } else {
+      await context.supabase.from("profiles").update({ turma: null }).eq("turma", data.codigo);
+    }
     return { ok: true };
   });

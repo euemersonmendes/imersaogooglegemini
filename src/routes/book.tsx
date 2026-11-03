@@ -6,7 +6,7 @@ import { BOOK, aulas, modulos, passosDa } from "@/content/imersao";
 import { Glifo } from "@/components/imersao/Glifo";
 import { LogoGemini } from "@/components/imersao/LogoGemini";
 import { ModalModeloCertificado } from "@/components/imersao/ModalModeloCertificado";
-import { useProgresso } from "@/lib/progresso";
+import { temAulaIniciada, useProgresso } from "@/lib/progresso";
 import { sair, useSessao } from "@/lib/sessao";
 import { cn } from "@/lib/utils";
 
@@ -36,7 +36,8 @@ function Capa() {
   const sessao = useSessao();
   const [aberto, setAberto] = useState(0);
   const [verCertificado, setVerCertificado] = useState(false);
-  const ultimo = prog.ultimo;
+  const iniciada = temAulaIniciada(prog);
+  const ultimo = iniciada ? prog.ultimo : undefined;
   const continuar = ultimo
     ? { secao: ultimo.aula, pagina: String(ultimo.passo) }
     : { secao: aulas[0]!.aula.n, pagina: "1" };
@@ -199,7 +200,7 @@ function Capa() {
                   params={continuar}
                   className="btn-tinta flex items-center justify-center gap-2 rounded-xl px-5 py-3.5 text-sm font-semibold"
                 >
-                  {ultimo ? `Continuar aula ${ultimo.aula}` : "Começar a imersão"} <ArrowRight className="size-4" />
+                  {iniciada && ultimo ? `Continuar aula ${ultimo.aula}` : "Iniciar imersão"} <ArrowRight className="size-4" />
                 </Link>
                 <Link
                   to="/exercicio"

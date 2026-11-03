@@ -123,6 +123,11 @@ export function podeConcluir(checks: number[], totalItens: number) {
   return totalItens > 0 && Array.from({ length: totalItens }, (_, k) => k).every((i) => checks.includes(i));
 }
 
+/** Indica se o aluno já iniciou alguma aula na imersão (e não acabou de reiniciar). */
+export function temAulaIniciada(p: Progresso) {
+  return Boolean(p.ultimo || p.concluidas.length > 0 || Object.keys(p.vistos).length > 0);
+}
+
 export function marcarVisto(aula: string, passo: number) {
   const s = ler();
   const atuais = s.vistos[aula] ?? [];

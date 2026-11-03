@@ -8,7 +8,7 @@ import { BOOK, modulos, aulas, passosDa } from "@/content/imersao";
 import { Glifo } from "@/components/imersao/Glifo";
 import { LogoGemini } from "@/components/imersao/LogoGemini";
 import { ModalModeloCertificado } from "@/components/imersao/ModalModeloCertificado";
-import { useProgresso } from "@/lib/progresso";
+import { temAulaIniciada, useProgresso } from "@/lib/progresso";
 import { sair, useSessao } from "@/lib/sessao";
 import { TOTAL_AULAS_CURSO } from "@/lib/certificado";
 
@@ -62,7 +62,8 @@ function Apresentacao() {
   const feitas = prog.concluidas.length;
   const total = aulas.length;
   const pct = total > 0 ? Math.round((feitas / total) * 100) : 0;
-  const ultimo = prog.ultimo;
+  const iniciada = temAulaIniciada(prog);
+  const ultimo = iniciada ? prog.ultimo : undefined;
   const continuar = ultimo ? { secao: ultimo.aula, pagina: String(ultimo.passo) } : { secao: aulas[0]!.aula.n, pagina: "1" };
 
   return (
@@ -218,7 +219,7 @@ function Apresentacao() {
                       params={continuar}
                       className="btn-tinta flex items-center justify-center gap-2 rounded-xl px-5 py-3.5 text-sm font-semibold"
                     >
-                      {ultimo ? `Continuar aula ${ultimo.aula}` : "Começar a imersão"} <ArrowRight className="size-4" />
+                      {iniciada && ultimo ? `Continuar aula ${ultimo.aula}` : "Iniciar imersão"} <ArrowRight className="size-4" />
                     </Link>
                     <button
                       type="button"

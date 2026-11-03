@@ -37,64 +37,69 @@ function Capa() {
 
   return (
     <div className="flex min-h-screen w-full flex-col palco-fundo text-tinta">
-      {/* Topo ocupando toda a largura da tela */}
-      <header className="sticky top-0 z-30 flex w-full flex-wrap items-center gap-3 border-b border-linha bg-branco/90 px-4 py-3 backdrop-blur-md md:px-8 xl:px-12">
-        <div className="flex items-center gap-2.5">
-          <LogoGemini className="size-8" />
-          <p className="sobretitulo">
-            <span className="text-g-azul">G</span>
-            <span className="text-g-vermelho">o</span>
-            <span className="text-g-amarelo">o</span>
-            <span className="text-g-azul">g</span>
-            <span className="text-g-verde">l</span>
-            <span className="text-g-vermelho">e</span>{" "}
-            <span className="acento">Gemini</span>
-          </p>
-          <span className="hidden h-4 w-px bg-linha-2 sm:inline-block" />
-          <span className="hidden text-xs font-medium text-apagado sm:inline">{BOOK.selo}</span>
-        </div>
-        <div className="ml-auto flex flex-wrap items-center gap-2 text-sm">
-          <Link to="/" className="flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 font-semibold text-apagado hover:bg-areia-2 hover:text-tinta">
-            <Presentation className="size-4" /> Apresentação
-          </Link>
-          <span className="hidden text-apagado sm:inline">
-            Olá, <span className="font-semibold text-tinta">{sessao.nome.split(" ")[0]}</span>
-          </span>
-          {feitas >= total ? (
+      {/* Cabeçalho fixo com espaçamento horizontal amplo */}
+      <header className="sticky top-0 z-30 w-full border-b border-linha bg-branco/90 backdrop-blur-md">
+        <div className="mx-auto flex max-w-[1440px] flex-wrap items-center gap-4 px-6 py-4 sm:px-10 lg:px-16">
+          <div className="flex items-center gap-3">
+            <LogoGemini className="size-8" />
+            <p className="sobretitulo">
+              <span className="text-g-azul">G</span>
+              <span className="text-g-vermelho">o</span>
+              <span className="text-g-amarelo">o</span>
+              <span className="text-g-azul">g</span>
+              <span className="text-g-verde">l</span>
+              <span className="text-g-vermelho">e</span>{" "}
+              <span className="acento">Gemini</span>
+            </p>
+            <span className="hidden h-4 w-px bg-linha-2 md:inline-block" />
+            <span className="hidden text-xs font-medium text-apagado md:inline">{BOOK.selo}</span>
+          </div>
+          <div className="ml-auto flex flex-wrap items-center gap-2.5 text-sm">
             <Link
-              to="/certificado"
-              title="Você concluiu todas as aulas — seu certificado está pronto"
-              className="btn-tinta relative flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-semibold"
+              to="/"
+              className="flex items-center gap-1.5 rounded-xl px-3 py-2 font-semibold text-apagado transition-colors hover:bg-areia-2 hover:text-tinta"
             >
-              <span className="absolute -right-1 -top-1 flex size-3">
-                <span className="absolute inline-flex size-full animate-ping rounded-full bg-cobre opacity-75" />
-                <span className="relative inline-flex size-3 rounded-full bg-cobre" />
-              </span>
-              <Award className="size-4" /> Certificado liberado!
+              <Presentation className="size-4" /> Apresentação
             </Link>
-          ) : (
-            <Link to="/certificado" className="btn-claro flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-semibold">
-              <Award className="size-4" /> Certificado
-            </Link>
-          )}
-          {sessao.admin && (
-            <Link to="/admin" className="btn-claro flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-semibold">
-              <Settings className="size-4" /> Admin
-            </Link>
-          )}
-          <button
-            type="button"
-            onClick={() => void sair()}
-            className="flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 font-semibold text-apagado hover:bg-areia-2 hover:text-tinta"
-          >
-            <LogOut className="size-4" /> Sair
-          </button>
+            <span className="hidden px-1 text-apagado sm:inline">
+              Olá, <span className="font-semibold text-tinta">{sessao.nome.split(" ")[0]}</span>
+            </span>
+            {feitas >= total ? (
+              <Link
+                to="/certificado"
+                title="Você concluiu todas as aulas — seu certificado está pronto"
+                className="btn-tinta relative flex items-center gap-2 rounded-xl px-4 py-2 font-semibold"
+              >
+                <span className="absolute -right-1 -top-1 flex size-3">
+                  <span className="absolute inline-flex size-full animate-ping rounded-full bg-cobre opacity-75" />
+                  <span className="relative inline-flex size-3 rounded-full bg-cobre" />
+                </span>
+                <Award className="size-4" /> Certificado liberado!
+              </Link>
+            ) : (
+              <Link to="/certificado" className="btn-claro flex items-center gap-2 rounded-xl px-3.5 py-2 font-semibold">
+                <Award className="size-4 text-cobre-texto" /> Certificado
+              </Link>
+            )}
+            {sessao.admin && (
+              <Link to="/admin" className="btn-claro flex items-center gap-2 rounded-xl px-3.5 py-2 font-semibold">
+                <Settings className="size-4" /> Admin
+              </Link>
+            )}
+            <button
+              type="button"
+              onClick={() => void sair()}
+              className="flex items-center gap-1.5 rounded-xl px-3 py-2 font-semibold text-apagado transition-colors hover:bg-areia-2 hover:text-tinta"
+            >
+              <LogOut className="size-4" /> Sair
+            </button>
+          </div>
         </div>
       </header>
 
-      <main className="flex w-full flex-1 flex-col gap-6 px-4 py-5 md:px-8 md:py-6 xl:px-12">
+      <main className="mx-auto flex w-full max-w-[1440px] flex-1 flex-col gap-14 px-6 py-10 sm:px-10 md:gap-16 md:py-14 lg:px-16">
         {feitas >= total && (
-          <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-cobre bg-cobre-suave px-4 py-3 text-sm">
+          <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-cobre bg-cobre-suave px-5 py-4 text-sm">
             <Link to="/certificado" role="status" className="flex flex-1 items-center gap-3 hover:brightness-95">
               <Award className="size-6 shrink-0 text-cobre-texto" />
               <span className="flex-1">
@@ -110,70 +115,76 @@ function Capa() {
           </div>
         )}
 
-        {/* Hero ocupando toda a largura: apresentação à esquerda + painel de estudo à direita */}
-        <section className="grid w-full gap-5 lg:grid-cols-[1.45fr_1fr] lg:items-stretch">
-          <div className="flex flex-col justify-between rounded-3xl border border-linha bg-branco/85 p-6 backdrop-blur-sm sombra md:p-8">
+        {/* Hero com espaçamento interno confortável */}
+        <section className="grid w-full gap-8 lg:grid-cols-[1.35fr_1fr] lg:items-stretch xl:gap-10">
+          <div className="flex flex-col justify-between rounded-3xl border border-linha bg-branco/85 p-8 backdrop-blur-sm sombra md:p-10 lg:p-12">
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-cobre-borda bg-cobre-suave px-3 py-1 text-xs font-semibold text-cobre-texto">
+              <div className="inline-flex items-center gap-2 rounded-full border border-cobre-borda bg-cobre-suave px-3.5 py-1.5 text-xs font-semibold text-cobre-texto">
                 <BookOpen className="size-3.5" /> {BOOK.selo}
               </div>
-              <h1 className="mt-3 text-5xl font-bold leading-[0.96] tracking-tight md:text-6xl xl:text-7xl">
-                {BOOK.tituloAntes}{" "}
+              <h1 className="mt-6 text-5xl font-bold leading-[0.96] tracking-tight md:text-6xl xl:text-7xl">
+                {BOOK.tituloAntes}
+                <br />
                 <span className="acento">{BOOK.tituloAcento}</span>
-                <LogoGemini className="ml-2 inline-block size-[0.68em] -translate-y-[0.06em]" />
+                <LogoGemini className="ml-2.5 inline-block size-[0.68em] -translate-y-[0.06em]" />
               </h1>
-              <p className="mt-4 hidden max-w-3xl text-base leading-relaxed text-apagado md:block lg:text-lg">{BOOK.chamada}</p>
-              <p className="mt-4 text-base leading-relaxed text-apagado md:hidden">{BOOK.chamadaCelular}</p>
+              <p className="mt-6 hidden max-w-2xl text-base leading-relaxed text-apagado md:block md:text-lg">
+                {BOOK.chamada}
+              </p>
+              <p className="mt-6 text-base leading-relaxed text-apagado md:hidden">{BOOK.chamadaCelular}</p>
             </div>
 
-            <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-linha pt-4">
-              <div className="flex flex-wrap gap-1.5">
+            <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-linha pt-6">
+              <div className="flex flex-wrap gap-2">
                 {BOOK.areas.map((a) => (
-                  <span key={a} className="rounded-lg border border-linha-2 bg-areia px-2.5 py-1 text-xs font-semibold text-tinta-2">
+                  <span
+                    key={a}
+                    className="rounded-full border border-linha-2 bg-areia px-3.5 py-1.5 text-xs font-semibold text-tinta-2"
+                  >
                     {a}
                   </span>
                 ))}
               </div>
-              <p className="text-xs text-apagado">
+              <p className="text-sm text-apagado">
                 Instrutor: <span className="font-semibold text-tinta">{BOOK.instrutor}</span>
               </p>
             </div>
           </div>
 
           {/* Painel do aluno à direita */}
-          <div className="flex flex-col justify-between gap-4 rounded-3xl border border-linha bg-branco p-6 sombra md:p-7">
+          <div className="flex flex-col justify-between gap-6 rounded-3xl border border-linha bg-branco p-8 sombra md:p-10">
             <div>
               <div className="flex items-center justify-between gap-2">
                 <p className="sobretitulo text-cobre-texto">Seu painel de estudo</p>
-                <span className="rounded-full bg-cobre-suave px-2.5 py-0.5 text-xs font-bold text-cobre-texto">
+                <span className="rounded-full bg-cobre-suave px-3 py-1 text-xs font-bold text-cobre-texto">
                   {pct}% concluído
                 </span>
               </div>
-              <div className="mt-2.5 flex items-baseline justify-between">
-                <p className="text-2xl font-bold text-tinta">
+              <div className="mt-4 flex items-baseline justify-between">
+                <p className="text-3xl font-bold text-tinta">
                   {feitas} <span className="text-base font-medium text-apagado">de {total} aulas concluídas</span>
                 </p>
               </div>
-              <div className="mt-2 h-2.5 overflow-hidden rounded-full bg-areia-2">
+              <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-areia-2">
                 <div className="h-full rounded-full bg-cobre transition-all" style={{ width: `${pct}%` }} />
               </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-2.5 text-center">
+            <div className="grid grid-cols-3 gap-3.5 text-center">
               {[
                 ["5", "módulos"],
                 [String(total), "aulas"],
                 [BOOK.cargaHoraria, "certificado"],
               ].map(([n, r]) => (
-                <div key={r} className="rounded-2xl border border-linha bg-areia px-2 py-2.5">
-                  <p className="text-xl font-bold text-cobre-texto md:text-2xl">{n}</p>
-                  <p className="text-[11px] font-semibold uppercase tracking-wider text-apagado">{r}</p>
+                <div key={r} className="rounded-2xl border border-linha bg-areia px-3 py-4">
+                  <p className="text-2xl font-bold text-cobre-texto md:text-3xl">{n}</p>
+                  <p className="mt-1 text-[11px] font-semibold uppercase tracking-wider text-apagado">{r}</p>
                 </div>
               ))}
             </div>
 
-            <div className="flex flex-col gap-2">
-              <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+            <div className="flex flex-col gap-3">
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
                 <Link
                   to="/ler/$secao/$pagina"
                   params={continuar}
@@ -191,7 +202,7 @@ function Capa() {
               <button
                 type="button"
                 onClick={() => setVerCertificado(true)}
-                className="btn-claro flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-xs font-semibold text-tinta-2"
+                className="btn-claro flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-xs font-semibold text-tinta-2"
               >
                 <Eye className="size-4 text-cobre-texto" /> Ver como será o certificado de conclusão
               </button>
@@ -199,9 +210,17 @@ function Capa() {
           </div>
         </section>
 
-        {/* Módulos em lombada ocupando toda a largura */}
+        {/* Módulos em lombada */}
         <section aria-label="Navegação por módulos" className="w-full">
-          <div className="flex flex-col gap-3 md:h-[390px] md:flex-row">
+          <div className="mb-6 flex flex-col gap-1.5 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="sobretitulo text-cobre-texto">Navegação rápida</p>
+              <h2 className="mt-1 text-2xl font-bold tracking-tight md:text-3xl">Módulos em destaque</h2>
+            </div>
+            <p className="text-sm text-apagado">Clique em um módulo na lombada para expandir suas aulas</p>
+          </div>
+
+          <div className="flex flex-col gap-3.5 md:h-[440px] md:flex-row">
             {modulos.map((m, mi) => {
               const ativo = aberto === mi;
               const concl = m.aulas.filter((a) => prog.concluidas.includes(a.n)).length;
@@ -209,7 +228,7 @@ function Capa() {
                 <div
                   key={m.id}
                   className={cn(
-                    "overflow-hidden rounded-2xl border transition-all duration-500",
+                    "overflow-hidden rounded-3xl border transition-all duration-500",
                     ativo
                       ? "flex-[5] border-linha bg-branco sombra"
                       : "flex-1 cursor-pointer border-escuro-borda bg-tinta text-escuro-texto hover:bg-escuro-hover",
@@ -217,28 +236,31 @@ function Capa() {
                   onClick={() => setAberto(mi)}
                 >
                   {ativo ? (
-                    <div className="flex h-full flex-col p-5 md:p-6">
-                      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-linha pb-3">
-                        <div className="flex items-center gap-3">
-                          <span className="flex size-10 items-center justify-center rounded-xl bg-cobre-suave text-cobre-texto">
+                    <div className="flex h-full flex-col p-6 md:p-8">
+                      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-linha pb-4">
+                        <div className="flex items-center gap-3.5">
+                          <span className="flex size-11 items-center justify-center rounded-2xl bg-cobre-suave text-cobre-texto">
                             <Glifo id={m.glifo} className="size-5" />
                           </span>
                           <div>
                             <p className="sobretitulo">
                               Módulo {mi + 1} · {concl}/{m.aulas.length} concluídas
                             </p>
-                            <h2 className="text-xl font-bold leading-tight tracking-tight md:text-2xl">{m.nomeCompleto}</h2>
+                            <h3 className="mt-0.5 text-xl font-bold leading-tight tracking-tight md:text-2xl">
+                              {m.nomeCompleto}
+                            </h3>
                           </div>
                         </div>
                         <Link
                           to="/ler/$secao/$pagina"
                           params={{ secao: m.aulas[0]!.n, pagina: "1" }}
-                          className="btn-claro hidden items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-semibold sm:inline-flex"
+                          className="btn-claro hidden items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-semibold sm:inline-flex"
                         >
                           Iniciar módulo <ArrowRight className="size-3.5" />
                         </Link>
                       </div>
-                      <div className="mt-3 grid min-h-0 flex-1 grid-cols-1 gap-2 overflow-y-auto barra-clara pr-1 xl:grid-cols-2">
+
+                      <div className="mt-4 flex min-h-0 flex-1 flex-col justify-between gap-2 overflow-y-auto barra-clara pr-1">
                         {m.aulas.map((a) => {
                           const ok = prog.concluidas.includes(a.n);
                           const numPassos = passosDa(a).length;
@@ -247,14 +269,16 @@ function Capa() {
                               key={a.n}
                               to="/ler/$secao/$pagina"
                               params={{ secao: a.n, pagina: "1" }}
-                              className="group flex items-center gap-3.5 rounded-xl border border-linha/70 bg-areia/50 px-3.5 py-2.5 transition-colors hover:border-cobre-borda hover:bg-cobre-suave/40"
+                              className="group flex items-center gap-4 rounded-2xl border border-transparent px-4 py-3 transition-colors hover:border-linha hover:bg-areia"
                             >
                               <span className="w-8 shrink-0 font-mono text-sm font-semibold text-cobre-texto">{a.n}</span>
                               <span className="min-w-0 flex-1">
-                                <span className="block truncate font-semibold text-tinta group-hover:text-cobre-texto">{a.titulo}</span>
-                                <span className="block truncate text-xs text-apagado">{a.objetivo}</span>
+                                <span className="block truncate font-semibold text-tinta group-hover:text-cobre-texto">
+                                  {a.titulo}
+                                </span>
+                                <span className="block truncate text-sm text-apagado">{a.objetivo}</span>
                               </span>
-                              <span className="hidden shrink-0 rounded-md bg-branco px-2 py-0.5 text-[11px] font-medium text-apagado sm:inline">
+                              <span className="hidden shrink-0 rounded-lg bg-areia-2 px-2.5 py-1 text-xs font-medium text-apagado sm:inline">
                                 {numPassos} passos
                               </span>
                               {ok ? (
@@ -268,7 +292,7 @@ function Capa() {
                       </div>
                     </div>
                   ) : (
-                    <div className="flex h-full items-center gap-4 px-5 py-3.5 md:flex-col md:justify-between md:px-0 md:py-5">
+                    <div className="flex h-full items-center gap-4 px-5 py-4 md:flex-col md:justify-between md:px-0 md:py-6">
                       <span className="font-mono text-sm font-bold text-cobre">0{mi + 1}</span>
                       <span className="text-sm font-semibold tracking-wide md:rotate-180 md:[writing-mode:vertical-rl]">
                         {m.nomeCompleto}
@@ -282,12 +306,12 @@ function Capa() {
           </div>
         </section>
 
-        {/* Todas as aulas ocupando toda a largura */}
+        {/* Todas as aulas em grade 3x2 espaçada */}
         <section aria-labelledby="todas-aulas" className="w-full">
-          <div className="flex flex-wrap items-end justify-between gap-3">
+          <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
               <p className="sobretitulo text-cobre-texto">Mapa completo</p>
-              <h2 id="todas-aulas" className="mt-0.5 text-2xl font-bold tracking-tight">
+              <h2 id="todas-aulas" className="mt-1.5 text-2xl font-bold tracking-tight md:text-3xl">
                 Todas as aulas da imersão
               </h2>
             </div>
@@ -295,21 +319,22 @@ function Capa() {
               {feitas} de {total} concluídas
             </span>
           </div>
-          <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6">
+
+          <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
             {modulos.map((m, mi) => {
               const conclModulo = m.aulas.filter((a) => prog.concluidas.includes(a.n)).length;
               return (
-                <div key={m.id} className="flex flex-col rounded-2xl border border-linha bg-branco p-5 sombra">
-                  <div className="flex items-center justify-between gap-2 border-b border-linha pb-3">
+                <div key={m.id} className="flex flex-col rounded-3xl border border-linha bg-branco p-6 sombra md:p-7">
+                  <div className="flex items-start justify-between gap-3 border-b border-linha pb-4">
                     <div className="min-w-0">
                       <p className="sobretitulo text-cobre-texto">Módulo {mi + 1}</p>
-                      <h3 className="mt-0.5 truncate font-bold leading-snug" title={m.nomeCompleto}>{m.nomeCompleto}</h3>
+                      <h3 className="mt-1 text-lg font-bold leading-snug">{m.nomeCompleto}</h3>
                     </div>
                     <span className="shrink-0 rounded-full bg-areia-2 px-2.5 py-0.5 text-xs font-semibold text-apagado">
                       {conclModulo}/{m.aulas.length}
                     </span>
                   </div>
-                  <ul className="mt-2.5 flex flex-1 flex-col divide-y divide-linha/60">
+                  <ul className="mt-4 flex flex-1 flex-col gap-1.5">
                     {m.aulas.map((a) => {
                       const ok = prog.concluidas.includes(a.n);
                       return (
@@ -317,10 +342,10 @@ function Capa() {
                           <Link
                             to="/ler/$secao/$pagina"
                             params={{ secao: a.n, pagina: "1" }}
-                            className="group flex items-center gap-3 rounded-lg px-2 py-2 text-sm hover:bg-areia"
+                            className="group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition-colors hover:bg-areia"
                           >
                             <span className="w-8 font-mono text-xs font-semibold text-cobre-texto">{a.n}</span>
-                            <span className="flex-1 truncate group-hover:text-cobre-texto">{a.titulo}</span>
+                            <span className="flex-1 font-medium text-tinta-2 group-hover:text-cobre-texto">{a.titulo}</span>
                             {ok ? (
                               <Check className="size-4 text-verde" aria-label="Concluída" />
                             ) : (
@@ -335,31 +360,31 @@ function Capa() {
               );
             })}
 
-            {/* 6º card para fechar a grade sem espaço vazio */}
-            <div className="flex flex-col justify-between rounded-2xl border border-escuro-borda bg-tinta p-5 text-escuro-texto sombra">
+            {/* 6º card para fechar a grade 3x2 */}
+            <div className="flex flex-col justify-between rounded-3xl border border-escuro-borda bg-tinta p-6 text-escuro-texto sombra md:p-7">
               <div>
                 <div className="flex items-center justify-between gap-2">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-escuro-hover px-3 py-1 text-xs font-semibold text-cobre">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-escuro-hover px-3.5 py-1 text-xs font-semibold text-cobre">
                     <Sparkles className="size-3.5" /> Recursos extras
                   </span>
                   <span className="font-mono text-xs text-escuro-texto-2">{BOOK.cargaHoraria}</span>
                 </div>
-                <h3 className="mt-3 text-lg font-bold text-branco">Prática com IA & Certificado</h3>
-                <p className="mt-1.5 text-xs leading-relaxed text-escuro-texto">
+                <h3 className="mt-5 text-xl font-bold text-branco">Prática com IA & Certificado</h3>
+                <p className="mt-2.5 text-sm leading-relaxed text-escuro-texto">
                   Gere exercícios sob medida para o momento atual da sua empresa ou acompanhe a liberação do seu certificado oficial.
                 </p>
               </div>
-              <div className="mt-4 flex flex-col gap-2">
+              <div className="mt-6 flex flex-col gap-3">
                 <Link
                   to="/exercicio"
-                  className="btn-tinta flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold"
+                  className="btn-tinta flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold"
                 >
                   <Sparkles className="size-4" /> Exercício com IA
                 </Link>
                 <button
                   type="button"
                   onClick={() => setVerCertificado(true)}
-                  className="flex items-center justify-center gap-2 rounded-xl border border-escuro-borda bg-escuro-hover px-4 py-2.5 text-sm font-semibold text-branco hover:border-cobre"
+                  className="flex items-center justify-center gap-2 rounded-xl border border-escuro-borda bg-escuro-hover px-5 py-3 text-sm font-semibold text-branco transition-colors hover:border-cobre"
                 >
                   <Eye className="size-4 text-cobre" /> Modelo do certificado
                 </button>

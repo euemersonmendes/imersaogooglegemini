@@ -19,11 +19,8 @@ function validarAluno(d: NovoAluno) {
 
 async function criarConta(v: ReturnType<typeof validarAluno>, turma: string | null) {
   if (!process.env["SUPABASE_SERVICE_ROLE_KEY"]) {
-    const { createClient } = await import("@supabase/supabase-js");
-    const sb = createClient(process.env["SUPABASE_URL"]!, process.env["SUPABASE_PUBLISHABLE_KEY"]!, {
-      auth: { persistSession: false, autoRefreshToken: false },
-    });
-    const { error } = await sb.auth.signUp({
+    const { supabase } = await import("@/integrations/supabase/client");
+    const { data, error } = await supabase.auth.signUp({
       email: v.email,
       password: v.senha,
       options: { data: { nome: v.nome, turma } },
@@ -33,6 +30,9 @@ async function criarConta(v: ReturnType<typeof validarAluno>, turma: string | nu
       if (/weak|pwned|easy to guess/i.test(error.message)) return { ok: false as const, erro: "Essa senha é muito fácil de adivinhar. Escolha outra, misturando letras e números." };
       console.error(error);
       return { ok: false as const, erro: "Não foi possível criar o acesso agora." };
+    }
+    if (data.user && Array.isArray(data.user.identities) && data.user.identities.length === 0) {
+      return { ok: false as const, erro: "Este e-mail já tem acesso. Use a opção Entrar." };
     }
     return { ok: true as const };
   }
@@ -62,13 +62,16 @@ export const cadastrarAluno = createServerFn({ method: "POST" })
     } catch (e) {
       return { ok: false as const, erro: (e as Error).message };
     }
-    if (!process.env["SUPABASE_SERVICE_ROLE_KEY"]) {
-      return { ok: false as const, erro: "Cadastro requer SUPABASE_SERVICE_ROLE_KEY configurada no ambiente." };
+    if (!v.codigo || v.codigo.length < 4) {
+      return { ok: false as const, erro: "Código da turma inválido. Confira com o instrutor." };
     }
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const { data: turma } = await supabaseAdmin.from("turmas").select("codigo").eq("codigo", v.codigo).eq("ativa", true).maybeSingle();
-    if (!turma) return { ok: false as const, erro: "Código da turma inválido. Confira com o instrutor." };
-    return criarConta(v, turma.codigo);
+    if (process.env["SUPABASE_SERVICE_ROLE_KEY"]) {
+      const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+      const { data: turma } = await supabaseAdmin.from("turmas").select("codigo").eq("codigo", v.codigo).eq("ativa", true).maybeSingle();
+      if (!turma) return { ok: false as const, erro: "Código da turma inválido. Confira com o instrutor." };
+      return criarConta(v, turma.codigo);
+    }
+    return criarConta(v, v.codigo);
   });
 
 async function exigirAdmin(context: { supabase: any; userId: string }) {

@@ -28,8 +28,9 @@ async function criarConta(v: ReturnType<typeof validarAluno>, turma: string | nu
     if (error) {
       if (/already|registered|exists/i.test(error.message)) return { ok: false as const, erro: "Este e-mail já tem acesso. Use a opção Entrar." };
       if (/weak|pwned|easy to guess/i.test(error.message)) return { ok: false as const, erro: "Essa senha é muito fácil de adivinhar. Escolha outra, misturando letras e números." };
-      console.error(error);
-      return { ok: false as const, erro: "Não foi possível criar o acesso agora." };
+      if (/rate limit|too many requests/i.test(error.message)) return { ok: false as const, erro: "Muitas tentativas seguidas. Aguarde alguns instantes e tente novamente." };
+      console.error("Erro criarConta signUp:", error);
+      return { ok: false as const, erro: `Não foi possível criar o acesso: ${error.message}` };
     }
     if (data.user && Array.isArray(data.user.identities) && data.user.identities.length === 0) {
       return { ok: false as const, erro: "Este e-mail já tem acesso. Use a opção Entrar." };

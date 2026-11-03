@@ -228,10 +228,10 @@ function Leitor() {
             <button
               type="button"
               onClick={() => alternarTelao()}
-              title="Modo telão (tecla T)"
+              title="Tela cheia (tecla T)"
               className="btn-claro ml-auto hidden items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-semibold md:flex"
             >
-              {telao ? <Minimize2 className="size-3.5" /> : <MonitorPlay className="size-3.5" />} {telao ? "Sair do telão" : "Modo telão"}
+              {telao ? <Minimize2 className="size-3.5" /> : <MonitorPlay className="size-3.5" />} {telao ? "Sair da tela cheia" : "Tela cheia"}
             </button>
           </div>
           <div className="flex gap-1 overflow-x-auto px-5 pt-3 barra-clara md:px-10">

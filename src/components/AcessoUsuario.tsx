@@ -33,8 +33,15 @@ export function AcessoUsuario({ codigoInicial }: { codigoInicial?: string } = {}
         if (!r.ok) return setErro(r.erro);
       }
       const { error } = await supabase.auth.signInWithPassword({ email: email.trim().toLowerCase(), password: senha });
-      if (error) setErro("E-mail ou senha incorretos.");
-      else void router.navigate({ to: "/book" });
+      if (error) {
+        if (/email not confirmed/i.test(error.message)) {
+          setErro("Conta criada! Verifique a caixa de entrada do seu e-mail para confirmar o cadastro antes de entrar.");
+        } else {
+          setErro("E-mail ou senha incorretos.");
+        }
+      } else {
+        void router.navigate({ to: "/book" });
+      }
     } catch {
       setErro("Não foi possível entrar agora. Tente de novo.");
     } finally {

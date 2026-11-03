@@ -37,6 +37,7 @@ export const Route = createFileRoute("/ler/$secao/$pagina")({
 
 function Lateral({ atual, aoFechar, aoRecolher }: { atual: string; aoFechar?: () => void; aoRecolher?: () => void }) {
   const prog = useProgresso();
+  const navigate = useNavigate();
   const [confirmando, setConfirmando] = useState(false);
 
   function reiniciar() {
@@ -50,6 +51,8 @@ function Lateral({ atual, aoFechar, aoRecolher }: { atual: string; aoFechar?: ()
       if (data.user) void supabase.from("certificados").delete().eq("user_id", data.user.id).eq("revogado", false);
     });
     setConfirmando(false);
+    aoFechar?.();
+    void navigate({ to: "/book" });
   }
 
   return (

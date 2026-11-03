@@ -33,6 +33,14 @@ export type TelaId =
 
 export type Fonte = { nome: string; url: string };
 
+/** Arquivo de apoio ou planilha-modelo para download na aula ou no passo. */
+export type MaterialApoio = {
+  nome: string;
+  url: string;
+  formato: "Planilha CSV" | "Documento TXT";
+  descricao: string;
+};
+
 type Base = {
   /** Rótulo curto da aba do passo (até ~22 caracteres). */
   rotulo: string;
@@ -42,6 +50,8 @@ type Base = {
   tituloEnfase?: string;
   /** Texto de apoio abaixo do título (1–2 frases). */
   texto?: string;
+  /** Arquivos ou planilhas-modelo para baixar e testar neste passo. */
+  arquivos?: MaterialApoio[];
 };
 
 /** Mostra uma tela do Gemini com pontos clicáveis (definidos em telas.tsx). */
@@ -153,6 +163,8 @@ export type Aula = {
   /** Parágrafo "Se quiser entender um pouco mais". */
   saibaMais?: string;
   fontes: Fonte[];
+  /** Planilhas ou arquivos de apoio disponíveis para download nesta aula. */
+  materiais?: MaterialApoio[];
   /** Passos SEM o "Objetivo" (ele é gerado automaticamente como passo 1). */
   passos: Passo[];
 };

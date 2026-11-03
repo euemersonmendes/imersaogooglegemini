@@ -245,6 +245,14 @@ export const modulo5: Modulo = {
           "url": "https://support.google.com/gemini"
         }
       ],
+      "materiais": [
+        {
+          "nome": "Template de DRE Simplificado e Ciclo Financeiro",
+          "url": "/materiais/template-dre-e-fluxo-caixa-mensal.csv",
+          "formato": "Planilha CSV",
+          "descricao": "Planilha mensal com os 5 grupos do DRE e Ponto de Equilíbrio para alimentar a sua revisão programada."
+        }
+      ],
       "passos": [
         {
           "tipo": "tela",
@@ -277,6 +285,28 @@ export const modulo5: Modulo = {
           "texto": "Cole o lembrete e ajuste o dia. Agendar uma revisão não autoriza enviar cobranças aos clientes.",
           "prompt": "# Perfil\nAjude a organizar a rotina de contas a receber da minha empresa de [[seu ramo de atuação ou tipo de serviço]].\n\n# Contexto\nEstou estruturando os processos financeiros do meu negócio e preciso de um lembrete regular para conferir pagamentos e baixas antes de qualquer cobrança. Não inclua nem solicite nomes, contatos, CPF, dados bancários ou quaisquer outros dados pessoais de clientes.\n\n# Objetivo\nCrie um lembrete recorrente toda [[dia da semana, ex.: terça-feira]] às [[horário, ex.: 9h]], no fuso [[seu fuso horário, ex.: America/Sao_Paulo]], para eu revisar as contas a receber no meu controle financeiro.\n\n# Modelo de Entrega\nNo lembrete, inclua o passo a passo para conferir vencimentos e pagamentos recebidos antes de preparar qualquer mensagem. Não invente dívidas, não altere registros e não envie cobranças. Qualquer rascunho deve passar pela minha conferência, sem expor dados pessoais de clientes. Confirme a próxima execução e a recorrência. Se a ferramenta não permitir programar o disparo direto, explique a limitação e entregue o texto pronto para eu copiar e agendar no meu calendário ou aplicativo de tarefas.",
           "dica": "Confira a primeira execução e revise ou desative a rotina quando ela deixar de fazer sentido."
+        },
+        {
+          "tipo": "prompt",
+          "rotulo": "Fechamento DRE",
+          "titulo": "Programe o pré-fechamento mensal",
+          "tituloEnfase": "o pré-fechamento mensal",
+          "nomePrompt": "Checklist mensal de DRE e ponto de equilíbrio",
+          "texto": "Todo início de mês o dono precisa saber se teve lucro real ou se só girou dinheiro. Programe o roteiro de fechamento gerencial para o dia 1º.",
+          "arquivos": [
+            {
+              "nome": "Template de DRE Simplificado e Ciclo Financeiro",
+              "url": "/materiais/template-dre-e-fluxo-caixa-mensal.csv",
+              "formato": "Planilha CSV",
+              "descricao": "Baixe a planilha-base com os 5 números consolidados do mês para usar no seu fechamento gerencial."
+            }
+          ],
+          "prompt": "# Perfil\nAtue como controlador financeiro para micro e pequenas empresas.\n\n# Contexto\nAdministro um negócio no ramo de [[seu ramo de atuação]] e quero programar uma rotina todo dia [[dia do mês, ex.: 2 ou 5]] às [[horário, ex.: 8h30]], no fuso [[seu fuso horário, ex.: America/Sao_Paulo]], para conduzir o meu fechamento gerencial (DRE Simplificado) do mês encerrado. Não inclua dados pessoais de clientes ou senhas bancárias.\n\n# Objetivo\nPrograme um checklist interativo que me peça os 5 números consolidados do mês anterior (Receita Bruta, Impostos/Taxas de Cartão, Custo das Mercadorias/Insumos, Despesas Fixas e Retirada dos Sócios/Pró-labore) para calcular a Margem de Contribuição, o Ponto de Equilíbrio e o Resultado Líquido.\n\n# Modelo de Entrega\nNa execução programada, entregue:\n1. A lista dos 5 totais que preciso levantar no meu caixa/extrato antes de começar.\n2. A estrutura do DRE Simplificado pronta para preencher.\n3. A fórmula do Ponto de Equilíbrio (Custos Fixos ÷ % da Margem de Contribuição) explicada em linguagem simples.\n4. Alerta para separar contas pessoais dos sócios das despesas da empresa. Confirme a recorrência mensal e o fuso horário.",
+          "observe": [
+            "Separa despesas da empresa de retiradas pessoais dos sócios (pró-labore)?",
+            "Explica o Ponto de Equilíbrio em reais de faturamento necessário para empatar no mês?",
+            "Confirma a programação mensal sem inventar números que ainda não foram informados?"
+          ]
         },
         {
           "tipo": "resultado",

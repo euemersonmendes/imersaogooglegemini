@@ -82,6 +82,21 @@ Tenho um [[salão de beleza]] e quero divulgar serviços para novos clientes.
 - Não presuma orçamento, descontos ou disponibilidade que não confirmei.
 # Como prefiro as respostas
 Use roteiro com etapas, duração sugerida e checklist. Marque suposições e informações a confirmar.` },
+            { nome: "Finanças, precificação e margem", resumo: "Cálculo real com taxas de cartão, impostos e capital de giro.", texto: `# Quem sou
+Cuido do financeiro, compras e precificação da minha [[tipo de empresa: comércio, restaurante ou serviço]] emquadrada no [[MEI ou Simples Nacional]].
+# O que muda a resposta no meu contexto
+- Diferencie faturamento bruto, margem de contribuição, lucro líquido e saldo de caixa.
+- Sempre considere taxas de maquininha (PIX, débito, crédito parcelado), alíquota de imposto, frete de compra, perdas e comissões.
+- Não confunda markup sobre o custo com margem sobre o preço de venda.
+# Como prefiro as respostas
+Exiba memória de cálculo passo a passo, tabela comparativa e fórmula pronta para Google Planilhas. Nunca arredonde ou invente taxas; marque dados faltantes como [A CONFIRMAR].` },
+            { nome: "Operação, equipe e POP", resumo: "Padronização de rotinas, checklists e treinamento rápido.", texto: `# Quem sou
+Gerencio a operação e a equipe de [[quantidade de pessoas]] colaboradores no meu [[segmento do negócio]].
+# O que muda a resposta no meu contexto
+- Preciso de processos simples que qualquer funcionário consiga seguir no balcão ou na produção.
+- Foque em reduzir retrabalho, desperdício de insumos e falhas de abertura ou fechamento de turno.
+# Como prefiro as respostas
+Entregue Procedimentos Operacionais Padrão (POP) de uma página, com passos numerados, responsável, tempo estimado e critério visual de conferência ("como saber que ficou pronto").` },
           ],
         },
         {

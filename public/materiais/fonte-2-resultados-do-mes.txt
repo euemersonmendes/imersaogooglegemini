@@ -1,0 +1,24 @@
+DOCUMENTO INTERNO — FONTE 2: RESULTADOS REALIZADOS E REGISTROS DO MÊS (JUNHO)
+(Arquivo de exemplo sem dados pessoais de clientes — pronto para subir no Gemini Notebooks)
+
+1. VOLUME DE VENDAS REGISTRADO NO CAIXA (JUNHO)
+- Camisetas Básicas vendidas no período: 48 unidades (observação do caixa: várias compras foram de 2 ou 3 peças pelo mesmo comprador; o sistema não separa CPF nem quantidade de clientes únicos).
+- Kits de 2 Camisetas vendidos: 19 kits.
+- Calças Jeans vendidas: 31 unidades.
+- Receita bruta total registrada nos terminais: R$ 11.840,00.
+
+2. AÇÕES DE DIVULGAÇÃO EXECUTADAS
+- Foram publicados 4 posts no feed do Instagram nas datas 04/06, 11/06, 18/06 e 25/06.
+- Não foi utilizado cupom rastreável nem pergunta de origem no caixa; portanto, não há registro de quantas vendas vieram especificamente dos posts do Instagram versus clientes que passavam na calçada.
+
+3. PESQUISA DE SATISFAÇÃO E ATENDIMENTO
+- Nota média registrada no formulário de balcão: 4,5 estrelas.
+- Total de respostas coletadas no mês: 12 respostas (abaixo das 30 respostas previstas na meta para ter amostra representativa).
+- Principais comentários anônimos anotados:
+  * "Atendimento rápido no balcão, mas demorou 2 horas para responderem o preço no WhatsApp."
+  * "Queria saber se faz ajuste de barra na loja, mas a atendente nova não soube responder."
+
+4. SITUAÇÃO DO FECHAMENTO FINANCEIRO E CUSTOS
+- As notas fiscais de reposição da quinzena final e o extrato consolidado das taxas de parcelamento da maquininha ainda estão com a contabilidade.
+- Status do lucro líquido de junho: PENDENTE DE APURAÇÃO (custos variáveis e despesas operacionais ainda não foram fechados).
+

@@ -1,0 +1,12 @@
+Fornecedor;Item;Unidade;Quantidade;Preco Unitario na Nota (R$);ICMS ST / IPI naLinha (R$);Frete Total da Nota (R$);Prazo de Pagamento;Observacao
+Atacado Sul Insumos;Farinha Especial 25kg;Saco 25kg;10;89,00;45,00;120,00;28 dias;Frete cobrado no total da nota (ratear entre os itens)
+Atacado Sul Insumos;Queijo Minas Padrao;Kg;30;38,50;69,30;120,00;28 dias;Mesma nota fiscal do Atacado Sul
+Atacado Sul Insumos;Embalagem Termica G;Fardo c/ 100;8;42,00;16,80;120,00;28 dias;Mesma nota fiscal do Atacado Sul
+Distribuidora Vale;Farinha Especial 25kg;Saco 25kg;10;94,00;0,00;0,00;14 dias;Frete gratis e ST ja incluido no preco unitario
+Distribuidora Vale;Queijo Minas Padrao;Kg;30;41,00;0,00;0,00;14 dias;Desconto de 4% para pagamento via PIX a vista
+Distribuidora Vale;Embalagem Termica G;Fardo c/ 100;8;44,50;0,00;0,00;14 dias;Entrega em 24h
+
+--- PREENCHA ABAIXO COM A SUA COTACAO REAL ---
+[[Seu Fornecedor]];[[Item 1]];[[Unidade]];0;0,00;0,00;0,00;[[Prazo]];
+[[Seu Fornecedor]];[[Item 2]];[[Unidade]];0;0,00;0,00;0,00;[[Prazo]];
+

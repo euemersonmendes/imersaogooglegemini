@@ -1,0 +1,21 @@
+Grupo Gerencial;Item de Controle;Exemplo Loja/Servico (R$);% sobre Receita Bruta;Preencha Seu Mes Atual (R$);Observacao para Conferencia
+1. RECEITA BRUTA;Vendas a Vista e PIX;18500,00;46,3%;0,00;Conferir no extrato bancario e caixa fisico
+1. RECEITA BRUTA;Vendas no Cartao Debito/Credito;21500,00;53,8%;0,00;Valor bruto vendido antes da taxa da maquininha
+1. RECEITA BRUTA;TOTAL RECEITA BRUTA (A);40000,00;100,0%;0,00;Soma de todas as vendas realizadas no mes
+2. DEDUCOES E CUSTOS VARIAVEIS;Imposto Simples Nacional / MEI;2400,00;6,0%;0,00;Guia DAS do mes
+2. DEDUCOES E CUSTOS VARIAVEIS;Taxas de Maquininha e Antecipacao;1950,00;4,9%;0,00;Soma das taxas descontadas pelas operadoras
+2. DEDUCOES E CUSTOS VARIAVEIS;Custo das Mercadorias / Insumos (CMV);16800,00;42,0%;0,00;Custo de reposicao dos itens vendidos + embalagens
+2. DEDUCOES E CUSTOS VARIAVEIS;Comissoes e Fretes de Entrega;1250,00;3,1%;0,00;Pagamentos variaveis conforme volume vendido
+3. MARGEM DE CONTRIBUICAO;SOBRA BRUTA PARA PAGAR CUSTO FIXO (B);17600,00;44,0%;0,00;Receita Bruta menos todas as Deducoes e Custos Variaveis
+4. CUSTOS E DESPESAS FIXAS;Aluguel, Condominio e IPTU;3800,00;9,5%;0,00;Despesa fixa mensal
+4. CUSTOS E DESPESAS FIXAS;Folha de Pagamento e Encargos da Equipe;5400,00;13,5%;0,00;Salarios fixos, FGTS, INSS e vale-transporte
+4. CUSTOS E DESPESAS FIXAS;Pro-labore (Retirada Fixa dos Socios);4000,00;10,0%;0,00;Separar de contas pessoais da familia
+4. CUSTOS E DESPESAS FIXAS;Energia, Agua, Internet, Contador e Sistema;1600,00;4,0%;0,00;Contas operacionais recorrentes
+4. CUSTOS E DESPESAS FIXAS;TOTAL DE CUSTOS FIXOS (C);14800,00;37,0%;0,00;Soma de tudo que a empresa paga mesmo sem vender
+5. RESULTADO E INDICADORES;LUCRO LIQUIDO OPERACIONAL (B - C);2800,00;7,0%;0,00;Sobra real no mes apos pagar custos e pro-labore
+5. RESULTADO E INDICADORES;PONTO DE EQUILIBRIO MENSAL (C / % Margem);33636,36;84,1%;0,00;Faturamento minimo para empatar as contas no mes
+6. CICLO FINANCEIRO (DIAS);Prazo Medio de Estoque (PME);22 dias;-;0;Quantos dias a mercadoria fica parada antes de vender
+6. CICLO FINANCEIRO (DIAS);Prazo Medio de Recebimento (PMR);18 dias;-;0;Media ponderada entre PIX (0 dias) e Cartao (30/60 dias)
+6. CICLO FINANCEIRO (DIAS);Prazo Medio de Pagamento a Fornecedores (PMP);21 dias;-;0;Prazo medio dos boletos de compra
+6. CICLO FINANCEIRO (DIAS);NECESSIDADE DE CAPITAL DE GIRO (PME + PMR - PMP);19 dias;-;0;Dias em que a empresa paga antes de receber
+

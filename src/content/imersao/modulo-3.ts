@@ -182,6 +182,20 @@ export const modulo3: Modulo = {
           "url": "https://gemini.google/release-notes/"
         }
       ],
+      "materiais": [
+        {
+          "nome": "Fonte 1 · Metas do mês e regras da loja",
+          "url": "/materiais/fonte-1-metas-e-regras.txt",
+          "formato": "Documento TXT",
+          "descricao": "Documento com metas de vendas, tabela de preços e regras de atendimento/troca para subir no Notebook."
+        },
+        {
+          "nome": "Fonte 2 · Resultados realizados no mês",
+          "url": "/materiais/fonte-2-resultados-do-mes.txt",
+          "formato": "Documento TXT",
+          "descricao": "Relatório de fechamento com vendas reais, posts publicados e pendências para confrontar com a Fonte 1."
+        }
+      ],
       "passos": [
         {
           "tipo": "tela",
@@ -189,7 +203,21 @@ export const modulo3: Modulo = {
           "rotulo": "Na ferramenta",
           "titulo": "Reúna plano e resultados",
           "tituloEnfase": "plano e resultados",
-          "texto": "Abra Notebooks e adicione as duas fontes com dados reais da sua empresa do próximo passo em documentos separados. Confira a lista de fontes; não envie dados pessoais de clientes ou arquivos sem autorização."
+          "texto": "Abra Notebooks e adicione as duas fontes com dados reais da sua empresa do próximo passo em documentos separados. Confira a lista de fontes; não envie dados pessoais de clientes ou arquivos sem autorização.",
+          "arquivos": [
+            {
+              "nome": "Fonte 1 · Metas e regras da loja",
+              "url": "/materiais/fonte-1-metas-e-regras.txt",
+              "formato": "Documento TXT",
+              "descricao": "Baixe e adicione como primeira fonte no seu Notebook."
+            },
+            {
+              "nome": "Fonte 2 · Resultados realizados",
+              "url": "/materiais/fonte-2-resultados-do-mes.txt",
+              "formato": "Documento TXT",
+              "descricao": "Baixe e adicione como segunda fonte para testar as citações."
+            }
+          ]
         },
         {
           "tipo": "prompt",
@@ -246,6 +274,21 @@ export const modulo3: Modulo = {
           ]
         },
         {
+          "tipo": "prompt",
+          "rotulo": "Treinar equipe",
+          "titulo": "Transforme regras em guia de integração",
+          "tituloEnfase": "em guia de integração",
+          "texto": "Notebooks também servem para criar a base de conhecimento da loja: suba tabela de preços, política de trocas e rotina de atendimento para gerar um manual de balcão e FAQ com citações.",
+          "nomePrompt": "Manual de integração e FAQ da equipe",
+          "prompt": "# Perfil\nAtue como organizador de treinamento operacional para pequenos negócios.\n\n# Contexto\nAdicionei no notebook os documentos internos do meu negócio de [[seu ramo de atuação]]:\n- Fonte 1 — Catálogo/Tabela de produtos, serviços e preços: [[resuma ou cole as regras de produtos, prazos e garantias]]\n- Fonte 2 — Regras de atendimento, trocas e abertura/fechamento: [[resuma ou cole os procedimentos da loja]]\nNão há dados pessoais de clientes ou funcionários nas fontes.\n\n# Objetivo\nCrie um Guia Rápido de Integração para novos funcionários e um FAQ de Balcão (10 dúvidas mais comuns dos clientes com a resposta exata baseada nos documentos). Não invente descontos, prazos de garantia ou políticas que não estejam escritos nas fontes.\n\n# Modelo de Entrega\n1. Checklist do 1º dia de trabalho (abertura, atendimento e fechamento) com citação da fonte.\n2. FAQ de Balcão: Pergunta do cliente | Resposta padrão recomendada | Fonte citada.\n3. Pontos em aberto: situações comuns do dia a dia que ainda não estão documentadas nas fontes ([A DEFINIR PELO DONO]).",
+          "observe": [
+            "Cada resposta do FAQ aponta para um trecho real das normas da empresa?",
+            "Situações não previstas nas regras aparecem como [A DEFINIR PELO DONO] em vez de regras inventadas?",
+            "O guia pode ser exportado ou transformado em Resumo em Áudio no Notebook para treinar a equipe?"
+          ],
+          "dica": "Use também o recurso de Resumo em Áudio do Notebook para que novos colaboradores ouçam as regras da loja durante o treinamento."
+        },
+        {
           "tipo": "resultado",
           "rotulo": "Faça na sua conta",
           "titulo": "Agora faça na sua conta",
@@ -276,8 +319,8 @@ export const modulo3: Modulo = {
       "titulo": "Canvas: do relatório ao material",
       "curto": "Canvas",
       "ferramenta": "Gemini · Canvas",
-      "objetivo": "Transformar informações do negócio em um cardápio editável e revisar um trecho sem inventar ofertas.",
-      "voceSaiCom": "Um cardápio curto com texto para Instagram, pronto para sua conferência.",
+      "objetivo": "Transformar informações do negócio em materiais editáveis e criar calculadoras interativas de gestão sem programar.",
+      "voceSaiCom": "Um material comercial revisado e uma calculadora interativa de preço e margem no Canvas.",
       "fontes": [
         {
           "nome": "Central de Ajuda do Gemini",
@@ -318,6 +361,21 @@ export const modulo3: Modulo = {
           "nomePrompt": "Ajuste da legenda sem mudar a oferta",
           "prompt": "# Perfil\nAtue como editor de linguagem simples.\n\n# Contexto\nNo Canvas, selecionei [[o texto do post ou aviso da sua empresa]]. Minha oferta e regras reais são: [[descreva seus produtos/serviços, preços, tamanhos e condições de retirada, entrega ou horário]]. [[Informe pendências, se houver, ex.: estoque diário não confirmado]]. Não inclua CPF, dados bancários ou dados pessoais de clientes.\n\n# Objetivo\nReescreva apenas a seleção para os clientes do meu negócio. Preserve produtos, preços, tamanhos informados e condições reais da oferta. Não altere o restante do documento nem inclua dados novos ou informações não fornecidas.\n\n# Modelo de Entrega\nSubstitua o trecho por até três frases curtas, sem jargão. Não anuncie entrega, disponibilidade garantida ou itens não informados. Preserve eventuais avisos ou pendências indicadas (como confirmação de estoque). Se houver ambiguidade, sinalize-a em vez de completar com suposição. Explique na conversa o que mudou e o que foi preservado para que eu compare com a versão anterior.",
           "dica": "Selecione o trecho antes de enviar. Compare o documento inteiro após a edição; não presuma que só a seleção mudou."
+        },
+        {
+          "tipo": "prompt",
+          "rotulo": "Criar calculadora",
+          "titulo": "Crie uma calculadora de preço no Canvas",
+          "tituloEnfase": "de preço no Canvas",
+          "texto": "O Canvas também gera mini-aplicativos interativos sem exigir programação. Peça um simulador visual para testar preços de venda, taxas de maquininha e descontos no balcão.",
+          "nomePrompt": "Simulador interativo de precificação e taxas",
+          "prompt": "# Perfil\nAtue como desenvolvedor de ferramentas visuais de gestão para pequenos negócios no Gemini Canvas.\n\n# Contexto\nTenho uma empresa de [[seu segmento]] e preciso de uma calculadora interativa em tela única (HTML/JS visual no Canvas) para simular rapidamente o preço de venda e a margem real dos meus produtos ou serviços antes de dar um desconto.\nValores padrão iniciais do meu negócio: imposto de [[alíquota %, ex.: 6%]], taxa de PIX [[%, ex.: 0%]], débito [[%, ex.: 1,5%]], crédito à vista [[%, ex.: 3,2%]] e crédito parcelado [[%, ex.: 9,5%]].\n\n# Objetivo\nConstrua no Canvas um aplicativo interativo onde eu possa digitar: Custo Direto do Produto/Serviço (R$), Embalagem/Frete (R$), Comissão (%), Imposto (%), Taxa da Maquininha (%) e Margem Líquida Desejada (%) ou Preço de Venda Praticado (R$).\n\n# Modelo de Entrega\nEntregue o simulador visual funcionando em português (R$) com:\n1. Campos de entrada claros e botões rápidos para alternar entre PIX, Débito, Crédito 1x e Parcelado.\n2. Painel de resultado em destaque mostrando: Preço de Venda Sugerido (R$), Lucro Líquido em R$ por unidade, Margem de Contribuição (%) e Markup equivalente.\n3. Alerta visual em vermelho sempre que a margem líquida ficar abaixo de [[margem mínima, ex.: 15%]] ou der prejuízo.\n4. Explicação visível da fórmula: Preço = Custo Total / (1 - Soma dos % de Imposto, Taxa, Comissão e Margem).",
+          "observe": [
+            "A calculadora abre no painel visual do Canvas pronta para digitar valores?",
+            "Usa a fórmula correta por dentro (divisão por 1 - taxas) em vez de apenas somar percentuais sobre o custo?",
+            "Destaca em vermelho quando o desconto ou parcelamento corrói a margem mínima?"
+          ],
+          "dica": "Clique em Visualizar/Preview no topo do Canvas para usar a calculadora interativa em tela cheia."
         },
         {
           "tipo": "resultado",
@@ -362,6 +420,14 @@ export const modulo3: Modulo = {
           "url": "https://gemini.google/release-notes/"
         }
       ],
+      "materiais": [
+        {
+          "nome": "Planilha de Vendas e Giro de Estoque",
+          "url": "/materiais/controle-vendas-estoque-planilha.csv",
+          "formato": "Planilha CSV",
+          "descricao": "Contém os 6 registros de Maio/Junho prontos para importar no Google Planilhas + tabela limpa para sua empresa."
+        }
+      ],
       "passos": [
         {
           "tipo": "tela",
@@ -369,7 +435,15 @@ export const modulo3: Modulo = {
           "rotulo": "Na ferramenta",
           "titulo": "Prepare a base de análise",
           "tituloEnfase": "a base de análise",
-          "texto": "Abra uma planilha e o painel do Gemini. Cole a tabela com os dados reais do seu negócio em colunas separadas (sem incluir dados pessoais de clientes); confirme os tipos numéricos e deixe o estoque final não informado em branco."
+          "texto": "Abra uma planilha e o painel do Gemini. Cole a tabela com os dados reais do seu negócio em colunas separadas (sem incluir dados pessoais de clientes); confirme os tipos numéricos e deixe o estoque final não informado em branco.",
+          "arquivos": [
+            {
+              "nome": "Planilha de Vendas e Giro de Estoque",
+              "url": "/materiais/controle-vendas-estoque-planilha.csv",
+              "formato": "Planilha CSV",
+              "descricao": "Baixe e abra no Google Planilhas (Arquivo → Importar) para acompanhar a aula passo a passo."
+            }
+          ]
         },
         {
           "tipo": "prompt",
@@ -412,6 +486,36 @@ export const modulo3: Modulo = {
               "Conferir recebimentos, custos e despesas; receita não é saldo de caixa nem lucro."
             ]
           ]
+        },
+        {
+          "tipo": "comparacao",
+          "rotulo": "Markup vs. Margem",
+          "titulo": "Não confunda markup com margem real",
+          "tituloEnfase": "com margem real",
+          "texto": "Um dos erros mais caros na gestão de pequenos negócios é dobrar o custo achando que terá 100% de lucro. Veja a diferença antes de calcular na planilha.",
+          "colunas": [
+            "Conta intuitiva (perigosa)",
+            "Conta auditada no Gemini"
+          ],
+          "linhas": [
+            [
+              "“Comprei por R$ 50 e vendo por R$ 100: ganho 100% de lucro.”",
+              "Markup de 2x gera R$ 50 de margem bruta (50% sobre o preço de venda), antes de descontar impostos e taxas."
+            ],
+            [
+              "“Posso dar 20% de desconto no cartão parcelado sem problema.”",
+              "R$ 80 menos 12% de parcelamento (R$ 9,60), 6% de imposto (R$ 4,80) e R$ 50 de custo deixa só R$ 15,60 (19,5%) para pagar todo o custo fixo."
+            ],
+            [
+              "“O produto que mais vende é o que mais dá dinheiro.”",
+              "Item de alto giro com margem negativa ou corroída por frete/embalagem drena o caixa quanto mais vende."
+            ],
+            [
+              "“Vendi R$ 30 mil no mês, então o caixa está positivo.”",
+              "Se você vendeu em 4x sem antecipar e precisa pagar o fornecedor em 15 dias, falta capital de giro no meio do mês."
+            ]
+          ],
+          "frase": "Peça sempre ao Gemini para descontar imposto, taxa de maquininha, frete e perda antes de mostrar a margem de contribuição."
         },
         {
           "tipo": "prompt",

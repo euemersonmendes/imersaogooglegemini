@@ -133,6 +133,14 @@ export const modulo4: Modulo = {
           "url": "https://workspace.google.com/products/slides/ai/"
         }
       ],
+      "materiais": [
+        {
+          "nome": "Orçamentos de equipamento e resumo financeiro",
+          "url": "/materiais/orcamentos-equipamento-comparativo.txt",
+          "formato": "Documento TXT",
+          "descricao": "Arquivo de referência com 2 orçamentos de forno industrial, prazos e capacidade de pagamento para testar o @ no Docs."
+        }
+      ],
       "passos": [
         {
           "tipo": "tela",
@@ -140,7 +148,15 @@ export const modulo4: Modulo = {
           "rotulo": "No documento",
           "titulo": "Comece pelas fontes no Docs",
           "tituloEnfase": "no Docs",
-          "texto": "Abra um documento e localize o painel do Gemini. Use @ para selecionar arquivos do Drive aos quais você tenha acesso autorizado."
+          "texto": "Abra um documento e localize o painel do Gemini. Use @ para selecionar arquivos do Drive aos quais você tenha acesso autorizado.",
+          "arquivos": [
+            {
+              "nome": "Orçamentos de equipamento e resumo financeiro",
+              "url": "/materiais/orcamentos-equipamento-comparativo.txt",
+              "formato": "Documento TXT",
+              "descricao": "Baixe e suba no seu Google Drive (ou cole em um Doc) para referenciar com @ no próximo passo."
+            }
+          ]
         },
         {
           "tipo": "anatomia",
@@ -436,6 +452,14 @@ export const modulo4: Modulo = {
           "url": "https://support.google.com/gemini"
         }
       ],
+      "materiais": [
+        {
+          "nome": "Template de DRE Simplificado e Ciclo Financeiro",
+          "url": "/materiais/template-dre-e-fluxo-caixa-mensal.csv",
+          "formato": "Planilha CSV",
+          "descricao": "Planilha gerencial com exemplo preenchido + coluna limpa para calcular Margem, Ponto de Equilíbrio e Capital de Giro."
+        }
+      ],
       "passos": [
         {
           "tipo": "avaliacao",
@@ -470,7 +494,34 @@ export const modulo4: Modulo = {
               "nome": "Pesquisa e preparação",
               "sub": "Reunir fontes e preparar um atendimento",
               "sugestao": "Comece pela aula 3.1: Deep Research, conferindo fontes, datas e adequação ao caso."
+            },
+            {
+              "nome": "Fluxo de caixa e capital de giro",
+              "sub": "Cruzar prazos de recebimento com vencimento de boletos e fornecedores",
+              "sugestao": "Comece pela aula 3.4 e pelo diagnóstico de ciclo financeiro: separe faturamento de saldo real em caixa nos próximos 30 dias."
             }
+          ]
+        },
+        {
+          "tipo": "prompt",
+          "rotulo": "Ciclo financeiro",
+          "titulo": "Previna descasamento de caixa",
+          "tituloEnfase": "descasamento de caixa",
+          "texto": "Mesmo vendendo bem, um pequeno negócio pode ficar sem dinheiro na semana se pagar fornecedores antes de receber dos clientes. Use o Gemini para mapear seu ciclo financeiro de 30 dias.",
+          "arquivos": [
+            {
+              "nome": "Template de DRE Simplificado e Ciclo Financeiro",
+              "url": "/materiais/template-dre-e-fluxo-caixa-mensal.csv",
+              "formato": "Planilha CSV",
+              "descricao": "Use os prazos médios de estoque, recebimento e pagamento da planilha para testar ou preencher com o seu mês."
+            }
+          ],
+          "nomePrompt": "Diagnóstico de capital de giro e prazos",
+          "prompt": "# Perfil\nAtue como consultor financeiro especializado em fluxo de caixa e capital de giro para micro e pequenas empresas.\n\n# Contexto\nMeu negócio atua no ramo de [[seu ramo de atuação]]. Abaixo estão as regras reais de recebimento e pagamento da minha operação (sem dados pessoais de clientes ou dados bancários sigilosos):\n- Como recebo as vendas (% à vista/PIX, % cartão de crédito, prazo médio das parcelas): [[descreva como você recebe]]\n- Prazo médio em que a mercadoria fica parada no estoque (ou duração do serviço): [[dias médios de estoque/execução]]\n- Como pago fornecedores e custos fixos (prazos de boleto, dia da folha, aluguel e impostos): [[liste os principais vencimentos do mês]]\n\n# Objetivo\nCalcule o meu Ciclo Operacional e o Ciclo Financeiro (descasamento em dias entre pagar e receber). Identifique em qual semana do mês meu caixa sofre maior pressão e proponha três alavancas práticas (renegociar vencimento, ajustar parcelamento sem juros, queimar estoque parado ou evitar antecipação cara de recebíveis).\n\n# Modelo de Entrega\n1. Mapa do Ciclo: Prazo Médio de Estocagem + Prazo Médio de Recebimento vs. Prazo Médio de Pagamento.\n2. Semana crítica do mês no caixa e por que ela acontece.\n3. Tabela de alavancas: Ação prática | Impacto no caixa | Cuidado antes de aplicar.\nNão invente saldos bancários nem taxas de antecipação; marque dados ausentes como [A CONFIRMAR].",
+          "observe": [
+            "Calcula quantos dias você financia a operação antes do dinheiro entrar?",
+            "Identifica a semana de pico de saídas (aluguel + folha + impostos + boletos)?",
+            "Evita recomendar empréstimo ou antecipação automática sem antes comparar a taxa?"
           ]
         },
         {

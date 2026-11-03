@@ -100,6 +100,14 @@ Entregue um cartão curto com O, P, I e lacunas. Separe informações fornecidas
       objetivo: "Transformar o cartão IPO em um pedido organizado em quatro blocos.",
       voceSaiCom: "Um prompt executado e revisado, com critérios claros de entrega.",
       fontes: [{ nome: "Ajuda do Gemini", url: "https://support.google.com/gemini" }],
+      materiais: [
+        {
+          nome: "Planilha Curva ABC, CMV e Hora Técnica",
+          url: "/materiais/modelo-curva-abc-cmv-servicos.csv",
+          formato: "Planilha CSV",
+          descricao: "Base com exemplos de Comércio, Alimentação e Serviços + linhas em branco para preencher os seus itens.",
+        },
+      ],
       passos: [
         {
           tipo: "anatomia", rotulo: "Quatro blocos", titulo: "Dê estrutura ao pedido", tituloEnfase: "ao pedido",
@@ -142,6 +150,67 @@ Realize [[operações concretas do P]] para produzir [[resultado do O]] e apoiar
 # Modelo de Entrega
 Entregue [[formato, campos e tamanho]]. Mostre as evidências e os cálculos relevantes. Não invente dados; registre ausências como “a confirmar”. Se faltar algo que impeça a execução, pergunte antes de concluir. Termine com pontos que devo verificar antes de usar a resposta.`,
           dica: "Se faltar um dado essencial, volte ao cartão IPO em vez de pedir ao Gemini que adivinhe.",
+        },
+        {
+          tipo: "texto", rotulo: "Por segmento", titulo: "Adapte os 4 blocos ao seu setor", tituloEnfase: "ao seu setor",
+          texto: "Escolha o modelo mais próximo da sua atividade para copiar um prompt em 4 blocos já estruturado para decisões de caixa, giro e agenda.",
+          arquivos: [
+            {
+              nome: "Planilha Curva ABC, CMV e Hora Técnica",
+              url: "/materiais/modelo-curva-abc-cmv-servicos.csv",
+              formato: "Planilha CSV",
+              descricao: "Baixe os dados de exemplo dos 3 setores para testar imediatamente ou preencher com os itens da sua empresa.",
+            },
+          ],
+          comoFazer: [
+            "Selecione o setor do seu negócio abaixo e copie o modelo.",
+            "Troque os trechos destacados pelos seus números reais da semana ou do mês.",
+            "Confira a memória de cálculo antes de aplicar a decisão na operação.",
+          ],
+          rotuloSelecionado: "Setor selecionado", rotuloCopiar: "Copiar prompt do setor",
+          opcoes: [
+            {
+              nome: "Comércio e Varejo (Curva ABC e Giro)",
+              resumo: "Separar produtos que trazem caixa dos que travam capital na prateleira.",
+              texto: `# Perfil
+Atue como consultor de compras e estoque para varejo de pequeno porte.
+# Contexto
+Tenho uma loja de [[ramo do comércio, ex.: roupas, autopeças, materiais, minimercado]]. Abaixo estão as vendas e o estoque atual dos meus principais itens no período de [[mês ou período]], sem dados pessoais de clientes:
+[[Item | Preço de Custo (R$) | Preço de Venda (R$) | Qtd Vendida | Estoque Atual]]
+# Objetivo
+Classifique os itens em Curva ABC por faturamento e identifique onde meu capital de giro está parado. Aponte quais itens Classe A correm risco de ruptura (faltar produto) e quais itens Classe C precisam de ação comercial para liberar caixa.
+# Modelo de Entrega
+Entregue tabela com Item, Receita Gerada (R$), % Acumulado, Classificação (A, B ou C), Cobertura de Estoque em dias e Ação Recomendada (Repor urgente, Manter ou Queimar estoque/Combo). Mostre os cálculos e marque dados faltantes como [A CONFIRMAR].`,
+            },
+            {
+              nome: "Alimentação, Padaria e Delivery (Ficha Técnica eCMV)",
+              resumo: "Auditar Custo de Mercadoria Vendida (CMV), taxas de app e combos.",
+              texto: `# Perfil
+Atue como consultor de gestão gastronômica e precificação para alimentação fora do lar.
+# Contexto
+Administro um(a) [[restaurante, padaria, confeitaria ou lanchonete]]. Quero revisar a margem dos meus itens mais vendidos no balcão e no delivery. Dados reais (sem informações pessoais de clientes):
+[[Prato/Produto | Custo dos Ingredientes + Embalagem (R$) | Preço no Balcão (R$) | Preço no App/Delivery (R$)]]
+Taxas atuais: imposto de [[alíquota %]], taxa da maquininha de [[taxa %]] e comissão do aplicativo de entrega de [[taxa %]].
+# Objetivo
+Calcule o CMV percentual e a Margem de Contribuição em reais e percentual de cada item no balcão versus delivery. Identifique se algum produto está dando prejuízo ou margem crítica no aplicativo.
+# Modelo de Entrega
+Apresente tabela comparativa (Balcão vs. Delivery) com Custo Direto, Taxas Descontadas, Lucro Bruto Unitário (R$) e Margem (%). Depois, sugira até dois ajustes de preço ou estrutura de combo sem inventar custos não informados.`,
+            },
+            {
+              nome: "Serviços, Saúde, Beleza e Oficinas (Hora Técnica e Agenda)",
+              resumo: "Calcular custo da hora parada, ociosidade da agenda e serviços mais rentáveis.",
+              texto: `# Perfil
+Atue como analista de produtividade e rentabilidade para empresas de serviços.
+# Contexto
+Tenho um(a) [[salão, barbearia, clínica, oficina mecânica ou escritório]] com [[número]] profissionais atendendo [[horas por dia]] dias por semana. Meu custo fixo mensal (aluguel, folha fixa, energia, sistema) é de R$ [[valor do custo fixo]].
+Meus principais serviços são:
+[[Serviço | Tempo médio de execução (min) | Preço cobrado (R$) | Custo de material/comissão (R$) | Atendimentos no mês]]
+# Objetivo
+Calcule o custo da minha hora disponível na agenda, o lucro líquido por hora de cada serviço e a taxa de ocupação atual. Mostre qual serviço remunera melhor o tempo da equipe.
+# Modelo de Entrega
+Entregue: 1) Custo por hora/cadeira disponível; 2) Tabela de rentabilidade por hora de cada serviço; 3) Onde estão os gargalos de agenda ociosa e o que preciso confirmar antes de criar pacotes promocionais.`,
+            },
+          ],
         },
         {
           tipo: "comparacao", rotulo: "Compare", titulo: "Compare os dois pedidos", tituloEnfase: "os dois pedidos",
@@ -317,6 +386,93 @@ Entregue nome, descrição de acionamento e instruções prontas para revisar e 
             ["Uma correção pode ficar só naquele chat.", "Revise a instrução salva para melhorar usos seguintes."],
             ["Resposta exige conferência.", "Resposta também exige conferência; automatizar não é aprovar."],
           ], frase: "Se a skill não ativar ou aplicar regras inadequadas, revise sua descrição e teste novamente.",
+        },
+        {
+          tipo: "texto", rotulo: "Kit de 5 Skills", titulo: "Copie 5 skills de gestão prontas", tituloEnfase: "de gestão prontas",
+          texto: "Além do atendimento inicial, pequenas empresas ganham horas toda semana salvando atalhos para precificação, cobrança amigável, compras, POP e reputação local.",
+          comoFazer: [
+            "Escolha uma das 5 skills de gestão abaixo e copie as instruções.",
+            "Abra Skills → Criar skill no Gemini e cole o conteúdo adaptando os trechos em destaque.",
+            "Teste em um chat novo enviando apenas os dados do caso do dia (sem dados pessoais de clientes).",
+          ],
+          rotuloSelecionado: "Skill selecionada", rotuloCopiar: "Copiar instruções da Skill",
+          opcoes: [
+            {
+              nome: "1. Analista de Precificação e Margem Real",
+              resumo: "Calcula preço de venda descontando taxas de maquininha, imposto, perdas e comissão.",
+              texto: `# Nome da Skill
+Analista de Precificação e Margem Real
+
+# Quando acionar
+Acione sempre que eu pedir para calcular preço de venda, revisar margem de um produto/serviço ou simular desconto promocional.
+
+# Instruções estáveis
+- Meu negócio atua no ramo de [[seu ramo de atuação]] no regime [[MEI / Simples Nacional]].
+- Nunca confunda Markup (multiplicador sobre o custo) com Margem de Contribuição (% que sobra sobre o preço de venda).
+- Sempre pergunte ou considere: custo de aquisição/produção, frete/embalagem, imposto sobre a nota ([[alíquota %]]), taxa da maquininha conforme meio de pagamento (PIX, débito, crédito à vista ou parcelado) e comissão.
+- Entregue sempre uma tabela comparando: Preço à Vista/PIX vs. Preço no Cartão Parcelado, mostrando quanto sobra em R$ e % em cada cenário.
+- Exiba a fórmula matemática usada e marque qualquer taxa não informada como [A CONFIRMAR].`,
+            },
+            {
+              nome: "2. Recuperador de Orçamentos e Cobrança Amigável",
+              resumo: "Cria régua de 3 mensagens para WhatsApp sem desgastar o relacionamento.",
+              texto: `# Nome da Skill
+Recuperador de Orçamentos e Cobrança Amigável
+
+# Quando acionar
+Acione quando eu precisar cobrar um pagamento em atraso ou retomar contato com cliente que pediu orçamento e parou de responder.
+
+# Instruções estáveis
+- Escreva mensagens curtas para WhatsApp em tom humano, cordial e profissional, adequado a [[seu segmento]].
+- Nunca solicite nem exponha CPF, dados completos ou informações sensíveis na mensagem.
+- Para cobrança de inadimplência, gere uma régua em 3 níveis: (1) Lembrete gentil de vencimento (D+1 a D+3), (2) Negociação empática com opção de quitação (D+7 a D+15), (3) Aviso formal e objetivo de pendência (D+30).
+- Para orçamento em aberto, foque em tirar dúvidas técnicas ou de condição de pagamento sem oferecer desconto automático.
+- Nunca invente descontos, juros ou prazos que eu não tenha informado no pedido.`,
+            },
+            {
+              nome: "3. Negociador de Compras e Fornecedores",
+              resumo: "Prepara contrapropostas para conseguir prazo, bonificação ou desconto à vista.",
+              texto: `# Nome da Skill
+Negociador de Compras e Fornecedores
+
+# Quando acionar
+Acione quando eu trouxer cotações de fornecedores, reajustes de tabela ou pedidos de reposição de estoque.
+
+# Instruções estáveis
+- Analise a proposta do fornecedor protegendo o fluxo de caixa da minha empresa de [[seu segmento]].
+- Compare o prazo médio que levo para vender/receber com o prazo dos boletos do fornecedor.
+- Gere 3 argumentos comerciais práticos: (1) Pedido de desconto para pagamento à vista/PIX, (2) Pedido de alongamento de prazo (ex.: 28/42/56 dias) ou frete grátis, (3) Pedido de bonificação em mercadoria quando o preço unitário for engessado.
+- Entregue uma mensagem curta pronta para enviar ao representante comercial no WhatsApp ou e-mail.`,
+            },
+            {
+              nome: "4. Criador de POP e Treinamento de Equipe",
+              resumo: "Transforma explicações rápidas do dono em passo a passo de 1 página para funcionários.",
+              texto: `# Nome da Skill
+Criador de POP (Procedimento Operacional Padrão)
+
+# Quando acionar
+Acione quando eu descrever uma tarefa operacional da loja, cozinha, oficina ou escritório para padronizar ou treinar funcionários.
+
+# Instruções estáveis
+- Transforme meu relato em um POP enxuto de 1 página, fácil de ler no celular ou fixar na parede do setor.
+- Estruture sempre em: 1) Objetivo da rotina e tempo estimado; 2) Materiais/ferramentas necessários; 3) Passo a passo numerado com frases curtas no imperativo; 4) Erros comuns a evitar; 5) Checklist "Como saber que está bem-feito".
+- Não invente normas técnicas ou equipamentos que eu não mencionei; marque pontos duvidosos como [VALIDAR NA OPERAÇÃO].`,
+            },
+            {
+              nome: "5. Gestor de Reputação Local (Google Meu Negócio)",
+              resumo: "Responde avaliações de 1 a 5 estrelas e extrai melhorias operacionais.",
+              texto: `# Nome da Skill
+Gestor de Reputação e Avaliações Locais
+
+# Quando acionar
+Acione quando eu colar avaliações ou comentários recebidos no Google Perfil da Empresa, iFood ou redes sociais.
+
+# Instruções estáveis
+- Para avaliações positivas (4 e 5 estrelas): agradeça de forma personalizada citando o produto/serviço elogiado e convide para uma próxima visita ao nosso negócio em [[sua cidade/bairro]].
+- Para avaliações negativas (1 a 3 estrelas): aplique contenção profissional — acolha a frustração sem discutir em público, não exponha dados pessoais do cliente, esclareça o padrão da empresa e convide para resolver pelo canal de atendimento privado.
+- Ao final, aponte em 2 linhas qual processo interno (atraso, embalagem, atendimento, temperatura) preciso checar com a equipe.`,
+            },
+          ],
         },
         {
           tipo: "resultado", rotulo: "Faça na sua conta", titulo: "Agora faça na sua conta", tituloEnfase: "na sua conta",

@@ -1,0 +1,17 @@
+Setor;Item ou Servico;Custo Direto Unitario (R$);Embalagem ou Comissao (R$);Preco de Venda Balcao (R$);Preco no App/Delivery (R$);Qtd Vendida no Mes;Estoque Atual (Unid);Tempo de Execucao (min)
+Comercio;Camiseta Algodao Basica;28,00;2,50;79,90;-;85;18;-
+Comercio;Calca Jeans Masculina;64,00;4,50;169,90;-;42;12;-
+Comercio;Jaqueta Inverno Forrada;115,00;6,00;259,90;-;6;28;-
+Comercio;Cinto de Couro Sintetico;14,00;1,00;39,90;-;9;45;-
+Alimentacao;Combo Pao de Queijo + Cafe;6,20;1,30;18,00;22,90;210;40;-
+Alimentacao;Bolo Caseiro Inteiro;14,50;2,50;38,00;46,00;95;12;-
+Alimentacao;Torta Salgada Fatia;5,80;1,40;16,00;19,90;68;8;-
+Servicos;Corte + Barba Completa;4,50;32,00;80,00;-;110;-;45
+Servicos;Corte Masculino Rapido;2,00;18,00;45,00;-;165;-;25
+Servicos;Hidratacao e Selagem;18,00;35,00;120,00;-;28;-;75
+
+--- PREENCHA ABAIXO COM OS ITENS DO SEU NEGOCIO ---
+[[Seu Setor]];[[Produto ou Servico 1]];0,00;0,00;0,00;0,00;0;0;0
+[[Seu Setor]];[[Produto ou Servico 2]];0,00;0,00;0,00;0,00;0;0;0
+[[Seu Setor]];[[Produto ou Servico 3]];0,00;0,00;0,00;0,00;0;0;0
+

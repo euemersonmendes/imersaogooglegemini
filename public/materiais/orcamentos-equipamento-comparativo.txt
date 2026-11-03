@@ -1,0 +1,30 @@
+LEVANTAMENTO DE ORÇAMENTOS E RESUMO DE CAPACIDADE DE PAGAMENTO
+(Arquivo de exemplo sem dados pessoais ou bancários — para usar com @ no Google Docs e Apresentações)
+
+1. OBJETIVO DO INVESTIMENTO EM AVALIAÇÃO
+Substituição do forno elétrico antigo por um Forno Combinado Profissional de 10 assadeiras para reduzir o tempo de fornada em horários de pico (07h às 09h e 16h às 18h) e diminuir o consumo de energia elétrica.
+
+2. ORÇAMENTOS COLETADOS COM FORNECEDORES (JUNHO)
+- Fornecedor A (Equipamentos Gastronômicos Brasil):
+  * Modelo: Forno Turbo Inox 10 Esteiras
+  * Preço à vista: R$ 14.800,00
+  * Condição a prazo: Entrada de R$ 2.800,00 + 10x de R$ 1.320,00 no boleto (Total a prazo: R$ 16.000,00)
+  * Frete e instalação técnica: R$ 650,00 (não inclusos no valor do equipamento)
+  * Prazo de entrega: 15 dias úteis
+  * Garantia: 12 meses para peças e mão de obra
+
+- Fornecedor B (Cozinha Industrial Sul):
+  * Modelo: Forno Combinado 10 Assadeiras Digital
+  * Preço à vista: R$ 15.900,00
+  * Condição a prazo: 12x de R$ 1.390,00 sem entrada no cartão ou boleto (Total a prazo: R$ 16.680,00)
+  * Frete e instalação técnica: Gratuitos para o município
+  * Prazo de entrega: 7 dias úteis
+  * Garantia: 18 meses
+
+3. RESUMO ATUAL DE CUSTOS E CAPACIDADE MENSAL INFORMADA PELA EMPRESA
+- Faturamento médio mensal dos últimos 3 meses: R$ 38.500,00
+- Conta média atual de energia elétrica: R$ 2.150,00/mês (estimativa técnica do fabricante de redução de 15% a 20% ainda NÃO comprovada na operação real — tratar como hipótese [A CONFIRMAR]).
+- Sobra média mensal de caixa operacional antes de novos investimentos: R$ 3.400,00/mês.
+- Limite máximo definido pelo sócio para parcela mensal do equipamento: até R$ 1.450,00/mês para manter folga de capital de giro.
+- Pendência técnica [A CONFIRMAR]: verificar com eletricista se o quadro trifásico da loja suporta a potência do novo forno sem reforma de fiação.
+

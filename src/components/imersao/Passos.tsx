@@ -1,9 +1,10 @@
 import { useMemo, useState } from "react";
-import { Check, Copy, ExternalLink, Eye } from "lucide-react";
+import { Check, Copy, Download, ExternalLink, Eye, FileSpreadsheet, FileText } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import type { AulaInfo, PassoCompleto } from "@/content/imersao";
 import type {
+  MaterialApoio,
   PassoAnatomia,
   PassoAvaliacao,
   PassoCatalogo,
@@ -40,6 +41,46 @@ function Cartao({ children, className }: { children: React.ReactNode; className?
   return <div className={cn("rounded-2xl border border-linha bg-branco p-5 sombra md:p-6", className)}>{children}</div>;
 }
 
+function BlocoMateriais({ itens, titulo = "Arquivos e planilhas desta aula" }: { itens?: MaterialApoio[] | undefined; titulo?: string | undefined }) {
+  if (!itens || itens.length === 0) return null;
+  return (
+    <div className="rounded-2xl border border-cobre-borda bg-cobre-suave/60 p-4 md:p-5">
+      <p className="sobretitulo mb-3 flex items-center gap-2 text-cobre-texto">
+        <Download className="size-3.5" /> {titulo}
+      </p>
+      <div className="grid gap-3 sm:grid-cols-2">
+        {itens.map((m) => {
+          const ehPlanilha = m.formato === "Planilha CSV";
+          return (
+            <a
+              key={m.url}
+              href={m.url}
+              download
+              className="group flex items-start justify-between gap-3 rounded-xl border border-linha bg-branco p-3.5 transition-all hover:border-cobre hover:shadow-sm"
+            >
+              <div className="flex items-start gap-3">
+                <span className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-lg bg-cobre-suave text-cobre-texto">
+                  {ehPlanilha ? <FileSpreadsheet className="size-4" /> : <FileText className="size-4" />}
+                </span>
+                <div>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="text-sm font-semibold text-tinta group-hover:text-cobre-texto">{m.nome}</span>
+                    <span className="rounded-md bg-areia-2 px-2 py-0.5 text-[11px] font-semibold text-apagado">{m.formato}</span>
+                  </div>
+                  <p className="mt-1 text-xs leading-relaxed text-apagado">{m.descricao}</p>
+                </div>
+              </div>
+              <span className="mt-1 inline-flex shrink-0 items-center gap-1 rounded-lg bg-tinta px-2.5 py-1.5 text-xs font-semibold text-branco group-hover:bg-cobre-texto">
+                <Download className="size-3.5" /> Baixar
+              </span>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 function Lista({ itens, check }: { itens: string[]; check?: boolean }) {
   return (
     <ul className="flex flex-col gap-2">
@@ -58,31 +99,34 @@ function Lista({ itens, check }: { itens: string[]; check?: boolean }) {
 function Objetivo({ info }: { info: AulaInfo }) {
   const { aula } = info;
   return (
-    <div className="grid gap-5 md:grid-cols-[1.3fr_1fr]">
-      <Cartao>
-        <p className="sobretitulo">O que você vai fazer</p>
-        <p className="mt-2 text-xl font-semibold leading-snug">{aula.objetivo}</p>
-        <p className="sobretitulo mt-6">Você sai com</p>
-        <p className="mt-2 text-[15.5px] leading-relaxed">{aula.voceSaiCom}</p>
-        <p className="mt-6 inline-flex rounded-full bg-cobre-suave px-3 py-1 text-sm font-semibold text-cobre-texto">{aula.ferramenta}</p>
-      </Cartao>
-      <Cartao className="bg-areia-2">
-        {aula.saibaMais && (
-          <>
-            <p className="sobretitulo">Se quiser entender um pouco mais</p>
-            <p className="mt-2 text-[15px] leading-relaxed text-apagado">{aula.saibaMais}</p>
-          </>
-        )}
-        {aula.fontes.length > 0 && (
-          <div className="mt-5 flex flex-col gap-2">
-            {aula.fontes.map((f) => (
-              <a key={f.url + f.nome} href={f.url} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm font-semibold text-cobre-texto hover:underline">
-                <ExternalLink className="size-3.5" /> {f.nome}
-              </a>
-            ))}
-          </div>
-        )}
-      </Cartao>
+    <div className="flex flex-col gap-5">
+      <div className="grid gap-5 md:grid-cols-[1.3fr_1fr]">
+        <Cartao>
+          <p className="sobretitulo">O que você vai fazer</p>
+          <p className="mt-2 text-xl font-semibold leading-snug">{aula.objetivo}</p>
+          <p className="sobretitulo mt-6">Você sai com</p>
+          <p className="mt-2 text-[15.5px] leading-relaxed">{aula.voceSaiCom}</p>
+          <p className="mt-6 inline-flex rounded-full bg-cobre-suave px-3 py-1 text-sm font-semibold text-cobre-texto">{aula.ferramenta}</p>
+        </Cartao>
+        <Cartao className="bg-areia-2">
+          {aula.saibaMais && (
+            <>
+              <p className="sobretitulo">Se quiser entender um pouco mais</p>
+              <p className="mt-2 text-[15px] leading-relaxed text-apagado">{aula.saibaMais}</p>
+            </>
+          )}
+          {aula.fontes.length > 0 && (
+            <div className="mt-5 flex flex-col gap-2">
+              {aula.fontes.map((f) => (
+                <a key={f.url + f.nome} href={f.url} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm font-semibold text-cobre-texto hover:underline">
+                  <ExternalLink className="size-3.5" /> {f.nome}
+                </a>
+              ))}
+            </div>
+          )}
+        </Cartao>
+      </div>
+      <BlocoMateriais itens={aula.materiais} />
     </div>
   );
 }
@@ -501,26 +545,39 @@ function Resultado({ p, n }: { p: PassoResultado; n: string }) {
 
 export function CorpoPasso({ info, passo, indice }: { info: AulaInfo; passo: PassoCompleto; indice: number }) {
   const n = info.aula.n;
-  switch (passo.tipo) {
-    case "objetivo":
-      return <Objetivo info={info} />;
-    case "tela":
-      return <Tela p={passo} />;
-    case "prompt":
-      return <Prompt p={passo} />;
-    case "texto":
-      return <Texto p={passo} />;
-    case "catalogo":
-      return <Catalogo p={passo} />;
-    case "mapa":
-      return <Mapa p={passo} />;
-    case "anatomia":
-      return <Anatomia p={passo} />;
-    case "comparacao":
-      return <Comparacao p={passo} />;
-    case "avaliacao":
-      return <Avaliacao p={passo} chave={`${n}/${indice}`} />;
-    case "resultado":
-      return <Resultado p={passo} n={n} />;
+  const conteudo = (() => {
+    switch (passo.tipo) {
+      case "objetivo":
+        return <Objetivo info={info} />;
+      case "tela":
+        return <Tela p={passo} />;
+      case "prompt":
+        return <Prompt p={passo} />;
+      case "texto":
+        return <Texto p={passo} />;
+      case "catalogo":
+        return <Catalogo p={passo} />;
+      case "mapa":
+        return <Mapa p={passo} />;
+      case "anatomia":
+        return <Anatomia p={passo} />;
+      case "comparacao":
+        return <Comparacao p={passo} />;
+      case "avaliacao":
+        return <Avaliacao p={passo} chave={`${n}/${indice}`} />;
+      case "resultado":
+        return <Resultado p={passo} n={n} />;
+    }
+  })();
+
+  if (passo.tipo === "objetivo" || !passo.arquivos?.length) {
+    return conteudo;
   }
+
+  return (
+    <div className="flex flex-col gap-5">
+      <BlocoMateriais itens={passo.arquivos} titulo="Baixe para testar neste passo" />
+      {conteudo}
+    </div>
+  );
 }

@@ -1,0 +1,23 @@
+DOCUMENTO INTERNO — FONTE 1: PLANO DE METAS DO MÊS E REGRAS OPERACIONAIS DA LOJA
+(Arquivo de exemplo sem dados pessoais de clientes — pronto para subir no Gemini Notebooks)
+
+1. METAS COMERCIAIS E FINANCEIRAS DO MÊS (JUNHO)
+- Meta de vendas da linha principal (Camisetas Básicas): 40 unidades vendidas no mês.
+- Meta de vendas de Combos/Kits: 25 kits no mês.
+- Meta de divulgação digital: publicar 4 posts no feed do Instagram (1 por semana) apresentando produtos com preço e condições claras.
+- Meta de satisfação no atendimento: nota média mínima de 4,5 estrelas na pesquisa rápida de pós-venda, com pelo menos 30 respostas válidas no mês.
+- Meta de fechamento financeiro: apurar custos de reposição, taxas de maquininha e despesas fixas até o dia 25 para calcular o lucro líquido do mês.
+
+2. TABELA DE PREÇOS E CONDIÇÕES COMERCIAIS VIGENTES
+- Camiseta Básica Algodão: R$ 79,90 à vista/PIX ou em até 2x sem juros no cartão.
+- Kit 2 Camisetas Básicas: R$ 144,90 à vista/PIX (desconto promocional apenas na compra de 2 unidades no mesmo pedido).
+- Calça Jeans: R$ 169,90 em até 3x sem juros.
+- Taxa de entrega local (motoboy no município): taxa fixa de R$ 12,00 para pedidos abaixo de R$ 200,00; frete grátis acima de R$ 200,00.
+
+3. REGRAS DE TROCA, ATENDIMENTO E ROTINA DE BALCÃO (PARA INTEGRAÇÃO DA EQUIPE)
+- Prazo de troca: até 15 dias corridos após a compra, somente com etiqueta afixada na peça, sem sinais de uso ou lavagem, acompanhada do comprovante de compra.
+- Peças em promoção de queima de estoque: troca permitida apenas por tamanho da mesma referência, conforme disponibilidade em loja.
+- Reserva de mercadoria pelo WhatsApp: válida por no máximo 24 horas úteis sem pagamento; após esse prazo a peça retorna ao estoque de venda.
+- Abertura de turno (08h45): conferir fundo de caixa (R$ 150,00 em troco), ligar iluminação da vitrine, testar maquininha de cartão e revisar pedidos pendentes no WhatsApp.
+- Fechamento de turno (18h15): emitir relatório da maquininha, contar cédulas do caixa físico, registrar peças que acabaram na grade e trancar estoque.
+

@@ -68,8 +68,20 @@ export const cadastrarAluno = createServerFn({ method: "POST" })
     }
     if (process.env["SUPABASE_SERVICE_ROLE_KEY"]) {
       const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-      const { data: turma } = await supabaseAdmin.from("turmas").select("codigo").eq("codigo", v.codigo).eq("ativa", true).maybeSingle();
+      const { data: turma, error: erroTurma } = await supabaseAdmin
+        .from("turmas")
+        .select("codigo, ativa")
+        .eq("codigo", v.codigo)
+        .maybeSingle();
+      if (erroTurma) {
+        console.error("Erro ao validar código da turma:", erroTurma);
+        return {
+          ok: false as const,
+          erro: "Não foi possível validar o código da turma agora. Avise o instrutor (verifique a chave SUPABASE_SERVICE_ROLE_KEY e a URL do projeto no servidor).",
+        };
+      }
       if (!turma) return { ok: false as const, erro: "Código da turma inválido. Confira com o instrutor." };
+      if (!turma.ativa) return { ok: false as const, erro: "Este código de turma está desativado. Fale com o instrutor." };
       return criarConta(v, turma.codigo);
     }
     return criarConta(v, v.codigo);
